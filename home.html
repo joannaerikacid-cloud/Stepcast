@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Stepcast - Self-Guided Audio Walking Tours</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}body{font-family:'DM Sans',sans-serif;background:#0E0A07;color:#FAF7F2;min-height:100vh}
+.hdr{position:fixed;top:0;left:0;right:0;z-index:100;padding:1rem 1.5rem;display:flex;align-items:center;justify-content:space-between;transition:background .3s}.hdr.scrolled{background:rgba(14,10,7,.97);border-bottom:1px solid rgba(196,96,58,.15);backdrop-filter:blur(12px)}.logo{font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:600;letter-spacing:.04em;color:#FAF7F2;text-decoration:none}.logo em{color:#E8845F;font-style:normal}.nav-tag{font-size:.6rem;letter-spacing:.16em;text-transform:uppercase;color:rgba(250,247,242,.3)}
+.hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:6rem 2rem 4rem;background:radial-gradient(ellipse 80% 60% at 50% 40%,rgba(196,96,58,.15) 0%,transparent 65%),#0E0A07}.eyebrow{font-size:.6rem;font-weight:500;letter-spacing:.28em;text-transform:uppercase;color:#E8845F;margin-bottom:1.2rem}.hero h1{font-family:'Cormorant Garamond',serif;font-size:clamp(3rem,8vw,6rem);font-weight:300;line-height:.95;margin-bottom:1.5rem}.hero h1 em{font-style:italic;color:#E8845F}.hero p{font-size:.95rem;font-weight:300;color:rgba(250,247,242,.55);max-width:460px;line-height:1.8;margin-bottom:.6rem}.hero-sub2{font-size:.7rem;color:rgba(250,247,242,.28);letter-spacing:.06em;margin-bottom:3.5rem}.arrow{font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(250,247,242,.2);display:flex;flex-direction:column;align-items:center;gap:.5rem;animation:nudge 2.2s ease-in-out infinite}.arrow::after{content:'';width:1px;height:28px;background:linear-gradient(to bottom,rgba(250,247,242,.2),transparent)}@keyframes nudge{0%,100%{transform:translateY(0)}50%{transform:translateY(5px)}}
+.tours{padding:3rem 1.5rem 6rem;max-width:900px;margin:0 auto}.section-lbl{font-size:.58rem;font-weight:500;letter-spacing:.22em;text-transform:uppercase;color:#E8845F;margin-bottom:1.8rem;text-align:center}.grid{display:grid;grid-template-columns:1fr 1fr;gap:1.2rem}@media(max-width:600px){.grid{grid-template-columns:1fr}}
+.card{position:relative;border-radius:8px;overflow:hidden;background:#1a1008;border:1px solid rgba(196,96,58,.15);text-decoration:none;display:block;transition:transform .3s,border-color .3s}.card:hover{transform:translateY(-4px);border-color:rgba(196,96,58,.4)}.card-img{width:100%;height:200px;object-fit:cover;opacity:.5;display:block;background:linear-gradient(135deg,#2a1205,#0a1a18);transition:opacity .3s}.card:hover .card-img{opacity:.7}.card-grad{position:absolute;inset:0;background:linear-gradient(to bottom,transparent 25%,rgba(14,8,4,.96) 100%)}.free-tag{position:absolute;top:.9rem;right:.9rem;background:rgba(196,96,58,.9);color:#fff;font-size:.56rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;padding:.25rem .65rem;border-radius:3px}.card-body{position:absolute;bottom:0;left:0;right:0;padding:1.3rem}.card-region{font-size:.54rem;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:#E8845F;margin-bottom:.35rem}.card-name{font-family:'Cormorant Garamond',serif;font-size:1.9rem;font-weight:300;color:#FAF7F2;margin-bottom:.55rem;line-height:1}.card-name em{font-style:italic;color:#E8845F}.card-pills{display:flex;gap:.7rem;flex-wrap:wrap;margin-bottom:.9rem}.pill{font-size:.58rem;letter-spacing:.06em;text-transform:uppercase;color:rgba(250,247,242,.35);border:1px solid rgba(250,247,242,.12);border-radius:20px;padding:.2rem .6rem}.card-btn{display:inline-flex;align-items:center;gap:.4rem;background:#C4603A;color:#fff;padding:.6rem 1.3rem;border-radius:4px;font-size:.7rem;font-weight:500;letter-spacing:.08em;text-transform:uppercase;transition:background .2s}.card:hover .card-btn{background:#E8845F}
+.soon{background:rgba(255,255,255,.03);border:1px dashed rgba(250,247,242,.1);border-radius:8px;display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:260px;gap:.7rem}.soon-emoji{font-size:2rem;opacity:.25}.soon-city{font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:300;color:rgba(250,247,242,.22)}.soon-tag{font-size:.56rem;letter-spacing:.16em;text-transform:uppercase;color:rgba(250,247,242,.15)}
+.how{padding:3.5rem 1.5rem 5rem;max-width:660px;margin:0 auto;text-align:center;border-top:1px solid rgba(255,255,255,.06)}.how h2{font-family:'Cormorant Garamond',serif;font-size:clamp(1.8rem,4vw,2.6rem);font-weight:300;margin-bottom:.5rem}.how h2 em{font-style:italic;color:#E8845F}.how-sub{font-size:.85rem;color:rgba(250,247,242,.4);line-height:1.8;margin-bottom:2.5rem}.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}@media(max-width:500px){.steps{grid-template-columns:1fr}}.step-num{width:34px;height:34px;border-radius:50%;background:rgba(196,96,58,.12);border:1px solid rgba(196,96,58,.28);display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:1rem;color:#E8845F;margin:0 auto .65rem}.step h4{font-size:.76rem;font-weight:500;margin-bottom:.3rem}.step p{font-size:.7rem;color:rgba(250,247,242,.38);line-height:1.6}
+.footer{padding:1.8rem;text-align:center;font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(250,247,242,.14);border-top:1px solid rgba(255,255,255,.05)}
+</style>
+</head>
+<body>
+<header class="hdr" id="hdr">
+  <a class="logo" href="home.html">step<em>cast</em></a>
+  <span class="nav-tag">Walk. Listen. Discover.</span>
+</header>
+<section class="hero">
+  <div class="eyebrow">Self-Guided Audio Walking Tours</div>
+  <h1>The world's best<br>cities, <em>on foot</em></h1>
+  <p>Expertly researched audio tours with GPS navigation, real photos, and insider knowledge you will not find in a guidebook.</p>
+  <p class="hero-sub2">First 3 stops free on every tour &mdash; unlock all stops for just &pound;5</p>
+  <div class="arrow">Choose a city</div>
+</section>
+<section class="tours">
+  <div class="section-lbl">Available Now</div>
+  <div class="grid">
+    <a class="card" href="valencia.html">
+      <img class="card-img" id="valImg" alt="Valencia">
+      <div class="card-grad"></div>
+      <div class="free-tag">3 Stops Free</div>
+      <div class="card-body">
+        <div class="card-region">Spain &mdash; Mediterranean</div>
+        <div class="card-name"><em>Valencia</em></div>
+        <div class="card-pills"><span class="pill">9 Stops</span><span class="pill">2.5 km</span><span class="pill">2 Hours</span></div>
+        <span class="card-btn">Start Tour &#8594;</span>
+      </div>
+    </a>
+    <a class="card" href="seville.html">
+      <img class="card-img" id="sevImg" alt="Seville">
+      <div class="card-grad"></div>
+      <div class="free-tag">3 Stops Free</div>
+      <div class="card-body">
+        <div class="card-region">Spain &mdash; Andalusia</div>
+        <div class="card-name"><em>Seville</em></div>
+        <div class="card-pills"><span class="pill">9 Stops</span><span class="pill">3 km</span><span class="pill">2.5 Hours</span></div>
+        <span class="card-btn">Start Tour &#8594;</span>
+      </div>
+    </a>
+    <a class="card" href="brussels.html">
+      <img class="card-img" id="bxlImg" alt="Brussels">
+      <div class="card-grad"></div>
+      <div class="free-tag">3 Stops Free</div>
+      <div class="card-body">
+        <div class="card-region">Belgium &mdash; Capital of Europe</div>
+        <div class="card-name"><em>Brussels</em></div>
+        <div class="card-pills"><span class="pill">9 Stops</span><span class="pill">3 km</span><span class="pill">2.5 Hours</span></div>
+        <span class="card-btn">Start Tour &#8594;</span>
+      </div>
+    </a>
+    <div class="soon">
+      <div class="soon-emoji">&#127963;</div>
+      <div class="soon-city">Barcelona</div>
+      <div class="soon-tag">Coming Soon</div>
+    </div>
+  </div>
+</section>
+<section class="how">
+  <h2>How it <em>works</em></h2>
+  <p class="how-sub">No app to download. No account needed. Open in your browser, put in your earphones, and walk.</p>
+  <div class="steps">
+    <div class="step"><div class="step-num">1</div><h4>Choose a city</h4><p>Pick any tour above. The first three stops are completely free.</p></div>
+    <div class="step"><div class="step-num">2</div><h4>Walk and listen</h4><p>Tap play at each stop. GPS tracks your position on the map.</p></div>
+    <div class="step"><div class="step-num">3</div><h4>Unlock the rest</h4><p>Love it? Pay &pound;5 once to unlock all stops forever.</p></div>
+  </div>
+</section>
+<div class="footer">&copy; 2026 Stepcast &mdash; Walk. Listen. Discover.</div>
+<script>
+window.addEventListener("scroll",function(){document.getElementById("hdr").classList.toggle("scrolled",window.scrollY>60);});
+fetch("https://en.wikipedia.org/api/rest_v1/page/summary/Valencia").then(function(r){return r.json();}).then(function(d){if(d.thumbnail&&d.thumbnail.source)document.getElementById("valImg").src=d.thumbnail.source;}).catch(function(){});
+fetch("https://en.wikipedia.org/api/rest_v1/page/summary/Seville").then(function(r){return r.json();}).then(function(d){if(d.thumbnail&&d.thumbnail.source)document.getElementById("sevImg").src=d.thumbnail.source;}).catch(function(){});
+fetch("https://en.wikipedia.org/api/rest_v1/page/summary/Brussels").then(function(r){return r.json();}).then(function(d){if(d.thumbnail&&d.thumbnail.source)document.getElementById("bxlImg").src=d.thumbnail.source;}).catch(function(){});
+</script>
+</body>
+</html>
