@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -89,6 +88,7 @@
 <script>
 var P="|||";
 var FREE_STOPS=3;
+var CITY_PREFIX="valencia";
 var UNLOCK_CODE="VALENCIA2026";
 var STORAGE_KEY="stepcast_val_v4";
 var stops=[
@@ -103,7 +103,7 @@ var stops=[
 {id:9,tag:"Finale - Medieval Towers",titleHtml:"Torres de <em>Serranos</em>",plain:"Torres de Serranos",next:"Final stop",emoji:"&#127983;",lat:39.4793,lng:-0.3760,wikiPage:"Torres de Serranos",tipLabel:"Entry Info",tipText:"Entry 2 euros, free on Sundays. Climb to the top for the best view in Valencia: rooftops, Turia Gardens, cathedral spire. Sunset here is exceptional.",script:"You made it. The Torres de Serranos — the great Gothic gateway that once marked the northern entrance to the walled city of Valencia."+P+"These towers were built between 1392 and 1398. For four hundred years, every ambassador, every returning king, every merchant arriving in Valencia entered through this gate."+P+"Climb to the top. Entry is two euros, free on Sundays. The view is your reward: terracotta rooftops in every direction, the Cathedral tower, the old city you have just walked through laid out below you. And beneath the towers, stretching south for nine kilometres, the long ribbon of green that was once the River Turia — now the longest urban park in Spain."+P+"Now find a terrace, order an Agua de Valencia — orange juice, cava, gin, ice cold. Raise a glass. You have earned it. Salut."}
 ];
 var leafMap=null,userMarker=null,watchId=null,gpsActive=false,stopMarkers=[];
-var currentIdx=null,progTimer=null,voiceReady=false,bestVoice=null;
+var currentIdx=null,progTimer=null,voiceReady=false,bestVoice=null,currentAudio=null;
 function fetchWikiPhoto(wikiPage,imgEl,phEl,lblEl,emoji){fetch("https://en.wikipedia.org/api/rest_v1/page/summary/"+encodeURIComponent(wikiPage),{headers:{"Api-User-Agent":"Stepcast/1.0"}}).then(function(r){return r.json();}).then(function(data){var src=(data.thumbnail&&data.thumbnail.source)?data.thumbnail.source:null;if(!src&&data.originalimage)src=data.originalimage.source;if(!src){lblEl.textContent=emoji;return;}imgEl.src=src;imgEl.onload=function(){imgEl.classList.add("vis");phEl.style.display="none";};imgEl.onerror=function(){lblEl.textContent=emoji;};}).catch(function(){lblEl.textContent=emoji;});}
 fetch("https://en.wikipedia.org/api/rest_v1/page/summary/Valencia").then(function(r){return r.json();}).then(function(d){if(d.thumbnail&&d.thumbnail.source)document.getElementById("heroImg").src=d.thumbnail.source;}).catch(function(){});
 function loadVoices(){var voices=speechSynthesis.getVoices();if(!voices.length)return;voiceReady=true;var pref=["Samantha","Karen","Moira","Tessa","Google US English","Google UK English Female"];for(var p=0;p<pref.length;p++){for(var v=0;v<voices.length;v++){if(voices[v].name===pref[p]){bestVoice=voices[v];break;}}if(bestVoice)break;}if(!bestVoice){for(var v=0;v<voices.length;v++){if(voices[v].lang.indexOf("en")===0&&voices[v].name.indexOf("Microsoft")===-1){bestVoice=voices[v];break;}}}if(!bestVoice&&voices.length>0)bestVoice=voices[0];var note=document.getElementById("voiceNote");if(bestVoice){note.innerHTML="Voice: <strong>"+bestVoice.name+"</strong> — tap play on any stop to hear your guide";note.classList.add("show");setTimeout(function(){note.classList.remove("show");},6000);}for(var i=0;i<stops.length;i++){var el=document.getElementById("vtag-"+i);if(el)el.textContent=bestVoice?bestVoice.name.split(" ").slice(0,2).join(" "):"Device Voice";}}
@@ -122,8 +122,62 @@ function setStat(i,m,c){var el=document.getElementById("ps-"+i);if(!el)return;el
 function setProg(i,p){var el=document.getElementById("pf-"+i);if(el)el.style.width=Math.min(100,p)+"%";}
 function setIcon(i,on){var el=document.getElementById("pi-"+i);if(!el)return;el.innerHTML=on?"<rect x='6' y='4' width='4' height='16'/><rect x='14' y='4' width='4' height='16'/>":"<polygon points='5,3 19,12 5,21'/>";}
 function resetUI(i){setIcon(i,false);setStat(i,"Tap play to hear this stop","");setProg(i,0);}
-function stopAll(){speechSynthesis.cancel();if(progTimer){clearInterval(progTimer);progTimer=null;}if(currentIdx!==null)resetUI(currentIdx);currentIdx=null;document.getElementById("gbar").classList.remove("up");}
-function togglePlay(i){if(currentIdx===i){if(speechSynthesis.paused){speechSynthesis.resume();setIcon(i,true);setStat(i,"Playing...","on");}else if(speechSynthesis.speaking){speechSynthesis.pause();setIcon(i,false);setStat(i,"Paused - tap play to resume","");}return;}stopAll();currentIdx=i;if(!voiceReady)loadVoices();var s=stops[i];var rate=parseFloat(document.getElementById("spd-"+i).value);var estMs=(s.script.split(" ").length/2.5/rate)*1000;var elapsed=0;progTimer=setInterval(function(){elapsed+=300;setProg(i,(elapsed/estMs)*100);if(elapsed>=estMs)clearInterval(progTimer);},300);setIcon(i,true);setStat(i,"Playing...","on");document.getElementById("gTitle").textContent=s.plain;document.getElementById("gbar").classList.add("up");panMapTo(i);var clean=s.script.split(P).join(" ");var sentences=clean.match(/[^.!?]+[.!?]+/g)||[clean];var chunks=[],chunk="";for(var ci=0;ci<sentences.length;ci++){if((chunk+sentences[ci]).length>200&&chunk){chunks.push(chunk.trim());chunk=sentences[ci];}else{chunk+=sentences[ci];}}if(chunk.trim())chunks.push(chunk.trim());speechSynthesis.cancel();for(var chi=0;chi<chunks.length;chi++){(function(text,isLast){var u=new SpeechSynthesisUtterance(text);if(bestVoice)u.voice=bestVoice;u.lang="en-GB";u.rate=rate;u.pitch=0.95;u.volume=1.0;if(isLast){u.onend=function(){clearInterval(progTimer);setProg(i,100);setIcon(i,false);setStat(i,"Complete - scroll to next stop","ok");document.getElementById("gbar").classList.remove("up");currentIdx=null;setTimeout(function(){setProg(i,0);setStat(i,"Tap play to hear this stop","");},4000);};u.onerror=function(){clearInterval(progTimer);resetUI(i);setStat(i,"Audio error - tap play again","er");document.getElementById("gbar").classList.remove("up");currentIdx=null;};}speechSynthesis.speak(u);})(chunks[chi],chi===chunks.length-1);}}
+function stopAll(){if(currentAudio){currentAudio.pause();currentAudio.currentTime=0;currentAudio=null;}speechSynthesis.cancel();if(progTimer){clearInterval(progTimer);progTimer=null;}if(currentIdx!==null)resetUI(currentIdx);currentIdx=null;document.getElementById("gbar").classList.remove("up");}
+function togglePlay(i){
+if(currentIdx===i){
+if(currentAudio&&!currentAudio.paused){currentAudio.pause();setIcon(i,false);setStat(i,"Paused - tap play to resume","");return;}
+if(currentAudio&&currentAudio.paused){currentAudio.play();setIcon(i,true);setStat(i,"Playing...","on");return;}
+if(speechSynthesis.paused){speechSynthesis.resume();setIcon(i,true);setStat(i,"Playing...","on");}
+else if(speechSynthesis.speaking){speechSynthesis.pause();setIcon(i,false);setStat(i,"Paused - tap play to resume","");}
+return;}
+stopAll();currentIdx=i;
+var s=stops[i];
+var mp3=CITY_PREFIX+"stop"+(i+1)+".mp3";
+var audio=new Audio(mp3);
+currentAudio=audio;
+setStat(i,"Loading audio...","");
+audio.oncanplaythrough=function(){
+setIcon(i,true);setStat(i,"Playing your guide...","on");
+document.getElementById("gTitle").textContent=s.plain;
+document.getElementById("gbar").classList.add("up");
+panMapTo(i);
+var rate=parseFloat(document.getElementById("spd-"+i).value);
+audio.playbackRate=rate;
+audio.play();
+var prog=setInterval(function(){
+if(audio.duration){setProg(i,(audio.currentTime/audio.duration)*100);}
+if(audio.ended){clearInterval(prog);setProg(i,100);setIcon(i,false);setStat(i,"Complete - scroll to next stop","ok");document.getElementById("gbar").classList.remove("up");currentIdx=null;currentAudio=null;setTimeout(function(){setProg(i,0);setStat(i,"Tap play to hear this stop","");},4000);}
+},300);
+progTimer=prog;};
+audio.onerror=function(){
+currentAudio=null;
+setStat(i,"Using device voice...","");
+useSpeechFallback(i);};
+}
+function useSpeechFallback(i){
+if(!voiceReady)loadVoices();
+var s=stops[i];
+var rate=parseFloat(document.getElementById("spd-"+i).value);
+var estMs=(s.script.split(" ").length/2.5/rate)*1000;
+var elapsed=0;
+progTimer=setInterval(function(){elapsed+=300;setProg(i,(elapsed/estMs)*100);if(elapsed>=estMs)clearInterval(progTimer);},300);
+setIcon(i,true);setStat(i,"Playing...","on");
+document.getElementById("gTitle").textContent=s.plain;
+document.getElementById("gbar").classList.add("up");
+panMapTo(i);
+var clean=s.script.split(P).join(" ");
+var sentences=clean.match(/[^.!?]+[.!?]+/g)||[clean];
+var chunks=[],chunk="";
+for(var ci=0;ci<sentences.length;ci++){if((chunk+sentences[ci]).length>200&&chunk){chunks.push(chunk.trim());chunk=sentences[ci];}else{chunk+=sentences[ci];}}
+if(chunk.trim())chunks.push(chunk.trim());
+speechSynthesis.cancel();
+for(var chi=0;chi<chunks.length;chi++){(function(text,isLast){
+var u=new SpeechSynthesisUtterance(text);
+if(bestVoice)u.voice=bestVoice;u.lang="en-GB";u.rate=rate;u.pitch=0.95;u.volume=1.0;
+if(isLast){u.onend=function(){clearInterval(progTimer);setProg(i,100);setIcon(i,false);setStat(i,"Complete - scroll to next stop","ok");document.getElementById("gbar").classList.remove("up");currentIdx=null;setTimeout(function(){setProg(i,0);setStat(i,"Tap play to hear this stop","");},4000);};
+u.onerror=function(){clearInterval(progTimer);resetUI(i);setStat(i,"Audio error - tap play again","er");document.getElementById("gbar").classList.remove("up");currentIdx=null;};}
+speechSynthesis.speak(u);})(chunks[chi],chi===chunks.length-1);}
+}
 if(typeof L!=="undefined"){initMap();}else{setTimeout(function(){if(typeof L!=="undefined")initMap();else document.getElementById("map").innerHTML="<div style='display:flex;align-items:center;justify-content:center;height:100%;color:rgba(240,237,228,.3);font-size:.85rem'>Map needs internet connection</div>";},2000);}
 function isUnlocked(){try{return localStorage.getItem(STORAGE_KEY)==="1";}catch(e){return false;}}
 function unlockTour(){try{localStorage.setItem(STORAGE_KEY,"1");}catch(e){}var locks=document.querySelectorAll(".lock-overlay");for(var i=0;i<locks.length;i++)locks[i].remove();var ndots=document.querySelectorAll(".ndot");for(var i=0;i<ndots.length;i++){ndots[i].style.opacity="1";ndots[i].title="";}closeModal();}

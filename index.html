@@ -25,7 +25,7 @@
   <div class="eyebrow">Self-Guided Audio Walking Tours</div>
   <h1>Your city.<br>Your <em>rules.</em></h1>
   <p class="tagline"><strong>Your pace, your tour, your way.</strong><br>DIY walking tours with audio narration and live GPS map &mdash; no guide, no group, no schedule.</p>
-  <p class="tagline-sub">First 3 stops free &mdash; unlock all 9 for just &pound;5</p>
+  <p class="tagline-sub">First 3 stops free &mdash; unlock all stops for just &pound;5</p>
   <div class="arrow">Choose a city</div>
 </section>
 <section class="tours">
@@ -76,51 +76,31 @@
         <span class="card-btn">Start Tour &#8594;</span>
       </div>
     </a>
-    <a class="card" href="cadiz.html">
-      <img class="card-img" id="cadImg" alt="Cadiz">
+    <a class="card" href="lisbon.html">
+      <img class="card-img" id="lisImg" alt="Lisbon">
       <div class="card-grad"></div>
       <div class="free-tag">3 Stops Free</div>
       <div class="card-body">
-        <div class="card-region">Spain &mdash; Oldest City in the West</div>
-        <div class="card-name"><em>Cadiz</em></div>
+        <div class="card-region">Portugal &mdash; City of Seven Hills</div>
+        <div class="card-name"><em>Lisbon</em></div>
         <div class="card-pills">
-          <span class="pill">9 Stops</span>
-          <span class="pill">3 km</span>
+          <span class="pill">10 Stops</span>
+          <span class="pill">4.5 km</span>
           <span class="pill">3-4 hrs</span>
         </div>
         <span class="card-btn">Start Tour &#8594;</span>
       </div>
     </a>
-    <a class="card" href="bordeaux.html">
-      <img class="card-img" id="borImg" alt="Bordeaux">
-      <div class="card-grad"></div>
-      <div class="free-tag">3 Stops Free</div>
-      <div class="card-body">
-        <div class="card-region">France &mdash; Wine Capital</div>
-        <div class="card-name"><em>Bordeaux</em></div>
-        <div class="card-pills">
-          <span class="pill">9 Stops</span>
-          <span class="pill">3.5 km</span>
-          <span class="pill">3-4 hrs</span>
-        </div>
-        <span class="card-btn">Start Tour &#8594;</span>
-      </div>
-    </a>
-    <a class="card" href="london.html">
-      <img class="card-img" id="lonImg" alt="London">
-      <div class="card-grad"></div>
-      <div class="free-tag">3 Stops Free</div>
-      <div class="card-body">
-        <div class="card-region">England &mdash; Capital of the World</div>
-        <div class="card-name"><em>London</em></div>
-        <div class="card-pills">
-          <span class="pill">9 Stops</span>
-          <span class="pill">5 km</span>
-          <span class="pill">4-5 hrs</span>
-        </div>
-        <span class="card-btn">Start Tour &#8594;</span>
-      </div>
-    </a>
+    <div class="soon">
+      <div class="soon-emoji">&#127963;</div>
+      <div class="soon-city">London</div>
+      <div class="soon-tag">Coming Soon</div>
+    </div>
+    <div class="soon">
+      <div class="soon-emoji">&#127963;</div>
+      <div class="soon-city">Paris</div>
+      <div class="soon-tag">Coming Soon</div>
+    </div>
   </div>
 </section>
 <section class="how">
@@ -138,9 +118,7 @@ window.addEventListener("scroll",function(){document.getElementById("hdr").class
 fetch("https://en.wikipedia.org/api/rest_v1/page/summary/Valencia").then(function(r){return r.json();}).then(function(d){if(d.thumbnail&&d.thumbnail.source)document.getElementById("valImg").src=d.thumbnail.source;}).catch(function(){});
 fetch("https://en.wikipedia.org/api/rest_v1/page/summary/Seville").then(function(r){return r.json();}).then(function(d){if(d.thumbnail&&d.thumbnail.source)document.getElementById("sevImg").src=d.thumbnail.source;}).catch(function(){});
 fetch("https://en.wikipedia.org/api/rest_v1/page/summary/Brussels").then(function(r){return r.json();}).then(function(d){if(d.thumbnail&&d.thumbnail.source)document.getElementById("bxlImg").src=d.thumbnail.source;}).catch(function(){});
-fetch("https://en.wikipedia.org/api/rest_v1/page/summary/Cadiz").then(function(r){return r.json();}).then(function(d){if(d.thumbnail&&d.thumbnail.source)document.getElementById("cadImg").src=d.thumbnail.source;}).catch(function(){});
-fetch("https://en.wikipedia.org/api/rest_v1/page/summary/Bordeaux").then(function(r){return r.json();}).then(function(d){if(d.thumbnail&&d.thumbnail.source)document.getElementById("borImg").src=d.thumbnail.source;}).catch(function(){});
-fetch("https://en.wikipedia.org/api/rest_v1/page/summary/London").then(function(r){return r.json();}).then(function(d){if(d.thumbnail&&d.thumbnail.source)document.getElementById("lonImg").src=d.thumbnail.source;}).catch(function(){});
+fetch("https://en.wikipedia.org/api/rest_v1/page/summary/Lisbon").then(function(r){return r.json();}).then(function(d){if(d.thumbnail&&d.thumbnail.source)document.getElementById("lisImg").src=d.thumbnail.source;}).catch(function(){});
 </script>
 </body>
 </html>
