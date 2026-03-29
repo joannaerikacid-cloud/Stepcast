@@ -75,12 +75,12 @@
   <div class="umbox">
     <div style="font-size:1.8rem;margin-bottom:.6rem">&#128275;</div>
     <h2>Unlock <span class="city-name">Lisbon</span></h2>
-    <p>Enter your unlock code, or purchase the full tour for just <strong style="color:#F0EDE4">5 pounds</strong>.</p>
+    <p>Enter your unlock code, or purchase the full tour for just <strong style="color:#F0EDE4">&pound;5</strong>.</p>
     <input class="ucode-in" id="ucodeIn" type="text" placeholder="Enter your unlock code" autocomplete="off" maxlength="20">
     <button class="ubtn-go" onclick="tryCode()">Unlock Full Tour</button>
     <div class="umsg" id="umsg"></div>
     <div class="udivider"><span>or</span></div>
-    <a class="buy-btn" href="https://gumroad.com" target="_blank">Buy Full Tour - 5 pounds</a>
+    <a class="buy-btn" href="https://gumroad.com" target="_blank">Buy Full Tour - &pound;5</a>
     <button class="ucancel" onclick="closeModal()">Maybe later</button>
   </div>
 </div>
@@ -150,10 +150,9 @@ if(audio.duration){setProg(i,(audio.currentTime/audio.duration)*100);}
 if(audio.ended){clearInterval(prog);setProg(i,100);setIcon(i,false);setStat(i,"Complete - scroll to next stop","ok");document.getElementById("gbar").classList.remove("up");currentIdx=null;currentAudio=null;setTimeout(function(){setProg(i,0);setStat(i,"Tap play to hear this stop","");},4000);}
 },300);
 progTimer=prog;};
-audio.onerror=function(){
-currentAudio=null;
-setStat(i,"Using device voice...","");
-useSpeechFallback(i);};
+var fallbackTimer=setTimeout(function(){if(currentIdx===i&&(!currentAudio||currentAudio.readyState===0)){currentAudio=null;useSpeechFallback(i);}},3000);
+audio.onerror=function(){clearTimeout(fallbackTimer);currentAudio=null;useSpeechFallback(i);};
+audio.onstalled=function(){clearTimeout(fallbackTimer);currentAudio=null;useSpeechFallback(i);};
 }
 function useSpeechFallback(i){
 if(!voiceReady)loadVoices();
@@ -186,7 +185,7 @@ function tryCode(){var val=document.getElementById("ucodeIn").value.trim().toUpp
 function openModal(){document.getElementById("umodal").classList.add("show");}
 function closeModal(){document.getElementById("umodal").classList.remove("show");}
 document.getElementById("ucodeIn").addEventListener("keydown",function(e){if(e.key==="Enter")tryCode();});
-function applyLocks(){if(isUnlocked())return;var allStops=document.querySelectorAll(".stop");for(var i=0;i<allStops.length;i++){if(i<FREE_STOPS)continue;allStops[i].style.position="relative";var o=document.createElement("div");o.className="lock-overlay";o.innerHTML="<div class='lock-icon'>&#128274;</div><h4>Stop "+(i+1)+" is locked</h4><p>Unlock the full Lisbon tour to hear all 9 stops with GPS navigation and audio guide.</p><button class='unlock-btn' onclick='openModal()'>Unlock Full Tour - 5 pounds</button>";allStops[i].appendChild(o);var ndots=document.querySelectorAll(".ndot");if(ndots[i]){ndots[i].style.opacity="0.35";ndots[i].title="Locked";}}}
+function applyLocks(){if(isUnlocked())return;var allStops=document.querySelectorAll(".stop");for(var i=0;i<allStops.length;i++){if(i<FREE_STOPS)continue;allStops[i].style.position="relative";var o=document.createElement("div");o.className="lock-overlay";o.innerHTML="<div class='lock-icon'>&#128274;</div><h4>Stop "+(i+1)+" is locked</h4><p>Unlock the full Lisbon tour to hear all 9 stops with GPS navigation and audio guide.</p><button class='unlock-btn' onclick='openModal()'>Unlock Full Tour - &pound;5</button>";allStops[i].appendChild(o);var ndots=document.querySelectorAll(".ndot");if(ndots[i]){ndots[i].style.opacity="0.35";ndots[i].title="Locked";}}}
 setTimeout(applyLocks,300);
 </script>
 </body>
