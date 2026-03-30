@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -181,7 +180,7 @@ speechSynthesis.speak(u);})(chunks[chi],chi===chunks.length-1);}
 if(typeof L!=="undefined"){initMap();}else{setTimeout(function(){if(typeof L!=="undefined")initMap();else document.getElementById("map").innerHTML="<div style='display:flex;align-items:center;justify-content:center;height:100%;color:rgba(240,237,228,.3);font-size:.85rem'>Map needs internet connection</div>";},2000);}
 function isUnlocked(){try{return localStorage.getItem(STORAGE_KEY)==="1";}catch(e){return false;}}
 function unlockTour(){try{localStorage.setItem(STORAGE_KEY,"1");}catch(e){}var locks=document.querySelectorAll(".lock-overlay");for(var i=0;i<locks.length;i++)locks[i].remove();var ndots=document.querySelectorAll(".ndot");for(var i=0;i<ndots.length;i++){ndots[i].style.opacity="1";ndots[i].title="";}closeModal();}
-function tryCode(){var val=document.getElementById("ucodeIn").value.trim().toUpperCase();var msg=document.getElementById("umsg");if(!val){msg.textContent="Please enter a code.";msg.className="umsg er";return;}if(val===UNLOCK_CODE){msg.textContent="Code accepted! Unlocking your tour...";msg.className="umsg ok";setTimeout(unlockTour,800);}else{msg.textContent="Invalid code — check your email and try again.";msg.className="umsg er";}}
+function tryCode(){var val=document.getElementById("ucodeIn").value.trim();var msg=document.getElementById("umsg");if(!val){msg.textContent="Please enter a code.";msg.className="umsg er";return;}msg.textContent="Checking your code...";msg.className="umsg";fetch("/api/verify",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({code:val,city:"seville"})}).then(function(r){return r.json();}).then(function(data){if(data.valid){msg.textContent="Code accepted! Unlocking your tour...";msg.className="umsg ok";setTimeout(unlockTour,800);}else{msg.textContent="Invalid code — check your email and try again.";msg.className="umsg er";}}).catch(function(){if(val.toUpperCase()===UNLOCK_CODE){msg.textContent="Code accepted! Unlocking your tour...";msg.className="umsg ok";setTimeout(unlockTour,800);}else{msg.textContent="Invalid code — check your email and try again.";msg.className="umsg er";}});}
 function openModal(){document.getElementById("umodal").classList.add("show");}
 function closeModal(){document.getElementById("umodal").classList.remove("show");}
 document.getElementById("ucodeIn").addEventListener("keydown",function(e){if(e.key==="Enter")tryCode();});
