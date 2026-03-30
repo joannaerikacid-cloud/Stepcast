@@ -8,10 +8,11 @@
 <style>
 *{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}body{font-family:'DM Sans',sans-serif;background:#1C1C1A;color:#F0EDE4;min-height:100vh}
 .hdr{position:fixed;top:0;left:0;right:0;z-index:100;padding:1rem 1.5rem;display:flex;align-items:center;justify-content:space-between;transition:background .3s}.hdr.scrolled{background:rgba(28,28,26,.97);border-bottom:1px solid rgba(201,169,110,.15);backdrop-filter:blur(12px)}.logo{font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:600;letter-spacing:.04em;color:#F0EDE4;text-decoration:none}.logo em{color:#C9A96E;font-style:normal}.nav-tag{font-size:.6rem;letter-spacing:.16em;text-transform:uppercase;color:rgba(240,237,228,.3)}
-.hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:6rem 2rem 4rem;background:radial-gradient(ellipse 80% 60% at 50% 40%,rgba(45,90,61,.2) 0%,transparent 65%),#1C1C1A}.eyebrow{font-size:.6rem;font-weight:500;letter-spacing:.28em;text-transform:uppercase;color:#C9A96E;margin-bottom:1.2rem}.hero h1{font-family:'Cormorant Garamond',serif;font-size:clamp(3rem,8vw,6.5rem);font-weight:300;line-height:.95;margin-bottom:1.5rem}.hero h1 em{font-style:italic;color:#C9A96E}.tagline{font-size:1.05rem;font-weight:300;color:rgba(240,237,228,.65);max-width:480px;line-height:1.8;margin-bottom:.7rem}.tagline strong{color:#F0EDE4;font-weight:500}.tagline-sub{font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(240,237,228,.28);margin-bottom:3.5rem}.arrow{font-size:.58rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(240,237,228,.2);display:flex;flex-direction:column;align-items:center;gap:.5rem;animation:nudge 2.2s ease-in-out infinite}.arrow::after{content:'';width:1px;height:28px;background:linear-gradient(to bottom,rgba(201,169,110,.3),transparent)}@keyframes nudge{0%,100%{transform:translateY(0)}50%{transform:translateY(5px)}}
-.tours{padding:3rem 1.5rem 6rem;max-width:960px;margin:0 auto}.section-lbl{font-size:.58rem;font-weight:500;letter-spacing:.22em;text-transform:uppercase;color:#C9A96E;margin-bottom:1.8rem;text-align:center}.grid{display:grid;grid-template-columns:1fr 1fr;gap:1.2rem}@media(max-width:600px){.grid{grid-template-columns:1fr}}
-.card{position:relative;border-radius:8px;overflow:hidden;background:#242420;border:1px solid rgba(201,169,110,.15);text-decoration:none;display:block;transition:transform .3s,border-color .3s}.card:hover{transform:translateY(-4px);border-color:rgba(201,169,110,.45)}.card-img{width:100%;height:210px;object-fit:cover;opacity:.45;display:block;background:linear-gradient(135deg,#1a2e22,#1c1c1a);transition:opacity .3s}.card:hover .card-img{opacity:.65}.card-grad{position:absolute;inset:0;background:linear-gradient(to bottom,transparent 20%,rgba(28,28,26,.97) 100%)}.free-tag{position:absolute;top:.9rem;right:.9rem;background:#2D5A3D;color:#C9A96E;font-size:.55rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;padding:.25rem .65rem;border-radius:3px;border:1px solid rgba(201,169,110,.3)}.card-body{position:absolute;bottom:0;left:0;right:0;padding:1.4rem}.card-region{font-size:.54rem;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:#C9A96E;margin-bottom:.35rem}.card-name{font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:300;color:#F0EDE4;margin-bottom:.55rem;line-height:1}.card-name em{font-style:italic;color:#C9A96E}.card-pills{display:flex;gap:.7rem;flex-wrap:wrap;margin-bottom:.9rem}.pill{font-size:.58rem;letter-spacing:.06em;text-transform:uppercase;color:rgba(240,237,228,.35);border:1px solid rgba(240,237,228,.12);border-radius:20px;padding:.2rem .6rem}.card-btn{display:inline-flex;align-items:center;gap:.4rem;background:#2D5A3D;color:#C9A96E;padding:.6rem 1.3rem;border-radius:4px;font-size:.7rem;font-weight:500;letter-spacing:.08em;text-transform:uppercase;border:1px solid rgba(201,169,110,.3);transition:background .2s}.card:hover .card-btn{background:#3D7A54}
-.soon{background:rgba(255,255,255,.02);border:1px dashed rgba(240,237,228,.1);border-radius:8px;display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:260px;gap:.7rem}.soon-emoji{font-size:2rem;opacity:.2}.soon-city{font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:300;color:rgba(240,237,228,.2)}.soon-tag{font-size:.56rem;letter-spacing:.16em;text-transform:uppercase;color:rgba(240,237,228,.14)}
+.hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:6rem 2rem 4rem;background:radial-gradient(ellipse 80% 60% at 50% 40%,rgba(45,90,61,.2) 0%,transparent 65%),#1C1C1A}.eyebrow{font-size:.6rem;font-weight:500;letter-spacing:.28em;text-transform:uppercase;color:#C9A96E;margin-bottom:1.2rem}.hero h1{font-family:'Cormorant Garamond',serif;font-size:clamp(3rem,8vw,6.5rem);font-weight:300;line-height:.95;margin-bottom:1.5rem}.hero h1 em{font-style:italic;color:#C9A96E}.tagline{font-size:1.05rem;font-weight:300;color:rgba(240,237,228,.65);max-width:480px;line-height:1.8;margin-bottom:.7rem}.tagline-sub{font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(240,237,228,.28);margin-bottom:3.5rem}.arrow{font-size:.58rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(240,237,228,.2);display:flex;flex-direction:column;align-items:center;gap:.5rem;animation:nudge 2.2s ease-in-out infinite}.arrow::after{content:'';width:1px;height:28px;background:linear-gradient(to bottom,rgba(201,169,110,.3),transparent)}@keyframes nudge{0%,100%{transform:translateY(0)}50%{transform:translateY(5px)}}
+.tours{padding:3rem 1.5rem 6rem;max-width:1100px;margin:0 auto}.section-lbl{font-size:.58rem;font-weight:500;letter-spacing:.22em;text-transform:uppercase;color:#C9A96E;margin-bottom:1.8rem;text-align:center}.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.2rem}@media(max-width:900px){.grid{grid-template-columns:1fr 1fr}}@media(max-width:520px){.grid{grid-template-columns:1fr}}
+.card{position:relative;border-radius:8px;overflow:hidden;background:#242420;border:1px solid rgba(201,169,110,.15);text-decoration:none;display:block;transition:transform .3s,border-color .3s}.card:hover{transform:translateY(-4px);border-color:rgba(201,169,110,.45)}.card-img{width:100%;height:180px;object-fit:cover;opacity:.45;display:block;background:linear-gradient(135deg,#1a2e22,#1c1c1a);transition:opacity .3s}.card:hover .card-img{opacity:.65}.card-grad{position:absolute;inset:0;background:linear-gradient(to bottom,transparent 20%,rgba(28,28,26,.97) 100%)}.free-tag{position:absolute;top:.9rem;right:.9rem;background:#2D5A3D;color:#C9A96E;font-size:.55rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;padding:.25rem .65rem;border-radius:3px;border:1px solid rgba(201,169,110,.3)}.card-body{position:absolute;bottom:0;left:0;right:0;padding:1.2rem}.card-region{font-size:.52rem;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:#C9A96E;margin-bottom:.3rem}.card-name{font-family:'Cormorant Garamond',serif;font-size:1.7rem;font-weight:300;color:#F0EDE4;margin-bottom:.45rem;line-height:1}.card-name em{font-style:italic;color:#C9A96E}.card-pills{display:flex;gap:.5rem;flex-wrap:wrap;margin-bottom:.75rem}.pill{font-size:.55rem;letter-spacing:.06em;text-transform:uppercase;color:rgba(240,237,228,.35);border:1px solid rgba(240,237,228,.12);border-radius:20px;padding:.18rem .5rem}.card-btn{display:inline-flex;align-items:center;gap:.4rem;background:#2D5A3D;color:#C9A96E;padding:.5rem 1.1rem;border-radius:4px;font-size:.65rem;font-weight:500;letter-spacing:.08em;text-transform:uppercase;border:1px solid rgba(201,169,110,.3);transition:background .2s}.card:hover .card-btn{background:#3D7A54}
+.soon{background:rgba(255,255,255,.02);border:1px dashed rgba(240,237,228,.1);border-radius:8px;display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:240px;gap:.7rem}.soon-emoji{font-size:1.8rem;opacity:.2}.soon-city{font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:300;color:rgba(240,237,228,.2)}.soon-tag{font-size:.54rem;letter-spacing:.16em;text-transform:uppercase;color:rgba(240,237,228,.14)}
+.divider{max-width:1100px;margin:0 auto 1.8rem;padding:0 1.5rem;display:flex;align-items:center;gap:1rem}.divider-line{flex:1;height:1px;background:rgba(201,169,110,.1)}.divider-label{font-size:.58rem;font-weight:500;letter-spacing:.22em;text-transform:uppercase;color:rgba(201,169,110,.4);white-space:nowrap}
 .how{padding:3.5rem 1.5rem 5rem;max-width:660px;margin:0 auto;text-align:center;border-top:1px solid rgba(201,169,110,.1)}.how h2{font-family:'Cormorant Garamond',serif;font-size:clamp(1.8rem,4vw,2.6rem);font-weight:300;margin-bottom:.5rem}.how h2 em{font-style:italic;color:#C9A96E}.how-sub{font-size:.85rem;color:rgba(240,237,228,.4);line-height:1.8;margin-bottom:2.5rem}.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}@media(max-width:500px){.steps{grid-template-columns:1fr}}.step-num{width:34px;height:34px;border-radius:50%;background:rgba(45,90,61,.2);border:1px solid rgba(201,169,110,.3);display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:1rem;color:#C9A96E;margin:0 auto .65rem}.step h4{font-size:.76rem;font-weight:500;margin-bottom:.3rem;color:#F0EDE4}.step p{font-size:.7rem;color:rgba(240,237,228,.35);line-height:1.6}
 .footer{padding:1.8rem;text-align:center;font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(240,237,228,.14);border-top:1px solid rgba(201,169,110,.08)}
 </style>
@@ -95,16 +96,82 @@
         <span class="card-btn">Start Tour &#8594;</span>
       </div>
     </a>
-    <div class="soon">
-      <div class="soon-emoji">&#127963;</div>
-      <div class="soon-city">London</div>
-      <div class="soon-tag">Coming Soon</div>
-    </div>
-    <div class="soon">
-      <div class="soon-emoji">&#127963;</div>
-      <div class="soon-city">Paris</div>
-      <div class="soon-tag">Coming Soon</div>
-    </div>
+    <a class="card" href="london.html">
+      <img class="card-img" id="lonImg" alt="London">
+      <div class="card-grad"></div>
+      <div class="free-tag">3 Stops Free</div>
+      <div class="card-body">
+        <div class="card-region">United Kingdom &mdash; Capital</div>
+        <div class="card-name"><em>London</em></div>
+        <div class="card-pills">
+          <span class="pill">9 Stops</span>
+          <span class="pill">4.5 km</span>
+          <span class="pill">&#x1F6B6; ~55 min</span>
+          <span class="pill">&#x1F3A7; ~28 min</span>
+        </div>
+        <span class="card-btn">Start Tour &#8594;</span>
+      </div>
+    </a>
+    <a class="card" href="paris.html">
+      <img class="card-img" id="parImg" alt="Paris">
+      <div class="card-grad"></div>
+      <div class="free-tag">3 Stops Free</div>
+      <div class="card-body">
+        <div class="card-region">France &mdash; Capital</div>
+        <div class="card-name"><em>Paris</em></div>
+        <div class="card-pills">
+          <span class="pill">8 Stops</span>
+          <span class="pill">4 km</span>
+          <span class="pill">&#x1F6B6; ~50 min</span>
+          <span class="pill">&#x1F3A7; ~28 min</span>
+        </div>
+        <span class="card-btn">Start Tour &#8594;</span>
+      </div>
+    </a>
+    <a class="card" href="amsterdam.html">
+      <img class="card-img" id="amsImg" alt="Amsterdam">
+      <div class="card-grad"></div>
+      <div class="free-tag">3 Stops Free</div>
+      <div class="card-body">
+        <div class="card-region">Netherlands &mdash; Capital</div>
+        <div class="card-name"><em>Amsterdam</em></div>
+        <div class="card-pills">
+          <span class="pill">8 Stops</span>
+          <span class="pill">3.5 km</span>
+          <span class="pill">&#x1F6B6; ~52 min</span>
+          <span class="pill">&#x1F3A7; ~32 min</span>
+        </div>
+        <span class="card-btn">Start Tour &#8594;</span>
+      </div>
+    </a>
+    <a class="card" href="barcelona.html">
+      <img class="card-img" id="bcnImg" alt="Barcelona">
+      <div class="card-grad"></div>
+      <div class="free-tag">3 Stops Free</div>
+      <div class="card-body">
+        <div class="card-region">Spain &mdash; Catalonia</div>
+        <div class="card-name"><em>Barcelona</em></div>
+        <div class="card-pills">
+          <span class="pill">7 Stops</span>
+          <span class="pill">4 km</span>
+          <span class="pill">&#x1F6B6; ~50 min</span>
+          <span class="pill">&#x1F3A7; ~32 min</span>
+        </div>
+        <span class="card-btn">Start Tour &#8594;</span>
+      </div>
+    </a>
+  </div>
+  <br><br>
+  <div class="divider">
+    <div class="divider-line"></div>
+    <div class="divider-label">Coming Soon</div>
+    <div class="divider-line"></div>
+  </div>
+  <div class="grid">
+    <div class="soon"><div class="soon-emoji">&#127963;</div><div class="soon-city">Berlin</div><div class="soon-tag">Coming Soon</div></div>
+    <div class="soon"><div class="soon-emoji">&#127963;</div><div class="soon-city">Cadiz</div><div class="soon-tag">Coming Soon</div></div>
+    <div class="soon"><div class="soon-emoji">&#127963;</div><div class="soon-city">Bordeaux</div><div class="soon-tag">Coming Soon</div></div>
+    <div class="soon"><div class="soon-emoji">&#127963;</div><div class="soon-city">Rome</div><div class="soon-tag">Coming Soon</div></div>
   </div>
 </section>
 <section class="how">
@@ -119,10 +186,18 @@
 <div class="footer">&copy; 2026 Stepcast &mdash; Walk. Listen. Discover.</div>
 <script>
 window.addEventListener("scroll",function(){document.getElementById("hdr").classList.toggle("scrolled",window.scrollY>60);});
-fetch("https://en.wikipedia.org/api/rest_v1/page/summary/Valencia").then(function(r){return r.json();}).then(function(d){if(d.thumbnail&&d.thumbnail.source)document.getElementById("valImg").src=d.thumbnail.source;}).catch(function(){});
-fetch("https://en.wikipedia.org/api/rest_v1/page/summary/Seville").then(function(r){return r.json();}).then(function(d){if(d.thumbnail&&d.thumbnail.source)document.getElementById("sevImg").src=d.thumbnail.source;}).catch(function(){});
-fetch("https://en.wikipedia.org/api/rest_v1/page/summary/Brussels").then(function(r){return r.json();}).then(function(d){if(d.thumbnail&&d.thumbnail.source)document.getElementById("bxlImg").src=d.thumbnail.source;}).catch(function(){});
-fetch("https://en.wikipedia.org/api/rest_v1/page/summary/Lisbon").then(function(r){return r.json();}).then(function(d){if(d.thumbnail&&d.thumbnail.source)document.getElementById("lisImg").src=d.thumbnail.source;}).catch(function(){});
+var cities=[
+  {id:"valImg",page:"Valencia"},{id:"sevImg",page:"Seville"},
+  {id:"bxlImg",page:"Brussels"},{id:"lisImg",page:"Lisbon"},
+  {id:"lonImg",page:"London"},{id:"parImg",page:"Paris"},
+  {id:"amsImg",page:"Amsterdam"},{id:"bcnImg",page:"Barcelona"}
+];
+cities.forEach(function(c){
+  fetch("https://en.wikipedia.org/api/rest_v1/page/summary/"+c.page,{headers:{"Api-User-Agent":"Stepcast/1.0"}})
+    .then(function(r){return r.json();})
+    .then(function(d){if(d.thumbnail&&d.thumbnail.source)document.getElementById(c.id).src=d.thumbnail.source;})
+    .catch(function(){});
+});
 </script>
 </body>
 </html>
