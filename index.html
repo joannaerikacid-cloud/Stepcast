@@ -8,7 +8,13 @@
 <style>
 *{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}body{font-family:'DM Sans',sans-serif;background:#1C1C1A;color:#F0EDE4;min-height:100vh}
 .hdr{position:fixed;top:0;left:0;right:0;z-index:100;padding:1rem 1.5rem;display:flex;align-items:center;justify-content:space-between;transition:background .3s}.hdr.scrolled{background:rgba(28,28,26,.97);border-bottom:1px solid rgba(201,169,110,.15);backdrop-filter:blur(12px)}.logo{font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:600;letter-spacing:.04em;color:#F0EDE4;text-decoration:none}.logo em{color:#C9A96E;font-style:normal}.nav-tag{font-size:.6rem;letter-spacing:.16em;text-transform:uppercase;color:rgba(240,237,228,.3)}
-.hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:6rem 2rem 4rem;background:radial-gradient(ellipse 80% 60% at 50% 40%,rgba(45,90,61,.2) 0%,transparent 65%),#1C1C1A}.eyebrow{font-size:.6rem;font-weight:500;letter-spacing:.28em;text-transform:uppercase;color:#C9A96E;margin-bottom:1.2rem}.hero h1{font-family:'Cormorant Garamond',serif;font-size:clamp(3rem,8vw,6.5rem);font-weight:300;line-height:.95;margin-bottom:1.5rem}.hero h1 em{font-style:italic;color:#C9A96E}.tagline{font-size:1.05rem;font-weight:300;color:rgba(240,237,228,.65);max-width:480px;line-height:1.8;margin-bottom:.7rem}.tagline-sub{font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(240,237,228,.28);margin-bottom:3.5rem}.arrow{font-size:.58rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(240,237,228,.2);display:flex;flex-direction:column;align-items:center;gap:.5rem;animation:nudge 2.2s ease-in-out infinite}.arrow::after{content:'';width:1px;height:28px;background:linear-gradient(to bottom,rgba(201,169,110,.3),transparent)}@keyframes nudge{0%,100%{transform:translateY(0)}50%{transform:translateY(5px)}}
+.hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:6rem 2rem 4rem;background:radial-gradient(ellipse 80% 60% at 50% 40%,rgba(45,90,61,.2) 0%,transparent 65%),#1C1C1A}.eyebrow{font-size:.6rem;font-weight:500;letter-spacing:.28em;text-transform:uppercase;color:#C9A96E;margin-bottom:1.2rem}.hero h1{font-family:'Cormorant Garamond',serif;font-size:clamp(3rem,8vw,6.5rem);font-weight:300;line-height:.95;margin-bottom:1.5rem}.hero h1 em{font-style:italic;color:#C9A96E}.tagline{font-size:1.05rem;font-weight:300;color:rgba(240,237,228,.65);max-width:480px;line-height:1.8;margin-bottom:.7rem}.tagline-sub{font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(240,237,228,.28);margin-bottom:2.5rem}
+
+/* SEARCH BAR */
+.search-wrap{position:relative;width:100%;max-width:420px;margin-bottom:2.5rem}.search-input{width:100%;background:rgba(255,255,255,.04);border:1px solid rgba(201,169,110,.25);border-radius:40px;padding:.85rem 3.2rem .85rem 1.4rem;font-family:'DM Sans',sans-serif;font-size:.88rem;color:#F0EDE4;outline:none;transition:border-color .2s,background .2s;letter-spacing:.02em}.search-input::placeholder{color:rgba(240,237,228,.25)}.search-input:focus{border-color:rgba(201,169,110,.6);background:rgba(255,255,255,.06)}.search-icon{position:absolute;right:1.1rem;top:50%;transform:translateY(-50%);color:rgba(201,169,110,.5);font-size:1rem;pointer-events:none}
+.search-results{position:absolute;top:calc(100% + .5rem);left:0;right:0;background:#242420;border:1px solid rgba(201,169,110,.2);border-radius:12px;overflow:hidden;z-index:200;display:none;box-shadow:0 8px 32px rgba(0,0,0,.4)}.search-results.show{display:block}.sr-item{display:flex;align-items:center;gap:.9rem;padding:.85rem 1.2rem;text-decoration:none;color:#F0EDE4;transition:background .15s;border-bottom:1px solid rgba(255,255,255,.04)}.sr-item:last-child{border-bottom:none}.sr-item:hover{background:rgba(45,90,61,.3)}.sr-emoji{font-size:1.2rem;width:28px;text-align:center;flex-shrink:0}.sr-name{font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:300}.sr-region{font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;color:#C9A96E;margin-top:.15rem}.sr-not-found{padding:1.2rem;text-align:center}.sr-nf-label{font-size:.78rem;color:rgba(240,237,228,.4);margin-bottom:.7rem}.sr-nf-btn{display:inline-block;background:#2D5A3D;color:#C9A96E;padding:.5rem 1.2rem;border-radius:4px;font-size:.68rem;font-weight:500;letter-spacing:.08em;text-transform:uppercase;border:1px solid rgba(201,169,110,.3);text-decoration:none;transition:background .2s}.sr-nf-btn:hover{background:#3D7A54}
+
+.arrow{font-size:.58rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(240,237,228,.2);display:flex;flex-direction:column;align-items:center;gap:.5rem;animation:nudge 2.2s ease-in-out infinite}.arrow::after{content:'';width:1px;height:28px;background:linear-gradient(to bottom,rgba(201,169,110,.3),transparent)}@keyframes nudge{0%,100%{transform:translateY(0)}50%{transform:translateY(5px)}}
 .tours{padding:3rem 1.5rem 6rem;max-width:1100px;margin:0 auto}.section-lbl{font-size:.58rem;font-weight:500;letter-spacing:.22em;text-transform:uppercase;color:#C9A96E;margin-bottom:1.8rem;text-align:center}.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.2rem}@media(max-width:900px){.grid{grid-template-columns:1fr 1fr}}@media(max-width:520px){.grid{grid-template-columns:1fr}}
 .card{position:relative;border-radius:8px;overflow:hidden;background:#242420;border:1px solid rgba(201,169,110,.15);text-decoration:none;display:block;transition:transform .3s,border-color .3s}.card:hover{transform:translateY(-4px);border-color:rgba(201,169,110,.45)}.card-img{width:100%;height:180px;object-fit:cover;opacity:.45;display:block;background:linear-gradient(135deg,#1a2e22,#1c1c1a);transition:opacity .3s}.card:hover .card-img{opacity:.65}.card-grad{position:absolute;inset:0;background:linear-gradient(to bottom,transparent 20%,rgba(28,28,26,.97) 100%)}.free-tag{position:absolute;top:.9rem;right:.9rem;background:#2D5A3D;color:#C9A96E;font-size:.55rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;padding:.25rem .65rem;border-radius:3px;border:1px solid rgba(201,169,110,.3)}.card-body{position:absolute;bottom:0;left:0;right:0;padding:1.2rem}.card-region{font-size:.52rem;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:#C9A96E;margin-bottom:.3rem}.card-name{font-family:'Cormorant Garamond',serif;font-size:1.7rem;font-weight:300;color:#F0EDE4;margin-bottom:.45rem;line-height:1}.card-name em{font-style:italic;color:#C9A96E}.card-pills{display:flex;gap:.5rem;flex-wrap:wrap;margin-bottom:.75rem}.pill{font-size:.55rem;letter-spacing:.06em;text-transform:uppercase;color:rgba(240,237,228,.35);border:1px solid rgba(240,237,228,.12);border-radius:20px;padding:.18rem .5rem}.card-btn{display:inline-flex;align-items:center;gap:.4rem;background:#2D5A3D;color:#C9A96E;padding:.5rem 1.1rem;border-radius:4px;font-size:.65rem;font-weight:500;letter-spacing:.08em;text-transform:uppercase;border:1px solid rgba(201,169,110,.3);transition:background .2s}.card:hover .card-btn{background:#3D7A54}
 .soon{background:rgba(255,255,255,.02);border:1px dashed rgba(240,237,228,.1);border-radius:8px;display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:240px;gap:.7rem}.soon-emoji{font-size:1.8rem;opacity:.2}.soon-city{font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:300;color:rgba(240,237,228,.2)}.soon-tag{font-size:.54rem;letter-spacing:.16em;text-transform:uppercase;color:rgba(240,237,228,.14)}
@@ -25,10 +31,18 @@
 <section class="hero">
   <div class="eyebrow">Self-Guided Audio Walking Tours</div>
   <h1>Your city.<br>Your <em>rules.</em></h1>
-  <p class="tagline">Your tour. Your pace. Your way.</p>
+  <p class="tagline">Walk at your pace. Stop when you want.<br>Listen when you're ready.</p>
   <p class="tagline-sub">First 3 stops free &mdash; unlock all stops for just &pound;5.99</p>
-  <div class="arrow">Choose a city</div>
+
+  <div class="search-wrap">
+    <input class="search-input" id="citySearch" type="text" placeholder="Find a city..." autocomplete="off">
+    <span class="search-icon">&#9906;</span>
+    <div class="search-results" id="searchResults"></div>
+  </div>
+
+  <div class="arrow">Or browse below</div>
 </section>
+
 <section class="tours">
   <div class="section-lbl">Available Now</div>
   <div class="grid">
@@ -169,11 +183,12 @@
   </div>
   <div class="grid">
     <div class="soon"><div class="soon-emoji">&#127963;</div><div class="soon-city">Berlin</div><div class="soon-tag">Coming Soon</div></div>
-    <div class="soon"><div class="soon-emoji">&#127963;</div><div class="soon-city">Cadiz</div><div class="soon-tag">Coming Soon</div></div>
-    <div class="soon"><div class="soon-emoji">&#127963;</div><div class="soon-city">Bordeaux</div><div class="soon-tag">Coming Soon</div></div>
     <div class="soon"><div class="soon-emoji">&#127963;</div><div class="soon-city">Rome</div><div class="soon-tag">Coming Soon</div></div>
+    <div class="soon"><div class="soon-emoji">&#127963;</div><div class="soon-city">Bordeaux</div><div class="soon-tag">Coming Soon</div></div>
+    <div class="soon"><div class="soon-emoji">&#127963;</div><div class="soon-city">Prague</div><div class="soon-tag">Coming Soon</div></div>
   </div>
 </section>
+
 <section class="how">
   <h2>How it <em>works</em></h2>
   <p class="how-sub">No app to download. No account needed. Just open in your browser, put in your earphones, and walk at your own pace.</p>
@@ -183,20 +198,80 @@
     <div class="step"><div class="step-num">3</div><h4>Your pace, your call</h4><p>Stop for coffee, linger at a square, skip a stop. The tour waits for you.</p></div>
   </div>
 </section>
-<div class="footer">&copy; 2026 Stepcast &mdash; Walk. Listen. Discover.</div>
+
+<div class="footer">
+  &copy; 2026 Stepcast &mdash; Newbury, United Kingdom &mdash;
+  <a href="contact.html" style="color:rgba(201,169,110,.3);text-decoration:none">Contact</a> &mdash;
+  <a href="privacy.html" style="color:rgba(201,169,110,.3);text-decoration:none">Privacy Policy</a> &mdash;
+  <a href="terms.html" style="color:rgba(201,169,110,.3);text-decoration:none">Terms &amp; Conditions</a>
+</div>
+
 <script>
-window.addEventListener("scroll",function(){document.getElementById("hdr").classList.toggle("scrolled",window.scrollY>60);});
-var cities=[
-  {id:"valImg",page:"Valencia"},{id:"sevImg",page:"Seville"},
-  {id:"bxlImg",page:"Brussels"},{id:"lisImg",page:"Lisbon"},
-  {id:"lonImg",page:"London"},{id:"parImg",page:"Paris"},
-  {id:"amsImg",page:"Amsterdam"},{id:"bcnImg",page:"Barcelona"}
+window.addEventListener('scroll',function(){
+  document.getElementById('hdr').classList.toggle('scrolled',window.scrollY>60);
+});
+
+/* Wikipedia images */
+var cityImgs=[
+  {id:'valImg',page:'Valencia'},{id:'sevImg',page:'Seville'},
+  {id:'bxlImg',page:'Brussels'},{id:'lisImg',page:'Lisbon'},
+  {id:'lonImg',page:'London'},{id:'parImg',page:'Paris'},
+  {id:'amsImg',page:'Amsterdam'},{id:'bcnImg',page:'Barcelona'}
 ];
-cities.forEach(function(c){
-  fetch("https://en.wikipedia.org/api/rest_v1/page/summary/"+c.page,{headers:{"Api-User-Agent":"Stepcast/1.0"}})
+cityImgs.forEach(function(c){
+  fetch('https://en.wikipedia.org/api/rest_v1/page/summary/'+c.page,{headers:{'Api-User-Agent':'Stepcast/1.0'}})
     .then(function(r){return r.json();})
     .then(function(d){if(d.thumbnail&&d.thumbnail.source)document.getElementById(c.id).src=d.thumbnail.source;})
     .catch(function(){});
+});
+
+/* Search */
+var CITIES=[
+  {name:'Valencia',region:'Spain — Mediterranean',emoji:'&#127466;&#127480;',url:'valencia.html'},
+  {name:'Seville',region:'Spain — Andalusia',emoji:'&#127466;&#127480;',url:'seville.html'},
+  {name:'Brussels',region:'Belgium — Capital of Europe',emoji:'&#127463;&#127466;',url:'brussels.html'},
+  {name:'Lisbon',region:'Portugal — City of Seven Hills',emoji:'&#127477;&#127481;',url:'lisbon.html'},
+  {name:'London',region:'United Kingdom — Capital',emoji:'&#127468;&#127463;',url:'london.html'},
+  {name:'Paris',region:'France — Capital',emoji:'&#127467;&#127479;',url:'paris.html'},
+  {name:'Amsterdam',region:'Netherlands — Capital',emoji:'&#127475;&#127473;',url:'amsterdam.html'},
+  {name:'Barcelona',region:'Spain — Catalonia',emoji:'&#127466;&#127480;',url:'barcelona.html'}
+];
+
+var searchInput=document.getElementById('citySearch');
+var searchResults=document.getElementById('searchResults');
+
+searchInput.addEventListener('input',function(){
+  var q=this.value.trim().toLowerCase();
+  if(!q){searchResults.classList.remove('show');searchResults.innerHTML='';return;}
+  var matches=CITIES.filter(function(c){return c.name.toLowerCase().indexOf(q)>-1;});
+  searchResults.innerHTML='';
+  if(matches.length>0){
+    matches.forEach(function(c){
+      var a=document.createElement('a');
+      a.className='sr-item';
+      a.href=c.url;
+      a.innerHTML='<span class="sr-emoji">'+c.emoji+'</span><div><div class="sr-name">'+c.name+'</div><div class="sr-region">'+c.region+'</div></div>';
+      searchResults.appendChild(a);
+    });
+  } else {
+    var city=this.value.trim();
+    searchResults.innerHTML='<div class="sr-not-found"><div class="sr-nf-label">No tour found for <strong style="color:#F0EDE4">'+city+'</strong> yet.</div><a class="sr-nf-btn" href="contact.html?city='+encodeURIComponent(city)+'">&#43; Request this city</a></div>';
+  }
+  searchResults.classList.add('show');
+});
+
+document.addEventListener('click',function(e){
+  if(!e.target.closest('.search-wrap')){
+    searchResults.classList.remove('show');
+  }
+});
+
+searchInput.addEventListener('keydown',function(e){
+  if(e.key==='Escape'){searchResults.classList.remove('show');}
+  if(e.key==='Enter'){
+    var first=searchResults.querySelector('.sr-item');
+    if(first)window.location.href=first.href;
+  }
 });
 </script>
 </body>
