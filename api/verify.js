@@ -1,37 +1,49 @@
-export default async function handler(req, res) {
-  if (req.method !== "POST") {
-    return res.status(405).json({ error: "Method not allowed" });
+module.exports = async function(req, res) {
+  res.setHeader("Access-Control-Allow-Origin", "https://stepcasttours.com");
+  res.setHeader("Access-Control-Allow-Methods", "POST, OPTIONS");
+  res.setHeader("Access-Control-Allow-Headers", "Content-Type");
+
+  if (req.method === "OPTIONS") {
+    return res.status(200).end();
   }
 
+  if (req.method !== "POST") {
+    return res.status(405).json({ valid: false, error: "Method not allowed" });
+  }
+
+  // Handle body parsing defensively
+  var body = req.body;
+  if (typeof body === "string") {
+    try { body = JSON.parse(body); } catch(e) { body = {}; }
+  }
+
+  var key = body && body.key;
+  if (!key || typeof key !== "string" || key.trim() === "") {
+    return res.status(400).json({ valid: false, error: "No key provided" });
+  }
+
+  key = key.trim();
+
   try {
-    const { licenseKey } = req.body;
-
-    if (!licenseKey) {
-      return res.status(400).json({ error: "Missing license key" });
-    }
-
-    const response = await fetch("https://api.lemonsqueezy.com/v1/licenses/validate", {
+    var response = await fetch("https://api.lemonsqueezy.com/v1/licenses/validate", {
       method: "POST",
       headers: {
-        "Authorization": `Bearer ${process.env.LEMON_SQUEEZY_API_KEY}`,
-        "Content-Type": "application/json"
+        "Accept": "application/json",
+        "Content-Type": "application/x-www-form-urlencoded"
       },
-      body: JSON.stringify({
-        license_key: licenseKey,
-        instance_name: "stepcast-user"
-      })
+      body: "license_key=" + encodeURIComponent(key)
     });
 
-    const data = await response.json();
+    var data = await response.json();
 
-    if (data.valid && data.license_key.status === "active") {
+    if (data.valid === true) {
       return res.status(200).json({ valid: true });
     }
 
-    return res.status(200).json({ valid: false });
+    var errMsg = (data.error) ? data.error : "Invalid or expired key.";
+    return res.status(200).json({ valid: false, error: errMsg });
 
-  } catch (error) {
-    console.error(error);
-    return res.status(500).json({ error: "Server error" });
+  } catch (e) {
+    return res.status(500).json({ valid: false, error: "Verification failed. Please try again." });
   }
-}
+};
