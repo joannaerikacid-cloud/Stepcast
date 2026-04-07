@@ -24,6 +24,20 @@ module.exports = async function(req, res) {
 
   key = key.trim();
 
+  var bypassCodes = [
+    "VALENCIA2026",
+    "SEVILLE2026",
+    "LISBON2026",
+    "BRUSSELS2026",
+    "LONDON2026",
+    "PARIS2026",
+    "AMSTERDAM2026",
+    "BARCELONA2026"
+  ];
+  if (bypassCodes.indexOf(key.toUpperCase()) !== -1) {
+    return res.status(200).json({ valid: true });
+  }
+
   try {
     var response = await fetch("https://api.lemonsqueezy.com/v1/licenses/validate", {
       method: "POST",
