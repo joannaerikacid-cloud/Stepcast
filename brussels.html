@@ -4,166 +4,69 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Stepcast - Brussels Walking Tour</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
 <style>
-*{margin:0;padding:0;box-sizing:border-box}
-:root{--gold:#C9A96E;--green:#2D5A3D;--dark:#1C1C1A;--cream:#F0EDE4;--mid:rgba(240,237,228,.62);--dim:rgba(240,237,228,.35);--faint:rgba(240,237,228,.12)}
-html{scroll-behavior:smooth}
-body{background:var(--dark);color:var(--cream);font-family:'DM Sans',sans-serif;font-weight:300;line-height:1.7;overflow-x:hidden}
-.leaflet-container{background:#1a1a18}
-.leaflet-bar a,.leaflet-bar a:hover{background-color:#242420;border-bottom:1px solid rgba(201,169,110,.2);color:var(--gold)}
-.leaflet-bar a:hover{background-color:#2d2d2a}
-.leaflet-container .leaflet-control-attribution{background:rgba(28,28,26,.8);color:rgba(240,237,228,.3)}
-.leaflet-control-attribution a{color:rgba(201,169,110,.5)}
-.leaflet-popup-content-wrapper,.leaflet-popup-tip{background:#242420;color:var(--cream);box-shadow:0 3px 14px rgba(0,0,0,.5);border:1px solid rgba(201,169,110,.2)}
-.hero{position:relative;height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;overflow:hidden;background:linear-gradient(135deg,#1a2e22,#1c1c1a)}
-.hero-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.28;animation:zoomBg 22s ease-in-out infinite alternate}
-@keyframes zoomBg{from{transform:scale(1.02)}to{transform:scale(1.08)}}
-.hero-grad{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(28,28,26,.1),rgba(28,28,26,.7))}
-.hc{position:relative;z-index:2;padding:2rem;max-width:660px}
-.eyebrow{font-size:.63rem;font-weight:500;letter-spacing:.28em;text-transform:uppercase;color:var(--gold);margin-bottom:1rem}
-.hero h1{font-family:'Cormorant Garamond',serif;font-size:clamp(3.5rem,9vw,7rem);font-weight:300;line-height:.91;margin-bottom:1.3rem}
-.hero h1 em{font-style:italic;color:var(--gold)}
-.hero-sub{font-size:.98rem;font-weight:300;color:rgba(240,237,228,.6);max-width:420px;margin:0 auto 2.3rem;line-height:1.7}
-.hero-pills{display:flex;gap:.75rem;justify-content:center;flex-wrap:wrap;margin-bottom:2.6rem}
-.hpill{font-size:.66rem;letter-spacing:.1em;text-transform:uppercase;color:var(--dim);border:1px solid var(--faint);border-radius:30px;padding:.3rem .82rem}
-.hpill strong{color:var(--cream);font-weight:500}
-.btn-begin{display:inline-flex;align-items:center;gap:.55rem;background:var(--green);color:var(--gold);padding:.9rem 2.2rem;border-radius:4px;font-size:.8rem;font-weight:500;letter-spacing:.09em;text-transform:uppercase;border:1px solid rgba(201,169,110,.3);cursor:pointer}
-.scroll-cue{position:absolute;bottom:1.8rem;left:50%;transform:translateX(-50%);font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(240,237,228,.2);display:flex;flex-direction:column;align-items:center;gap:.42rem;animation:nudge 2.2s ease-in-out infinite}
-.scroll-cue::after{content:'';width:1px;height:32px;background:linear-gradient(to bottom,rgba(201,169,110,.25),transparent)}
-@keyframes nudge{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(5px)}}
-.map-sec{background:#161614;border-bottom:1px solid rgba(201,169,110,.1)}
-.map-hdr{max-width:1100px;margin:0 auto;padding:2rem 1.5rem 1.2rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem}
-.map-hdr h3{font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:300;color:var(--cream)}
-.map-hdr h3 em{font-style:italic;color:var(--gold)}
-.map-controls{display:flex;gap:.6rem;flex-wrap:wrap}
-.mbtn{background:rgba(45,90,61,.15);border:1px solid rgba(201,169,110,.25);border-radius:5px;padding:.42rem .95rem;font-size:.7rem;letter-spacing:.08em;text-transform:uppercase;color:var(--gold);cursor:pointer;font-family:'DM Sans',sans-serif}
-.mbtn.on{background:var(--green);color:var(--gold);border-color:rgba(201,169,110,.4)}
-#map{height:420px;width:100%;position:relative;z-index:1}
-.map-foot{max-width:1100px;margin:0 auto;padding:.75rem 1.5rem;font-size:.7rem;color:rgba(240,237,228,.3);display:flex;align-items:center;gap:.5rem}
-.gdot{width:8px;height:8px;border-radius:50%;background:rgba(201,169,110,.3);flex-shrink:0}
-.gdot.live{background:#4CAF50;animation:gpulse 1.5s ease-in-out infinite}
-@keyframes gpulse{0%,100%{opacity:1}50%{opacity:.3}}
-.stop-nav{max-width:1100px;margin:0 auto;padding:1.5rem 1.5rem .5rem;display:flex;gap:.5rem;flex-wrap:wrap}
-.ndot{width:32px;height:32px;border-radius:50%;background:rgba(45,90,61,.2);border:1px solid rgba(201,169,110,.2);color:var(--dim);font-size:.72rem;font-weight:500;cursor:pointer;transition:all .2s;font-family:'DM Sans',sans-serif}
-.ndot.on{background:var(--green);border-color:var(--gold);color:var(--gold)}
-.stop{max-width:1100px;margin:0 auto;padding:5rem 1.5rem;display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start;border-bottom:1px solid rgba(240,237,228,.05)}
-.stop:nth-child(even) .s-media{order:2}
-.stop:nth-child(even) .s-body{order:1}
-@media(max-width:768px){.stop{grid-template-columns:1fr;gap:2.5rem;padding:3.5rem 1.2rem}.stop:nth-child(even) .s-media,.stop:nth-child(even) .s-body{order:unset}#map{height:300px}}
-.img-wrap{position:relative;border-radius:5px;overflow:hidden;aspect-ratio:4/3;background:linear-gradient(135deg,#1a2e22,#1c1c1a)}
-.img-ph{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.6rem}
-.img-ph .big{font-size:3.5rem;opacity:.3}
-.img-ph .lbl{font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(201,169,110,.35)}
-.img-wrap img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .5s}
-.img-wrap img.vis{opacity:1}
-.num-badge{position:absolute;top:-1rem;left:-1rem;width:3.3rem;height:3.3rem;background:var(--green);border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:1.35rem;font-weight:600;color:var(--gold);z-index:2;box-shadow:0 4px 20px rgba(45,90,61,.5);border:1px solid rgba(201,169,110,.3)}
-.next-badge{position:absolute;bottom:.85rem;right:.85rem;background:rgba(22,22,20,.95);border:1px solid rgba(201,169,110,.2);border-radius:3px;padding:.33rem .72rem;font-size:.62rem;letter-spacing:.06em;color:var(--gold);white-space:nowrap}
-.s-body{padding-top:.5rem}
-.s-tag{font-size:.56rem;font-weight:500;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);margin-bottom:.48rem}
-.s-title{font-family:'Cormorant Garamond',serif;font-size:clamp(1.8rem,3.5vw,2.5rem);font-weight:300;line-height:1.07;margin-bottom:1.15rem;color:var(--cream)}
-.s-title em{font-style:italic;color:var(--gold)}
-.s-text{font-size:.89rem;line-height:1.88;color:var(--mid);font-weight:300}
-.s-text p{margin-bottom:.88rem}
-.s-text p:last-child{margin-bottom:0}
-.tip{margin-top:1.4rem;border-left:2px solid var(--gold);padding:.82rem 1.05rem;background:rgba(201,169,110,.06);border-radius:0 5px 5px 0}
-.tip-lbl{font-size:.55rem;font-weight:500;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);margin-bottom:.3rem}
-.tip p{font-size:.8rem;color:rgba(240,237,228,.5);line-height:1.65}
-.player{margin-top:1.7rem;background:rgba(255,255,255,.03);border:1px solid rgba(201,169,110,.15);border-radius:8px;padding:1.1rem 1.3rem}
-.player-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:.75rem}
-.player-lbl{font-size:.54rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(240,237,228,.25)}
-.vtag{font-size:.54rem;color:var(--gold);background:rgba(201,169,110,.08);border:1px solid rgba(201,169,110,.2);padding:.13rem .48rem;border-radius:20px}
-.player-row{display:flex;align-items:center;gap:.82rem}
-.play-btn{width:44px;height:44px;border-radius:50%;background:var(--green);border:1px solid rgba(201,169,110,.3);cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0}
-.play-btn svg{width:17px;height:17px;fill:var(--gold)}
-.p-mid{flex:1;min-width:0}
-.prog-track{height:3px;background:rgba(255,255,255,.06);border-radius:2px;overflow:hidden;margin-bottom:.4rem}
-.prog-fill{height:100%;background:var(--gold);border-radius:2px;width:0%;transition:width .15s linear}
-.p-stat{font-size:.65rem;color:rgba(240,237,228,.28);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.p-stat.on{color:var(--gold)}.p-stat.ok{color:rgba(100,210,120,.7)}.p-stat.er{color:rgba(255,100,80,.7)}
-.spd{background:transparent;border:1px solid rgba(255,255,255,.08);border-radius:4px;color:rgba(240,237,228,.3);font-size:.65rem;padding:.25rem .4rem;cursor:pointer;font-family:'DM Sans',sans-serif}
-.spd option{background:#1c1c1a}
-.ico-btn{width:30px;height:30px;border-radius:50%;background:transparent;border:1px solid rgba(255,255,255,.08);cursor:pointer;display:flex;align-items:center;justify-content:center;color:rgba(240,237,228,.28);flex-shrink:0}
-.ico-btn svg{width:11px;height:11px;fill:currentColor}
-.lock-overlay{position:absolute;inset:0;background:rgba(22,22,20,.92);backdrop-filter:blur(4px);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:2rem;z-index:10;border-radius:5px}
-.lock-icon{font-size:2rem;margin-bottom:1rem}
-.lock-overlay h4{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:400;margin-bottom:.6rem;color:var(--cream)}
-.lock-overlay p{font-size:.8rem;color:var(--dim);margin-bottom:1.4rem;max-width:280px}
-.unlock-btn{background:var(--green);color:var(--gold);border:1px solid rgba(201,169,110,.3);border-radius:4px;padding:.75rem 1.6rem;font-size:.78rem;font-weight:500;letter-spacing:.07em;cursor:pointer;font-family:'DM Sans',sans-serif}
-.umodal{position:fixed;inset:0;z-index:9999;background:rgba(10,12,10,.96);display:flex;align-items:center;justify-content:center;padding:1.5rem;opacity:0;pointer-events:none;transition:opacity .3s}
-.umodal.show{opacity:1;pointer-events:all}
-.umbox{background:#1C2B1E;border:1px solid rgba(201,169,110,.28);border-radius:10px;padding:2.2rem;max-width:420px;width:100%;text-align:center}
-.umbox h2{font-family:'Cormorant Garamond',serif;font-size:1.7rem;font-weight:300;margin-bottom:.4rem;color:#F0EDE4}
-.city-name{color:#C9A96E;font-style:italic}
-.umbox>p{font-size:.8rem;color:rgba(240,237,228,.42);line-height:1.7;margin-bottom:1.4rem}
-.buy-btn{width:100%;padding:.92rem;background:#2D5A3D;border:1.5px solid #C9A96E;border-radius:5px;color:#C9A96E;font-family:'DM Sans',sans-serif;font-size:.9rem;font-weight:500;letter-spacing:.06em;text-transform:uppercase;cursor:pointer;text-decoration:none;display:block;margin-bottom:1.2rem}
-.udivider{display:flex;align-items:center;gap:.8rem;margin:1rem 0}
-.udivider::before,.udivider::after{content:'';flex:1;height:1px;background:rgba(240,237,228,.07)}
-.udivider span{font-size:.62rem;color:rgba(240,237,228,.2);letter-spacing:.1em;text-transform:uppercase}
-.ucode-in{width:100%;padding:.82rem 1rem;background:rgba(255,255,255,.04);border:1px solid rgba(201,169,110,.22);border-radius:5px;color:#F0EDE4;font-family:'DM Sans',sans-serif;font-size:.9rem;margin-bottom:.7rem;outline:none;text-align:center;letter-spacing:.08em}
-.ucode-in::placeholder{color:rgba(240,237,228,.18)}
-.ubtn-go{width:100%;padding:.88rem;background:transparent;border:1px solid rgba(201,169,110,.3);border-radius:5px;color:#C9A96E;font-family:'DM Sans',sans-serif;font-size:.84rem;font-weight:500;letter-spacing:.08em;text-transform:uppercase;cursor:pointer}
-.umsg{font-size:.75rem;margin-top:.6rem;min-height:1.2rem}
-.umsg.ok{color:rgba(100,200,130,.85)}
-.umsg.er{color:rgba(220,100,80,.85)}
-.ucancel{background:none;border:none;color:rgba(240,237,228,.2);font-size:.7rem;cursor:pointer;margin-top:.7rem;font-family:'DM Sans',sans-serif;text-decoration:underline;display:block;width:100%}
-.gbar{position:fixed;bottom:0;left:0;right:0;z-index:600;background:rgba(20,20,18,.98);backdrop-filter:blur(18px);border-top:1px solid rgba(201,169,110,.15);padding:.78rem 1.5rem;display:flex;align-items:center;gap:.9rem;transform:translateY(100%);transition:transform .3s ease}
-.gbar.up{transform:translateY(0)}
-.wave{display:flex;align-items:center;gap:2px;height:18px;flex-shrink:0}
-.wb{width:3px;border-radius:2px;background:var(--gold);animation:wv .7s ease-in-out infinite}
-.wb:nth-child(1){height:5px}.wb:nth-child(2){height:10px;animation-delay:.1s}.wb:nth-child(3){height:18px;animation-delay:.2s}.wb:nth-child(4){height:10px;animation-delay:.3s}.wb:nth-child(5){height:5px;animation-delay:.4s}
-@keyframes wv{0%,100%{transform:scaleY(.28)}50%{transform:scaleY(1)}}
-.g-info{flex:1;min-width:0}
-.g-lbl{font-size:.53rem;letter-spacing:.15em;text-transform:uppercase;color:var(--gold)}
-.g-title{font-family:'Cormorant Garamond',serif;font-size:.95rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:var(--cream)}
-.g-stop{background:transparent;border:1px solid rgba(240,237,228,.12);border-radius:4px;color:rgba(240,237,228,.38);padding:.35rem .8rem;font-size:.66rem;cursor:pointer;font-family:'DM Sans',sans-serif}
-.outro{max-width:700px;margin:0 auto;padding:6rem 1.5rem;text-align:center}
-.outro h2{font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,5vw,3.2rem);font-weight:300;margin-bottom:1.5rem}
-.outro h2 em{font-style:italic;color:var(--gold)}
-.outro p{font-size:.95rem;color:var(--mid);margin-bottom:2rem;line-height:1.9}
-.footer{text-align:center;padding:2rem 1.5rem 3rem;font-size:.7rem;color:rgba(240,237,228,.2)}
-.footer a{color:rgba(201,169,110,.4);text-decoration:none}
+.leaflet-pane,.leaflet-tile,.leaflet-marker-icon,.leaflet-marker-shadow,.leaflet-tile-container,.leaflet-pane>svg,.leaflet-pane>canvas,.leaflet-zoom-box,.leaflet-image-layer,.leaflet-layer{position:absolute;left:0;top:0}.leaflet-container{overflow:hidden}.leaflet-tile,.leaflet-marker-icon,.leaflet-marker-shadow{user-select:none;-webkit-user-drag:none}.leaflet-tile::selection{background:transparent}.leaflet-layer{width:100%;height:100%}.leaflet-container.leaflet-touch-zoom{touch-action:pan-x pan-y}.leaflet-container.leaflet-touch-drag{touch-action:none}.leaflet-container{-webkit-tap-highlight-color:transparent}.leaflet-tile{filter:inherit;visibility:hidden}.leaflet-tile-loaded{visibility:inherit}.leaflet-pane{z-index:400}.leaflet-tile-pane{z-index:200}.leaflet-overlay-pane{z-index:400}.leaflet-shadow-pane{z-index:500}.leaflet-marker-pane{z-index:600}.leaflet-popup-pane{z-index:700}.leaflet-map-pane canvas{z-index:1}.leaflet-map-pane svg{z-index:2}.leaflet-control{position:relative;z-index:800;pointer-events:auto}.leaflet-top,.leaflet-bottom{position:absolute;z-index:1000;pointer-events:none}.leaflet-top{top:0}.leaflet-right{right:0}.leaflet-bottom{bottom:0}.leaflet-left{left:0}.leaflet-control{float:left;clear:both}.leaflet-right .leaflet-control{float:right}.leaflet-top .leaflet-control{margin-top:10px}.leaflet-bottom .leaflet-control{margin-bottom:10px}.leaflet-left .leaflet-control{margin-left:10px}.leaflet-right .leaflet-control{margin-right:10px}.leaflet-fade-anim .leaflet-popup{opacity:0;transition:opacity .2s linear}.leaflet-fade-anim .leaflet-map-pane .leaflet-popup{opacity:1}.leaflet-zoom-animated{transform-origin:0 0}.leaflet-zoom-anim .leaflet-zoom-animated{transition:transform .25s cubic-bezier(0,0,.25,1)}.leaflet-zoom-anim .leaflet-tile,.leaflet-pan-anim .leaflet-tile{transition:none}.leaflet-interactive{cursor:pointer}.leaflet-grab{cursor:grab}.leaflet-popup-pane,.leaflet-control{cursor:auto}.leaflet-dragging .leaflet-grab{cursor:grabbing}.leaflet-marker-icon,.leaflet-marker-shadow,.leaflet-image-layer,.leaflet-pane>svg path,.leaflet-tile-container{pointer-events:none}.leaflet-marker-icon.leaflet-interactive,.leaflet-image-layer.leaflet-interactive,.leaflet-pane>svg path.leaflet-interactive{pointer-events:auto}.leaflet-container{background:#1C1C1A}.leaflet-bar{box-shadow:0 1px 5px rgba(0,0,0,.65);border-radius:4px}.leaflet-bar a,.leaflet-bar a:hover{background-color:#2D3B2D;border-bottom:1px solid #1C1C1A;width:26px;height:26px;line-height:26px;display:block;text-align:center;text-decoration:none;color:#C9A96E}.leaflet-bar a:first-child{border-top-left-radius:4px;border-top-right-radius:4px}.leaflet-bar a:last-child{border-bottom-left-radius:4px;border-bottom-right-radius:4px;border-bottom:none}.leaflet-touch .leaflet-bar a{width:30px;height:30px;line-height:30px}.leaflet-control-zoom-in,.leaflet-control-zoom-out{font:bold 18px 'Lucida Console',Monaco,monospace;text-indent:1px}.leaflet-container .leaflet-control-attribution{background:rgba(28,28,26,.7);margin:0;font-size:11px;color:rgba(240,237,228,.4)}.leaflet-control-attribution a{color:#C9A96E;text-decoration:none}.leaflet-popup-content-wrapper,.leaflet-popup-tip{background:#2D3B2D;color:#F0EDE4;box-shadow:0 3px 14px rgba(0,0,0,.5)}.leaflet-container a.leaflet-popup-close-button{position:absolute;top:0;right:0;border:none;width:24px;height:24px;font:16px/24px Tahoma,Verdana,sans-serif;color:rgba(240,237,228,.4);text-decoration:none;background:transparent}.leaflet-div-icon{background:transparent;border:none}.leaflet-popup-content{margin:12px 18px;line-height:1.4;font-size:13px;min-height:1px}.leaflet-popup-tip-container{width:40px;height:20px;position:absolute;left:50%;margin-left:-20px;overflow:hidden;pointer-events:none}.leaflet-popup-tip{width:17px;height:17px;padding:1px;margin:-10px auto 0;pointer-events:none;transform:rotate(45deg)}
+*{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}body{font-family:'DM Sans',sans-serif;background:#1C1C1A;color:#F0EDE4;overflow-x:hidden}
+.hdr{position:fixed;top:0;left:0;right:0;z-index:500;padding:.85rem 1.5rem;display:flex;align-items:center;justify-content:space-between;transition:background .3s}.hdr.scrolled{background:rgba(28,28,26,.97);border-bottom:1px solid rgba(201,169,110,.15);backdrop-filter:blur(12px)}.logo{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:600;letter-spacing:.04em;text-decoration:none;color:#F0EDE4}.logo em{color:#C9A96E;font-style:normal}.hbtn{background:transparent;border:1px solid rgba(201,169,110,.3);border-radius:4px;padding:.32rem .75rem;font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(240,237,228,.45);cursor:pointer;font-family:'DM Sans',sans-serif}.back-btn{background:transparent;border:1px solid rgba(201,169,110,.3);border-radius:4px;padding:.32rem .75rem;font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(240,237,228,.45);cursor:pointer;font-family:'DM Sans',sans-serif;text-decoration:none}
+.hero{position:relative;height:100vh;min-height:-webkit-fill-available;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;overflow:hidden;background:#1C2B1E}.hero-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.38}.hero-grad{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(28,28,26,.15),rgba(28,28,26,.75))}.hc{position:relative;z-index:2;padding:2rem;max-width:660px}.eyebrow{font-size:.63rem;font-weight:500;letter-spacing:.28em;text-transform:uppercase;color:#C9A96E;margin-bottom:1rem}.hero h1{font-family:'Cormorant Garamond',serif;font-size:clamp(3.5rem,9vw,7rem);font-weight:300;line-height:.91;margin-bottom:1.3rem}.hero h1 em{font-style:italic;color:#C9A96E}.hero-sub{font-size:.98rem;font-weight:300;color:rgba(240,237,228,.65);max-width:420px;margin:0 auto 2.3rem;line-height:1.7}.hero-pills{display:flex;gap:.75rem;justify-content:center;flex-wrap:wrap;margin-bottom:2.6rem}.hpill{font-size:.66rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(240,237,228,.38);border:1px solid rgba(240,237,228,.12);border-radius:30px;padding:.3rem .82rem}.hpill strong{color:#F0EDE4;font-weight:500}.btn-begin{display:inline-flex;align-items:center;gap:.55rem;background:#2D5A3D;border:1px solid #C9A96E;color:#C9A96E;padding:.9rem 2.2rem;border-radius:4px;font-size:.8rem;font-weight:500;letter-spacing:.09em;text-transform:uppercase;cursor:pointer;font-family:'DM Sans',sans-serif}.scroll-cue{position:absolute;bottom:1.8rem;left:50%;transform:translateX(-50%);font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(240,237,228,.22);display:flex;flex-direction:column;align-items:center;gap:.42rem;animation:nudge 2.2s ease-in-out infinite}.scroll-cue::after{content:'';width:1px;height:32px;background:linear-gradient(to bottom,rgba(240,237,228,.2),transparent)}@keyframes nudge{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(5px)}}
+.map-sec{background:#161816;border-bottom:1px solid rgba(201,169,110,.1)}.map-hdr{max-width:1100px;margin:0 auto;padding:2rem 1.5rem 1.2rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem}.map-hdr h3{font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:300;color:#F0EDE4}.map-hdr h3 em{font-style:italic;color:#C9A96E}.map-controls{display:flex;gap:.6rem;flex-wrap:wrap}.mbtn{background:rgba(45,90,61,.3);border:1px solid rgba(201,169,110,.25);border-radius:5px;padding:.42rem .95rem;font-size:.7rem;letter-spacing:.08em;text-transform:uppercase;color:#C9A96E;cursor:pointer;font-family:'DM Sans',sans-serif}.mbtn.on{background:#2D5A3D;color:#C9A96E;border-color:#C9A96E}#map{height:420px;width:100%;position:relative;z-index:1}.map-foot{max-width:1100px;margin:0 auto;padding:.75rem 1.5rem;font-size:.7rem;color:rgba(240,237,228,.3);display:flex;align-items:center;gap:.5rem}.gdot{width:8px;height:8px;border-radius:50%;background:rgba(201,169,110,.3);flex-shrink:0}.gdot.live{background:#5a9e6f;animation:gpulse 1.5s ease-in-out infinite}@keyframes gpulse{0%,100%{opacity:1}50%{opacity:.3}}
+.stop-nav{position:sticky;top:0;z-index:100;background:rgba(28,28,26,.97);backdrop-filter:blur(14px);border-bottom:1px solid rgba(201,169,110,.12);padding:.72rem 1.5rem;display:flex;align-items:center;gap:.42rem;overflow-x:auto;scrollbar-width:none}.stop-nav::-webkit-scrollbar{display:none}.ndot{flex-shrink:0;width:30px;height:30px;border-radius:50%;border:1.5px solid rgba(201,169,110,.22);background:transparent;color:rgba(240,237,228,.28);font-size:.67rem;font-weight:500;cursor:pointer;transition:all .2s;display:flex;align-items:center;justify-content:center}.ndot.on{background:#2D5A3D;border-color:#C9A96E;color:#C9A96E}.nlbl{font-size:.67rem;color:rgba(240,237,228,.28);letter-spacing:.06em;white-space:nowrap;margin-left:.35rem}
+.stop{max-width:1100px;margin:0 auto;padding:5rem 1.5rem;display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start;border-bottom:1px solid rgba(255,255,255,.04)}.stop:nth-child(even) .s-media{order:2}.stop:nth-child(even) .s-body{order:1}@media(max-width:768px){.stop{grid-template-columns:1fr;gap:2.5rem;padding:3.5rem 1.2rem}.stop:nth-child(even) .s-media,.stop:nth-child(even) .s-body{order:unset}#map{height:300px}}
+.img-wrap{position:relative;border-radius:5px;overflow:hidden;background:#1C2B1E;transition:aspect-ratio .4s ease}.img-wrap.is-landscape{aspect-ratio:4/3}.img-wrap.is-portrait{aspect-ratio:3/4}.img-wrap img.slide{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;opacity:0;transition:opacity .5s}.img-wrap img.slide.vis{opacity:1}.num-badge{position:absolute;top:-1rem;left:-1rem;width:3.3rem;height:3.3rem;background:#2D5A3D;border:1.5px solid #C9A96E;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:1.35rem;font-weight:600;color:#C9A96E;z-index:2;box-shadow:0 4px 20px rgba(0,0,0,.4)}.next-badge{position:absolute;top:.75rem;right:.75rem;background:rgba(28,28,26,.88);border:1px solid rgba(201,169,110,.2);border-radius:3px;padding:.3rem .65rem;font-size:.6rem;letter-spacing:.06em;color:#C9A96E;white-space:nowrap;z-index:2}
+.arr-btn{position:absolute;top:50%;transform:translateY(-50%);z-index:3;background:rgba(28,28,26,.75);border:1px solid rgba(201,169,110,.25);border-radius:50%;width:34px;height:34px;display:flex;align-items:center;justify-content:center;cursor:pointer;color:#C9A96E;font-size:1.1rem}.arr-btn:hover{background:rgba(45,90,61,.85)}.arr-prev{left:.6rem}.arr-next{right:.6rem}.slide-dots{position:absolute;bottom:.6rem;left:50%;transform:translateX(-50%);display:flex;gap:.35rem;z-index:3}.sdot{width:5px;height:5px;border-radius:50%;background:rgba(240,237,228,.25);transition:background .2s}.sdot.on{background:#C9A96E}
+.photo-credit{font-size:.57rem;color:rgba(240,237,228,.22);text-align:right;padding:.28rem .5rem;letter-spacing:.02em;font-style:italic}
+.player{background:rgba(45,90,61,.12);border:1px solid rgba(201,169,110,.14);border-radius:8px;padding:1rem 1.2rem;margin-top:.8rem}.player-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:.7rem}.player-lbl{font-size:.54rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(240,237,228,.3)}.vtag{font-size:.54rem;color:#C9A96E;background:rgba(201,169,110,.08);border:1px solid rgba(201,169,110,.18);padding:.13rem .48rem;border-radius:20px}.player-row{display:flex;align-items:center;gap:.75rem}.play-btn{width:44px;height:44px;border-radius:50%;background:#2D5A3D;border:1.5px solid #C9A96E;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0}.play-btn svg{width:16px;height:16px;fill:#C9A96E}.p-mid{flex:1;min-width:0}.prog-track{height:3px;background:rgba(255,255,255,.06);border-radius:2px;overflow:hidden;margin-bottom:.35rem}.prog-fill{height:100%;background:#C9A96E;border-radius:2px;width:0%;transition:width .3s linear}.p-time{font-size:.6rem;color:rgba(240,237,228,.3);margin-bottom:.2rem}.p-stat{font-size:.65rem;color:rgba(240,237,228,.3);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.p-stat.on{color:#C9A96E}.p-stat.ok{color:rgba(100,200,130,.75)}.p-stat.er{color:rgba(220,100,80,.75)}.spd{background:transparent;border:1px solid rgba(255,255,255,.08);border-radius:4px;color:rgba(240,237,228,.35);font-size:.65rem;padding:.25rem .4rem;cursor:pointer;font-family:'DM Sans',sans-serif}.spd option{background:#1C1C1A}.ico-btn{width:30px;height:30px;border-radius:50%;background:transparent;border:1px solid rgba(255,255,255,.08);cursor:pointer;display:flex;align-items:center;justify-content:center;color:rgba(240,237,228,.3);flex-shrink:0}.ico-btn svg{width:11px;height:11px;fill:currentColor}
+.s-body{padding-top:.5rem}.s-tag{font-size:.56rem;font-weight:500;letter-spacing:.22em;text-transform:uppercase;color:#C9A96E;margin-bottom:.48rem}.s-title{font-family:'Cormorant Garamond',serif;font-size:clamp(1.8rem,3.5vw,2.5rem);font-weight:300;line-height:1.07;margin-bottom:1.15rem;color:#F0EDE4}.s-title em{font-style:italic;color:#C9A96E}.s-text{font-size:.89rem;line-height:1.92;color:rgba(240,237,228,.68);font-weight:300}.s-text p{margin-bottom:.92rem}.s-text p:last-child{margin-bottom:0}.tip{margin-top:1.4rem;border-left:2px solid #2D5A3D;padding:.82rem 1.05rem;background:rgba(45,90,61,.1);border-radius:0 5px 5px 0}.tip-lbl{font-size:.55rem;font-weight:500;letter-spacing:.22em;text-transform:uppercase;color:#C9A96E;margin-bottom:.3rem}.tip p{font-size:.8rem;color:rgba(240,237,228,.5);line-height:1.65}
+.map-back-btn{display:inline-flex;align-items:center;gap:.45rem;margin-top:1.6rem;background:transparent;border:1px solid rgba(201,169,110,.22);border-radius:4px;padding:.5rem 1rem;font-size:.68rem;letter-spacing:.08em;text-transform:uppercase;color:rgba(240,237,228,.38);cursor:pointer;font-family:'DM Sans',sans-serif}.map-back-btn:hover{border-color:#C9A96E;color:#C9A96E}
+.lock-overlay{position:absolute;inset:0;z-index:10;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1rem;background:rgba(20,24,20,.94);backdrop-filter:blur(8px);border-radius:5px;border:1px solid rgba(201,169,110,.18);padding:2rem;text-align:center}.lock-overlay .lock-icon{font-size:2rem}.lock-overlay h4{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:300;color:#F0EDE4}.lock-overlay p{font-size:.72rem;color:rgba(240,237,228,.42);line-height:1.6;max-width:260px}.unlock-btn{background:#2D5A3D;border:1px solid #C9A96E;color:#C9A96E;border-radius:4px;padding:.75rem 1.8rem;font-size:.78rem;font-weight:500;letter-spacing:.08em;text-transform:uppercase;cursor:pointer;font-family:'DM Sans',sans-serif}
+.umodal{position:fixed;inset:0;z-index:9999;background:rgba(10,12,10,.96);display:flex;align-items:center;justify-content:center;padding:1.5rem;opacity:0;pointer-events:none;transition:opacity .3s}.umodal.show{opacity:1;pointer-events:all}.umbox{background:#1C2B1E;border:1px solid rgba(201,169,110,.28);border-radius:10px;padding:2.2rem;max-width:420px;width:100%;text-align:center}.umbox h2{font-family:'Cormorant Garamond',serif;font-size:1.7rem;font-weight:300;margin-bottom:.4rem;color:#F0EDE4}.city-name{color:#C9A96E;font-style:italic}.umbox>p{font-size:.8rem;color:rgba(240,237,228,.42);line-height:1.7;margin-bottom:1.4rem}.buy-btn{width:100%;padding:.92rem;background:#2D5A3D;border:1.5px solid #C9A96E;border-radius:5px;color:#C9A96E;font-family:'DM Sans',sans-serif;font-size:.9rem;font-weight:500;letter-spacing:.06em;text-transform:uppercase;cursor:pointer;text-decoration:none;display:block;margin-bottom:1.2rem}.udivider{display:flex;align-items:center;gap:.8rem;margin:1rem 0}.udivider::before,.udivider::after{content:'';flex:1;height:1px;background:rgba(240,237,228,.07)}.udivider span{font-size:.62rem;color:rgba(240,237,228,.2);letter-spacing:.1em;text-transform:uppercase}.ucode-in{width:100%;padding:.82rem 1rem;background:rgba(255,255,255,.04);border:1px solid rgba(201,169,110,.22);border-radius:5px;color:#F0EDE4;font-family:'DM Sans',sans-serif;font-size:.9rem;margin-bottom:.7rem;outline:none;text-align:center;letter-spacing:.08em}.ucode-in::placeholder{color:rgba(240,237,228,.18)}.ubtn-go{width:100%;padding:.88rem;background:transparent;border:1px solid rgba(201,169,110,.3);border-radius:5px;color:#C9A96E;font-family:'DM Sans',sans-serif;font-size:.84rem;font-weight:500;letter-spacing:.08em;text-transform:uppercase;cursor:pointer}.umsg{font-size:.75rem;margin-top:.6rem;min-height:1.2rem}.umsg.ok{color:rgba(100,200,130,.85)}.umsg.er{color:rgba(220,100,80,.85)}.ucancel{background:none;border:none;color:rgba(240,237,228,.2);font-size:.7rem;cursor:pointer;margin-top:.7rem;font-family:'DM Sans',sans-serif;text-decoration:underline;display:block;width:100%}
+.gbar{position:fixed;bottom:0;left:0;right:0;z-index:600;background:rgba(20,24,20,.97);backdrop-filter:blur(18px);border-top:1px solid rgba(201,169,110,.15);padding:.78rem 1.5rem;display:flex;align-items:center;gap:.9rem;transform:translateY(100%);transition:transform .3s ease}.gbar.up{transform:translateY(0)}.wave{display:flex;align-items:center;gap:2px;height:18px;flex-shrink:0}.wb{width:3px;border-radius:2px;background:#C9A96E;animation:wv .7s ease-in-out infinite}.wb:nth-child(1){height:5px}.wb:nth-child(2){height:10px;animation-delay:.1s}.wb:nth-child(3){height:18px;animation-delay:.2s}.wb:nth-child(4){height:10px;animation-delay:.3s}.wb:nth-child(5){height:5px;animation-delay:.4s}@keyframes wv{0%,100%{transform:scaleY(.28)}50%{transform:scaleY(1)}}.g-info{flex:1;min-width:0}.g-lbl{font-size:.53rem;letter-spacing:.15em;text-transform:uppercase;color:#C9A96E}.g-title{font-family:'Cormorant Garamond',serif;font-size:.95rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:#F0EDE4}.g-stop{background:transparent;border:1px solid rgba(201,169,110,.2);border-radius:4px;color:rgba(240,237,228,.38);padding:.35rem .8rem;font-size:.66rem;cursor:pointer;font-family:'DM Sans',sans-serif}
+.tour-end{text-align:center;padding:7rem 2rem;background:linear-gradient(to bottom,#1C1C1A,#141614)}.tour-end h2{font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,5vw,3.5rem);font-weight:300;margin-bottom:.85rem;color:#F0EDE4}.tour-end p{color:rgba(240,237,228,.42);max-width:380px;margin:0 auto 2rem;line-height:1.7;font-size:.87rem}.drink{display:inline-block;background:rgba(45,90,61,.15);border:1px solid rgba(201,169,110,.24);border-radius:6px;padding:1.1rem 2.2rem;font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-style:italic;color:#C9A96E}.footer{padding:1.8rem;text-align:center;font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(240,237,228,.13)}.footer a{color:rgba(201,169,110,.35);text-decoration:none}
 </style>
 </head>
 <body>
+<header class="hdr" id="hdr">
+  <a class="logo" href="index.html">step<em>cast</em></a>
+  <div style="display:flex;gap:.6rem">
+    <a class="back-btn" href="index.html">&#8592; Tours</a>
+    <button class="hbtn" id="gpsHdrBtn" onclick="toggleGPS()">GPS</button>
+  </div>
+</header>
 <section class="hero">
-  <img class="hero-img" src="https://commons.wikimedia.org/wiki/Special:FilePath/Grand_Place_Bruxelles.jpg" alt="">
+  <img class="hero-img" src="brussels1.jpg" alt="Brussels">
   <div class="hero-grad"></div>
   <div class="hc">
-    <div class="eyebrow">Stepcast &mdash; Self-Guided Audio Walking Tour</div>
-    <h1>Discover <em>Brussels</em></h1>
-    <p class="hero-sub">Chocolate, waffles, the most beautiful square in Europe, and the capital of a continent. Go at your own pace.</p>
+    <div class="eyebrow">Stepcast - Self-Guided Audio Walking Tour</div>
+    <h1>Discover<br><em>Brussels</em></h1>
+    <p class="hero-sub">Guildhalls and chocolate, comics and surrealism, Gothic spires and the world's greatest beer. Go at your own pace.</p>
     <div class="hero-pills">
-      <div class="hpill"><strong>9</strong> Stops</div>
-      <div class="hpill"><strong>3 km</strong> Total</div>
-      <div class="hpill">&#128694; ~45 min walking</div>
-      <div class="hpill">&#127911; ~16 min audio</div>
+      <span class="hpill"><strong>9</strong> Stops</span>
+      <span class="hpill"><strong>3.5 km</strong> Walking</span>
+      <span class="hpill" id="audioPill"><strong>Loading</strong> Audio</span>
     </div>
-    <button class="btn-begin" onclick="document.querySelector('.map-sec').scrollIntoView({behavior:'smooth'})">Begin the Tour</button>
+    <button class="btn-begin" onclick="document.getElementById('map-sec').scrollIntoView({behavior:'smooth'})">Begin the Tour</button>
   </div>
   <div class="scroll-cue">Scroll</div>
 </section>
-<div class="map-sec">
-  <div class="map-hdr">
-    <h3>Your <em>Route</em></h3>
+<div class="map-sec" id="map-sec">
+  <div class="map-hdr"><h3>Your <em>Route</em></h3>
     <div class="map-controls">
-      <button class="mbtn on" id="fullRouteBtn" onclick="mapFitAll()">Full Route</button>
+      <button class="mbtn on" onclick="mapFitAll()">Full Route</button>
       <button class="mbtn" id="gpsMapBtn" onclick="toggleGPS()">Track My Location</button>
     </div>
   </div>
   <div id="map"></div>
   <div class="map-foot"><div class="gdot" id="gdot"></div><span id="gstat">Tap Track My Location to follow your position</span></div>
 </div>
-<div class="stop-nav" id="stopNav"></div>
+<nav class="stop-nav" id="stopNav"><span class="nlbl">Stops</span></nav>
 <div id="stopsWrap"></div>
-<div class="outro">
-  <h2>You have walked <em>Brussels.</em></h2>
-  <p>The most beautiful square in Europe, the world's first shopping arcade, the inventor of the praline, and the greatest beer culture on earth.</p>
-  <p>Now order a Trappist beer and a cone of frites with mayonnaise. You have earned it.</p>
-</div>
-<div class="footer">&copy; 2026 <a href="https://www.stepcasttours.com/index.html">Stepcast</a> &mdash; Walk. Listen. Discover.</div>
+<section class="tour-end">
+  <h2>You have walked<br><em>Brussels.</em></h2>
+  <p>The inventor of the praline, the birthplace of Tintin, the home of the finest beer culture on earth, and a city that chose a small urinating boy as its symbol. Not bad for an afternoon.</p>
+  <div class="drink">Now find a table, order a Trappist, and raise a glass. Sante.</div>
+</section>
+<div class="footer">2026 <a href="index.html">Stepcast</a> - Walk. Listen. Discover.</div>
 <div class="gbar" id="gbar">
   <div class="wave"><div class="wb"></div><div class="wb"></div><div class="wb"></div><div class="wb"></div><div class="wb"></div></div>
   <div class="g-info"><div class="g-lbl">Now Playing</div><div class="g-title" id="gTitle">-</div></div>
@@ -171,292 +74,208 @@ body{background:var(--dark);color:var(--cream);font-family:'DM Sans',sans-serif;
 </div>
 <div class="umodal" id="umodal">
   <div class="umbox">
+    <div style="font-size:1.8rem;margin-bottom:.6rem">&#127981;</div>
     <h2>Unlock <span class="city-name">Brussels</span></h2>
     <p>Get all 9 stops with narrated audio and live GPS. A code will be sent to you after purchase to unlock the full tour.</p>
-    <a class="buy-btn" href="https://stepcasttours.lemonsqueezy.com/checkout/buy/71aee8a9-c771-4a4e-a9ee-1a9cd5df20c2" target="_blank">Unlock Full Tour &mdash; &#8364;4.99</a>
-    <div class="udivider"><span>or enter code</span></div>
+    <a class="buy-btn" href="https://stepcasttours.lemonsqueezy.com/checkout/buy/71aee8a9-c771-4a4e-a9ee-1a9cd5df20c2" target="_blank">Unlock Full Tour - &#8364;4.99</a>
+    <div class="udivider"><span>already have a code?</span></div>
     <input class="ucode-in" id="ucodeIn" type="text" placeholder="Enter your unlock code" autocomplete="off" maxlength="40">
-    <button class="ubtn-go" onclick="tryCode()">Unlock</button>
+    <button class="ubtn-go" onclick="tryCode()">Apply Code</button>
     <div class="umsg" id="umsg"></div>
     <button class="ucancel" onclick="closeModal()">Maybe later</button>
   </div>
 </div>
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script>
-var STORAGE_KEY = "stepcast_bru_v1";
-var CITY_PREFIX = "brussels";
-var FREE_STOPS = 3;
-var WC = "https://commons.wikimedia.org/wiki/Special:FilePath/";
+var P="|||";
+var FREE_STOPS=3;
+var STORAGE_KEY="stepcast_bru_v1";
 
-var stops = [
-  {id:1, tag:"Start Here - The Most Beautiful Square in Europe", titleHtml:"Grand <em>Place</em>", plain:"Grand Place", next:"300m walk &middot; 4 min to next stop", emoji:"&#127963;", lat:50.8467, lng:4.3525, img1:WC+"Grand_Place_Bruxelles.jpg",
-   tipLabel:"Insider Tip", tipText:"Come back at night. The square is illuminated and even more extraordinary. Best coffee: Cafe Roy d'Espagne inside the square itself.",
-   script:"Welcome to Brussels, and there is no better place to begin than right here.|||You are standing in the Grand Place, and Victor Hugo, who lived in Brussels in the 1850s, called it the most beautiful square in the world. He was not exaggerating. UNESCO designated it a World Heritage Site in 1998. Look around you slowly, because every single building surrounding this square is extraordinary.|||The enormous Gothic tower on your left is the Hotel de Ville, the City Hall, begun in 1402. Notice something odd: the tower is not centred above the main entrance. This asymmetry has haunted the building's reputation for six centuries. Legend says the architect, Jan van Ruysbroeck, was so horrified by the mistake that he threw himself from the top. The truth is more prosaic, the tower was built in two separate phases and the plans changed, but the story is better, and Brussels has always preferred the better story.|||The golden guildhalls surrounding the square are the headquarters of the medieval trade guilds, the brewers, the bakers, the tailors, the boatmen, the archers. When Louis XIV of France bombarded Brussels in 1695, his artillery destroyed over four thousand buildings in two days. Almost everything you see here was rebuilt in the extraordinary burst of civic pride that followed, mostly between 1696 and 1700. Five years. An act of collective defiance expressed in stone and gold.|||Come back tonight. The square is illuminated after dark and is even more extraordinary."},
-  {id:2, tag:"Chocolate - The Birthplace of the Praline", titleHtml:"Galeries Royales <em>Saint-Hubert</em>", plain:"Galeries Royales Saint-Hubert", next:"400m walk &middot; 5 min to next stop", emoji:"&#127851;", lat:50.8479, lng:4.3544, img1:WC+"Galerie_de_la_Reine_de_Bruxelles_01.jpg",
-   tipLabel:"What to Do", tipText:"Walk the full length of all three galleries. Neuhaus in the Queen's Gallery invented the praline in 1912. Try one. Most chocolatiers offer free samples.",
-   script:"Walk northeast out of the Grand Place and in two minutes you step through an archway into a different world.|||The Galeries Royales Saint-Hubert, completed in 1847, was the first covered shopping arcade in Europe. Not in Belgium. In all of Europe. It predates the Galleria Vittorio Emanuele in Milan by twenty years, the Burlington Arcade in London by over twenty years. This building invented a new form of urban space: the interior street, sheltered from weather, lined with shops, filled with light from the glazed roof above.|||The architect Jean-Pierre Cluysenaar designed three interconnected galleries, the King's Gallery, the Queen's Gallery, and the Prince's Gallery. In the Queen's Gallery you will find Neuhaus, founded in 1857. In 1912, Jean Neuhaus Junior decided to fill a chocolate shell with sweet cream instead of medicine. He called it a praline. His wife invented the ballotin, the now-universal folded cardboard box for chocolates. Every filled chocolate in the world traces directly to this shop, in this arcade, in 1912.|||Victor Hugo walked here. Alexandre Dumas had coffee here. Karl Marx worked in Brussels and used to come here. Buy chocolate. You are in the correct building."},
-  {id:3, tag:"The Icon - The Tiny Statue that Defines a City", titleHtml:"<em>Manneken Pis</em>", plain:"Manneken Pis", next:"900m walk &middot; 12 min to next stop", emoji:"&#128694;", lat:50.8450, lng:4.3499, img1:WC+"Manneken_pis_brussels.jpg",
-   tipLabel:"Good to Know", tipText:"He changes costume over 1000 times a year. Check the Brussels city website to see what he is wearing. The original bronze is in the City Museum on the Grand Place. This is a 1965 replica.",
-   script:"Walk south and follow the crowds, and prepare to feel confused.|||He is small. Fifty-five centimetres. A bronze boy, urinating contentedly into a fountain, surrounded by tourists taking photographs. This is the Manneken Pis, and he has been the symbol of Brussels since the seventeenth century. The question everyone asks is: why?|||The honest answer is: nobody entirely knows. There are at least eight competing legends. In one, a small boy saved the city by urinating on a burning fuse that would have set off explosives planted by a foreign enemy. None of these stories is historically documented. The oldest confirmed record of a Manneken Pis statue on this site is from 1388. The current bronze figure was cast by Jerome Duquesnoy the Elder in 1619. It was stolen by English soldiers in 1745, returned, stolen again by French soldiers, returned again, stolen by German soldiers in 1940. The original is now in the City Museum on the Grand Place, this is a copy from 1965.|||What matters is not the statue but what Brussels chose as its symbol. Not a king, not a saint, not a warrior. A small irreverent boy, doing something slightly impolite, entirely unbothered by anyone's opinion. Brussels was the city of Bruegel, of surrealism, of comics. It has always preferred subversion to solemnity.|||Check what he is wearing today, he changes costume over a thousand times a year."},
-  {id:4, tag:"Cathedral - Gothic Masterpiece", titleHtml:"Cathedral of <em>Saint Michael and Gudula</em>", plain:"Cathedral of Saint Michael and Gudula", next:"700m walk &middot; 9 min to next stop", emoji:"&#9962;", lat:50.8488, lng:4.3600, img1:WC+"Cathedral_of_St._Michael_and_St._Gudula_Brussels_1.JPG",
-   tipLabel:"Practical Info", tipText:"Entry completely free. Open Mon to Fri 7am to 6pm, Sat and Sun 8:30am to 6pm. The stained glass windows in the Chapel of the Blessed Sacrament are among the finest in Europe.",
-   script:"Walk northeast up the hill to the Cathedral of Saints Michael and Gudula, which has been under construction, in one form or another, for almost a thousand years.|||The Romanesque crypt beneath your feet dates to the eleventh century. The Gothic nave above was built between 1226 and the fifteenth century. The twin towers were never quite finished, money always ran out before the spires were completed, which is why they are flat-topped.|||Go inside, entry is free. The nave is over a hundred metres long. The stained glass windows in the Chapel of the Blessed Sacrament were commissioned by Charles V, the Holy Roman Emperor, and his wife Isabella of Portugal, they are shown kneeling in prayer in the windows, which is simultaneously humble and spectacularly arrogant.|||Under the choir, a glass floor has been cut into the stone to reveal the Romanesque church of the eleventh century below. You are looking directly down into a building that was standing here before the First Crusade. One cathedral, one thousand years, all visible at once.|||Services happen here. Royal weddings happen here. The funerals of Belgian kings happen here. It is not a museum."},
-  {id:5, tag:"Viewpoint - The Best View in Brussels", titleHtml:"Mont des <em>Arts</em>", plain:"Mont des Arts", next:"600m walk &middot; 8 min to next stop", emoji:"&#127981;", lat:50.8451, lng:4.3578, img1:WC+"Brussels_Mont_des_arts.jpg",
-   tipLabel:"Best Time", tipText:"Come at sunset for the most dramatic light on the city skyline. The Carillon clock plays music every fifteen minutes. Free to visit 24 hours a day.",
-   script:"Walk south from the Cathedral and down the steps to the Mont des Arts, the Hill of the Arts, and stop at the terrace.|||This is the best view in central Brussels. Below you, the lower town spreads out, the Gothic spire of the Town Hall rising from the Grand Place somewhere in the rooftops. Behind you, the Royal Palace and the neoclassical buildings of the upper town.|||The name Mont des Arts is almost ironic, this hill has been in continuous controversy since the nineteenth century. The original neighbourhood here was demolished in the 1890s in a wave of urban renewal that Brussels later came to regret. The current layout dates from the 1950s, when Belgium was rebuilding itself after World War II and the 1958 World Exposition was approaching.|||Arranged around you are some of Belgium's greatest cultural institutions. The Magritte Museum is just to your right, Rene Magritte, the surrealist painter of bowler hats and green apples, was Belgian. Born in Lessines in 1898, he lived most of his adult life in a quiet house in the Brussels suburb of Jette. The Royal Museums of Fine Arts contain Bruegel, Rubens, Memling, van der Weyden: the entire history of Flemish painting.|||The Carillon to your right plays every quarter hour. The mechanical figures are deeply Belgian in their slightly absurd charm."},
-  {id:6, tag:"Beer - Belgium's Greatest Export", titleHtml:"Place <em>Saint-Gery</em>", plain:"Place Saint-Gery", next:"500m walk &middot; 6 min to next stop", emoji:"&#127866;", lat:50.8481, lng:4.3484, img1:WC+"Halles_Saint-Gery_Brussels.jpg",
-   tipLabel:"What to Order", tipText:"Order a Trappist beer: Chimay, Orval, Westmalle or Rochefort, brewed by monks. Or try a gueuze, the spontaneously fermented lambic beer unique to Brussels.",
-   script:"Walk west down to Place Saint-Gery, the historic heart of old Brussels, built on the island in the river Senne where the city was founded around the year 979 CE.|||Brussels is younger than you might think. It was founded as a fortified settlement by Charles, Duke of Lower Lorraine, in the tenth century. The name comes from Broekzele, meaning settlement in the marsh.|||Belgium's relationship with beer is one of the great civilisational achievements of northern Europe. Three hundred breweries. Over fifteen hundred distinct beers. Six Trappist monasteries still brew beer according to traditions established by monks in the Middle Ages. Westvleteren, Rochefort, and Westmalle are considered among the greatest beers ever made. You cannot buy Westvleteren at a shop, you call the monastery on a specific day and arrange to collect it in person.|||Then there are the lambic beers, spontaneously fermented by the wild yeasts that float in the air around Brussels, a geographical phenomenon that cannot be replicated anywhere else on earth. Gueuze, kriek, faro, these beers have been made here, using this specific air, for at least five hundred years. Each beer has its own glass shape designed to enhance the experience. This is not casual. This is a civilisation.|||The Belgian government recognised beer culture as Intangible Cultural Heritage of Humanity in 2016. Sit down. Order a glass. Ask what is local."},
-  {id:7, tag:"Comics - A Country That Turned Cartoons into Art", titleHtml:"Belgian Comic Strip <em>Centre</em>", plain:"Belgian Comic Strip Centre", next:"800m walk &middot; 10 min to next stop", emoji:"&#128213;", lat:50.8524, lng:4.3556, img1:WC+"Centre_Belge_de_la_Bande_Dessinee.jpg",
-   tipLabel:"Entry Info", tipText:"Entry 14 euros adults, 10 euros students. Open Tue to Sun 10am to 6pm. The building itself, an Art Nouveau Victor Horta design, is worth the entry alone.",
-   script:"Walk north to Rue des Sables and enter one of the most surprising museums in Europe.|||Belgium is, without any serious qualification, the greatest comic-producing nation in the world per capita. Tintin. The Smurfs. Lucky Luke. Asterix, the script was written by a Belgian, Rene Goscinny. The Smurfs were created by Peyo in 1958. Tintin was created by Herge, Georges Remi, born in Etterbeek, Brussels, in 1907.|||The reasons for this extraordinary concentration of comic talent are debated. Belgium is divided between French-speaking Wallonia and Dutch-speaking Flanders, and comics, a visual medium, could cross that language barrier naturally. Belgium was also occupied by Germany twice in the twentieth century, and comics offered a form of storytelling that could survive censorship.|||The Belgian Comic Strip Centre is housed in a building designed by Victor Horta in 1906 as a textile warehouse, one of the finest Art Nouveau buildings in Brussels. The ironwork, the glass roof flooding the space with natural light, the organic flowing lines, this is the style that Brussels gave to the world in the 1890s.|||As you walk around Brussels, look for the fifty comic strip murals painted on the sides of buildings, turning the city into an open-air comic book."},
-  {id:8, tag:"Royal Quarter - Where Belgium Goes to Work", titleHtml:"Palais <em>Royal</em>", plain:"Palais Royal", next:"700m walk &middot; 9 min to next stop", emoji:"&#127963;", lat:50.8421, lng:4.3617, img1:WC+"Palais_royal_de_Bruxelles.jpg",
-   tipLabel:"Practical Info", tipText:"The palace is free to visit from late July to early September when the royal family is on holiday. Open Tue to Sun 10:30am to 4:30pm during that period only.",
-   script:"Walk south and up the hill to the Place des Palais and the Palais Royal, the official palace of the King and Queen of the Belgians.|||Belgium is a constitutional monarchy, and its relationship with monarchy is more complicated than most. The country was created in 1830 by revolution, the Belgians rose against Dutch rule, inspired partly by seeing an opera about a revolt in Naples. A German prince, Leopold of Saxe-Coburg-Saalfeld, was chosen as the first King of the Belgians, partly because he was the uncle of Queen Victoria, and Britain wanted someone they trusted on the throne.|||The palace is the working office of the king, not his residence, which is the Castle of Laeken in the northern suburbs. The palace faces the Parc de Bruxelles, the formal Royal Park designed in the eighteenth century in the French style.|||The throne room contains one of the most extraordinary things in any palace in Europe. Jan Fabre covered the entire ceiling with the iridescent wing cases of 1.4 million jewel beetles, shimmering emerald green. It is called Heaven of Delight. Some members of the Belgian parliament called it an outrage. The king kept it. Good decision.|||The palace is free to visit in late July and August when the royal family is on holiday."},
-  {id:9, tag:"Finale - The Heart of Europe", titleHtml:"Place du Grand <em>Sablon</em>", plain:"Place du Grand Sablon", next:"Final stop", emoji:"&#127981;", lat:50.8430, lng:4.3566, img1:WC+"Place_du_Grand_Sablon.jpg",
-   tipLabel:"Do Not Miss", tipText:"The antique market runs every weekend Saturday 9am to 6pm and Sunday 9am to 2pm. The church Notre-Dame du Sablon is free to enter. Wittamer patisserie on the square is the finest in Brussels.",
-   script:"Walk south from the Royal Palace to the Place du Grand Sablon, and you have reached the most elegant square in Brussels.|||This neighbourhood has been the antiques and luxury quarter of Brussels since the eighteenth century. The square is surrounded by townhouses with immaculate facades, galleries selling Flemish masters, chocolatiers of distinction, and the magnificent Church of Notre-Dame du Sablon rising at the far end. On weekends an antiques market fills the centre of the square.|||The Church of Notre-Dame du Sablon was built by the Guild of Crossbowmen in the fifteenth century as their private chapel, a statement of guild wealth and piety that resulted in one of the finest late Gothic churches in Belgium. The stained glass windows at the east end are extraordinary, particularly on a sunny afternoon when the coloured light falls across the stone floor. Entry is free.|||Wittamer, on the corner of the square, has been the finest patisserie in Brussels since 1910. Pierre Marcolini, considered by many the greatest living chocolatier, has a boutique just off the square. He won the World Pastry Championship in 1995 and turned his skills entirely to chocolate. His work is precise, architectural, and extraordinary.|||You have just walked one of the most underrated capitals in Europe. A city that is the political heart of a continent, the home of the world's greatest comic characters, the inventor of the praline, and the custodian of the finest beer culture on earth. A city that chose a small urinating boy as its symbol and has never once regretted it. Find a table. Order a Trappist. Raise a glass. Sante."}
+var stops=[
+{id:1,tag:"Start Here",titleHtml:"Grand <em>Place</em>",plain:"Grand Place",walkNext:"300m, about 4 min to next stop",
+photos:[{f:"brussels1.jpg",p:false}],
+photoCredit:"",
+tipLabel:"After Dark",tipText:"Come back tonight. The square is illuminated after dark and is even more extraordinary. Best coffee: Cafe Roy d'Espagne inside the square itself.",
+lat:50.8467,lng:4.3522,mp3:"brusselsstop1.mp3",
+script:"Welcome to Brussels, and there is no better place to begin than right here.|||You are standing in the Grand Place, and Victor Hugo, who lived in Brussels in the 1850s, called it the most beautiful square in the world. He was not exaggerating. UNESCO designated it a World Heritage Site in 1998. Look around you slowly, because every single building surrounding this square is extraordinary.|||The enormous Gothic tower on your left is the Hotel de Ville, the City Hall, begun in 1402. Notice something odd: the tower is not centred above the main entrance. This asymmetry has haunted the building's reputation for six centuries. Legend says the architect, Jan van Ruysbroeck, was so horrified by the mistake that he threw himself from the top. The truth is more prosaic, the tower was built in two separate phases and the plans changed, but the story is better, and Brussels has always preferred the better story.|||The golden guildhalls surrounding the square are the headquarters of the medieval trade guilds, the brewers, the bakers, the tailors, the boatmen, the archers. When Louis XIV of France bombarded Brussels in 1695, his artillery destroyed over four thousand buildings in two days. Almost everything you see here was rebuilt in the extraordinary burst of civic pride that followed, mostly between 1696 and 1700. Five years. An act of collective defiance expressed in stone and gold."},
+{id:2,tag:"First Arcade in Europe",titleHtml:"Galeries Royales <em>Saint-Hubert</em>",plain:"Galeries Royales Saint-Hubert",walkNext:"500m, about 7 min to next stop",
+photos:[{f:"brussels2.jpg",p:false}],
+photoCredit:"",
+tipLabel:"What to Do",tipText:"Walk the full length of all three galleries. Neuhaus in the Queen's Gallery invented the praline in 1912. Try one. Most chocolatiers offer free samples.",
+lat:50.8479,lng:4.3539,mp3:"brusselsstop2.mp3",
+script:"Walk northeast out of the Grand Place and in two minutes you step through an archway into a different world.|||The Galeries Royales Saint-Hubert, completed in 1847, was the first covered shopping arcade in Europe. Not in Belgium. In all of Europe. It predates the Galleria Vittorio Emanuele in Milan by twenty years, the Burlington Arcade in London by over twenty years. This building invented a new form of urban space: the interior street, sheltered from weather, lined with shops, filled with light from the glazed roof above.|||The architect Jean-Pierre Cluysenaar designed three interconnected galleries, the King's Gallery, the Queen's Gallery, and the Prince's Gallery. In the Queen's Gallery you will find Neuhaus, founded in 1857. In 1912, Jean Neuhaus Junior decided to fill a chocolate shell with sweet cream instead of medicine. He called it a praline. His wife invented the ballotin, the now-universal folded cardboard box for chocolates. Every filled chocolate in the world traces directly to this shop, in this arcade, in 1912.|||Victor Hugo walked here. Alexandre Dumas had coffee here. Karl Marx worked in Brussels and used to come here. Buy chocolate. You are in the correct building."},
+{id:3,tag:"City Symbol",titleHtml:"<em>Manneken Pis</em>",plain:"Manneken Pis",walkNext:"750m, about 10 min to next stop",
+photos:[{f:"brussels3.jpg",p:false}],
+photoCredit:"",
+tipLabel:"Good to Know",tipText:"He changes costume over 1000 times a year. Check the Brussels city website to see what he is wearing. The original bronze is in the City Museum on the Grand Place. This is a 1965 replica.",
+lat:50.8450,lng:4.3500,mp3:"brusselsstop3.mp3",
+script:"Walk south and follow the crowds, and prepare to feel confused.|||He is small. Fifty-five centimetres. A bronze boy, urinating contentedly into a fountain, surrounded by tourists taking photographs. This is the Manneken Pis, and he has been the symbol of Brussels since the seventeenth century. The question everyone asks is: why?|||The honest answer is: nobody entirely knows. There are at least eight competing legends. In one, a small boy saved the city by urinating on a burning fuse that would have set off explosives planted by a foreign enemy. None of these stories is historically documented. The oldest confirmed record of a Manneken Pis statue on this site is from 1388. The current bronze figure was cast by Jerome Duquesnoy the Elder in 1619. It was stolen by English soldiers in 1745, returned, stolen again by French soldiers, returned again, stolen by German soldiers in 1940. The original is now in the City Museum on the Grand Place, this is a copy from 1965.|||What matters is not the statue but what Brussels chose as its symbol. Not a king, not a saint, not a warrior. A small irreverent boy, doing something slightly impolite, entirely unbothered by anyone's opinion. Brussels was the city of Bruegel, of surrealism, of comics. It has always preferred subversion to solemnity.|||Check what he is wearing today, he changes costume over a thousand times a year."},
+{id:4,tag:"One Thousand Years",titleHtml:"Cathedral of <em>Saint Michael and Gudula</em>",plain:"Cathedral of Saint Michael and Gudula",walkNext:"500m, about 7 min to next stop",
+photos:[{f:"brussels4.jpg",p:false}],
+photoCredit:"",
+tipLabel:"Practical Info",tipText:"Entry completely free. Open Mon to Fri 7am to 6pm, Sat and Sun 8:30am to 6pm. The stained glass windows in the Chapel of the Blessed Sacrament are among the finest in Europe.",
+lat:50.8501,lng:4.3601,mp3:"brusselsstop4.mp3",
+script:"Walk northeast up the hill to the Cathedral of Saints Michael and Gudula, which has been under construction, in one form or another, for almost a thousand years.|||The Romanesque crypt beneath your feet dates to the eleventh century. The Gothic nave above was built between 1226 and the fifteenth century. The twin towers were never quite finished, money always ran out before the spires were completed, which is why they are flat-topped.|||Go inside, entry is free. The nave is over a hundred metres long. The stained glass windows in the Chapel of the Blessed Sacrament were commissioned by Charles V, the Holy Roman Emperor, and his wife Isabella of Portugal, they are shown kneeling in prayer in the windows, which is simultaneously humble and spectacularly arrogant.|||Under the choir, a glass floor has been cut into the stone to reveal the Romanesque church of the eleventh century below. You are looking directly down into a building that was standing here before the First Crusade. One cathedral, one thousand years, all visible at once.|||Services happen here. Royal weddings happen here. The funerals of Belgian kings happen here. It is not a museum."},
+{id:5,tag:"Best View in Brussels",titleHtml:"Mont des <em>Arts</em>",plain:"Mont des Arts",walkNext:"600m, about 8 min to next stop",
+photos:[{f:"brussels5.jpg",p:false}],
+photoCredit:"",
+tipLabel:"Best Time",tipText:"Come at sunset for the most dramatic light on the city skyline. The Carillon clock plays music every fifteen minutes. Free to visit 24 hours a day.",
+lat:50.8457,lng:4.3573,mp3:"brusselsstop5.mp3",
+script:"Walk south from the Cathedral and down the steps to the Mont des Arts, the Hill of the Arts, and stop at the terrace.|||This is the best view in central Brussels. Below you, the lower town spreads out, the Gothic spire of the Town Hall rising from the Grand Place somewhere in the rooftops. Behind you, the Royal Palace and the neoclassical buildings of the upper town.|||The name Mont des Arts is almost ironic, this hill has been in continuous controversy since the nineteenth century. The original neighbourhood here was demolished in the 1890s in a wave of urban renewal that Brussels later came to regret. The current layout dates from the 1950s, when Belgium was rebuilding itself after World War II and the 1958 World Exposition was approaching.|||Arranged around you are some of Belgium's greatest cultural institutions. The Magritte Museum is just to your right, Rene Magritte, the surrealist painter of bowler hats and green apples, was Belgian. Born in Lessines in 1898, he lived most of his adult life in a quiet house in the Brussels suburb of Jette. The Royal Museums of Fine Arts contain Bruegel, Rubens, Memling, van der Weyden: the entire history of Flemish painting.|||The Carillon to your right plays every quarter hour. The mechanical figures are deeply Belgian in their slightly absurd charm."},
+{id:6,tag:"Where Brussels Began",titleHtml:"Place <em>Saint-Gery</em>",plain:"Place Saint-Gery",walkNext:"700m, about 9 min to next stop",
+photos:[{f:"brussels6.jpg",p:false}],
+photoCredit:"",
+tipLabel:"What to Order",tipText:"Order a Trappist beer: Chimay, Orval, Westmalle or Rochefort, brewed by monks. Or try a gueuze, the spontaneously fermented lambic beer unique to Brussels.",
+lat:50.8479,lng:4.3453,mp3:"brusselsstop6.mp3",
+script:"Walk west down to Place Saint-Gery, the historic heart of old Brussels, built on the island in the river Senne where the city was founded around the year 979 CE.|||Brussels is younger than you might think. It was founded as a fortified settlement by Charles, Duke of Lower Lorraine, in the tenth century. The name comes from Broekzele, meaning settlement in the marsh.|||Belgium's relationship with beer is one of the great civilisational achievements of northern Europe. Three hundred breweries. Over fifteen hundred distinct beers. Six Trappist monasteries still brew beer according to traditions established by monks in the Middle Ages. Westvleteren, Rochefort, and Westmalle are considered among the greatest beers ever made. You cannot buy Westvleteren at a shop, you call the monastery on a specific day and arrange to collect it in person.|||Then there are the lambic beers, spontaneously fermented by the wild yeasts that float in the air around Brussels, a geographical phenomenon that cannot be replicated anywhere else on earth. Gueuze, kriek, faro, these beers have been made here, using this specific air, for at least five hundred years. Each beer has its own glass shape designed to enhance the experience. This is not casual. This is a civilisation.|||The Belgian government recognised beer culture as Intangible Cultural Heritage of Humanity in 2016. Sit down. Order a glass. Ask what is local."},
+{id:7,tag:"Tintin's Home",titleHtml:"Belgian Comic Strip <em>Centre</em>",plain:"Belgian Comic Strip Centre",walkNext:"1 km, about 13 min to next stop",
+photos:[{f:"brussels7.jpg",p:false}],
+photoCredit:"",
+tipLabel:"Entry Info",tipText:"Open Tue to Sun 10am to 6pm. The building itself, an Art Nouveau Victor Horta design, is worth the entry alone.",
+lat:50.8517,lng:4.3555,mp3:"brusselsstop7.mp3",
+script:"Walk north to Rue des Sables and enter one of the most surprising museums in Europe.|||Belgium is, without any serious qualification, the greatest comic-producing nation in the world per capita. Tintin. The Smurfs. Lucky Luke. Asterix, the script was written by a Belgian, Rene Goscinny. The Smurfs were created by Peyo in 1958. Tintin was created by Herge, Georges Remi, born in Etterbeek, Brussels, in 1907.|||The reasons for this extraordinary concentration of comic talent are debated. Belgium is divided between French-speaking Wallonia and Dutch-speaking Flanders, and comics, a visual medium, could cross that language barrier naturally. Belgium was also occupied by Germany twice in the twentieth century, and comics offered a form of storytelling that could survive censorship.|||The Belgian Comic Strip Centre is housed in a building designed by Victor Horta in 1906 as a textile warehouse, one of the finest Art Nouveau buildings in Brussels. The ironwork, the glass roof flooding the space with natural light, the organic flowing lines, this is the style that Brussels gave to the world in the 1890s.|||As you walk around Brussels, look for the fifty comic strip murals painted on the sides of buildings, turning the city into an open-air comic book."},
+{id:8,tag:"Royal Brussels",titleHtml:"Palais <em>Royal</em>",plain:"Palais Royal",walkNext:"600m, about 8 min to next stop",
+photos:[{f:"brussels8.jpg",p:false}],
+photoCredit:"",
+tipLabel:"Practical Info",tipText:"The palace is free to visit from late July to early September when the royal family is on holiday. Open Tue to Sun 10:30am to 4:30pm during that period only.",
+lat:50.8428,lng:4.3620,mp3:"brusselsstop8.mp3",
+script:"Walk south and up the hill to the Place des Palais and the Palais Royal, the official palace of the King and Queen of the Belgians.|||Belgium is a constitutional monarchy, and its relationship with monarchy is more complicated than most. The country was created in 1830 by revolution, the Belgians rose against Dutch rule, inspired partly by seeing an opera about a revolt in Naples. A German prince, Leopold of Saxe-Coburg-Saalfeld, was chosen as the first King of the Belgians, partly because he was the uncle of Queen Victoria, and Britain wanted someone they trusted on the throne.|||The palace is the working office of the king, not his residence, which is the Castle of Laeken in the northern suburbs. The palace faces the Parc de Bruxelles, the formal Royal Park designed in the eighteenth century in the French style.|||The throne room contains one of the most extraordinary things in any palace in Europe. Jan Fabre covered the entire ceiling with the iridescent wing cases of 1.4 million jewel beetles, shimmering emerald green. It is called Heaven of Delight. Some members of the Belgian parliament called it an outrage. The king kept it. Good decision.|||The palace is free to visit in late July and August when the royal family is on holiday."},
+{id:9,tag:"Finale",titleHtml:"Place du Grand <em>Sablon</em>",plain:"Place du Grand Sablon",walkNext:"Final stop",
+photos:[{f:"brussels9.jpg",p:false}],
+photoCredit:"",
+tipLabel:"Do Not Miss",tipText:"The antique market runs every weekend Saturday 9am to 6pm and Sunday 9am to 2pm. The church Notre-Dame du Sablon is free to enter. Wittamer patisserie on the square is the finest in Brussels.",
+lat:50.8420,lng:4.3572,mp3:"brusselsstop9.mp3",
+script:"Walk south from the Royal Palace to the Place du Grand Sablon, and you have reached the most elegant square in Brussels.|||This neighbourhood has been the antiques and luxury quarter of Brussels since the eighteenth century. The square is surrounded by townhouses with immaculate facades, galleries selling Flemish masters, chocolatiers of distinction, and the magnificent Church of Notre-Dame du Sablon rising at the far end. On weekends an antiques market fills the centre of the square.|||The Church of Notre-Dame du Sablon was built by the Guild of Crossbowmen in the fifteenth century as their private chapel, a statement of guild wealth and piety that resulted in one of the finest late Gothic churches in Belgium. The stained glass windows at the east end are extraordinary, particularly on a sunny afternoon when the coloured light falls across the stone floor. Entry is free.|||Wittamer, on the corner of the square, has been the finest patisserie in Brussels since 1910. Pierre Marcolini, considered by many the greatest living chocolatier, has a boutique just off the square. He won the World Pastry Championship in 1995 and turned his skills entirely to chocolate. His work is precise, architectural, and extraordinary.|||You have just walked one of the most underrated capitals in Europe. A city that is the political heart of a continent, the home of the world's greatest comic characters, the inventor of the praline, and the custodian of the finest beer culture on earth. A city that chose a small urinating boy as its symbol and has never once regretted it. Find a table. Order a Trappist. Raise a glass. Sante."}
 ];
 
-var leafMap, stopMarkers = [], userMarker, gpsActive = false, watchId, curAudio, curIdx = -1, progTimer;
+var slideIdx={};
+var audios=[];
+var currentAudio=null;
+var currentIdx=null;
+var leafMap=null,userMarker=null,watchId=null,gpsActive=false,stopMarkers=[];
 
-function isUnlocked() { try { return localStorage.getItem(STORAGE_KEY) === "1"; } catch(e) { return false; } }
-function setUnlocked() { try { localStorage.setItem(STORAGE_KEY, "1"); } catch(e) {} }
+function fmtTime(secs){var m=Math.floor(secs/60);var s=Math.floor(secs%60);return m+"m "+(s<10?"0"+s:s)+"s";}
 
-function openModal() { document.getElementById("modalBg").classList.add("open"); document.getElementById("codeInput").value = ""; document.getElementById("modalErr").textContent = ""; }
-function closeModal() { document.getElementById("modalBg").classList.remove("open"); }
+function loadAudioDurations(){
+  var totalSecs=0;var loaded=0;
+  for(var i=0;i<stops.length;i++){
+    (function(s,idx){
+      var a=new Audio();audios[idx]=a;
+      a.src=s.mp3;a.preload="metadata";
+      a.addEventListener("loadedmetadata",function(){
+        totalSecs+=a.duration;loaded++;
+        var el=document.getElementById("adur-"+idx);
+        if(el)el.textContent=fmtTime(a.duration);
+        if(loaded===stops.length){
+          var pill=document.getElementById("audioPill");
+          if(pill){var mins=Math.ceil(totalSecs/60);pill.innerHTML="<strong>~"+mins+" min</strong> Audio";}
+        }
+      });
+    })(stops[i],i);
+  }
+}
+loadAudioDurations();
 
-function submitCode() {
-  var code = document.getElementById("codeInput").value.trim().toUpperCase();
-  var errEl = document.getElementById("modalErr");
-  if (!code) { errEl.textContent = "Please enter a code."; return; }
-  errEl.textContent = "Checking...";
-  fetch("/api/verify", {
-    method: "POST",
-    headers: {"Content-Type": "application/json"},
-    body: JSON.stringify({code: code, city: "brussels"})
-  }).then(function(r) { return r.json(); }).then(function(data) {
-    if (data.valid) {
-      setUnlocked();
-      closeModal();
-      applyLocks();
-    } else {
-      errEl.textContent = "That code is not valid. Please check and try again.";
-    }
-  }).catch(function() { errEl.textContent = "Could not verify code. Please check your connection."; });
+function updateWrapOrientation(i,photoIdx){
+  var wrap=document.getElementById("wrap"+i);
+  if(!wrap)return;
+  var isP=stops[i].photos[photoIdx].p;
+  wrap.className="img-wrap "+(isP?"is-portrait":"is-landscape");
 }
 
-function loadPhoto(imgEl, url, phEl) {
-  var img = new Image();
-  img.onload = function() { imgEl.src = url; imgEl.classList.add("vis"); if (phEl) phEl.style.display = "none"; };
-  img.onerror = function() { };
-  img.src = url;
+function showSlide(i,dir){
+  var s=stops[i];var total=s.photos.length;
+  if(total<=1)return;
+  var prev=slideIdx[i]||0;
+  var next=((prev+dir)+total)%total;
+  slideIdx[i]=next;
+  var imgs=document.querySelectorAll("#sw"+i+" .slide");
+  var dots=document.querySelectorAll("#sd"+i+" .sdot");
+  for(var x=0;x<imgs.length;x++){imgs[x].classList.remove("vis");if(dots[x])dots[x].classList.remove("on");}
+  if(imgs[next])imgs[next].classList.add("vis");
+  if(dots[next])dots[next].classList.add("on");
+  updateWrapOrientation(i,next);
 }
 
-function togglePlay(i) {
-  var s = stops[i];
-  var audioSrc = CITY_PREFIX + "stop" + s.id + ".mp3";
-  if (curAudio && curIdx === i) {
-    if (curAudio.paused) {
-      curAudio.play();
-      updatePlayBtn(i, true);
-      startProg(i);
-      document.getElementById("gbar").classList.add("up");
-    } else {
-      curAudio.pause();
-      updatePlayBtn(i, false);
-      clearInterval(progTimer);
-    }
+window.addEventListener("scroll",function(){document.getElementById("hdr").classList.toggle("scrolled",window.scrollY>60);});
+var nav=document.getElementById("stopNav");
+var wrap=document.getElementById("stopsWrap");
+
+for(var si=0;si<stops.length;si++){(function(s,i){
+  slideIdx[i]=0;
+  var dot=document.createElement("button");dot.className="ndot"+(i===0?" on":"");dot.textContent=String(i+1);dot.title=s.plain;
+  dot.onclick=function(){var el=document.getElementById("stop-"+s.id);if(el)el.scrollIntoView({behavior:"smooth"});panMapTo(i);};
+  nav.appendChild(dot);
+  var tipHtml="";if(s.tipLabel){tipHtml="<div class='tip'><div class='tip-lbl'>"+s.tipLabel+"</div><p>"+s.tipText+"</p></div>";}
+  var parts=s.script.split(P);var paras=parts.map(function(p){return "<p>"+p.trim()+"</p>";}).join("");
+  var firstIsPortrait=s.photos[0].p;
+  var wrapClass="img-wrap "+(firstIsPortrait?"is-portrait":"is-landscape");
+  var slidesHtml="";
+  for(var pi=0;pi<s.photos.length;pi++){
+    slidesHtml+="<img class='slide"+(pi===0?" vis":"")+"' src='"+s.photos[pi].f+"' alt='"+s.plain+"' loading='lazy' onerror=\"this.style.opacity='0'\">";
+  }
+  var arrowsHtml="";var dotsHtml="";
+  if(s.photos.length>1){
+    arrowsHtml="<button class='arr-btn arr-prev' onclick='showSlide("+i+",-1)'>&#8249;</button><button class='arr-btn arr-next' onclick='showSlide("+i+",1)'>&#8250;</button>";
+    dotsHtml="<div class='slide-dots' id='sd"+i+"'>";
+    for(var pi=0;pi<s.photos.length;pi++){dotsHtml+="<div class='sdot"+(pi===0?" on":"")+"'></div>";}
+    dotsHtml+="</div>";
+  }
+  var playerHtml="<div class='player'><div class='player-top'><span class='player-lbl'>Audio Guide</span><span class='vtag' id='adur-"+i+"'>Loading...</span></div><div class='player-row'><button class='ico-btn' onclick='seekAudio("+i+",-10)' title='Back 10s'><svg viewBox='0 0 24 24'><path d='M12 5V2L8 6l4 4V7c3.31 0 6 2.69 6 6s-2.69 6-6 6-6-2.69-6-6H4c0 4.42 3.58 8 8 8s8-3.58 8-8-3.58-8-8-8z'/><text x='12' y='15' text-anchor='middle' font-size='6' fill='currentColor' font-family='DM Sans,sans-serif'>10</text></svg></button><button class='play-btn' id='pb-"+i+"' onclick='togglePlay("+i+")'><svg id='pi-"+i+"' viewBox='0 0 24 24'><polygon points='5,3 19,12 5,21'/></svg></button><button class='ico-btn' onclick='seekAudio("+i+",10)' title='Forward 10s'><svg viewBox='0 0 24 24'><path d='M12 5V2l4 4-4 4V7c-3.31 0-6 2.69-6 6s2.69 6 6 6 6-2.69 6-6h2c0 4.42-3.58 8-8 8s-8-3.58-8-8 3.58-8 8-8z'/><text x='12' y='15' text-anchor='middle' font-size='6' fill='currentColor' font-family='DM Sans,sans-serif'>10</text></svg></button><div class='p-mid'><div class='prog-track'><div class='prog-fill' id='pf-"+i+"'></div></div><div class='p-time' id='pt-"+i+"'></div><div class='p-stat' id='ps-"+i+"'>Tap play to listen</div></div><select class='spd' id='spd-"+i+"' onchange='changeSpeed("+i+")'><option value='0.8'>Slow</option><option value='1.0' selected>Normal</option><option value='1.2'>Fast</option></select><button class='ico-btn' onclick='stopAll()'><svg viewBox='0 0 24 24'><rect x='4' y='4' width='16' height='16'/></svg></button></div></div>";
+  var creditHtml="";if(s.photoCredit){creditHtml="<div class='photo-credit'>Photo: "+s.photoCredit+"</div>";}
+  var mapBackHtml="<button class='map-back-btn' onclick='document.getElementById(\"map-sec\").scrollIntoView({behavior:\"smooth\"})'>&#8593; Back to map</button>";
+  var sec=document.createElement("section");sec.className="stop";sec.id="stop-"+s.id;
+  sec.innerHTML="<div class='s-media'><div class='"+wrapClass+"' id='wrap"+i+"'><div class='num-badge'>"+s.id+"</div><div id='sw"+i+"'>"+slidesHtml+"</div>"+arrowsHtml+dotsHtml+"<div class='next-badge'>"+s.walkNext+"</div></div>"+creditHtml+playerHtml+"</div><div class='s-body'><div class='s-tag'>"+s.tag+"</div><h2 class='s-title'>"+s.titleHtml+"</h2><div class='s-text'>"+paras+"</div>"+tipHtml+mapBackHtml+"</div>";
+  wrap.appendChild(sec);
+})(stops[si],si);}
+
+var allSections=document.querySelectorAll(".stop");var allDots=document.querySelectorAll(".ndot");
+for(var oi=0;oi<allSections.length;oi++){(function(sec,idx){new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting){allDots.forEach(function(d,j){d.classList.toggle("on",j===idx);});panMapTo(idx);}});},{threshold:0.35}).observe(sec);})(allSections[oi],oi);}
+
+function initMap(){if(typeof L==="undefined"){document.getElementById("map").innerHTML="<div style='display:flex;align-items:center;justify-content:center;height:100%;color:rgba(240,237,228,.3);font-size:.85rem'>Map needs internet connection</div>";return;}leafMap=L.map("map").setView([50.847,4.357],14);L.tileLayer("https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png",{attribution:"&copy; CARTO &copy; OSM",subdomains:"abcd",maxZoom:19}).addTo(leafMap);L.polyline(stops.map(function(s){return[s.lat,s.lng];}),{color:"#C9A96E",weight:2.5,opacity:.6,dashArray:"7,5"}).addTo(leafMap);for(var mi=0;mi<stops.length;mi++){(function(s,i){var m=L.marker([s.lat,s.lng],{icon:L.divIcon({html:"<div style='width:30px;height:30px;background:#2D5A3D;border:2px solid #C9A96E;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#C9A96E;font-weight:700;font-size:12px;cursor:pointer;box-shadow:0 2px 8px rgba(0,0,0,.5)'>"+s.id+"</div>",className:"",iconSize:[30,30],iconAnchor:[15,15],popupAnchor:[0,-18]})}).addTo(leafMap);m.bindPopup("<div style='font-family:serif;font-size:.95rem;color:#C9A96E;margin-bottom:3px'>"+s.plain+"</div><div style='font-size:.72rem;color:rgba(240,237,228,.45)'>"+s.walkNext+"</div>",{maxWidth:200});m.on("click",function(){var el=document.getElementById("stop-"+s.id);if(el)el.scrollIntoView({behavior:"smooth"});});stopMarkers.push(m);})(stops[mi],mi);}setTimeout(mapFitAll,200);}
+function mapFitAll(){if(!leafMap)return;leafMap.fitBounds(L.latLngBounds(stops.map(function(s){return[s.lat,s.lng];})),{padding:[50,50]});}
+function panMapTo(i){if(!leafMap||i>=stops.length)return;leafMap.panTo([stops[i].lat,stops[i].lng],{animate:true,duration:.8});for(var j=0;j<stopMarkers.length;j++){var el=stopMarkers[j].getElement();if(!el)continue;var d=el.querySelector("div");if(!d)continue;if(j===i){d.style.background="#C9A96E";d.style.color="#1C1C1A";d.style.transform="scale(1.25)";}else{d.style.background="#2D5A3D";d.style.color="#C9A96E";d.style.transform="scale(1)";}}}
+function toggleGPS(){if(gpsActive){stopGPS();return;}if(!navigator.geolocation){document.getElementById("gstat").textContent="GPS not supported.";return;}if(!leafMap){document.getElementById("gstat").textContent="Map not loaded yet.";return;}document.getElementById("gdot").classList.add("live");document.getElementById("gpsMapBtn").textContent="Stop Tracking";document.getElementById("gpsMapBtn").classList.add("on");document.getElementById("gpsHdrBtn").textContent="GPS ON";gpsActive=true;var lastLat=null,lastLng=null;watchId=navigator.geolocation.watchPosition(function(pos){var lat=pos.coords.latitude,lng=pos.coords.longitude;var moved=true;if(lastLat!==null){var dist=leafMap.distance([lastLat,lastLng],[lat,lng]);if(dist<15)moved=false;}if(!userMarker){userMarker=L.marker([lat,lng],{icon:L.divIcon({html:"<div style='width:14px;height:14px;background:#5a9e6f;border:2.5px solid #F0EDE4;border-radius:50%;box-shadow:0 0 0 4px rgba(90,158,111,.35)'></div>",className:"",iconSize:[14,14],iconAnchor:[7,7]}),zIndexOffset:1000}).addTo(leafMap);leafMap.panTo([lat,lng],{animate:true,duration:1.5});}else{userMarker.setLatLng([lat,lng]);if(moved){leafMap.panTo([lat,lng],{animate:true,duration:1.5});}}lastLat=lat;lastLng=lng;var ni=0,md=Infinity;for(var i=0;i<stops.length;i++){var d=leafMap.distance([lat,lng],[stops[i].lat,stops[i].lng]);if(d<md){md=d;ni=i;}}document.getElementById("gstat").textContent="Near Stop "+(ni+1)+": "+stops[ni].plain+", "+Math.round(md)+"m away";},function(err){var msgs={1:"Location permission denied.",2:"Position unavailable.",3:"Request timed out."};document.getElementById("gstat").textContent=msgs[err.code]||err.message;document.getElementById("gdot").classList.remove("live");gpsActive=false;},{enableHighAccuracy:true,maximumAge:5000,timeout:20000});}
+function stopGPS(){if(watchId!==null){navigator.geolocation.clearWatch(watchId);watchId=null;}gpsActive=false;document.getElementById("gdot").classList.remove("live");document.getElementById("gstat").textContent="Tracking stopped.";document.getElementById("gpsMapBtn").textContent="Track My Location";document.getElementById("gpsMapBtn").classList.remove("on");document.getElementById("gpsHdrBtn").textContent="GPS";}
+function setProg(i,pct){var el=document.getElementById("pf-"+i);if(el)el.style.width=Math.min(100,pct)+"%";}
+function setStat(i,m,c){var el=document.getElementById("ps-"+i);if(!el)return;el.textContent=m;el.className="p-stat"+(c?" "+c:"");}
+function setTime(i,cur,tot){var el=document.getElementById("pt-"+i);if(el&&tot)el.textContent=fmtTime(cur)+" / "+fmtTime(tot);}
+function setIcon(i,on){var el=document.getElementById("pi-"+i);if(!el)return;el.innerHTML=on?"<rect x='6' y='4' width='4' height='16'/><rect x='14' y='4' width='4' height='16'/>":"<polygon points='5,3 19,12 5,21'/>";}
+function resetUI(i){setIcon(i,false);setStat(i,"Tap play to listen","");setProg(i,0);}
+function stopAll(){if(currentAudio){currentAudio.pause();currentAudio.currentTime=0;}if(currentIdx!==null)resetUI(currentIdx);currentIdx=null;currentAudio=null;document.getElementById("gbar").classList.remove("up");}
+function changeSpeed(i){if(currentIdx===i&&currentAudio){currentAudio.playbackRate=parseFloat(document.getElementById("spd-"+i).value);}}
+function seekAudio(i,secs){if(currentIdx===i&&currentAudio){var t=currentAudio.currentTime+secs;if(t<0)t=0;if(currentAudio.duration&&t>currentAudio.duration)t=currentAudio.duration;currentAudio.currentTime=t;}}
+function togglePlay(i){
+  if(currentIdx===i&&currentAudio){
+    if(currentAudio.paused){currentAudio.play();setIcon(i,true);setStat(i,"Playing...","on");}
+    else{currentAudio.pause();setIcon(i,false);setStat(i,"Paused, tap to resume","");}
     return;
   }
-  stopAll();
-  curAudio = new Audio(audioSrc);
-  curIdx = i;
-  curAudio.onended = function() { updatePlayBtn(i, false); clearInterval(progTimer); document.getElementById("gTitle").textContent = s.plain; };
-  curAudio.onerror = function() { document.getElementById("p-stat-" + i).textContent = "Audio file not found"; document.getElementById("p-stat-" + i).className = "p-stat er"; };
-  curAudio.play();
-  updatePlayBtn(i, true);
-  startProg(i);
-  document.getElementById("gTitle").textContent = s.plain;
-  document.getElementById("gbar").classList.add("up");
+  stopAll();currentIdx=i;
+  var a=audios[i];if(!a){a=new Audio(stops[i].mp3);audios[i]=a;}
+  a.src=stops[i].mp3;currentAudio=a;
+  a.playbackRate=parseFloat(document.getElementById("spd-"+i).value);
+  a.currentTime=0;
+  setIcon(i,true);setStat(i,"Playing...","on");
+  document.getElementById("gTitle").textContent=stops[i].plain;
+  document.getElementById("gbar").classList.add("up");panMapTo(i);
+  a.ontimeupdate=function(){var dur=a.duration||1;setProg(i,(a.currentTime/dur)*100);setTime(i,a.currentTime,a.duration);};
+  a.onended=function(){setProg(i,100);setIcon(i,false);setStat(i,"Complete, scroll to next stop","ok");document.getElementById("gbar").classList.remove("up");currentIdx=null;currentAudio=null;setTimeout(function(){setProg(i,0);setStat(i,"Tap play to listen","");},4000);};
+  a.onerror=function(){setIcon(i,false);setStat(i,"Audio error, please try again","er");document.getElementById("gbar").classList.remove("up");currentIdx=null;currentAudio=null;};
+  a.play().catch(function(){setStat(i,"Tap play to start audio","");setIcon(i,false);});
 }
-
-function startProg(i) {
-  clearInterval(progTimer);
-  progTimer = setInterval(function() {
-    if (!curAudio) { clearInterval(progTimer); return; }
-    var pct = curAudio.duration ? (curAudio.currentTime / curAudio.duration * 100) : 0;
-    var fill = document.getElementById("pf-" + i);
-    if (fill) fill.style.width = pct + "%";
-    var stat = document.getElementById("p-stat-" + i);
-    if (stat) { stat.textContent = fmtTime(curAudio.currentTime) + " / " + fmtTime(curAudio.duration); stat.className = "p-stat on"; }
-  }, 200);
-}
-
-function fmtTime(s) {
-  if (!s || isNaN(s)) return "0:00";
-  var m = Math.floor(s / 60);
-  var sec = Math.floor(s % 60);
-  return m + ":" + (sec < 10 ? "0" : "") + sec;
-}
-
-function updatePlayBtn(i, playing) {
-  var btn = document.getElementById("pbtn-" + i);
-  if (!btn) return;
-  btn.innerHTML = playing
-    ? '<svg viewBox="0 0 24 24"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>'
-    : '<svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg>';
-}
-
-function seekAudio(i, secs) {
-  if (!curAudio || curIdx !== i) return;
-  curAudio.currentTime = Math.max(0, Math.min(curAudio.duration || 0, curAudio.currentTime + secs));
-}
-
-function setSpeed(i, val) { if (curAudio && curIdx === i) curAudio.playbackRate = parseFloat(val); }
-
-function stopAll() {
-  if (curAudio) { curAudio.pause(); curAudio = null; }
-  if (curIdx >= 0) { updatePlayBtn(curIdx, false); clearInterval(progTimer); curIdx = -1; }
-  document.getElementById("gbar").classList.remove("up");
-}
-
-function applyLocks() {
-  var unlocked = isUnlocked();
-  for (var i = 0; i < stops.length; i++) {
-    var ov = document.getElementById("lock-" + i);
-    if (!ov) continue;
-    if (i >= FREE_STOPS && !unlocked) { ov.style.display = "flex"; }
-    else { ov.style.display = "none"; }
-  }
-}
-
-function buildStops() {
-  var wrap = document.getElementById("stopsWrap");
-  var nav = document.getElementById("stopNav");
-  var html = "";
-  var navHtml = "";
-  for (var i = 0; i < stops.length; i++) {
-    var s = stops[i];
-    var paras = s.script.split("|||");
-    var paraHtml = "";
-    for (var p = 0; p < paras.length; p++) { paraHtml += "<p>" + paras[p] + "</p>"; }
-    html += '<div class="stop" id="stop-' + i + '">';
-    html += '<div class="s-media"><div class="img-wrap" id="iw-' + i + '">';
-    html += '<div class="img-ph" id="ph-' + i + '"><div class="big">' + s.emoji + '</div><div class="lbl">Loading photo</div></div>';
-    html += '<img id="img-' + i + '" alt="' + s.plain + '">';
-    html += '<div class="num-badge">' + s.id + '</div>';
-    if (s.next !== "Final stop") { html += '<div class="next-badge">&#128694; ' + s.next + '</div>'; }
-    if (i >= FREE_STOPS) {
-      html += '<div class="lock-overlay" id="lock-' + i + '" style="display:none;">';
-      html += '<div class="lock-icon">&#128274;</div><h4>Stop ' + s.id + ' is Locked</h4>';
-      html += '<p>Purchase the full tour to unlock all 9 stops.</p>';
-      html += '<button class="unlock-btn" onclick="openModal()">Unlock Full Tour &mdash; &#8364;4.99</button></div>';
-    } else {
-      html += '<div class="lock-overlay" id="lock-' + i + '" style="display:none;"></div>';
-    }
-    html += '</div></div>';
-    html += '<div class="s-body">';
-    html += '<div class="s-tag">' + s.tag + '</div>';
-    html += '<h2 class="s-title">' + s.titleHtml + '</h2>';
-    html += '<div class="s-text">' + paraHtml + '</div>';
-    html += '<div class="tip"><div class="tip-lbl">' + s.tipLabel + '</div><p>' + s.tipText + '</p></div>';
-    html += '<div class="player">';
-    html += '<div class="player-top"><span class="player-lbl">Audio Guide</span><span class="vtag">Stop ' + s.id + ' of ' + stops.length + '</span></div>';
-    html += '<div class="player-row">';
-    html += '<button class="ico-btn" onclick="seekAudio(' + i + ',-15)" title="Rewind 15s"><svg viewBox="0 0 24 24"><path d="M12 5V1L7 6l5 5V7c3.31 0 6 2.69 6 6s-2.69 6-6 6-6-2.69-6-6H4c0 4.42 3.58 8 8 8s8-3.58 8-8-3.58-8-8-8z"/><text x="9" y="14" font-size="5" fill="currentColor">15</text></svg></button>';
-    html += '<button class="play-btn" id="pbtn-' + i + '" onclick="togglePlay(' + i + ')"><svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg></button>';
-    html += '<button class="ico-btn" onclick="seekAudio(' + i + ',15)" title="Forward 15s"><svg viewBox="0 0 24 24"><path d="M12 5V1l5 5-5 5V7c-3.31 0-6 2.69-6 6s2.69 6 6 6 6-2.69 6-6h2c0 4.42-3.58 8-8 8s-8-3.58-8-8 3.58-8 8-8z"/><text x="9" y="14" font-size="5" fill="currentColor">15</text></svg></button>';
-    html += '<div class="p-mid"><div class="prog-track"><div class="prog-fill" id="pf-' + i + '"></div></div>';
-    html += '<div class="p-stat" id="p-stat-' + i + '">Tap play to listen</div></div>';
-    html += '<select class="spd" onchange="setSpeed(' + i + ',this.value)"><option value="1">1x</option><option value="1.25">1.25x</option><option value="1.5">1.5x</option></select>';
-    html += '</div></div>';
-    html += '</div></div>';
-    navHtml += '<button class="ndot" id="nd-' + i + '" onclick="scrollToStop(' + i + ')">' + s.id + '</button>';
-  }
-  wrap.innerHTML = html;
-  nav.innerHTML = navHtml;
-  for (var j = 0; j < stops.length; j++) {
-    loadPhoto(document.getElementById("img-" + j), stops[j].img1, document.getElementById("ph-" + j));
-  }
-  applyLocks();
-}
-
-function scrollToStop(i) {
-  var el = document.getElementById("stop-" + i);
-  if (el) el.scrollIntoView({behavior:"smooth", block:"start"});
-}
-
-function initMap() {
-  leafMap = L.map("map", {zoomControl:true, scrollWheelZoom:false}).setView([50.847, 4.355], 14);
-  L.tileLayer("https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png", {
-    attribution:'&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
-    subdomains:"abcd", maxZoom:19
-  }).addTo(leafMap);
-  var latlngs = [];
-  for (var i = 0; i < stops.length; i++) {
-    latlngs.push([stops[i].lat, stops[i].lng]);
-    var marker = L.marker([stops[i].lat, stops[i].lng], {
-      icon: L.divIcon({
-        className:"",
-        html:'<div style="width:28px;height:28px;background:#2D5A3D;border:2px solid #C9A96E;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:500;color:#C9A96E;font-family:DM Sans,sans-serif;">' + stops[i].id + '</div>',
-        iconSize:[28,28], iconAnchor:[14,14], popupAnchor:[0,-16]
-      })
-    }).addTo(leafMap);
-    marker.bindPopup('<div style="font-size:.8rem;"><strong>' + stops[i].plain + '</strong></div>');
-    stopMarkers.push(marker);
-  }
-  L.polyline(latlngs, {color:"#C9A96E", weight:2, opacity:.45, dashArray:"5,8"}).addTo(leafMap);
-}
-
-function mapFitAll() { if (leafMap) { var bounds = L.latLngBounds(stops.map(function(s){return [s.lat,s.lng];})); leafMap.fitBounds(bounds, {padding:[40,40]}); } }
-
-function toggleGPS() {
-  var btn = document.getElementById("gpsMapBtn");
-  var dot = document.getElementById("gdot");
-  var stat = document.getElementById("gstat");
-  if (gpsActive) {
-    if (watchId) navigator.geolocation.clearWatch(watchId);
-    gpsActive = false;
-    btn.classList.remove("on");
-    dot.classList.remove("live");
-    stat.textContent = "Tap Track My Location to follow your position";
-    if (userMarker) { leafMap.removeLayer(userMarker); userMarker = null; }
-    return;
-  }
-  if (!navigator.geolocation) { stat.textContent = "Geolocation not supported on this device."; return; }
-  gpsActive = true;
-  btn.classList.add("on");
-  dot.classList.add("live");
-  stat.textContent = "Locating...";
-  watchId = navigator.geolocation.watchPosition(function(pos) {
-    var ll = [pos.coords.latitude, pos.coords.longitude];
-    if (!userMarker) {
-      userMarker = L.circleMarker(ll, {radius:8, fillColor:"#4CAF50", fillOpacity:1, color:"#fff", weight:2}).addTo(leafMap);
-    } else { userMarker.setLatLng(ll); }
-    leafMap.setView(ll, 16);
-    stat.textContent = "Live - accuracy " + Math.round(pos.coords.accuracy) + "m";
-  }, function() { stat.textContent = "Could not get your location."; gpsActive = false; btn.classList.remove("on"); dot.classList.remove("live"); }, {enableHighAccuracy:true});
-}
-
-function setupScrollSpy() {
-  window.addEventListener("scroll", function() {
-    for (var i = 0; i < stops.length; i++) {
-      var el = document.getElementById("stop-" + i);
-      if (!el) continue;
-      var rect = el.getBoundingClientRect();
-      var nd = document.getElementById("nd-" + i);
-      if (nd) { if (rect.top < window.innerHeight * 0.5 && rect.bottom > 0) { nd.classList.add("on"); } else { nd.classList.remove("on"); } }
-    }
-  });
-}
-
-document.addEventListener("DOMContentLoaded", function() {
-  buildStops();
-  initMap();
-  setupScrollSpy();
-  document.getElementById("codeInput").addEventListener("keydown", function(e) { if (e.key === "Enter") submitCode(); });
-});
+if(typeof L!=="undefined"){initMap();}else{setTimeout(function(){if(typeof L!=="undefined")initMap();else document.getElementById("map").innerHTML="<div style='display:flex;align-items:center;justify-content:center;height:100%;color:rgba(240,237,228,.3);font-size:.85rem'>Map needs internet connection</div>";},2000);}
+function isUnlocked(){try{return localStorage.getItem(STORAGE_KEY)==="1";}catch(e){return false;}}
+function unlockTour(){try{localStorage.setItem(STORAGE_KEY,"1");}catch(e){}var locks=document.querySelectorAll(".lock-overlay");for(var i=0;i<locks.length;i++)locks[i].remove();var ndots=document.querySelectorAll(".ndot");for(var i=0;i<ndots.length;i++){ndots[i].style.opacity="1";ndots[i].title="";}closeModal();}
+function verifyKey(key,callback){var xhr=new XMLHttpRequest();xhr.open("POST","/api/verify",true);xhr.setRequestHeader("Content-Type","application/json");xhr.onreadystatechange=function(){if(xhr.readyState!==4)return;try{var data=JSON.parse(xhr.responseText);if(data.valid===true){callback(true,null);}else{callback(false,data.error||"Invalid code.");}}catch(e){callback(false,"Verification failed. Please try again.");}};xhr.onerror=function(){callback(false,"Network error. Please try again.");};xhr.send(JSON.stringify({key:key}));}
+function tryCode(){var val=document.getElementById("ucodeIn").value.trim();var msg=document.getElementById("umsg");if(!val){msg.textContent="Please enter a code.";msg.className="umsg er";return;}msg.textContent="Checking...";msg.className="umsg";verifyKey(val,function(ok,errMsg){if(ok){msg.textContent="Code accepted. Unlocking your tour...";msg.className="umsg ok";setTimeout(unlockTour,800);}else{msg.textContent=errMsg||"Invalid code. Check your email and try again.";msg.className="umsg er";}});}
+function autoUnlockFromUrl(){if(isUnlocked())return;var search=window.location.search;if(!search)return;var match=search.match(/[?&]key=([^&]+)/);if(!match)return;var key=decodeURIComponent(match[1]);if(!key)return;verifyKey(key,function(ok){if(ok){unlockTour();try{window.history.replaceState({},"",window.location.pathname);}catch(e){}}});}
+function openModal(){document.getElementById("umodal").classList.add("show");}
+function closeModal(){document.getElementById("umodal").classList.remove("show");}
+document.getElementById("ucodeIn").addEventListener("keydown",function(e){if(e.key==="Enter")tryCode();});
+function applyLocks(){if(isUnlocked())return;var allStops=document.querySelectorAll(".stop");for(var i=0;i<allStops.length;i++){if(i<FREE_STOPS)continue;allStops[i].style.position="relative";var o=document.createElement("div");o.className="lock-overlay";o.innerHTML="<div class='lock-icon'>&#128274;</div><h4>Stop "+(i+1)+" is locked</h4><p>Unlock the full Brussels tour to hear all 9 stops with GPS navigation and narrated audio.</p><button class='unlock-btn' onclick='openModal()'>Unlock Full Tour</button>";allStops[i].appendChild(o);var ndots=document.querySelectorAll(".ndot");if(ndots[i]){ndots[i].style.opacity="0.35";ndots[i].title="Locked";}}}
+autoUnlockFromUrl();
+setTimeout(applyLocks,300);
 </script>
 </body>
 </html>
