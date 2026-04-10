@@ -225,19 +225,15 @@ window.addEventListener('scroll',function(){
   if(logo) logo.classList.toggle('vis', window.scrollY > 300);
 });
 
-/* Wikipedia images */
-var cityImgs=[
-  {id:'valImg',page:'Valencia'},{id:'sevImg',page:'Seville'},
-  {id:'bxlImg',page:'Brussels'},{id:'lisImg',page:'Lisbon'},
-  {id:'lonImg',page:'London'},{id:'parImg',page:'Paris'},
-  {id:'amsImg',page:'Amsterdam'},{id:'bcnImg',page:'Barcelona'}
-];
-cityImgs.forEach(function(c){
-  fetch('https://en.wikipedia.org/api/rest_v1/page/summary/'+c.page,{headers:{'Api-User-Agent':'Stepcast/1.0'}})
-    .then(function(r){return r.json();})
-    .then(function(d){if(d.thumbnail&&d.thumbnail.source)document.getElementById(c.id).src=d.thumbnail.source;})
-    .catch(function(){});
-});
+/* Tour hero images */
+document.getElementById('valImg').src='valencia1.jpg';
+document.getElementById('sevImg').src='seville1.jpg';
+document.getElementById('bxlImg').src='brussels1.jpg';
+document.getElementById('lisImg').src='lisbon1.jpg';
+document.getElementById('lonImg').src='london1.jpg';
+document.getElementById('parImg').src='paris1.jpg';
+document.getElementById('amsImg').src='amsterdam1.jpg';
+document.getElementById('bcnImg').src='barcelona1.jpg';
 
 /* Search */
 var CITIES=[
