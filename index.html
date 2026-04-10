@@ -8,7 +8,7 @@
 <style>
 *{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}body{font-family:'DM Sans',sans-serif;background:#1C1C1A;color:#F0EDE4;min-height:100vh}
 .hdr{position:fixed;top:0;left:0;right:0;z-index:100;padding:1rem 1.5rem;display:flex;align-items:center;justify-content:space-between;transition:background .3s}.hdr.scrolled{background:rgba(28,28,26,.97);border-bottom:1px solid rgba(201,169,110,.15);backdrop-filter:blur(12px)}.logo{font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:600;letter-spacing:.04em;color:#F0EDE4;text-decoration:none}.logo em{color:#C9A96E;font-style:normal}.nav-tag{font-size:.6rem;letter-spacing:.16em;text-transform:uppercase;color:rgba(240,237,228,.3)}
-.hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:6rem 2rem 4rem;background:radial-gradient(ellipse 80% 60% at 50% 40%,rgba(45,90,61,.2) 0%,transparent 65%),#1C1C1A}.eyebrow{font-size:.6rem;font-weight:500;letter-spacing:.28em;text-transform:uppercase;color:#C9A96E;margin-bottom:1.2rem}.hero h1{font-family:'Cormorant Garamond',serif;font-size:clamp(3rem,8vw,6.5rem);font-weight:300;line-height:.95;margin-bottom:1.5rem}.hero h1 em{font-style:italic;color:#C9A96E}.tagline{font-size:1.05rem;font-weight:300;color:rgba(240,237,228,.65);max-width:480px;line-height:1.8;margin-bottom:.7rem}.tagline-sub{font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(240,237,228,.28);margin-bottom:2.5rem}
+.hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:6rem 2rem 4rem;position:relative;overflow:hidden;background:#1C1C1A}.hero-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center top;opacity:.22;z-index:0}.hero-grad{position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 50% 40%,rgba(45,90,61,.25) 0%,transparent 65%),linear-gradient(to bottom,rgba(28,28,26,.4) 0%,rgba(28,28,26,.7) 100%);z-index:1}.hero>*{position:relative;z-index:2}.eyebrow{font-size:.6rem;font-weight:500;letter-spacing:.28em;text-transform:uppercase;color:#C9A96E;margin-bottom:1.2rem}.hero h1{font-family:'Cormorant Garamond',serif;font-size:clamp(3rem,8vw,6.5rem);font-weight:300;line-height:.95;margin-bottom:1.5rem}.hero h1 em{font-style:italic;color:#C9A96E}.tagline{font-size:1.05rem;font-weight:300;color:rgba(240,237,228,.65);max-width:480px;line-height:1.8;margin-bottom:.7rem}.tagline-sub{font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(240,237,228,.28);margin-bottom:2.5rem}
 
 /* SEARCH BAR */
 .search-wrap{position:relative;width:100%;max-width:420px;margin-bottom:2.5rem}.search-input{width:100%;background:rgba(255,255,255,.04);border:1px solid rgba(201,169,110,.25);border-radius:40px;padding:.85rem 3.2rem .85rem 1.4rem;font-family:'DM Sans',sans-serif;font-size:.88rem;color:#F0EDE4;outline:none;transition:border-color .2s,background .2s;letter-spacing:.02em}.search-input::placeholder{color:rgba(240,237,228,.25)}.search-input:focus{border-color:rgba(201,169,110,.6);background:rgba(255,255,255,.06)}.search-icon{position:absolute;right:1.1rem;top:50%;transform:translateY(-50%);color:rgba(201,169,110,.5);font-size:1rem;pointer-events:none}
@@ -29,6 +29,8 @@
   <span class="nav-tag">Walk. Listen. Discover.</span>
 </header>
 <section class="hero">
+  <img class="hero-bg" src="hero.jpg" alt="">
+  <div class="hero-grad"></div>
   <div class="eyebrow">Self-Guided Audio Walking Tours</div>
   <h1>Your city.<br>Your <em>rules.</em></h1>
   <p class="tagline">Walk at your pace. Stop when you want.<br>Listen when you're ready.</p>
@@ -51,7 +53,7 @@
       <div class="card-grad"></div>
       <div class="free-tag">3 Stops Free</div>
       <div class="card-body">
-        <div class="card-region">Spain &mdash; Mediterranean</div>
+        <div class="card-region">Spain</div>
         <div class="card-name"><em>Valencia</em></div>
         <div class="card-pills">
           <span class="pill">9 Stops</span>
@@ -67,7 +69,7 @@
       <div class="card-grad"></div>
       <div class="free-tag">3 Stops Free</div>
       <div class="card-body">
-        <div class="card-region">Spain &mdash; Andalusia</div>
+        <div class="card-region">Spain</div>
         <div class="card-name"><em>Seville</em></div>
         <div class="card-pills">
           <span class="pill">11 Stops</span>
@@ -83,7 +85,7 @@
       <div class="card-grad"></div>
       <div class="free-tag">3 Stops Free</div>
       <div class="card-body">
-        <div class="card-region">Belgium &mdash; Capital of Europe</div>
+        <div class="card-region">Belgium</div>
         <div class="card-name"><em>Brussels</em></div>
         <div class="card-pills">
           <span class="pill">9 Stops</span>
@@ -99,7 +101,7 @@
       <div class="card-grad"></div>
       <div class="free-tag">3 Stops Free</div>
       <div class="card-body">
-        <div class="card-region">Portugal &mdash; City of Seven Hills</div>
+        <div class="card-region">Portugal</div>
         <div class="card-name"><em>Lisbon</em></div>
         <div class="card-pills">
           <span class="pill">10 Stops</span>
@@ -115,7 +117,7 @@
       <div class="card-grad"></div>
       <div class="free-tag">3 Stops Free</div>
       <div class="card-body">
-        <div class="card-region">United Kingdom &mdash; Capital</div>
+        <div class="card-region">United Kingdom</div>
         <div class="card-name">Royal <em>London</em></div>
         <div class="card-pills">
           <span class="pill">9 Stops</span>
@@ -131,7 +133,7 @@
       <div class="card-grad"></div>
       <div class="free-tag">3 Stops Free</div>
       <div class="card-body">
-        <div class="card-region">France &mdash; Capital</div>
+        <div class="card-region">France</div>
         <div class="card-name"><em>Paris</em></div>
         <div class="card-pills">
           <span class="pill">8 Stops</span>
@@ -147,7 +149,7 @@
       <div class="card-grad"></div>
       <div class="free-tag">3 Stops Free</div>
       <div class="card-body">
-        <div class="card-region">Netherlands &mdash; Capital</div>
+        <div class="card-region">Netherlands</div>
         <div class="card-name"><em>Amsterdam</em></div>
         <div class="card-pills">
           <span class="pill">8 Stops</span>
@@ -163,7 +165,7 @@
       <div class="card-grad"></div>
       <div class="free-tag">3 Stops Free</div>
       <div class="card-body">
-        <div class="card-region">Spain &mdash; Catalonia</div>
+        <div class="card-region">Spain</div>
         <div class="card-name">Old <em>Barcelona</em></div>
         <div class="card-pills">
           <span class="pill">8 Stops</span>
