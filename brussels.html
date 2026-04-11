@@ -153,20 +153,24 @@ var leafMap=null,userMarker=null,watchId=null,gpsActive=false,stopMarkers=[];
 function fmtTime(secs){var m=Math.floor(secs/60);var s=Math.floor(secs%60);return m+"m "+(s<10?"0"+s:s)+"s";}
 
 function loadAudioDurations(){
-  var totalSecs=0;var loaded=0;
+  var totalSecs=0;var settled=0;
+  function checkDone(){
+    if(settled===stops.length){
+      var pill=document.getElementById("audioPill");
+      if(pill){var mins=Math.ceil(totalSecs/60);pill.innerHTML="<strong>~"+mins+" min</strong> Audio";}
+    }
+  }
   for(var i=0;i<stops.length;i++){
     (function(s,idx){
       var a=new Audio();audios[idx]=a;
       a.src=s.mp3;a.preload="metadata";
       a.addEventListener("loadedmetadata",function(){
-        totalSecs+=a.duration;loaded++;
+        totalSecs+=a.duration;settled++;
         var el=document.getElementById("adur-"+idx);
         if(el)el.textContent=fmtTime(a.duration);
-        if(loaded===stops.length){
-          var pill=document.getElementById("audioPill");
-          if(pill){var mins=Math.ceil(totalSecs/60);pill.innerHTML="<strong>~"+mins+" min</strong> Audio";}
-        }
+        checkDone();
       });
+      a.addEventListener("error",function(){settled++;checkDone();});
     })(stops[i],i);
   }
 }
