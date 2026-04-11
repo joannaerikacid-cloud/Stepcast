@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Stepcast - Self-Guided Audio Walking Tours</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}body{font-family:'DM Sans',sans-serif;background:#1C1C1A;color:#F0EDE4;min-height:100vh}
+.hdr{position:fixed;top:0;left:0;right:0;z-index:100;padding:1rem 1.5rem;display:flex;align-items:center;justify-content:space-between;transition:background .3s}.hdr.scrolled{background:rgba(28,28,26,.97);border-bottom:1px solid rgba(201,169,110,.15);backdrop-filter:blur(12px)}.logo{font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:600;letter-spacing:.04em;color:#F0EDE4;text-decoration:none;opacity:0;pointer-events:none;transition:opacity .3s}.logo em{color:#C9A96E;font-style:normal}.logo.vis{opacity:1;pointer-events:all}.nav-tag{font-size:.75rem;letter-spacing:.16em;text-transform:uppercase;color:rgba(240,237,228,.3)}.wordmark{font-family:'Cormorant Garamond',serif;font-size:clamp(2.2rem,6vw,4rem);font-weight:300;letter-spacing:.02em;color:#F0EDE4;line-height:1;text-decoration:none;display:block;position:absolute;top:1.2rem;left:1.5rem}.wordmark em{color:#C9A96E;font-style:normal}
+.hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:6rem 2rem 4rem;background:radial-gradient(ellipse 80% 60% at 50% 40%,rgba(45,90,61,.2) 0%,transparent 65%),#1C1C1A;position:relative}.eyebrow{font-size:.6rem;font-weight:500;letter-spacing:.28em;text-transform:uppercase;color:#C9A96E;margin-bottom:1.2rem}.hero h1{font-family:'Cormorant Garamond',serif;font-size:clamp(3rem,8vw,6.5rem);font-weight:300;line-height:.95;margin-bottom:1.5rem}.hero h1 em{font-style:italic;color:#C9A96E}.tagline{font-size:1.05rem;font-weight:300;color:rgba(240,237,228,.65);max-width:480px;line-height:1.8;margin-bottom:.7rem}.tagline-sub{font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(240,237,228,.28);margin-bottom:2.5rem}
+
+/* SEARCH BAR */
+.search-wrap{position:relative;width:100%;max-width:420px;margin-bottom:2.5rem}.search-input{width:100%;background:rgba(255,255,255,.04);border:1px solid rgba(201,169,110,.25);border-radius:40px;padding:.85rem 3.2rem .85rem 1.4rem;font-family:'DM Sans',sans-serif;font-size:.88rem;color:#F0EDE4;outline:none;transition:border-color .2s,background .2s;letter-spacing:.02em}.search-input::placeholder{color:rgba(240,237,228,.25)}.search-input:focus{border-color:rgba(201,169,110,.6);background:rgba(255,255,255,.06)}.search-icon{position:absolute;right:1.1rem;top:50%;transform:translateY(-50%);color:rgba(201,169,110,.5);font-size:1rem;pointer-events:none}
+.search-results{position:absolute;top:calc(100% + .5rem);left:0;right:0;background:#242420;border:1px solid rgba(201,169,110,.2);border-radius:12px;overflow:hidden;z-index:200;display:none;box-shadow:0 8px 32px rgba(0,0,0,.4)}.search-results.show{display:block}.sr-item{display:flex;align-items:center;gap:.9rem;padding:.85rem 1.2rem;text-decoration:none;color:#F0EDE4;transition:background .15s;border-bottom:1px solid rgba(255,255,255,.04)}.sr-item:last-child{border-bottom:none}.sr-item:hover{background:rgba(45,90,61,.3)}.sr-emoji{font-size:1.2rem;width:28px;text-align:center;flex-shrink:0}.sr-name{font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:300}.sr-region{font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;color:#C9A96E;margin-top:.15rem}.sr-not-found{padding:1.2rem;text-align:center}.sr-nf-label{font-size:.78rem;color:rgba(240,237,228,.4);margin-bottom:.7rem}.sr-nf-btn{display:inline-block;background:#2D5A3D;color:#C9A96E;padding:.5rem 1.2rem;border-radius:4px;font-size:.68rem;font-weight:500;letter-spacing:.08em;text-transform:uppercase;border:1px solid rgba(201,169,110,.3);text-decoration:none;transition:background .2s}.sr-nf-btn:hover{background:#3D7A54}
+
+.arrow{font-size:.58rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(240,237,228,.2);display:flex;flex-direction:column;align-items:center;gap:.5rem;animation:nudge 2.2s ease-in-out infinite}.arrow::after{content:'';width:1px;height:28px;background:linear-gradient(to bottom,rgba(201,169,110,.3),transparent)}@keyframes nudge{0%,100%{transform:translateY(0)}50%{transform:translateY(5px)}}
+.tours{padding:3rem 1.5rem 6rem;max-width:1100px;margin:0 auto}.section-lbl{font-size:.58rem;font-weight:500;letter-spacing:.22em;text-transform:uppercase;color:#C9A96E;margin-bottom:1.8rem;text-align:center}.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.2rem}@media(max-width:900px){.grid{grid-template-columns:1fr 1fr}}@media(max-width:520px){.grid{grid-template-columns:1fr}}
+.card{position:relative;border-radius:8px;overflow:hidden;background:#242420;border:1px solid rgba(201,169,110,.15);text-decoration:none;display:block;transition:transform .3s,border-color .3s}.card:hover{transform:translateY(-4px);border-color:rgba(201,169,110,.45)}.card-img{width:100%;height:180px;object-fit:cover;opacity:.45;display:block;background:linear-gradient(135deg,#1a2e22,#1c1c1a);transition:opacity .3s}.card:hover .card-img{opacity:.65}.card-grad{position:absolute;inset:0;background:linear-gradient(to bottom,transparent 20%,rgba(28,28,26,.97) 100%)}.free-tag{position:absolute;top:.9rem;right:.9rem;background:#2D5A3D;color:#C9A96E;font-size:.55rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;padding:.25rem .65rem;border-radius:3px;border:1px solid rgba(201,169,110,.3)}.card-body{position:absolute;bottom:0;left:0;right:0;padding:1.2rem}.card-region{font-size:.52rem;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:#C9A96E;margin-bottom:.3rem}.card-name{font-family:'Cormorant Garamond',serif;font-size:1.7rem;font-weight:300;color:#F0EDE4;margin-bottom:.45rem;line-height:1}.card-name em{font-style:italic;color:#C9A96E}.card-pills{display:flex;gap:.5rem;flex-wrap:wrap;margin-bottom:.75rem}.pill{font-size:.55rem;letter-spacing:.06em;text-transform:uppercase;color:rgba(240,237,228,.35);border:1px solid rgba(240,237,228,.12);border-radius:20px;padding:.18rem .5rem}.card-btn{display:inline-flex;align-items:center;gap:.4rem;background:#2D5A3D;color:#C9A96E;padding:.5rem 1.1rem;border-radius:4px;font-size:.65rem;font-weight:500;letter-spacing:.08em;text-transform:uppercase;border:1px solid rgba(201,169,110,.3);transition:background .2s}.card:hover .card-btn{background:#3D7A54}
+.soon{background:rgba(255,255,255,.02);border:1px dashed rgba(240,237,228,.1);border-radius:8px;display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:240px;gap:.7rem}.soon-emoji{font-size:1.8rem;opacity:.2}.soon-city{font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:300;color:rgba(240,237,228,.2)}.soon-tag{font-size:.54rem;letter-spacing:.16em;text-transform:uppercase;color:rgba(240,237,228,.14)}
+.divider{max-width:1100px;margin:0 auto 1.8rem;padding:0 1.5rem;display:flex;align-items:center;gap:1rem}.divider-line{flex:1;height:1px;background:rgba(201,169,110,.1)}.divider-label{font-size:.58rem;font-weight:500;letter-spacing:.22em;text-transform:uppercase;color:rgba(201,169,110,.4);white-space:nowrap}
+.how{padding:3.5rem 1.5rem 5rem;max-width:660px;margin:0 auto;text-align:center;border-top:1px solid rgba(201,169,110,.1)}.how h2{font-family:'Cormorant Garamond',serif;font-size:clamp(1.8rem,4vw,2.6rem);font-weight:300;margin-bottom:.5rem}.how h2 em{font-style:italic;color:#C9A96E}.how-sub{font-size:.85rem;color:rgba(240,237,228,.4);line-height:1.8;margin-bottom:2.5rem}.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}@media(max-width:500px){.steps{grid-template-columns:1fr}}.step-num{width:34px;height:34px;border-radius:50%;background:rgba(45,90,61,.2);border:1px solid rgba(201,169,110,.3);display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:1rem;color:#C9A96E;margin:0 auto .65rem}.step h4{font-size:.76rem;font-weight:500;margin-bottom:.3rem;color:#F0EDE4}.step p{font-size:.7rem;color:rgba(240,237,228,.35);line-height:1.6}
+.footer{padding:1.8rem;text-align:center;font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(240,237,228,.14);border-top:1px solid rgba(201,169,110,.08)}
+</style>
+</head>
+<body>
+<header class="hdr" id="hdr">
+  <a class="logo" href="index.html">step<em>cast</em></a>
+  <span class="nav-tag">Walk. Listen. Discover.</span>
+</header>
+<section class="hero">
+  <a class="wordmark" href="index.html">step<em>cast</em></a>
+  <div class="eyebrow">Self-Guided Audio Walking Tours</div>
+  <h1>Your city.<br>Your <em>rules.</em></h1>
+  <p class="tagline">Walk at your pace. Stop when you want.<br>Listen when you're ready.</p>
+  <p class="tagline-sub">First 3 stops free &mdash; unlock all stops for just &euro;4.99</p>
+  <p style="font-size:.62rem;letter-spacing:.1em;color:rgba(240,237,228,.2);margin-bottom:2rem;display:flex;align-items:center;justify-content:center;gap:.5rem">
+    <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="opacity:.5"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+    Payments powered by Lemon Squeezy &amp; Stripe
+  </p>
+
+  <div class="search-wrap">
+    <input class="search-input" id="citySearch" type="text" placeholder="Find a city..." autocomplete="off">
+    <span class="search-icon">&#9906;</span>
+    <div class="search-results" id="searchResults"></div>
+  </div>
+
+  <div class="arrow">Or browse below</div>
+</section>
+
+<section class="tours">
+  <div class="section-lbl">Available Now</div>
+  <div class="grid">
+    <a class="card" href="valencia.html">
+      <img class="card-img" id="valImg" alt="Valencia">
+      <div class="card-grad"></div>
+      <div class="free-tag">3 Stops Free</div>
+      <div class="card-body">
+        <div class="card-region">Spain</div>
+        <div class="card-name"><em>Valencia</em></div>
+        <div class="card-pills">
+          <span class="pill">9 Stops</span>
+          <span class="pill">2.5 km</span>
+          <span class="pill">&#x1F6B6; ~40 min</span>
+          <span class="pill">&#x1F3A7; ~14 min</span>
+        </div>
+        <span class="card-btn">Start Tour &#8594;</span>
+      </div>
+    </a>
+    <a class="card" href="seville.html">
+      <img class="card-img" id="sevImg" alt="Seville">
+      <div class="card-grad"></div>
+      <div class="free-tag">3 Stops Free</div>
+      <div class="card-body">
+        <div class="card-region">Spain</div>
+        <div class="card-name"><em>Seville</em></div>
+        <div class="card-pills">
+          <span class="pill">11 Stops</span>
+          <span class="pill">4.5 km</span>
+          <span class="pill">&#x1F6B6; ~55 min</span>
+          <span class="pill">&#x1F3A7; ~17 min</span>
+        </div>
+        <span class="card-btn">Start Tour &#8594;</span>
+      </div>
+    </a>
+    <a class="card" href="brussels.html">
+      <img class="card-img" id="bxlImg" alt="Brussels">
+      <div class="card-grad"></div>
+      <div class="free-tag">3 Stops Free</div>
+      <div class="card-body">
+        <div class="card-region">Belgium</div>
+        <div class="card-name"><em>Brussels</em></div>
+        <div class="card-pills">
+          <span class="pill">9 Stops</span>
+          <span class="pill">3.5 km</span>
+          <span class="pill">&#x1F6B6; ~52 min</span>
+          <span class="pill">&#x1F3A7; ~13 min</span>
+        </div>
+        <span class="card-btn">Start Tour &#8594;</span>
+      </div>
+    </a>
+    <a class="card" href="lisbon.html">
+      <img class="card-img" id="lisImg" alt="Lisbon">
+      <div class="card-grad"></div>
+      <div class="free-tag">3 Stops Free</div>
+      <div class="card-body">
+        <div class="card-region">Portugal</div>
+        <div class="card-name"><em>Lisbon</em></div>
+        <div class="card-pills">
+          <span class="pill">10 Stops</span>
+          <span class="pill">5 km</span>
+          <span class="pill">&#x1F6B6; ~65 min</span>
+          <span class="pill">&#x1F3A7; ~19 min</span>
+        </div>
+        <span class="card-btn">Start Tour &#8594;</span>
+      </div>
+    </a>
+    <a class="card" href="london.html">
+      <img class="card-img" id="lonImg" alt="London">
+      <div class="card-grad"></div>
+      <div class="free-tag">3 Stops Free</div>
+      <div class="card-body">
+        <div class="card-region">United Kingdom</div>
+        <div class="card-name">Royal <em>London</em></div>
+        <div class="card-pills">
+          <span class="pill">9 Stops</span>
+          <span class="pill">3.5 km</span>
+          <span class="pill">&#x1F6B6; ~45 min</span>
+          <span class="pill">&#x1F3A7; ~17 min</span>
+        </div>
+        <span class="card-btn">Start Tour &#8594;</span>
+      </div>
+    </a>
+    <a class="card" href="paris.html">
+      <img class="card-img" id="parImg" alt="Paris">
+      <div class="card-grad"></div>
+      <div class="free-tag">3 Stops Free</div>
+      <div class="card-body">
+        <div class="card-region">France</div>
+        <div class="card-name"><em>Paris</em></div>
+        <div class="card-pills">
+          <span class="pill">8 Stops</span>
+          <span class="pill">4 km</span>
+          <span class="pill">&#x1F6B6; ~50 min</span>
+          <span class="pill">&#x1F3A7; ~14 min</span>
+        </div>
+        <span class="card-btn">Start Tour &#8594;</span>
+      </div>
+    </a>
+    <a class="card" href="amsterdam.html">
+      <img class="card-img" id="amsImg" alt="Amsterdam">
+      <div class="card-grad"></div>
+      <div class="free-tag">3 Stops Free</div>
+      <div class="card-body">
+        <div class="card-region">Netherlands</div>
+        <div class="card-name"><em>Amsterdam</em></div>
+        <div class="card-pills">
+          <span class="pill">8 Stops</span>
+          <span class="pill">3.5 km</span>
+          <span class="pill">&#x1F6B6; ~52 min</span>
+          <span class="pill">&#x1F3A7; ~16 min</span>
+        </div>
+        <span class="card-btn">Start Tour &#8594;</span>
+      </div>
+    </a>
+    <a class="card" href="barcelona.html">
+      <img class="card-img" id="bcnImg" alt="Barcelona">
+      <div class="card-grad"></div>
+      <div class="free-tag">3 Stops Free</div>
+      <div class="card-body">
+        <div class="card-region">Spain</div>
+        <div class="card-name">Old <em>Barcelona</em></div>
+        <div class="card-pills">
+          <span class="pill">8 Stops</span>
+          <span class="pill">3.5 km</span>
+          <span class="pill">&#x1F6B6; ~40 min</span>
+          <span class="pill">&#x1F3A7; ~15 min</span>
+        </div>
+        <span class="card-btn">Start Tour &#8594;</span>
+      </div>
+    </a>
+  </div>
+  <br><br>
+  <div class="divider">
+    <div class="divider-line"></div>
+    <div class="divider-label">Coming Soon</div>
+    <div class="divider-line"></div>
+  </div>
+  <div class="grid">
+    <div class="soon"><div class="soon-emoji">&#127963;</div><div class="soon-city">Berlin</div><div class="soon-tag">Coming Soon</div></div>
+    <div class="soon"><div class="soon-emoji">&#127963;</div><div class="soon-city">Rome</div><div class="soon-tag">Coming Soon</div></div>
+    <div class="soon"><div class="soon-emoji">&#127963;</div><div class="soon-city">Bordeaux</div><div class="soon-tag">Coming Soon</div></div>
+    <div class="soon"><div class="soon-emoji">&#127963;</div><div class="soon-city">Prague</div><div class="soon-tag">Coming Soon</div></div>
+    <div class="soon"><div class="soon-emoji">&#127968;</div><div class="soon-city" style="font-size:1.1rem">London: City &amp; South Bank</div><div class="soon-tag">Coming Soon</div></div>
+    <div class="soon"><div class="soon-emoji">&#127963;</div><div class="soon-city" style="font-size:1.1rem">Barcelona: Gaud&iacute; &amp; Modernisme</div><div class="soon-tag">Coming Soon</div></div>
+  </div>
+</section>
+
+<section class="how">
+  <h2>How it <em>works</em></h2>
+  <p class="how-sub">No app to download. No account needed. Just open in your browser, put in your earphones, and walk at your own pace.</p>
+  <div class="steps">
+    <div class="step"><div class="step-num">1</div><h4>Choose a city</h4><p>Pick any tour. The first three stops are completely free.</p></div>
+    <div class="step"><div class="step-num">2</div><h4>Walk and listen</h4><p>Tap play at each stop. GPS tracks you on the map in real time.</p></div>
+    <div class="step"><div class="step-num">3</div><h4>Your pace, your call</h4><p>Stop for coffee, linger at a square, skip a stop. The tour waits for you.</p></div>
+  </div>
+</section>
+
+<section style="padding:2.5rem 1.5rem;text-align:center;border-top:1px solid rgba(201,169,110,.08)">
+  <div style="font-size:.55rem;font-weight:500;letter-spacing:.22em;text-transform:uppercase;color:rgba(201,169,110,.5);margin-bottom:1rem">Follow Our Journey</div>
+  <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap">
+    <a href="https://www.instagram.com/stepcasttours?igsh=MXB5ZjJobXU5dm1iYQ%3D%3D&utm_source=qr" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:.7rem;background:rgba(201,169,110,.06);border:1px solid rgba(201,169,110,.2);border-radius:40px;padding:.65rem 1.4rem;text-decoration:none;transition:border-color .2s">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#C9A96E" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="#C9A96E" stroke="none"/></svg>
+      <span style="font-family:'Cormorant Garamond',serif;font-size:1.05rem;font-weight:300;color:#C9A96E;letter-spacing:.04em">@stepcasttours</span>
+    </a>
+    <a href="https://www.tiktok.com/@stepcasttours" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:.7rem;background:rgba(201,169,110,.06);border:1px solid rgba(201,169,110,.2);border-radius:40px;padding:.65rem 1.4rem;text-decoration:none;transition:border-color .2s">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#C9A96E" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"/></svg>
+      <span style="font-family:'Cormorant Garamond',serif;font-size:1.05rem;font-weight:300;color:#C9A96E;letter-spacing:.04em">@stepcasttours</span>
+    </a>
+  </div>
+</section>
+
+<div class="footer">
+  &copy; 2026 Stepcast &mdash; Newbury, United Kingdom &mdash;
+  <a href="contact.html" style="color:rgba(201,169,110,.3);text-decoration:none">Contact</a> &mdash;
+  <a href="privacy.html" style="color:rgba(201,169,110,.3);text-decoration:none">Privacy Policy</a> &mdash;
+  <a href="terms.html" style="color:rgba(201,169,110,.3);text-decoration:none">Terms &amp; Conditions</a>
+</div>
+
+<script>
+window.addEventListener('scroll',function(){
+  var scrolled = window.scrollY > 60;
+  document.getElementById('hdr').classList.toggle('scrolled', scrolled);
+  var logo = document.querySelector('.logo');
+  if(logo) logo.classList.toggle('vis', window.scrollY > 300);
+});
+
+/* Tour hero images */
+document.getElementById('valImg').src='val-s1a.jpg';
+document.getElementById('sevImg').src='seville1.jpg';
+document.getElementById('bxlImg').src='brussels1.jpg';
+document.getElementById('lisImg').src='lisbon1.jpg';
+document.getElementById('lonImg').src='london1a.jpg';
+document.getElementById('parImg').src='paris1.jpg';
+document.getElementById('amsImg').src='amsterdam1.jpg';
+document.getElementById('bcnImg').src='barcelona1.jpg';
+
+/* Search */
+var CITIES=[
+  {name:'Valencia',region:'Spain — Mediterranean',emoji:'&#127466;&#127480;',url:'valencia.html'},
+  {name:'Seville',region:'Spain — Andalusia',emoji:'&#127466;&#127480;',url:'seville.html'},
+  {name:'Brussels',region:'Belgium — Capital of Europe',emoji:'&#127463;&#127466;',url:'brussels.html'},
+  {name:'Lisbon',region:'Portugal — City of Seven Hills',emoji:'&#127477;&#127481;',url:'lisbon.html'},
+  {name:'London: Royal London',region:'United Kingdom — Capital',emoji:'&#127468;&#127463;',url:'london.html'},
+  {name:'Paris',region:'France — Capital',emoji:'&#127467;&#127479;',url:'paris.html'},
+  {name:'Amsterdam',region:'Netherlands — Capital',emoji:'&#127475;&#127473;',url:'amsterdam.html'},
+  {name:'Barcelona: Old Barcelona',region:'Spain — Catalonia',emoji:'&#127466;&#127480;',url:'barcelona.html'}
+];
+
+var searchInput=document.getElementById('citySearch');
+var searchResults=document.getElementById('searchResults');
+
+searchInput.addEventListener('input',function(){
+  var q=this.value.trim().toLowerCase();
+  if(!q){searchResults.classList.remove('show');searchResults.innerHTML='';return;}
+  var matches=CITIES.filter(function(c){return c.name.toLowerCase().indexOf(q)>-1;});
+  searchResults.innerHTML='';
+  if(matches.length>0){
+    matches.forEach(function(c){
+      var a=document.createElement('a');
+      a.className='sr-item';
+      a.href=c.url;
+      a.innerHTML='<span class="sr-emoji">'+c.emoji+'</span><div><div class="sr-name">'+c.name+'</div><div class="sr-region">'+c.region+'</div></div>';
+      searchResults.appendChild(a);
+    });
+  } else {
+    var city=this.value.trim();
+    searchResults.innerHTML='<div class="sr-not-found"><div class="sr-nf-label">No tour found for <strong style="color:#F0EDE4">'+city+'</strong> yet.</div><a class="sr-nf-btn" href="contact.html?city='+encodeURIComponent(city)+'">&#43; Request this city</a></div>';
+  }
+  searchResults.classList.add('show');
+});
+
+document.addEventListener('click',function(e){
+  if(!e.target.closest('.search-wrap')){
+    searchResults.classList.remove('show');
+  }
+});
+
+searchInput.addEventListener('keydown',function(e){
+  if(e.key==='Escape'){searchResults.classList.remove('show');}
+  if(e.key==='Enter'){
+    var first=searchResults.querySelector('.sr-item');
+    if(first)window.location.href=first.href;
+  }
+});
+</script>
+</body>
+</html>
