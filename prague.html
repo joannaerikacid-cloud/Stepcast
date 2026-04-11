@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Stepcast - Prague Walking Tour</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+.leaflet-pane,.leaflet-tile,.leaflet-marker-icon,.leaflet-marker-shadow,.leaflet-tile-container,.leaflet-pane>svg,.leaflet-pane>canvas,.leaflet-zoom-box,.leaflet-image-layer,.leaflet-layer{position:absolute;left:0;top:0}.leaflet-container{overflow:hidden}.leaflet-tile,.leaflet-marker-icon,.leaflet-marker-shadow{user-select:none;-webkit-user-drag:none}.leaflet-tile::selection{background:transparent}.leaflet-layer{width:100%;height:100%}.leaflet-container.leaflet-touch-zoom{touch-action:pan-x pan-y}.leaflet-container.leaflet-touch-drag{touch-action:none}.leaflet-container{-webkit-tap-highlight-color:transparent}.leaflet-tile{filter:inherit;visibility:hidden}.leaflet-tile-loaded{visibility:inherit}.leaflet-pane{z-index:400}.leaflet-tile-pane{z-index:200}.leaflet-overlay-pane{z-index:400}.leaflet-shadow-pane{z-index:500}.leaflet-marker-pane{z-index:600}.leaflet-popup-pane{z-index:700}.leaflet-map-pane canvas{z-index:1}.leaflet-map-pane svg{z-index:2}.leaflet-control{position:relative;z-index:800;pointer-events:auto}.leaflet-top,.leaflet-bottom{position:absolute;z-index:1000;pointer-events:none}.leaflet-top{top:0}.leaflet-right{right:0}.leaflet-bottom{bottom:0}.leaflet-left{left:0}.leaflet-control{float:left;clear:both}.leaflet-right .leaflet-control{float:right}.leaflet-top .leaflet-control{margin-top:10px}.leaflet-bottom .leaflet-control{margin-bottom:10px}.leaflet-left .leaflet-control{margin-left:10px}.leaflet-right .leaflet-control{margin-right:10px}.leaflet-fade-anim .leaflet-popup{opacity:0;transition:opacity .2s linear}.leaflet-fade-anim .leaflet-map-pane .leaflet-popup{opacity:1}.leaflet-zoom-animated{transform-origin:0 0}.leaflet-zoom-anim .leaflet-zoom-animated{transition:transform .25s cubic-bezier(0,0,.25,1)}.leaflet-zoom-anim .leaflet-tile,.leaflet-pan-anim .leaflet-tile{transition:none}.leaflet-interactive{cursor:pointer}.leaflet-grab{cursor:grab}.leaflet-popup-pane,.leaflet-control{cursor:auto}.leaflet-dragging .leaflet-grab{cursor:grabbing}.leaflet-marker-icon,.leaflet-marker-shadow,.leaflet-image-layer,.leaflet-pane>svg path,.leaflet-tile-container{pointer-events:none}.leaflet-marker-icon.leaflet-interactive,.leaflet-image-layer.leaflet-interactive,.leaflet-pane>svg path.leaflet-interactive{pointer-events:auto}.leaflet-container{background:#1C1C1A}.leaflet-bar{box-shadow:0 1px 5px rgba(0,0,0,.65);border-radius:4px}.leaflet-bar a,.leaflet-bar a:hover{background-color:#2D3B2D;border-bottom:1px solid #1C1C1A;width:26px;height:26px;line-height:26px;display:block;text-align:center;text-decoration:none;color:#C9A96E}.leaflet-bar a:first-child{border-top-left-radius:4px;border-top-right-radius:4px}.leaflet-bar a:last-child{border-bottom-left-radius:4px;border-bottom-right-radius:4px;border-bottom:none}.leaflet-touch .leaflet-bar a{width:30px;height:30px;line-height:30px}.leaflet-control-zoom-in,.leaflet-control-zoom-out{font:bold 18px 'Lucida Console',Monaco,monospace;text-indent:1px}.leaflet-container .leaflet-control-attribution{background:rgba(28,28,26,.7);margin:0;font-size:11px;color:rgba(240,237,228,.4)}.leaflet-control-attribution a{color:#C9A96E;text-decoration:none}.leaflet-popup-content-wrapper,.leaflet-popup-tip{background:#2D3B2D;color:#F0EDE4;box-shadow:0 3px 14px rgba(0,0,0,.5)}.leaflet-container a.leaflet-popup-close-button{position:absolute;top:0;right:0;border:none;width:24px;height:24px;font:16px/24px Tahoma,Verdana,sans-serif;color:rgba(240,237,228,.4);text-decoration:none;background:transparent}.leaflet-div-icon{background:transparent;border:none}.leaflet-popup-content{margin:12px 18px;line-height:1.4;font-size:13px;min-height:1px}.leaflet-popup-tip-container{width:40px;height:20px;position:absolute;left:50%;margin-left:-20px;overflow:hidden;pointer-events:none}.leaflet-popup-tip{width:17px;height:17px;padding:1px;margin:-10px auto 0;pointer-events:none;transform:rotate(45deg)}
+*{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}body{font-family:'DM Sans',sans-serif;background:#1C1C1A;color:#F0EDE4;overflow-x:hidden}
+.hdr{position:fixed;top:0;left:0;right:0;z-index:500;padding:.85rem 1.5rem;display:flex;align-items:center;justify-content:space-between;transition:background .3s}.hdr.scrolled{background:rgba(28,28,26,.97);border-bottom:1px solid rgba(201,169,110,.15);backdrop-filter:blur(12px)}.logo{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:600;letter-spacing:.04em;text-decoration:none;color:#F0EDE4}.logo em{color:#C9A96E;font-style:normal}.hbtn{background:transparent;border:1px solid rgba(201,169,110,.3);border-radius:4px;padding:.32rem .75rem;font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(240,237,228,.45);cursor:pointer;font-family:'DM Sans',sans-serif}.back-btn{background:transparent;border:1px solid rgba(201,169,110,.3);border-radius:4px;padding:.32rem .75rem;font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(240,237,228,.45);cursor:pointer;font-family:'DM Sans',sans-serif;text-decoration:none}
+.hero{position:relative;height:100vh;min-height:-webkit-fill-available;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;overflow:hidden;background:#1C2B1E}.hero-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.38}.hero-grad{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(28,28,26,.15),rgba(28,28,26,.75))}.hc{position:relative;z-index:2;padding:2rem;max-width:660px}.eyebrow{font-size:.63rem;font-weight:500;letter-spacing:.28em;text-transform:uppercase;color:#C9A96E;margin-bottom:1rem}.hero h1{font-family:'Cormorant Garamond',serif;font-size:clamp(3.5rem,9vw,7rem);font-weight:300;line-height:.91;margin-bottom:1.3rem}.hero h1 em{font-style:italic;color:#C9A96E}.hero-sub{font-size:.98rem;font-weight:300;color:rgba(240,237,228,.65);max-width:420px;margin:0 auto 2.3rem;line-height:1.7}.hero-pills{display:flex;gap:.75rem;justify-content:center;flex-wrap:wrap;margin-bottom:2.6rem}.hpill{font-size:.66rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(240,237,228,.38);border:1px solid rgba(240,237,228,.12);border-radius:30px;padding:.3rem .82rem}.hpill strong{color:#F0EDE4;font-weight:500}.btn-begin{display:inline-flex;align-items:center;gap:.55rem;background:#2D5A3D;border:1px solid #C9A96E;color:#C9A96E;padding:.9rem 2.2rem;border-radius:4px;font-size:.8rem;font-weight:500;letter-spacing:.09em;text-transform:uppercase;cursor:pointer;font-family:'DM Sans',sans-serif}.scroll-cue{position:absolute;bottom:1.8rem;left:50%;transform:translateX(-50%);font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(240,237,228,.22);display:flex;flex-direction:column;align-items:center;gap:.42rem;animation:nudge 2.2s ease-in-out infinite}.scroll-cue::after{content:'';width:1px;height:32px;background:linear-gradient(to bottom,rgba(240,237,228,.2),transparent)}@keyframes nudge{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(5px)}}
+.map-sec{background:#161816;border-bottom:1px solid rgba(201,169,110,.1)}.map-hdr{max-width:1100px;margin:0 auto;padding:2rem 1.5rem 1.2rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem}.map-hdr h3{font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:300;color:#F0EDE4}.map-hdr h3 em{font-style:italic;color:#C9A96E}.map-controls{display:flex;gap:.6rem;flex-wrap:wrap}.mbtn{background:rgba(45,90,61,.3);border:1px solid rgba(201,169,110,.25);border-radius:5px;padding:.42rem .95rem;font-size:.7rem;letter-spacing:.08em;text-transform:uppercase;color:#C9A96E;cursor:pointer;font-family:'DM Sans',sans-serif}.mbtn.on{background:#2D5A3D;color:#C9A96E;border-color:#C9A96E}#map{height:420px;width:100%;position:relative;z-index:1}.map-foot{max-width:1100px;margin:0 auto;padding:.75rem 1.5rem;font-size:.7rem;color:rgba(240,237,228,.3);display:flex;align-items:center;gap:.5rem}.gdot{width:8px;height:8px;border-radius:50%;background:rgba(201,169,110,.3);flex-shrink:0}.gdot.live{background:#5a9e6f;animation:gpulse 1.5s ease-in-out infinite}@keyframes gpulse{0%,100%{opacity:1}50%{opacity:.3}}
+.stop-nav{position:sticky;top:0;z-index:100;background:rgba(28,28,26,.97);backdrop-filter:blur(14px);border-bottom:1px solid rgba(201,169,110,.12);padding:.72rem 1.5rem;display:flex;align-items:center;gap:.42rem;overflow-x:auto;scrollbar-width:none}.stop-nav::-webkit-scrollbar{display:none}.ndot{flex-shrink:0;width:30px;height:30px;border-radius:50%;border:1.5px solid rgba(201,169,110,.22);background:transparent;color:rgba(240,237,228,.28);font-size:.67rem;font-weight:500;cursor:pointer;transition:all .2s;display:flex;align-items:center;justify-content:center}.ndot.on{background:#2D5A3D;border-color:#C9A96E;color:#C9A96E}.nlbl{font-size:.67rem;color:rgba(240,237,228,.28);letter-spacing:.06em;white-space:nowrap;margin-left:.35rem}
+.stop{max-width:1100px;margin:0 auto;padding:5rem 1.5rem;display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start;border-bottom:1px solid rgba(255,255,255,.04)}.stop:nth-child(even) .s-media{order:2}.stop:nth-child(even) .s-body{order:1}@media(max-width:768px){.stop{grid-template-columns:1fr;gap:2.5rem;padding:3.5rem 1.2rem}.stop:nth-child(even) .s-media,.stop:nth-child(even) .s-body{order:unset}#map{height:300px}}@media(max-width:420px){.ico-btn{width:25px;height:25px}.spd{font-size:.58rem;padding:.18rem .25rem}.play-btn{width:40px;height:40px}.seek-btn{font-size:.55rem;padding:.18rem .3rem}}
+.img-wrap{position:relative;border-radius:5px;overflow:hidden;background:#1C2B1E;transition:aspect-ratio .4s ease}.img-wrap.is-landscape{aspect-ratio:4/3}.img-wrap.is-portrait{aspect-ratio:3/4}.img-wrap img.slide{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;opacity:0;transition:opacity .5s}.img-wrap img.slide.vis{opacity:1}.num-badge{position:absolute;top:-1rem;left:-1rem;width:3.3rem;height:3.3rem;background:#2D5A3D;border:1.5px solid #C9A96E;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:1.35rem;font-weight:600;color:#C9A96E;z-index:2;box-shadow:0 4px 20px rgba(0,0,0,.4)}.next-badge{position:absolute;top:.75rem;right:.75rem;background:rgba(28,28,26,.88);border:1px solid rgba(201,169,110,.2);border-radius:3px;padding:.3rem .65rem;font-size:.6rem;letter-spacing:.06em;color:#C9A96E;white-space:nowrap;z-index:2}
+.arr-btn{position:absolute;top:50%;transform:translateY(-50%);z-index:3;background:rgba(28,28,26,.75);border:1px solid rgba(201,169,110,.25);border-radius:50%;width:34px;height:34px;display:flex;align-items:center;justify-content:center;cursor:pointer;color:#C9A96E;font-size:1.1rem}.arr-btn:hover{background:rgba(45,90,61,.85)}.arr-prev{left:.6rem}.arr-next{right:.6rem}.slide-dots{position:absolute;bottom:.6rem;left:50%;transform:translateX(-50%);display:flex;gap:.35rem;z-index:3}.sdot{width:5px;height:5px;border-radius:50%;background:rgba(240,237,228,.25);transition:background .2s}.sdot.on{background:#C9A96E}
+.photo-credit{font-size:.57rem;color:rgba(240,237,228,.22);text-align:right;padding:.28rem .5rem;letter-spacing:.02em;font-style:italic}.photo-credit a{color:rgba(201,169,110,.4);text-decoration:none}
+.player{background:rgba(45,90,61,.12);border:1px solid rgba(201,169,110,.14);border-radius:8px;padding:1rem 1.2rem;margin-top:.8rem;min-width:0;overflow:hidden}.player-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:.7rem}.player-lbl{font-size:.54rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(240,237,228,.3)}.vtag{font-size:.54rem;color:#C9A96E;background:rgba(201,169,110,.08);border:1px solid rgba(201,169,110,.18);padding:.13rem .48rem;border-radius:20px}.player-row{display:flex;align-items:center;gap:.5rem;min-width:0}.play-btn{width:44px;height:44px;border-radius:50%;background:#2D5A3D;border:1.5px solid #C9A96E;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0}.play-btn svg{width:16px;height:16px;fill:#C9A96E}.p-mid{flex:1;min-width:0}.prog-track{height:3px;background:rgba(255,255,255,.06);border-radius:2px;overflow:hidden;margin-bottom:.35rem}.prog-fill{height:100%;background:#C9A96E;border-radius:2px;width:0%;transition:width .3s linear}.p-time{font-size:.6rem;color:rgba(240,237,228,.3);margin-bottom:.2rem}.p-stat{font-size:.65rem;color:rgba(240,237,228,.3);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.p-stat.on{color:#C9A96E}.p-stat.ok{color:rgba(100,200,130,.75)}.p-stat.er{color:rgba(220,100,80,.75)}.spd{background:transparent;border:1px solid rgba(255,255,255,.08);border-radius:4px;color:rgba(240,237,228,.35);font-size:.65rem;padding:.25rem .4rem;cursor:pointer;font-family:'DM Sans',sans-serif}.spd option{background:#1C1C1A}.ico-btn{width:30px;height:30px;border-radius:50%;background:transparent;border:1px solid rgba(255,255,255,.08);cursor:pointer;display:flex;align-items:center;justify-content:center;color:rgba(240,237,228,.3);flex-shrink:0}.ico-btn svg{width:11px;height:11px;fill:currentColor}.seek-btn{background:transparent;border:1px solid rgba(255,255,255,.08);border-radius:4px;color:rgba(240,237,228,.35);font-size:.6rem;padding:.2rem .3rem;cursor:pointer;font-family:'DM Sans',sans-serif;line-height:1;min-width:0}
+.s-body{padding-top:.5rem}.s-tag{font-size:.56rem;font-weight:500;letter-spacing:.22em;text-transform:uppercase;color:#C9A96E;margin-bottom:.48rem}.s-title{font-family:'Cormorant Garamond',serif;font-size:clamp(1.8rem,3.5vw,2.5rem);font-weight:300;line-height:1.07;margin-bottom:1.15rem;color:#F0EDE4}.s-title em{font-style:italic;color:#C9A96E}.s-text{font-size:.89rem;line-height:1.92;color:rgba(240,237,228,.68);font-weight:300}.s-text p{margin-bottom:.92rem}.s-text p:last-child{margin-bottom:0}.tip{margin-top:1.4rem;border-left:2px solid #2D5A3D;padding:.82rem 1.05rem;background:rgba(45,90,61,.1);border-radius:0 5px 5px 0}.tip-lbl{font-size:.55rem;font-weight:500;letter-spacing:.22em;text-transform:uppercase;color:#C9A96E;margin-bottom:.3rem}.tip p{font-size:.8rem;color:rgba(240,237,228,.5);line-height:1.65}
+.map-back-btn{display:inline-flex;align-items:center;gap:.45rem;margin-top:1.6rem;background:transparent;border:1px solid rgba(201,169,110,.22);border-radius:4px;padding:.5rem 1rem;font-size:.68rem;letter-spacing:.08em;text-transform:uppercase;color:rgba(240,237,228,.38);cursor:pointer;font-family:'DM Sans',sans-serif}.map-back-btn:hover{border-color:#C9A96E;color:#C9A96E}
+.lock-overlay{position:absolute;inset:0;z-index:10;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1rem;background:rgba(20,24,20,.94);backdrop-filter:blur(8px);border-radius:5px;border:1px solid rgba(201,169,110,.18);padding:2rem;text-align:center}.lock-overlay .lock-icon{font-size:2rem}.lock-overlay h4{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:300;color:#F0EDE4}.lock-overlay p{font-size:.72rem;color:rgba(240,237,228,.42);line-height:1.6;max-width:260px}.unlock-btn{background:#2D5A3D;border:1px solid #C9A96E;color:#C9A96E;border-radius:4px;padding:.75rem 1.8rem;font-size:.78rem;font-weight:500;letter-spacing:.08em;text-transform:uppercase;cursor:pointer;font-family:'DM Sans',sans-serif}
+.umodal{position:fixed;inset:0;z-index:9999;background:rgba(10,12,10,.96);display:flex;align-items:center;justify-content:center;padding:1.5rem;opacity:0;pointer-events:none;transition:opacity .3s}.umodal.show{opacity:1;pointer-events:all}.umbox{background:#1C2B1E;border:1px solid rgba(201,169,110,.28);border-radius:10px;padding:2.2rem;max-width:420px;width:100%;text-align:center}.umbox h2{font-family:'Cormorant Garamond',serif;font-size:1.7rem;font-weight:300;margin-bottom:.4rem;color:#F0EDE4}.city-name{color:#C9A96E;font-style:italic}.umbox>p{font-size:.8rem;color:rgba(240,237,228,.42);line-height:1.7;margin-bottom:1.4rem}.buy-btn{width:100%;padding:.92rem;background:#2D5A3D;border:1.5px solid #C9A96E;border-radius:5px;color:#C9A96E;font-family:'DM Sans',sans-serif;font-size:.9rem;font-weight:500;letter-spacing:.06em;text-transform:uppercase;cursor:pointer;text-decoration:none;display:block;margin-bottom:1.2rem}.udivider{display:flex;align-items:center;gap:.8rem;margin:1rem 0}.udivider::before,.udivider::after{content:'';flex:1;height:1px;background:rgba(240,237,228,.07)}.udivider span{font-size:.62rem;color:rgba(240,237,228,.2);letter-spacing:.1em;text-transform:uppercase}.ucode-in{width:100%;padding:.82rem 1rem;background:rgba(255,255,255,.04);border:1px solid rgba(201,169,110,.22);border-radius:5px;color:#F0EDE4;font-family:'DM Sans',sans-serif;font-size:.9rem;margin-bottom:.7rem;outline:none;text-align:center;letter-spacing:.08em}.ucode-in::placeholder{color:rgba(240,237,228,.18)}.ubtn-go{width:100%;padding:.88rem;background:transparent;border:1px solid rgba(201,169,110,.3);border-radius:5px;color:#C9A96E;font-family:'DM Sans',sans-serif;font-size:.84rem;font-weight:500;letter-spacing:.08em;text-transform:uppercase;cursor:pointer}.umsg{font-size:.75rem;margin-top:.6rem;min-height:1.2rem}.umsg.ok{color:rgba(100,200,130,.85)}.umsg.er{color:rgba(220,100,80,.75)}.ucancel{background:none;border:none;color:rgba(240,237,228,.2);font-size:.7rem;cursor:pointer;margin-top:.7rem;font-family:'DM Sans',sans-serif;text-decoration:underline;display:block;width:100%}
+.gbar{position:fixed;bottom:0;left:0;right:0;z-index:600;background:rgba(20,24,20,.97);backdrop-filter:blur(18px);border-top:1px solid rgba(201,169,110,.15);padding:.78rem 1.5rem;display:flex;align-items:center;gap:.9rem;transform:translateY(100%);transition:transform .3s ease}.gbar.up{transform:translateY(0)}.wave{display:flex;align-items:center;gap:2px;height:18px;flex-shrink:0}.wb{width:3px;border-radius:2px;background:#C9A96E;animation:wv .7s ease-in-out infinite}.wb:nth-child(1){height:5px}.wb:nth-child(2){height:10px;animation-delay:.1s}.wb:nth-child(3){height:18px;animation-delay:.2s}.wb:nth-child(4){height:10px;animation-delay:.3s}.wb:nth-child(5){height:5px;animation-delay:.4s}@keyframes wv{0%,100%{transform:scaleY(.28)}50%{transform:scaleY(1)}}.g-info{flex:1;min-width:0}.g-lbl{font-size:.53rem;letter-spacing:.15em;text-transform:uppercase;color:#C9A96E}.g-title{font-family:'Cormorant Garamond',serif;font-size:.95rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:#F0EDE4}.g-stop{background:transparent;border:1px solid rgba(201,169,110,.2);border-radius:4px;color:rgba(240,237,228,.38);padding:.35rem .8rem;font-size:.66rem;cursor:pointer;font-family:'DM Sans',sans-serif}
+.tour-end{text-align:center;padding:7rem 2rem;background:linear-gradient(to bottom,#1C1C1A,#141614)}.tour-end h2{font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,5vw,3.5rem);font-weight:300;margin-bottom:.85rem;color:#F0EDE4}.tour-end p{color:rgba(240,237,228,.42);max-width:380px;margin:0 auto 2rem;line-height:1.7;font-size:.87rem}.drink{display:inline-block;background:rgba(45,90,61,.15);border:1px solid rgba(201,169,110,.24);border-radius:6px;padding:1.1rem 2.2rem;font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-style:italic;color:#C9A96E}.footer{padding:1.8rem;text-align:center;font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(240,237,228,.13)}.footer a{color:rgba(201,169,110,.35);text-decoration:none}
+</style>
+</head>
+<body>
+<header class="hdr" id="hdr">
+  <a class="logo" href="index.html">step<em>cast</em></a>
+  <div style="display:flex;gap:.6rem">
+    <a class="back-btn" href="index.html">&#8592; Tours</a>
+    <button class="hbtn" id="gpsHdrBtn" onclick="toggleGPS()">GPS</button>
+  </div>
+</header>
+<section class="hero">
+  <img class="hero-img" src="prague7.jpg" alt="Prague">
+  <div class="hero-grad"></div>
+  <div class="hc">
+    <div class="eyebrow">Stepcast - Self-Guided Audio Walking Tour</div>
+    <h1>Discover<br><em>Prague</em></h1>
+    <p class="hero-sub">Medieval squares, a six-hundred-year-old clock, the Jewish Quarter, Charles Bridge, and the Lennon Wall. Prague at your own pace.</p>
+    <div class="hero-pills">
+      <span class="hpill"><strong>10</strong> Stops</span>
+      <span class="hpill"><strong>3.9 km</strong> Walking</span>
+      <span class="hpill" id="audioPill"><strong>Loading</strong> Audio</span>
+    </div>
+    <button class="btn-begin" onclick="document.getElementById('map-sec').scrollIntoView({behavior:'smooth'})">Begin the Tour</button>
+  </div>
+  <div class="scroll-cue">Scroll</div>
+</section>
+<div class="map-sec" id="map-sec">
+  <div class="map-hdr"><h3>Your <em>Route</em></h3>
+    <div class="map-controls">
+      <button class="mbtn on" onclick="mapFitAll()">Full Route</button>
+      <button class="mbtn" id="gpsMapBtn" onclick="toggleGPS()">Track My Location</button>
+    </div>
+  </div>
+  <div id="map"></div>
+  <div class="map-foot"><div class="gdot" id="gdot"></div><span id="gstat">Tap Track My Location to follow your position</span></div>
+</div>
+<nav class="stop-nav" id="stopNav"><span class="nlbl">Stops</span></nav>
+<div id="stopsWrap"></div>
+<section class="tour-end">
+  <h2>You have walked<br><em>Prague.</em></h2>
+  <p>From the medieval clock to the Jewish Quarter, across Charles Bridge, past a satirist's fountain, and down to the Lennon Wall at the foot of the castle hill. Not bad for a morning.</p>
+  <div class="drink">Order a Czech pilsner. You have earned it.</div>
+</section>
+<div class="footer">2026 <a href="index.html">Stepcast</a> - Walk. Listen. Discover.</div>
+<div class="gbar" id="gbar">
+  <div class="wave"><div class="wb"></div><div class="wb"></div><div class="wb"></div><div class="wb"></div><div class="wb"></div></div>
+  <div class="g-info"><div class="g-lbl">Now Playing</div><div class="g-title" id="gTitle">-</div></div>
+  <button class="g-stop" onclick="stopAll()">Stop</button>
+</div>
+<div class="umodal" id="umodal">
+  <div class="umbox">
+    <div style="font-size:1.8rem;margin-bottom:.6rem">&#127981;</div>
+    <h2>Unlock <span class="city-name">Prague</span></h2>
+    <p>Get all 10 stops with narrated audio and live GPS. A code will be sent to you after purchase to unlock the full tour.</p>
+    <a class="buy-btn" href="https://stepcasttours.lemonsqueezy.com/checkout/buy/337b58dc-d6cc-40ff-9a83-1e586e8ade12" target="_blank">Unlock Full Tour - &#8364;4.99</a>
+    <div class="udivider"><span>already have a code?</span></div>
+    <input class="ucode-in" id="ucodeIn" type="text" placeholder="Enter your unlock code" autocomplete="off" maxlength="40">
+    <button class="ubtn-go" onclick="tryCode()">Apply Code</button>
+    <div class="umsg" id="umsg"></div>
+    <button class="ucancel" onclick="closeModal()">Maybe later</button>
+    <p style="font-size:.68rem;color:rgba(240,237,228,.28);margin-top:.9rem;letter-spacing:.03em">Payments powered by Lemon Squeezy &amp; Stripe</p>
+  </div>
+</div>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+var P="|||";
+var FREE_STOPS=3;
+var STORAGE_KEY="stepcast_prg_v1";
+var BYPASS_CODES=["PRAGUE2026"];
+
+var stops=[
+{id:1,tag:"Since 1410",titleHtml:"The Astronomical <em>Clock</em>",plain:"The Astronomical Clock",walkNext:"Cross to the far side of the square toward the Tyn Church - 1 min",
+photos:[{f:"prague2.jpg",p:true}],
+photoCredit:"",
+tipLabel:"Best Time",tipText:"The clock performs every hour on the hour. The show lasts about 45 seconds. If you are standing here near the hour, wait for it. If not, move on and come back if you pass again.",
+lat:50.0870,lng:14.4207,mp3:"praguestop1.mp3",
+script:"Welcome to Prague. You are standing in front of the Astronomical Clock, and it has been telling the time on this wall since 1410. Six hundred years. It has survived fires, wars, the Habsburg Empire, Nazi occupation, and Soviet rule, and it is still going.|||Look at the face. The outer ring shows the time. The inner circle is a medieval map of the universe with the Earth at the centre, because in 1410 that was the known truth. The sun and moon track their positions across the sky. Below is a calendar dial showing the days and months. The whole mechanism was built by a clockmaker named Mikulas of Kadan, though Prague later attributed it to a master called Hanus and legend says the city blinded him afterwards to prevent him building another one anywhere else. There is no evidence this happened. There is no evidence it did not.|||Every hour on the hour, the clock performs. Two windows open above the face and twelve apostolic figures rotate past. A skeleton rings a bell. A rooster crows. It takes about forty-five seconds and is, by modern standards, extremely low-key. Visitors who have been waiting for spectacle sometimes look mildly confused. This is part of its charm. It has been doing this for six centuries and it does not need your approval.|||Cross to the far side of the square toward the Church of Our Lady before Tyn."},
+{id:2,tag:"Heart of the City",titleHtml:"Old Town <em>Square</em>",plain:"Old Town Square",walkNext:"Walk east along Celetna Street toward the Powder Tower - 7 min",
+photos:[{f:"prague1.jpg",p:true}],
+photoCredit:"",
+tipLabel:"Look Up",tipText:"The twin towers of Tyn Church are best seen from the centre of the square. Entry to the church is free when services are not taking place.",
+lat:50.0875,lng:14.4213,mp3:"praguestop2.mp3",
+script:"You are standing in Old Town Square, and almost everything you can see has been here for at least five hundred years.|||The twin black spires rising above you belong to the Church of Our Lady before Tyn. Construction began in 1365. The church became the centre of the Hussite movement in the fifteenth century, when the Czech reformer Jan Hus broke from the Catholic Church a century before Luther did the same in Germany. In the middle of the square stands a large bronze monument to Hus, unveiled in 1915 on the five hundredth anniversary of his execution. He was burned at the stake in Konstanz in 1415 for heresy.|||The square where his memorial stands was also used for executions. In 1621, twenty-seven Protestant leaders were put to death here after the Battle of White Mountain, the defeat that ended Czech independence for three hundred years. Their heads were displayed on the Charles Bridge for ten years as a warning. This square has seen the full range of what cities do to people.|||Walk east along Celetna Street, one of Prague's oldest streets, toward the Powder Tower."},
+{id:3,tag:"The Royal Gate",titleHtml:"The Powder <em>Tower</em>",plain:"The Powder Tower",walkNext:"Walk west and north into the Jewish Quarter - 9 min",
+photos:[{f:"prague3.jpg",p:true}],
+photoCredit:"",
+tipLabel:"Municipal House",tipText:"The Art Nouveau building attached to the tower is the Municipal House, completed in 1912. Its Smetana Concert Hall is one of the finest in the city. Worth checking what is playing if you are in Prague for an evening.",
+lat:50.0873,lng:14.4278,mp3:"praguestop3.mp3",
+script:"The black Gothic tower in front of you is the Powder Tower, built in 1475 as one of the thirteen original gates into the Old Town. It gets its name from the eighteenth century, when it was used to store gunpowder. Before that, it was ceremonial: this is where the Royal Coronation Route began, the path that Czech kings walked from here through the Old Town and across the river to Prague Castle to be crowned.|||The tower was badly damaged in 1757 when Prussian forces bombarded Prague during the Seven Years War. What you see is largely a nineteenth-century restoration, rebuilt in high Gothic style by the architect Josef Mocker, who also restored large sections of St Vitus Cathedral. Prague has been rebuilt, destroyed, and restored so many times that the line between original and reconstruction is often invisible. Much of what looks medieval is Victorian.|||The building attached to the tower on your right is the Municipal House, completed in 1912. It is one of the finest Art Nouveau buildings in central Europe, built on the site of the Royal Court where Bohemian kings lived before moving to the castle. The mosaic above the entrance shows the Czech people paying homage to their homeland. The Smetana Concert Hall inside is one of the most beautiful in the city. If you are here on an evening, it is worth checking what is playing.|||Walk west and north into the Jewish Quarter."},
+{id:4,tag:"Josefov",titleHtml:"The Spanish <em>Synagogue</em>",plain:"The Spanish Synagogue",walkNext:"Walk west - the Old-New Synagogue is two minutes around the corner",
+photos:[{f:"prague4.jpg",p:true}],
+photoCredit:"",
+tipLabel:"Entry",tipText:"The Spanish Synagogue is part of the Jewish Museum Prague circuit. Entry requires a combined ticket. The interior, with its Moorish tilework and gilded ceiling, is worth the visit.",
+lat:50.0901,lng:14.4208,mp3:"praguestop4.mp3",
+script:"You have entered Josefov, the Jewish Quarter of Prague, named after Emperor Joseph II who granted Jews in the city greater civil rights in 1781. The quarter is one of the most historically dense neighbourhoods in Europe, and the Spanish Synagogue in front of you is one of its most extraordinary buildings.|||It is called the Spanish Synagogue not because of any connection to Spain, but because of its interior style. Step inside if you can: the walls are covered in geometric Moorish patterns inspired by the Alhambra in Granada, intricate gold and red and blue tilework that covers every surface. It was completed in 1868 and is the most ornate of Prague's synagogues. It looks like something that belongs in Seville or Cordoba rather than Central Europe.|||Franz Kafka was born and lived his entire life within a few streets of this quarter. He described Prague as a city with claws. He spent his whole life trying to leave and never quite managed it. The labyrinthine bureaucracy, the ancient streets, the sense of belonging nowhere: it is all here in the architecture, and it is all in his books.|||Walk west. The Old-New Synagogue is two minutes around the corner."},
+{id:5,tag:"Since 1270",titleHtml:"The Old-New <em>Synagogue</em>",plain:"The Old-New Synagogue",walkNext:"Continue west along Siroka Street toward the Rudolfinum - 4 min",
+photos:[{f:"prague5.jpg",p:false}],
+photoCredit:"<a href='https://commons.wikimedia.org/wiki/File:Old_New_Synagogue_01(js).jpg'>Jerzy Strzelecki</a>, <a href='https://creativecommons.org/licenses/by-sa/3.0'>CC BY-SA 3.0</a>, via Wikimedia Commons",
+tipLabel:"Good to Know",tipText:"The synagogue is still active. Entry requires a separate ticket from the Jewish Museum circuit. It closes on Saturdays and Jewish holidays.",
+lat:50.0901,lng:14.4186,mp3:"praguestop5.mp3",
+script:"The Old-New Synagogue has been holding services since 1270. It is the oldest active synagogue in Europe, and one of the earliest Gothic buildings in Prague, predating the Cathedral by half a century.|||The name is strange. One explanation is that it was called New when it was built, to distinguish it from an older synagogue that no longer exists, and then became Old-New when a newer one was constructed. Another explanation, which is considerably better, involves the Hebrew phrase al tenai, meaning on condition: legend says the synagogue was built on the condition that it would one day be demolished when the Temple of Jerusalem was rebuilt, and the name is a corruption of that phrase over centuries.|||In the attic above this room, Rabbi Loew ben Bezalel created the Golem in the sixteenth century. A creature made of clay from the banks of the Vltava, animated by a shem, a piece of parchment with the name of God placed in its mouth, and set to defend the Jewish community from persecution. The Rabbi deactivated it on the Sabbath each week by removing the shem. One Friday he forgot. The Golem went berserk and was destroyed, and its remains are said to be still in the attic. The attic has been accessed by historians over the centuries. Whatever is up there, the rabbis have always refused to say.|||Continue west along Siroka Street toward the Rudolfinum."},
+{id:6,tag:"Jan Palach Square",titleHtml:"The <em>Rudolfinum</em>",plain:"The Rudolfinum",walkNext:"Walk south and west toward the river and Charles Bridge - 8 min",
+photos:[{f:"prague6.jpg",p:true}],
+photoCredit:"",
+tipLabel:"Czech Philharmonic",tipText:"The Rudolfinum is home to the Czech Philharmonic, one of the great orchestras of central Europe. Concerts run throughout the year. Check the programme at rudolfinum.cz.",
+lat:50.0900,lng:14.4154,mp3:"praguestop6.mp3",
+script:"You are standing in front of the Rudolfinum, one of Prague's great neo-Renaissance buildings, completed in 1885 and home to the Czech Philharmonic Orchestra. But look across the square to your left.|||The square is Jan Palach Square, named for a twenty-year-old student who walked to the top of Wenceslas Square in January 1969, poured petrol over himself, and set himself on fire. He died three days later. He was protesting the Soviet invasion of Czechoslovakia, which had taken place six months earlier, crushing the Prague Spring, the brief period of political reform under Alexander Dubcek. Palach intended his death as a signal for national resistance. A week later, another student, Jan Zajic, did the same thing. The resistance the two deaths were meant to trigger did not come, not for twenty years. When the Velvet Revolution finally ended communist rule in 1989, Jan Palach's name was given to this square.|||The Rudolfinum itself has its own strange history. During the Nazi occupation it was used as the headquarters of the German occupying administration. There is a story, almost certainly true and probably embellished, that the Nazis ordered the removal of the statue of Felix Mendelssohn from the roof because he was Jewish. The soldiers sent to do it could not identify which statue was Mendelssohn, so they removed the one with the largest nose. They removed Wagner. The story first appeared in a Czech novel and may be fiction. It feels true, which in Prague is almost the same thing.|||Walk south and west toward the river and Charles Bridge."},
+{id:7,tag:"Since 1357",titleHtml:"Charles <em>Bridge</em>",plain:"Charles Bridge",walkNext:"Cross the bridge heading west. On the far bank, turn left and walk south along the river - 3 min",
+photos:[{f:"prague7.jpg",p:false}],
+photoCredit:"",
+tipLabel:"Best Views",tipText:"The view of the castle from the bridge is best in morning light from the east side, and best at sunset looking back from the west tower. Early morning before 8am the bridge is almost empty.",
+lat:50.0865,lng:14.4114,mp3:"praguestop7.mp3",
+script:"Charles Bridge has connected the two banks of the Vltava since the fourteenth century. King Charles IV commissioned it in 1357 and construction continued for decades. It was the only bridge in Prague for four hundred years, which meant it was the only way across the river. Everything crossed here: armies, merchants, coronation processions, refugees. It was the centre of the city's commercial life, crowded with market stalls until the eighteenth century.|||Walk along it slowly. The thirty Baroque statues lining the bridge were added in the seventeenth and eighteenth centuries, most of them depicting Catholic saints. The most famous is the statue of St John of Nepomuk, the priest who was thrown from this bridge into the Vltava in 1393 on the orders of King Wenceslas IV, reportedly for refusing to reveal the contents of the Queen's confession. He is the patron saint of bridges, confession, and protection from drowning. There are five bronze stars on the railing where he is said to have gone in. Touch them for luck. The stars are polished smooth by centuries of hands.|||Look west as you cross. The castle and the Cathedral rise above the rooftops of Mala Strana. This is the view that appears on every postcard and every phone screen, and it is still, in person, genuinely extraordinary. Prague is one of the very few European capitals that survived the Second World War largely intact. What you are looking at is the medieval skyline more or less as it was, which is something that cannot be said of London, Berlin, Warsaw, or Rotterdam.|||Cross the bridge heading west. On the far bank, turn left and walk south along the river."},
+{id:8,tag:"David Cerny",titleHtml:"The Piss <em>Sculpture</em>",plain:"The Piss Sculpture",walkNext:"Walk south and west along the riverbank toward the Lennon Wall - 5 min",
+photos:[{f:"prague8.jpg",p:false}],
+photoCredit:"",
+tipLabel:"Send a Message",tipText:"You can text a message to the sculpture and it will be spelled out by the figures in the water. The number is displayed on a sign in the courtyard.",
+lat:50.0881,lng:14.4102,mp3:"praguestop8.mp3",
+script:"In a courtyard just off the riverbank, two bronze men stand facing each other, urinating into a pool shaped like the Czech Republic. Look at them carefully. Their hips rotate slowly and mechanically, and as they do, the streams trace letters across the surface of the water, spelling out quotations from famous Czech texts. You can text a number and have your own words spelled out. Two large bronze men will then write them in urine on behalf of the nation.|||This is the work of David Cerny, the Czech sculptor who has spent thirty years making art that is simultaneously funny, clever, and deeply irritating to anyone in authority. The pool shaped like the Czech Republic is the whole point: the men are, literally, pissing on the country. The quotations they spell are taken from speeches by Czech leaders and historical figures. Cerny does not explain his work. He considers that your problem.|||His other works are scattered around the city, each one a commentary on power and pretension. But this one is different in that it works as a joke that then keeps working as a serious statement the longer you look at it. That is harder to do than it appears.|||Walk south and west along the riverbank toward the Lennon Wall."},
+{id:9,tag:"Since 1980",titleHtml:"The Lennon <em>Wall</em>",plain:"The Lennon Wall",walkNext:"Walk north through Mala Strana. Take Mostecka Street then turn into Thunovska Street which climbs toward Nerudova - 9 min uphill",
+photos:[{f:"prague9.jpg",p:false}],
+photoCredit:"",
+tipLabel:"Good to Know",tipText:"The wall is always changing. If you have a marker or pen and want to leave something, you can. The French Embassy, which owns the wall, permits it.",
+lat:50.0863,lng:14.4068,mp3:"praguestop9.mp3",
+script:"After John Lennon was shot in New York in December 1980, someone painted his portrait on this wall. Over the following years, under communist rule, Czechs added Beatles lyrics, messages about peace, and eventually political statements. The secret police painted over it repeatedly. By the next morning it was always covered in new writing.|||The wall became a site of quiet resistance. Young Czechs were arrested for gathering here. The French Embassy, which owns the wall, tried at various points to have it cleaned, but the painting always returned. The authorities called the people who came here Lennonists, which they intended as an insult. The Lennonists considered it a compliment.|||After 1989 and the Velvet Revolution, the wall changed character. The urgency left. Now it is a tourist attraction covered in graffiti from around the world, a palimpsest of arrivals: hearts, names, song lyrics, phone numbers. It is repainted constantly. The original portrait of Lennon is buried somewhere under decades of layers. Whether that means the wall has lost something or whether it has simply become what it always wanted to be is a question worth sitting with for a moment.|||Walk north through Mala Strana. Take Mostecka Street then turn into Thunovska Street, which climbs steeply uphill toward Nerudova."},
+{id:10,tag:"The Royal Route",titleHtml:"Nerudova <em>Street</em>",plain:"Nerudova Street",walkNext:"Final stop",
+photos:[{f:"prague10.jpg",p:false}],
+photoCredit:"",
+tipLabel:"Time for a Beer",tipText:"Czech pilsner was invented in Bohemia in 1842 and Prague takes it seriously. The restaurants and pubs along Nerudova and on Malostranske Namesti below serve Kozel, Pilsner Urquell, and Budvar on tap. Order a svetle, a light lager. Drink it slowly. You have earned it.",
+lat:50.0885,lng:14.3994,mp3:"praguestop10.mp3",
+script:"You are standing at the bottom of Nerudova Street, and the castle is at the top.|||This is the final stretch of the Royal Coronation Route, the path that Czech kings walked from the Powder Tower, through the Old Town, across Charles Bridge, and up this hill to be crowned at St Vitus Cathedral. You have walked most of that route today. The kings made this climb in full ceremonial dress, surrounded by processions. You are doing it at the end of a walking tour, which is arguably more honest.|||The street is named after the Czech writer Jan Neruda, who was born at number 47, the House at the Two Suns. He is not to be confused with the Chilean poet Pablo Neruda, who admired him and took his pen name from him. The houses on this street are numbered but also identified by symbols: painted signs that served as addresses before house numbers were introduced. The Red Eagle. The Three Fiddles. The Green Lobster. The Golden Horseshoe. These symbols tell you more about this street than the numbers do.|||Prague Castle is at the top of this hill, roughly 700 metres and a steep fifteen-minute climb from where you are standing. St Vitus Cathedral, the Golden Lane, and a view over the entire city are up there waiting. If you have the energy, go. If your feet are done, there is no shame in that either. The restaurants and wine bars along Nerudova and in Malostranske Namesti just below you have been stopping people in their tracks for this exact reason for several centuries. Find a table, order something cold, and look up at the castle from the bottom. That is also a perfectly valid way to see Prague."}
+];
+
+var slideIdx={};
+var audios=[];
+var currentAudio=null;
+var currentIdx=null;
+var leafMap=null,userMarker=null,watchId=null,gpsActive=false,stopMarkers=[];
+
+function fmtTime(secs){var m=Math.floor(secs/60);var s=Math.floor(secs%60);return m+"m "+(s<10?"0"+s:s)+"s";}
+
+function loadAudioDurations(){
+  var totalSecs=0;var settled=0;
+  function checkDone(){
+    if(settled===stops.length){
+      var pill=document.getElementById("audioPill");
+      if(pill){var mins=Math.ceil(totalSecs/60);pill.innerHTML="<strong>~"+mins+" min</strong> Audio";}
+    }
+  }
+  for(var i=0;i<stops.length;i++){
+    (function(s,idx){
+      var a=new Audio();audios[idx]=a;
+      a.src=s.mp3;a.preload="metadata";
+      a.addEventListener("loadedmetadata",function(){
+        totalSecs+=a.duration;settled++;
+        var el=document.getElementById("adur-"+idx);
+        if(el)el.textContent=fmtTime(a.duration);
+        checkDone();
+      });
+      a.addEventListener("error",function(){settled++;checkDone();});
+    })(stops[i],i);
+  }
+}
+loadAudioDurations();
+
+function updateWrapOrientation(i,photoIdx){
+  var wrap=document.getElementById("wrap"+i);
+  if(!wrap)return;
+  var isP=stops[i].photos[photoIdx].p;
+  wrap.className="img-wrap "+(isP?"is-portrait":"is-landscape");
+}
+
+function seekAudio(idx,delta){
+  var a=audios[idx];
+  if(!a)return;
+  var t=a.currentTime+delta;
+  if(t<0)t=0;
+  if(a.duration&&t>a.duration)t=a.duration;
+  a.currentTime=t;
+}
+
+function buildStops(){
+  var wrap=document.getElementById("stopsWrap");
+  var nav=document.getElementById("stopNav");
+  var html="";
+  for(var i=0;i<stops.length;i++){
+    var s=stops[i];
+    var paras=s.script.split(P);
+    var pHtml="";
+    for(var j=0;j<paras.length;j++){pHtml+="<p>"+paras[j]+"</p>";}
+    var photoSlides="";
+    for(var k=0;k<s.photos.length;k++){
+      photoSlides+="<img class='slide"+(k===0?" vis":"")+"' src='"+s.photos[k].f+"' alt='"+s.plain+"' onerror='this.style.display=\"none\"'>";
+    }
+    var dots="";
+    if(s.photos.length>1){
+      dots="<div class='slide-dots'>";
+      for(var k=0;k<s.photos.length;k++){dots+="<div class='sdot"+(k===0?" on":"")+"'></div>";}
+      dots+="</div>";
+    }
+    var arrows="";
+    if(s.photos.length>1){
+      arrows="<button class='arr-btn arr-prev' onclick='slidePhoto("+i+",-1)'>&#8249;</button><button class='arr-btn arr-next' onclick='slidePhoto("+i+",1)'>&#8250;</button>";
+    }
+    var creditHtml="";if(s.photoCredit){creditHtml="<div class='photo-credit'>Photo: "+s.photoCredit+"</div>";}
+    var nextBadge=s.walkNext!=="Final stop"?"<div class='next-badge'>"+s.walkNext+"</div>":"";
+    var tipHtml="";
+    if(s.tipLabel){tipHtml="<div class='tip'><div class='tip-lbl'>"+s.tipLabel+"</div><p>"+s.tipText+"</p></div>";}
+    var isP=s.photos[0].p;
+    var wrapClass="img-wrap "+(isP?"is-portrait":"is-landscape");
+    html+="<div class='stop' id='stop"+i+"'>";
+    html+="<div class='s-media'>";
+    html+="<div class='"+wrapClass+"' id='wrap"+i+"'>";
+    html+="<div class='num-badge'>"+s.id+"</div>";
+    html+=nextBadge;
+    html+=photoSlides;
+    html+=arrows+dots;
+    html+="</div>";
+    html+=creditHtml;
+    html+="<div class='player' id='player"+i+"'>";
+    html+="<div class='player-top'><span class='player-lbl'>Audio Guide</span><span class='vtag' id='adur-"+i+"'>--</span></div>";
+    html+="<div class='player-row'>";
+    html+="<button class='seek-btn' onclick='seekAudio("+i+",-10)'>-10s</button>";
+    html+="<button class='play-btn' id='play"+i+"' onclick='playStop("+i+")'>";
+    html+="<svg viewBox='0 0 24 24'><polygon points='5,3 19,12 5,21'/></svg></button>";
+    html+="<button class='seek-btn' onclick='seekAudio("+i+",10)'>+10s</button>";
+    html+="<div class='p-mid'>";
+    html+="<div class='prog-track'><div class='prog-fill' id='prog"+i+"'></div></div>";
+    html+="<div class='p-time' id='ptime"+i+"'>0m 00s</div>";
+    html+="<div class='p-stat' id='stat"+i+"'>Tap play to start</div>";
+    html+="</div>";
+    html+="<select class='spd' id='spd"+i+"' onchange='changeSpeed("+i+")'><option value='0.8'>Slow</option><option value='1' selected>Normal</option><option value='1.2'>Fast</option></select>";
+    html+="</div></div>";
+    html+="<button class='map-back-btn' onclick='scrollToMap()'>&#8593; Back to map</button>";
+    html+="</div>";
+    html+="<div class='s-body'>";
+    html+="<div class='s-tag'>"+s.tag+"</div>";
+    html+="<h2 class='s-title'>"+s.titleHtml+"</h2>";
+    html+="<div class='s-text'>"+pHtml+"</div>";
+    html+=tipHtml;
+    html+="</div></div>";
+    var ndot=document.createElement("button");
+    ndot.className="ndot";ndot.id="ndot"+i;ndot.textContent=s.id;
+    ndot.setAttribute("onclick","scrollToStop("+i+")");
+    nav.appendChild(ndot);
+  }
+  wrap.innerHTML=html;
+  slideIdx={};
+  for(var i=0;i<stops.length;i++){slideIdx[i]=0;}
+}
+buildStops();
+
+function slidePhoto(stopIdx,dir){
+  var s=stops[stopIdx];
+  if(s.photos.length<2)return;
+  var cur=slideIdx[stopIdx]||0;
+  var next=(cur+dir+s.photos.length)%s.photos.length;
+  slideIdx[stopIdx]=next;
+  var wrap=document.getElementById("wrap"+stopIdx);
+  if(!wrap)return;
+  var imgs=wrap.querySelectorAll(".slide");
+  var sdots=wrap.querySelectorAll(".sdot");
+  for(var i=0;i<imgs.length;i++){imgs[i].classList.remove("vis");}
+  for(var i=0;i<sdots.length;i++){sdots[i].classList.remove("on");}
+  if(imgs[next])imgs[next].classList.add("vis");
+  if(sdots[next])sdots[next].classList.add("on");
+  updateWrapOrientation(stopIdx,next);
+}
+
+function scrollToMap(){document.getElementById("map-sec").scrollIntoView({behavior:"smooth"});}
+function scrollToStop(i){document.getElementById("stop"+i).scrollIntoView({behavior:"smooth"});}
+
+function setIcon(i,playing){
+  var btn=document.getElementById("play"+i);
+  if(!btn)return;
+  if(playing){btn.innerHTML="<svg viewBox='0 0 24 24'><rect x='6' y='4' width='4' height='16'/><rect x='14' y='4' width='4' height='16'/></svg>";}
+  else{btn.innerHTML="<svg viewBox='0 0 24 24'><polygon points='5,3 19,12 5,21'/></svg>";}
+}
+function setStat(i,msg,cls){var el=document.getElementById("stat"+i);if(el){el.textContent=msg;el.className="p-stat"+(cls?" "+cls:"");}}
+
+function stopAll(){
+  if(currentAudio){currentAudio.pause();currentAudio.currentTime=0;}
+  if(currentIdx!==null){setIcon(currentIdx,false);setStat(currentIdx,"Tap play to start","");}
+  currentAudio=null;currentIdx=null;
+  document.getElementById("gbar").classList.remove("up");
+}
+
+function changeSpeed(i){
+  var sel=document.getElementById("spd"+i);
+  if(audios[i]&&sel)audios[i].playbackRate=parseFloat(sel.value);
+}
+
+function playStop(i){
+  var a=audios[i];
+  if(!a)return;
+  if(currentAudio&&currentIdx!==null&&currentIdx!==i){
+    currentAudio.pause();setIcon(currentIdx,false);setStat(currentIdx,"Tap play to start","");
+  }
+  if(!a.paused){
+    a.pause();setIcon(i,false);setStat(i,"Paused","");
+    document.getElementById("gbar").classList.remove("up");
+    currentAudio=null;currentIdx=null;return;
+  }
+  if(isUnlocked()||i<FREE_STOPS){
+    currentAudio=a;currentIdx=i;
+    var spd=document.getElementById("spd"+i);
+    if(spd)a.playbackRate=parseFloat(spd.value);
+    setStat(i,"Loading...","");setIcon(i,true);
+    document.getElementById("gTitle").textContent=stops[i].plain;
+    document.getElementById("gbar").classList.add("up");
+    a.ontimeupdate=function(){
+      var pf=document.getElementById("prog"+i);
+      var pt=document.getElementById("ptime"+i);
+      if(pf&&a.duration){pf.style.width=((a.currentTime/a.duration)*100)+"%";}
+      if(pt){pt.textContent=fmtTime(a.currentTime)+(a.duration?" / "+fmtTime(a.duration):"");}
+      setStat(i,"Playing","on");
+    };
+    a.onended=function(){setIcon(i,false);setStat(i,"Finished","ok");document.getElementById("gbar").classList.remove("up");currentAudio=null;currentIdx=null;};
+    a.onerror=function(){setIcon(i,false);setStat(i,"Audio error, please try again","er");document.getElementById("gbar").classList.remove("up");currentIdx=null;currentAudio=null;};
+    a.play().catch(function(){setStat(i,"Tap play to start audio","");setIcon(i,false);});
+  } else {
+    openModal();
+  }
+}
+
+function initMap(){
+  leafMap=L.map("map",{zoomControl:true,scrollWheelZoom:false});
+  L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",{attribution:"&copy; OpenStreetMap contributors",maxZoom:19}).addTo(leafMap);
+  var icon=L.divIcon({className:"",html:"<div style='width:22px;height:22px;border-radius:50%;background:#2D5A3D;border:2px solid #C9A96E;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:600;color:#C9A96E;font-family:serif'></div>",iconSize:[22,22],iconAnchor:[11,11]});
+  for(var i=0;i<stops.length;i++){
+    var s=stops[i];
+    var el=document.createElement("div");
+    el.style.cssText="width:22px;height:22px;border-radius:50%;background:#2D5A3D;border:2px solid #C9A96E;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:600;color:#C9A96E;font-family:serif";
+    el.textContent=s.id;
+    var mk=L.marker([s.lat,s.lng],{icon:L.divIcon({className:"",html:el.outerHTML,iconSize:[22,22],iconAnchor:[11,11]})}).addTo(leafMap);
+    mk.bindPopup("<strong>"+s.plain+"</strong><br><span style='font-size:11px;color:#C9A96E'>"+s.tag+"</span>");
+    stopMarkers.push(mk);
+  }
+  mapFitAll();
+}
+
+function mapFitAll(){
+  if(!leafMap)return;
+  var bounds=[];
+  for(var i=0;i<stops.length;i++){bounds.push([stops[i].lat,stops[i].lng]);}
+  leafMap.fitBounds(bounds,{padding:[30,30]});
+}
+
+function toggleGPS(){
+  if(gpsActive){stopGPS();}else{startGPS();}
+}
+
+function startGPS(){
+  if(!navigator.geolocation){document.getElementById("gstat").textContent="GPS not supported on this device";return;}
+  gpsActive=true;
+  document.getElementById("gpsHdrBtn").textContent="GPS On";
+  document.getElementById("gpsMapBtn").textContent="Stop Tracking";
+  document.getElementById("gdot").classList.add("live");
+  document.getElementById("gstat").textContent="Locating...";
+  watchId=navigator.geolocation.watchPosition(function(pos){
+    var lat=pos.coords.latitude;var lng=pos.coords.longitude;
+    document.getElementById("gstat").textContent="GPS active";
+    if(!userMarker){
+      var dot=document.createElement("div");
+      dot.style.cssText="width:14px;height:14px;border-radius:50%;background:#5a9e6f;border:2px solid #F0EDE4;box-shadow:0 0 8px rgba(90,158,111,.6)";
+      userMarker=L.marker([lat,lng],{icon:L.divIcon({className:"",html:dot.outerHTML,iconSize:[14,14],iconAnchor:[7,7]})}).addTo(leafMap);
+    } else {
+      userMarker.setLatLng([lat,lng]);
+    }
+    leafMap.setView([lat,lng],16);
+  },function(){
+    document.getElementById("gstat").textContent="Unable to get location";
+  },{enableHighAccuracy:true,maximumAge:5000});
+}
+
+function stopGPS(){
+  gpsActive=false;
+  if(watchId)navigator.geolocation.clearWatch(watchId);
+  document.getElementById("gpsHdrBtn").textContent="GPS";
+  document.getElementById("gpsMapBtn").textContent="Track My Location";
+  document.getElementById("gdot").classList.remove("live");
+  document.getElementById("gstat").textContent="Tap Track My Location to follow your position";
+}
+
+window.addEventListener("scroll",function(){
+  var scrolled=window.scrollY>60;
+  document.getElementById("hdr").classList.toggle("scrolled",scrolled);
+  var allStops=document.querySelectorAll(".stop");
+  for(var i=0;i<allStops.length;i++){
+    var rect=allStops[i].getBoundingClientRect();
+    var ndot=document.getElementById("ndot"+i);
+    if(ndot){
+      if(rect.top<window.innerHeight*0.5&&rect.bottom>0){ndot.classList.add("on");}
+      else{ndot.classList.remove("on");}
+    }
+  }
+});
+
+if(typeof L!=="undefined"){initMap();}else{setTimeout(function(){if(typeof L!=="undefined")initMap();else document.getElementById("map").innerHTML="<div style='display:flex;align-items:center;justify-content:center;height:100%;color:rgba(240,237,228,.3);font-size:.85rem'>Map needs internet connection</div>";},2000);}
+
+function isUnlocked(){try{return localStorage.getItem(STORAGE_KEY)==="1";}catch(e){return false;}}
+function unlockTour(){try{localStorage.setItem(STORAGE_KEY,"1");}catch(e){}var locks=document.querySelectorAll(".lock-overlay");for(var i=0;i<locks.length;i++)locks[i].remove();var ndots=document.querySelectorAll(".ndot");for(var i=0;i<ndots.length;i++){ndots[i].style.opacity="1";ndots[i].title="";}closeModal();}
+function verifyKey(key,callback){var xhr=new XMLHttpRequest();xhr.open("POST","/api/verify",true);xhr.setRequestHeader("Content-Type","application/json");xhr.onreadystatechange=function(){if(xhr.readyState!==4)return;try{var data=JSON.parse(xhr.responseText);if(data.valid===true){callback(true,null);}else{callback(false,data.error||"Invalid code.");}}catch(e){callback(false,"Verification failed. Please try again.");}};xhr.onerror=function(){callback(false,"Network error. Please try again.");};xhr.send(JSON.stringify({key:key}));}
+function tryCode(){var val=document.getElementById("ucodeIn").value.trim().toUpperCase();var msg=document.getElementById("umsg");if(!val){msg.textContent="Please enter a code.";msg.className="umsg er";return;}for(var b=0;b<BYPASS_CODES.length;b++){if(val===BYPASS_CODES[b]){msg.textContent="Code accepted. Unlocking your tour...";msg.className="umsg ok";setTimeout(unlockTour,800);return;}}msg.textContent="Checking...";msg.className="umsg";verifyKey(val,function(ok,errMsg){if(ok){msg.textContent="Code accepted. Unlocking your tour...";msg.className="umsg ok";setTimeout(unlockTour,800);}else{msg.textContent=errMsg||"Invalid code. Check your email and try again.";msg.className="umsg er";}});}
+function autoUnlockFromUrl(){if(isUnlocked())return;var search=window.location.search;if(!search)return;var match=search.match(/[?&]key=([^&]+)/);if(!match)return;var key=decodeURIComponent(match[1]);if(!key)return;verifyKey(key,function(ok){if(ok){unlockTour();try{window.history.replaceState({},"",window.location.pathname);}catch(e){}}});}
+function openModal(){document.getElementById("umodal").classList.add("show");}
+function closeModal(){document.getElementById("umodal").classList.remove("show");}
+document.getElementById("ucodeIn").addEventListener("keydown",function(e){if(e.key==="Enter")tryCode();});
+function applyLocks(){if(isUnlocked())return;var allStops=document.querySelectorAll(".stop");for(var i=0;i<allStops.length;i++){if(i<FREE_STOPS)continue;allStops[i].style.position="relative";var o=document.createElement("div");o.className="lock-overlay";o.innerHTML="<div class='lock-icon'>&#128274;</div><h4>Stop "+(i+1)+" is locked</h4><p>Unlock the full Prague tour to hear all 10 stops with GPS navigation and narrated audio.</p><button class='unlock-btn' onclick='openModal()'>Unlock Full Tour</button>";allStops[i].appendChild(o);var ndots=document.querySelectorAll(".ndot");if(ndots[i]){ndots[i].style.opacity="0.35";ndots[i].title="Locked";}}}
+autoUnlockFromUrl();
+setTimeout(applyLocks,300);
+</script>
+</body>
+</html>
