@@ -3,8 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Stepcast | Self-Guided Audio Walking Tours</title>
-    <meta name="description" content="Self-guided audio walking tours for curious travellers. No app, no group, no booking. Walk at your own pace and actually understand what you're seeing. First 3 stops free.">
+<title>Stepcast - Self-Guided Audio Walking Tours</title>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}body{font-family:'DM Sans',sans-serif;background:#1C1C1A;color:#F0EDE4;min-height:100vh}
@@ -180,6 +179,22 @@
         <span class="card-btn">Start Tour &#8594;</span>
       </div>
     </a>
+    <a class="card" href="barcelona-gaudi.html">
+      <img class="card-img" id="gaudiImg" alt="Barcelona Gaudi">
+      <div class="card-grad"></div>
+      <div class="free-tag">3 Stops Free</div>
+      <div class="card-body">
+        <div class="card-region">Spain</div>
+        <div class="card-name">Barcelona: <em>Gaudi &amp; Modernisme</em></div>
+        <div class="card-pills">
+          <span class="pill">9 Stops</span>
+          <span class="pill">3.8 km</span>
+          <span class="pill">&#x1F6B6; ~50 min</span>
+          <span class="pill">&#x1F3A7; ~19 min</span>
+        </div>
+        <span class="card-btn">Start Tour &#8594;</span>
+      </div>
+    </a>
     <a class="card" href="prague.html">
       <img class="card-img" id="prgImg" alt="Prague">
       <div class="card-grad"></div>
@@ -260,6 +275,7 @@ document.getElementById('lonImg').src='london1a.jpg';
 document.getElementById('parImg').src='paris1.jpg';
 document.getElementById('amsImg').src='amsterdam1.jpg';
 document.getElementById('prgImg').src='prague7.jpg';
+document.getElementById('gaudiImg').src='bcngaudi3.jpg';
 document.getElementById('bcnImg').src='barcelona1.jpg';
 
 /* Search */
@@ -272,7 +288,8 @@ var CITIES=[
   {name:'Paris',region:'France — Capital',emoji:'&#127467;&#127479;',url:'paris.html'},
   {name:'Amsterdam',region:'Netherlands — Capital',emoji:'&#127475;&#127473;',url:'amsterdam.html'},
   {name:'Barcelona: Old Barcelona',region:'Spain — Catalonia',emoji:'&#127466;&#127480;',url:'barcelona.html'},
-  {name:'Prague: Old Prague',region:'Czech Republic',emoji:'&#127464;&#127487;',url:'prague.html'}
+  {name:'Prague: Old Prague',region:'Czech Republic',emoji:'&#127464;&#127487;',url:'prague.html'},
+  {name:'Barcelona: Gaudi and Modernisme',region:'Spain',emoji:'&#127466;&#127480;',url:'barcelona-gaudi.html'}
 ];
 
 var searchInput=document.getElementById('citySearch');
