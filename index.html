@@ -94,7 +94,7 @@
             "@type": "TouristAttraction",
             "name": "Lisbon Audio Walking Tour",
             "url": "https://stepcasttours.com/lisbon.html",
-            "description": "Self-guided audio walking tour of Lisbon, Portugal. 10 stops, 4.5km. First 3 stops free.",
+            "description": "Self-guided audio walking tour of Lisbon, Portugal. 9 stops, 3.7km, plus 2 bonus stops. First 3 stops free.",
             "touristType": "Cultural tourism",
             "address": {"@type": "PostalAddress", "addressLocality": "Lisbon", "addressCountry": "PT"}
           }
@@ -193,6 +193,18 @@
             "description": "Self-guided audio walking tour of Old Prague, Czech Republic. 10 stops, 3.9km. First 3 stops free.",
             "touristType": "Cultural tourism",
             "address": {"@type": "PostalAddress", "addressLocality": "Prague", "addressCountry": "CZ"}
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 12,
+          "item": {
+            "@type": "TouristAttraction",
+            "name": "Bath Audio Walking Tour",
+            "url": "https://stepcasttours.com/bath.html",
+            "description": "Self-guided audio walking tour of Bath, England. 9 stops, 2.5km. First 3 stops free.",
+            "touristType": "Cultural tourism",
+            "address": {"@type": "PostalAddress", "addressLocality": "Bath", "addressCountry": "GB"}
           }
         }
       ]
@@ -303,9 +315,9 @@
         <div class="card-region">Portugal</div>
         <div class="card-name"><em>Lisbon</em></div>
         <div class="card-pills">
-          <span class="pill">10 Stops</span>
-          <span class="pill">5 km</span>
-          <span class="pill">&#x1F6B6; ~65 min</span>
+          <span class="pill">9 Stops</span>
+          <span class="pill">3.7 km</span>
+          <span class="pill">&#x1F6B6; ~47 min</span>
           <span class="pill">&#x1F3A7; ~19 min</span>
         </div>
         <span class="card-btn">Start Tour &#8594;</span>
@@ -424,6 +436,23 @@
       </div>
     </a>
   </div>
+    <a class="card" href="bath.html">
+      <img class="card-img" id="bathImg" alt="Bath">
+      <div class="card-grad"></div>
+      <div class="free-tag">3 Stops Free</div>
+      <div class="card-body">
+        <div class="card-region">United Kingdom</div>
+        <div class="card-name"><em>Bath</em></div>
+        <div class="card-pills">
+          <span class="pill">9 Stops</span>
+          <span class="pill">2.5 km</span>
+          <span class="pill">&#x1F6B6; ~32 min</span>
+          <span class="pill">&#x1F3A7; ~24 min</span>
+        </div>
+        <span class="card-btn">Start Tour &#8594;</span>
+      </div>
+    </a>
+  </div>
   <br><br>
   <div class="divider">
     <div class="divider-line"></div>
@@ -488,6 +517,7 @@ document.getElementById('prgImg').src='prague7.jpg';
 document.getElementById('bcnImg').src='barcelona1.jpg';
 document.getElementById('gaudiImg').src='bcngaudi3.jpg';
 document.getElementById('lonStPaulsImg').src='lonstpauls1.jpg';
+document.getElementById('bathImg').src='bath1a.jpg';
 
 /* Search */
 var CITIES=[
@@ -501,7 +531,8 @@ var CITIES=[
   {name:'Barcelona: Old Barcelona',region:'Spain — Catalonia',emoji:'&#127466;&#127480;',url:'barcelona.html'},
   {name:'Prague: Old Prague',region:'Czech Republic',emoji:'&#127464;&#127487;',url:'prague.html'},
   {name:'Barcelona: Gaudi and Modernisme',region:'Spain',emoji:'&#127466;&#127480;',url:'barcelona-gaudi.html'},
-  {name:'London: St Pauls to the Tower',region:'United Kingdom',emoji:'&#127468;&#127463;',url:'london-stpauls.html'}
+  {name:'London: St Pauls to the Tower',region:'United Kingdom',emoji:'&#127468;&#127463;',url:'london-stpauls.html'},
+  {name:'Bath',region:'United Kingdom — Georgian City',emoji:'&#127468;&#127463;',url:'bath.html'}
 ];
 
 var searchInput=document.getElementById('citySearch');
