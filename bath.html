@@ -439,7 +439,7 @@ function autoUnlockFromUrl(){if(isUnlocked())return;var search=window.location.s
 function openModal(){document.getElementById("umodal").classList.add("show");}
 function closeModal(){document.getElementById("umodal").classList.remove("show");}
 document.getElementById("ucodeIn").addEventListener("keydown",function(e){if(e.key==="Enter")tryCode();});
-function applyLocks(){if(isUnlocked())return;var allStops=document.querySelectorAll(".stop");for(var i=0;i<allStops.length;i++){if(i<FREE_STOPS)continue;allStops[i].style.position="relative";var o=document.createElement("div");o.className="lock-overlay";o.innerHTML="<div class='lock-icon'>&#128274;</div><h4>Stop "+(i+1)+" is locked</h4><p>Unlock the full Bath tour to hear all 10 stops with GPS navigation and narrated audio.</p><button class='unlock-btn' onclick='openModal()'>Unlock Full Tour</button>";allStops[i].appendChild(o);var ndots=document.querySelectorAll(".ndot");if(ndots[i]){ndots[i].style.opacity="0.35";ndots[i].title="Locked";}}}
+function applyLocks(){if(isUnlocked())return;var allStops=document.querySelectorAll(".stop");for(var i=0;i<allStops.length;i++){if(i<FREE_STOPS)continue;allStops[i].style.position="relative";var o=document.createElement("div");o.className="lock-overlay";o.innerHTML="<div class='lock-icon'>&#128274;</div><h4>Stop "+(i+1)+" is locked</h4><p>Unlock the full Bath tour to hear all 9 stops with GPS navigation and narrated audio.</p><button class='unlock-btn' onclick='openModal()'>Unlock Full Tour</button>";allStops[i].appendChild(o);var ndots=document.querySelectorAll(".ndot");if(ndots[i]){ndots[i].style.opacity="0.35";ndots[i].title="Locked";}}}
 autoUnlockFromUrl();
 setTimeout(applyLocks,300);
 </script>
