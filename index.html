@@ -206,6 +206,18 @@
             "touristType": "Cultural tourism",
             "address": {"@type": "PostalAddress", "addressLocality": "Bath", "addressCountry": "GB"}
           }
+        },
+        {
+          "@type": "ListItem",
+          "position": 13,
+          "item": {
+            "@type": "TouristAttraction",
+            "name": "Oxford Audio Walking Tour",
+            "url": "https://stepcasttours.com/oxford.html",
+            "description": "Self-guided audio walking tour of Oxford, England. First 3 stops free.",
+            "touristType": "Cultural tourism",
+            "address": {"@type": "PostalAddress", "addressLocality": "Oxford", "addressCountry": "GB"}
+          }
         }
       ]
     }
@@ -451,6 +463,22 @@
         <span class="card-btn">Start Tour &#8594;</span>
       </div>
     </a>
+    <a class="card" href="oxford.html">
+      <img class="card-img" id="oxfImg" alt="Oxford">
+      <div class="card-grad"></div>
+      <div class="free-tag">3 Stops Free</div>
+      <div class="card-body">
+        <div class="card-region">United Kingdom</div>
+        <div class="card-name"><em>Oxford</em></div>
+        <div class="card-pills">
+          <span class="pill">9 Stops</span>
+          <span class="pill">3 km</span>
+          <span class="pill">&#x1F6B6; ~40 min</span>
+          <span class="pill">&#x1F3A7; ~20 min</span>
+        </div>
+        <span class="card-btn">Start Tour &#8594;</span>
+      </div>
+    </a>
   </div>
   <br><br>
   <div class="divider">
@@ -516,7 +544,8 @@ document.getElementById('prgImg').src='prague7.jpg';
 document.getElementById('bcnImg').src='barcelona1.jpg';
 document.getElementById('gaudiImg').src='bcngaudi3.jpg';
 document.getElementById('lonStPaulsImg').src='lonstpauls1.jpg';
-document.getElementById('bathImg').src='bath8a.jpg';
+document.getElementById('bathImg').src='bath1a.jpg';
+document.getElementById('oxfImg').src='oxford1.jpg';
 
 /* Search */
 var CITIES=[
@@ -531,7 +560,8 @@ var CITIES=[
   {name:'Prague: Old Prague',region:'Czech Republic',emoji:'&#127464;&#127487;',url:'prague.html'},
   {name:'Barcelona: Gaudi and Modernisme',region:'Spain',emoji:'&#127466;&#127480;',url:'barcelona-gaudi.html'},
   {name:'London: St Pauls to the Tower',region:'United Kingdom',emoji:'&#127468;&#127463;',url:'london-stpauls.html'},
-  {name:'Bath',region:'United Kingdom — Georgian City',emoji:'&#127468;&#127463;',url:'bath.html'}
+  {name:'Bath',region:'United Kingdom — Georgian City',emoji:'&#127468;&#127463;',url:'bath.html'},
+  {name:'Oxford',region:'United Kingdom — City of Dreaming Spires',emoji:'&#127468;&#127463;',url:'oxford.html'}
 ];
 
 var searchInput=document.getElementById('citySearch');
