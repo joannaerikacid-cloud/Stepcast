@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-18081596926"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'AW-18081596926');
+</script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About | Stepcast</title>
+<meta name="description" content="Stepcast was built by a traveller who kept missing guided tours. Find out who's behind the audio walking tours and how each one is made.">
+<meta property="og:title" content="About Stepcast">
+<meta property="og:description" content="Stepcast was built by a traveller who kept missing guided tours. Find out who's behind the audio walking tours and how each one is made.">
+<meta property="og:image" content="https://stepcasttours.com/about-erika1.jpg">
+<meta property="og:url" content="https://stepcasttours.com/about.html">
+<meta property="og:type" content="website">
+<link rel="canonical" href="https://stepcasttours.com/about.html">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',sans-serif;background:#1C1C1A;color:#F0EDE4;min-height:100vh}
+
+.hdr{position:fixed;top:0;left:0;right:0;z-index:100;padding:1rem 1.5rem;display:flex;align-items:center;justify-content:space-between;transition:background .3s}
+.hdr.scrolled{background:rgba(28,28,26,.97);border-bottom:1px solid rgba(201,169,110,.15);backdrop-filter:blur(12px)}
+.logo{font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:600;letter-spacing:.04em;color:#F0EDE4;text-decoration:none}
+.logo em{color:#C9A96E;font-style:normal}
+.nav-tag{font-size:.75rem;letter-spacing:.16em;text-transform:uppercase;color:rgba(240,237,228,.3)}
+
+/* HERO */
+.hero{min-height:80vh;position:relative;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;text-align:center;padding:3rem 2rem 4rem;overflow:hidden}
+.hero-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 20%;opacity:.45}
+.hero-grad{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(28,28,26,.3) 0%,rgba(28,28,26,.5) 40%,rgba(28,28,26,.97) 100%)}
+.hero-inner{position:relative;z-index:2}
+.eyebrow{font-size:.6rem;font-weight:500;letter-spacing:.28em;text-transform:uppercase;color:#C9A96E;margin-bottom:1.2rem}
+.hero h1{font-family:'Cormorant Garamond',serif;font-size:clamp(2.8rem,7vw,5.5rem);font-weight:300;line-height:1;margin-bottom:1.4rem}
+.hero h1 em{font-style:italic;color:#C9A96E}
+.hero-sub{font-size:1rem;font-weight:300;color:rgba(240,237,228,.6);max-width:440px;line-height:1.85;margin:0 auto}
+
+/* CONTENT */
+.content{max-width:680px;margin:0 auto;padding:4rem 1.8rem 2rem}
+
+.diamond-divider{display:flex;align-items:center;gap:1rem;margin:3rem 0}
+.diamond-divider .line{flex:1;height:1px;background:rgba(201,169,110,.15)}
+.diamond-divider .gem{width:6px;height:6px;background:#C9A96E;transform:rotate(45deg);flex-shrink:0}
+
+.section-label{font-size:.58rem;font-weight:500;letter-spacing:.24em;text-transform:uppercase;color:#C9A96E;margin-bottom:1.2rem}
+
+h2{font-family:'Cormorant Garamond',serif;font-size:clamp(1.9rem,4vw,2.8rem);font-weight:300;line-height:1.1;margin-bottom:1.4rem}
+h2 em{font-style:italic;color:#C9A96E}
+
+p{font-size:.92rem;font-weight:300;color:rgba(240,237,228,.72);line-height:1.95;margin-bottom:1.1rem}
+p:last-child{margin-bottom:0}
+
+/* SECTION PHOTO */
+.section-photo{width:100%;max-width:680px;margin:2.5rem auto;border-radius:8px;overflow:hidden;position:relative}
+.section-photo img{width:100%;height:320px;object-fit:cover;display:block;opacity:.75}
+.section-photo .caption{position:absolute;bottom:0;left:0;right:0;padding:.7rem 1rem;background:linear-gradient(to top,rgba(28,28,26,.85),transparent);font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;color:rgba(201,169,110,.7)}
+@media(max-width:520px){.section-photo img{height:220px}}
+
+/* HOW WE MAKE TOURS */
+.how-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-top:2rem}
+@media(max-width:520px){.how-grid{grid-template-columns:1fr}}
+
+.how-card{background:rgba(255,255,255,.03);border:1px solid rgba(201,169,110,.12);border-radius:8px;padding:1.5rem}
+.how-num{font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:300;color:#C9A96E;opacity:.5;margin-bottom:.5rem;line-height:1}
+.how-card h4{font-size:.78rem;font-weight:500;color:#F0EDE4;margin-bottom:.5rem;letter-spacing:.03em}
+.how-card p{font-size:.78rem;color:rgba(240,237,228,.4);line-height:1.7;margin:0}
+
+/* CTA */
+.cta-block{text-align:center;padding:3rem 1.5rem 5rem;border-top:1px solid rgba(201,169,110,.1);margin-top:1rem}
+.cta-block p{font-size:.88rem;color:rgba(240,237,228,.45);margin-bottom:1.6rem;max-width:360px;margin-left:auto;margin-right:auto}
+.cta-btn{display:inline-flex;align-items:center;gap:.5rem;background:#2D5A3D;color:#C9A96E;padding:.75rem 1.8rem;border-radius:4px;font-size:.72rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;border:1px solid rgba(201,169,110,.3);text-decoration:none;transition:background .2s}
+.cta-btn:hover{background:#3D7A54}
+
+.footer{padding:1.8rem;text-align:center;font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(240,237,228,.14);border-top:1px solid rgba(201,169,110,.08)}
+</style>
+</head>
+<body>
+
+<header class="hdr" id="hdr">
+  <a class="logo" href="index.html">step<em>cast</em></a>
+  <span class="nav-tag">Walk. Listen. Discover.</span>
+</header>
+
+<!-- HERO with Tikal photo -->
+<section class="hero">
+  <img class="hero-img" src="about-erika1.jpg" alt="Erika at Tikal, Guatemala">
+  <div class="hero-grad"></div>
+  <div class="hero-inner">
+    <div class="eyebrow">About Stepcast</div>
+    <h1>Built by a traveller,<br>for <em>travellers.</em></h1>
+    <p class="hero-sub">Not a tour company. Not an app. Just someone who kept missing the guided tour and decided to fix it.</p>
+  </div>
+</section>
+
+<div class="content">
+
+  <!-- WHO I AM -->
+  <div class="section-label">Who's behind this</div>
+  <h2>Hi, I'm <em>Erika.</em></h2>
+
+  <p>By day I'm a Clinical Specialist, based in the UK. Outside of work, my husband and I travel as much as we possibly can. We took a sabbatical together and spent months moving through Africa and Asia. We've explored parts of the Americas too. And whenever a long weekend appears, we're usually booking a flight to somewhere in Europe.</p>
+
+  <p>I'm the kind of traveller who wants to actually understand a place. I love history, architecture and getting under the skin of a city. I'll always seek out the local food, try whatever's on the menu I don't recognise, and wander into neighbourhoods that aren't in the guidebook. But I also think the famous stuff is famous for a reason, and I'll always go and see it.</p>
+
+  <p>My ritual in any new city is the same: on the first day, I do a walking tour. It maps the place in my head. It gives me context. After that, I can wander freely and actually know what I'm looking at.</p>
+
+</div>
+
+<!-- Africa photo -->
+<div class="section-photo" style="max-width:680px;margin:0 auto;padding:0 1.8rem">
+  <div style="border-radius:8px;overflow:hidden;position:relative">
+    <img src="about-erika3.jpg" alt="Erika on safari in Africa" style="width:100%;height:320px;object-fit:cover;object-position:center top;display:block;opacity:.75">
+    <div style="position:absolute;bottom:0;left:0;right:0;padding:.7rem 1rem;background:linear-gradient(to top,rgba(28,28,26,.85),transparent);font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;color:rgba(201,169,110,.7)">Africa, during sabbatical</div>
+  </div>
+</div>
+
+<div class="content" style="padding-top:2.5rem">
+
+  <div class="diamond-divider"><div class="line"></div><div class="gem"></div><div class="line"></div></div>
+
+  <!-- WHY STEPCAST -->
+  <div class="section-label">Why Stepcast exists</div>
+  <h2>The timing never<br><em>worked.</em></h2>
+
+  <p>It happened more times than I can count. We'd arrive in a city, look for a walking tour and find the timings just didn't work. Most tours start at 10, and if your flight gets in at noon or you want a slow morning, you've missed it. Or the only English-language option of the day was already gone. We just wanted to start when we were ready, not when the schedule said so.</p>
+
+  <p>So I started building what I actually wanted: a tour I could start whenever I felt like it, stop wherever I wanted, and revisit any stop if I missed something. No booking, no group, no rushing. Just the city and a really good audio guide in my pocket.</p>
+
+  <p>That's Stepcast. Every tour is a city I've been to myself, researched properly, and built because I genuinely wanted it to exist.</p>
+
+</div>
+
+<!-- Mexico photo -->
+<div style="max-width:680px;margin:0 auto;padding:0 1.8rem">
+  <div style="border-radius:8px;overflow:hidden;position:relative">
+    <img src="about-erika2.jpg" alt="Erika in Oaxaca, Mexico" style="width:100%;height:320px;object-fit:cover;object-position:center 30%;display:block;opacity:.75">
+    <div style="position:absolute;bottom:0;left:0;right:0;padding:.7rem 1rem;background:linear-gradient(to top,rgba(28,28,26,.85),transparent);font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;color:rgba(201,169,110,.7)">Oaxaca, Mexico</div>
+  </div>
+</div>
+
+<div class="content" style="padding-top:2.5rem">
+
+  <div class="diamond-divider"><div class="line"></div><div class="gem"></div><div class="line"></div></div>
+
+  <!-- HOW WE MAKE TOURS -->
+  <div class="section-label">How the tours are made</div>
+  <h2>Researched properly.<br><em>Every stop.</em></h2>
+
+  <p>Each Stepcast tour starts with a visit. I walk the route, spend time at each stop, and figure out what's actually interesting about it, not just what's on the information board outside.</p>
+
+  <p>From there, each stop is researched in depth: the history, the architecture, the context, the contemporary city. As someone with a background in evidence-based research, I care about getting things right. I cross-reference sources, dig into local history and, where relevant, draw on non-English language material. Then I write it all up in a way that's genuinely worth listening to.</p>
+
+  <div class="how-grid">
+    <div class="how-card">
+      <div class="how-num">01</div>
+      <h4>Visit first</h4>
+      <p>Every city is visited in person before a tour is written. No guesswork, no secondhand accounts.</p>
+    </div>
+    <div class="how-card">
+      <div class="how-num">02</div>
+      <h4>Research in depth</h4>
+      <p>History, architecture, culture and the contemporary city. Each stop is researched and fact-checked properly.</p>
+    </div>
+    <div class="how-card">
+      <div class="how-num">03</div>
+      <h4>Written to be heard</h4>
+      <p>The audio script is written to be listened to on a street corner, not read in an armchair. Clear, interesting and to the point.</p>
+    </div>
+    <div class="how-card">
+      <div class="how-num">04</div>
+      <h4>No app needed</h4>
+      <p>The whole thing runs in your phone browser. Unlock once, access anywhere, no download required.</p>
+    </div>
+  </div>
+
+</div>
+
+<div class="cta-block">
+  <p>Pick a city and start exploring. First 3 stops are always free.</p>
+  <a class="cta-btn" href="index.html">Browse tours &#8594;</a>
+</div>
+
+<footer class="footer">
+  &copy; 2025 Stepcast &nbsp;&middot;&nbsp; stepcasttours.com
+</footer>
+
+<script>
+  var hdr = document.getElementById('hdr');
+  window.addEventListener('scroll', function(){
+    hdr.classList.toggle('scrolled', window.scrollY > 40);
+  });
+</script>
+
+</body>
+</html>
