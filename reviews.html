@@ -1,13 +1,21 @@
 <!DOCTYPE html>
-<html lang="en">https://stepcasttours.com/
+<html lang="en">
 <head>
 <meta charset="UTF-8">
-<script async src="https://www.googletagmanager.com/gtag/js?id=AW-18081596926"></script>
+<!-- Google Ads (consent-gated, PECR compliant) -->
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'AW-18081596926');
+  window.gtag = gtag;
+  function loadGtag() {
+    var s = document.createElement('script');
+    s.async = true;
+    s.src = 'https://www.googletagmanager.com/gtag/js?id=AW-18081596926';
+    document.head.appendChild(s);
+    gtag('js', new Date());
+    gtag('config', 'AW-18081596926');
+  }
+  try { if (localStorage.getItem('stepcast_consent') === 'granted') { loadGtag(); } } catch(e) {}
 </script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Reviews | Stepcast</title>
@@ -134,14 +142,6 @@ textarea{min-height:110px}
   <div class="section-lbl" style="font-size:.58rem;font-weight:500;letter-spacing:.22em;text-transform:uppercase;color:#C9A96E;margin-bottom:1.8rem;text-align:center">Traveller Reviews</div>
   <div class="reviews-grid" id="reviewsGrid">
 
-    <div class="review-card">
-      <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-      <p class="review-text">I loved using this self-guided tour! I love learning about history and architecture but hated joining group tours so this was exactly what I needed. Keen to use it on their other available destinations.</p>
-      <div class="review-meta">
-        <span class="review-name">Eden</span>
-        <span class="review-detail">UK &middot; London: St Paul's to the Tower; Month Year</span>
-      </div>
-    </div>
     <!-- ============================================================
     TO ADD A NEW REVIEW: copy the block below, paste it above this
     comment, and fill in the details. Save and push to GitHub.
@@ -339,5 +339,30 @@ function handleSubmit(e){
 
 </script>
 
+
+<!-- Cookie consent banner -->
+<div id="sc-cookie-bar" style="display:none;position:fixed;bottom:0;left:0;right:0;background:#161b0e;border-top:1px solid #b8972a;padding:14px 20px;z-index:99999;font-family:'DM Sans',sans-serif;">
+  <p style="color:#e8e0cc;margin:0 0 10px;font-size:13px;line-height:1.5;">We use cookies to measure how people find Stepcast via Google Ads. You can accept or decline below. <a href="/privacy.html" style="color:#b8972a;text-decoration:underline;">Privacy Policy</a></p>
+  <div>
+    <button onclick="scConsentAccept()" style="background:#b8972a;color:#0d120a;border:none;padding:7px 18px;border-radius:20px;font-size:13px;font-weight:600;cursor:pointer;margin-right:8px;">Accept</button>
+    <button onclick="scConsentDecline()" style="background:transparent;color:#e8e0cc;border:1px solid #555;padding:7px 18px;border-radius:20px;font-size:13px;cursor:pointer;">Decline</button>
+  </div>
+</div>
+<script>
+  function scConsentAccept() {
+    try { localStorage.setItem('stepcast_consent','granted'); } catch(e) {}
+    document.getElementById('sc-cookie-bar').style.display = 'none';
+    if (typeof loadGtag === 'function') { loadGtag(); }
+  }
+  function scConsentDecline() {
+    try { localStorage.setItem('stepcast_consent','denied'); } catch(e) {}
+    document.getElementById('sc-cookie-bar').style.display = 'none';
+  }
+  try {
+    if (!localStorage.getItem('stepcast_consent')) {
+      document.getElementById('sc-cookie-bar').style.display = 'block';
+    }
+  } catch(e) {}
+</script>
 </body>
 </html>

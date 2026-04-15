@@ -2,93 +2,252 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<!-- Google Ads (consent-gated, PECR compliant) -->
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  window.gtag = gtag;
+  function loadGtag() {
+    var s = document.createElement('script');
+    s.async = true;
+    s.src = 'https://www.googletagmanager.com/gtag/js?id=AW-18081596926';
+    document.head.appendChild(s);
+    gtag('js', new Date());
+    gtag('config', 'AW-18081596926');
+  }
+  try { if (localStorage.getItem('stepcast_consent') === 'granted') { loadGtag(); } } catch(e) {}
+</script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Terms & Conditions — Stepcast</title>
+<title>Terms &amp; Conditions — Stepcast</title>
+<meta name="description" content="Terms and conditions for using Stepcast self-guided audio walking tours. Governed by the laws of England and Wales.">
+<link rel="canonical" href="https://stepcasttours.com/terms.html">
+<link rel="sitemap" type="application/xml" href="https://stepcasttours.com/sitemap.xml">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
-  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; max-width: 720px; margin: 0 auto; padding: 24px 20px 60px; color: #1a1a1a; line-height: 1.7; }
-  nav { margin-bottom: 32px; }
-  nav a { color: #1a1a1a; text-decoration: none; font-size: 0.95rem; }
-  h1 { font-size: 2rem; margin-bottom: 8px; }
-  h1 em { font-style: italic; }
-  h2 { font-size: 1.1rem; margin-top: 2rem; margin-bottom: 0.4rem; }
-  p, li { font-size: 0.97rem; color: #333; }
-  ul { padding-left: 1.4em; }
-  a { color: #1a1a1a; }
-  footer { margin-top: 48px; font-size: 0.85rem; color: #888; border-top: 1px solid #eee; padding-top: 16px; }
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',sans-serif;background:#1C1C1A;color:#F0EDE4;min-height:100vh}
+
+.hdr{position:fixed;top:0;left:0;right:0;z-index:100;padding:1rem 1.5rem;display:flex;align-items:center;justify-content:space-between;transition:background .3s}
+.hdr.scrolled{background:rgba(28,28,26,.97);border-bottom:1px solid rgba(201,169,110,.15);backdrop-filter:blur(12px)}
+.logo{font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:600;letter-spacing:.04em;color:#F0EDE4;text-decoration:none}
+.logo em{color:#C9A96E;font-style:normal}
+.nav-tag{font-size:.75rem;letter-spacing:.16em;text-transform:uppercase;color:rgba(240,237,228,.3)}
+
+.hero{display:flex;flex-direction:column;align-items:center;text-align:center;padding:7rem 2rem 3.5rem;background:radial-gradient(ellipse 70% 60% at 50% 50%,rgba(45,90,61,.14) 0%,transparent 70%),#1C1C1A}
+.eyebrow{font-size:.6rem;font-weight:500;letter-spacing:.28em;text-transform:uppercase;color:#C9A96E;margin-bottom:1.2rem}
+.hero h1{font-family:'Cormorant Garamond',serif;font-size:clamp(2.6rem,7vw,5rem);font-weight:300;line-height:1.05;margin-bottom:1.2rem}
+.hero h1 em{font-style:italic;color:#C9A96E}
+.hero-sub{font-size:.92rem;font-weight:300;color:rgba(240,237,228,.5);max-width:440px;line-height:1.85;margin:0 auto}
+
+.content{max-width:680px;margin:0 auto;padding:4rem 1.8rem 2rem}
+
+.diamond-divider{display:flex;align-items:center;gap:1rem;margin:3rem 0}
+.diamond-divider .line{flex:1;height:1px;background:rgba(201,169,110,.15)}
+.diamond-divider .gem{width:6px;height:6px;background:#C9A96E;transform:rotate(45deg);flex-shrink:0}
+
+.section-label{font-size:.58rem;font-weight:500;letter-spacing:.24em;text-transform:uppercase;color:#C9A96E;margin-bottom:1.2rem}
+
+h2{font-family:'Cormorant Garamond',serif;font-size:clamp(1.7rem,4vw,2.5rem);font-weight:300;line-height:1.1;margin-bottom:1.2rem}
+h2 em{font-style:italic;color:#C9A96E}
+
+p{font-size:.92rem;font-weight:300;color:rgba(240,237,228,.72);line-height:1.95;margin-bottom:1rem}
+p:last-child{margin-bottom:0}
+
+.info-card{background:rgba(255,255,255,.03);border:1px solid rgba(201,169,110,.12);border-radius:8px;padding:1.4rem 1.5rem;margin-bottom:1rem}
+.info-card h4{font-size:.78rem;font-weight:500;color:#F0EDE4;margin-bottom:.5rem;letter-spacing:.03em}
+.info-card p{font-size:.82rem;color:rgba(240,237,228,.48);line-height:1.7;margin:0}
+.info-card a{color:#C9A96E;text-decoration:none}
+
+.key-points{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:1rem}
+@media(max-width:520px){.key-points{grid-template-columns:1fr}}
+.key-point{background:rgba(255,255,255,.02);border:1px solid rgba(201,169,110,.1);border-radius:6px;padding:1rem 1.2rem}
+.key-point span{font-size:.7rem;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:#C9A96E;display:block;margin-bottom:.35rem}
+.key-point p{font-size:.8rem;color:rgba(240,237,228,.4);line-height:1.6;margin:0}
+
+.highlight-block{border-left:2px solid #C9A96E;padding:.9rem 1.2rem;margin:1.5rem 0;background:rgba(201,169,110,.05);border-radius:0 6px 6px 0}
+.highlight-block p{font-size:.88rem;color:rgba(240,237,228,.65);margin:0}
+
+.safety-block{border-left:2px solid rgba(240,100,80,.5);padding:.9rem 1.2rem;margin:1.5rem 0;background:rgba(240,100,80,.05);border-radius:0 6px 6px 0}
+.safety-block p{font-size:.88rem;color:rgba(240,237,228,.65);margin:0}
+
+a{color:#C9A96E;text-decoration:none}
+a:hover{text-decoration:underline}
+
+.footer{padding:1.8rem;text-align:center;font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(240,237,228,.14);border-top:1px solid rgba(201,169,110,.08)}
+
+.last-updated{display:inline-block;font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(240,237,228,.25);margin-bottom:2.5rem}
 </style>
 </head>
 <body>
 
-<nav><a href="https://www.stepcasttours.com/index.html">← Back</a></nav>
+<header class="hdr" id="hdr">
+  <a class="logo" href="index.html">step<em>cast</em></a>
+  <span class="nav-tag">Walk. Listen. Discover.</span>
+</header>
 
-<h1>Terms & <em>Conditions</em></h1>
-<p style="color:#888;font-size:0.9rem;">Last updated: April 2026</p>
+<section class="hero">
+  <div class="eyebrow">Legal</div>
+  <h1>Terms &amp; <em>Conditions</em></h1>
+  <p class="hero-sub">The rules that govern your use of Stepcast. By purchasing or using our tours you agree to these terms.</p>
+</section>
 
-<p>These terms govern your use of Stepcast's self-guided audio walking tours available at stepcasttours.com. By purchasing or using our tours you agree to these terms. Please read them carefully.</p>
+<div class="content">
 
-<h2>1. About Stepcast</h2>
-<p>Stepcast is a trading name operated by Erika Doyle, Newbury, United Kingdom. Contact: <a href="mailto:stepcasttours@gmail.com">stepcasttours@gmail.com</a></p>
+  <span class="last-updated">Last updated: April 2026</span>
 
-<h2>2. The Service</h2>
-<p>Stepcast provides self-guided audio walking tours delivered via a web browser. Our tours include:</p>
-<ul>
-  <li>Audio narration at each stop, delivered via your device</li>
-  <li>A live GPS map showing your position relative to tour stops</li>
-  <li>Historical and cultural information about each location</li>
-</ul>
-<p>The first three stops of every tour are available free of charge. Full tour access requires purchase of a license key for <strong>€4.99 per city</strong>.</p>
+  <p>Stepcast is a trading name operated by Erika Doyle, Newbury, United Kingdom. These terms govern your use of Stepcast's self-guided audio walking tours available at stepcasttours.com.</p>
 
-<h2>3. Purchasing and License Keys</h2>
-<p>Payments are processed by Lemon Squeezy, who act as Merchant of Record. Payment infrastructure is powered by Stripe. Upon successful payment, a unique license key will be emailed to you automatically.</p>
-<ul>
-  <li>Each license key allows activation on up to 3 devices</li>
-  <li>License keys are personal to you and should not be shared</li>
-  <li>Sharing your license key may result in it being deactivated</li>
-  <li>Keys do not expire and can be used at any time after purchase</li>
-</ul>
+  <p>Contact: <a href="mailto:info@stepcasttours.com">info@stepcasttours.com</a></p>
 
-<h2>4. Refund Policy</h2>
-<p>Because our tours are digital products delivered immediately upon purchase, we generally do not offer refunds once a license key has been issued and used to unlock a tour.</p>
-<p>However, we will offer a full refund if:</p>
-<ul>
-  <li>You have not yet used your license key to unlock any stops beyond the free three</li>
-  <li>You contact us within 14 days of purchase at <a href="mailto:stepcasttours@gmail.com">stepcasttours@gmail.com</a></li>
-  <li>There is a technical fault preventing access to the tour that we are unable to resolve</li>
-</ul>
-<p>This does not affect your statutory rights under UK consumer law.</p>
+  <div class="diamond-divider"><div class="line"></div><div class="gem"></div><div class="line"></div></div>
 
-<h2>5. Your Responsibilities</h2>
-<p>When using our tours you are responsible for:</p>
-<ul>
-  <li>Your own safety at all times — our tours take place on public streets and you must follow all local laws and traffic rules</li>
-  <li>Being aware of your surroundings while using your phone or wearing earphones</li>
-  <li>Ensuring you have adequate mobile data or offline access for the tour</li>
-  <li>Any personal belongings, including your device</li>
-</ul>
-<p>Stepcast is not liable for accidents, injuries, theft, or losses that occur during the use of our tours, except where such liability cannot be excluded by law. Nothing in these terms limits our liability for death or personal injury caused by our negligence, or for fraud or fraudulent misrepresentation.</p>
+  <div class="section-label">The service</div>
+  <h2>What <em>Stepcast is.</em></h2>
 
-<h2>6. Accuracy of Information</h2>
-<p>We take care to ensure the historical and practical information in our tours is accurate. However, opening times, entry prices, and practical details can change. We recommend checking current information directly with attractions before visiting. We cannot be held responsible for inaccuracies in third-party information.</p>
+  <p>Stepcast provides self-guided audio walking tours delivered via a web browser. Each tour includes audio narration at every stop, a live GPS map showing your position relative to tour stops, and historical, cultural and contemporary information about each location.</p>
 
-<h2>7. Intellectual Property</h2>
-<p>All content in our tours — including scripts, audio, design, and maps — is the intellectual property of Stepcast. You may not reproduce, distribute, or use our content commercially without written permission. Your license key grants you personal, non-commercial access to the tour content only.</p>
+  <div class="highlight-block">
+    <p>The first three stops of every tour are free. Full tour access requires a one-off purchase of a license key for <strong style="color:#C9A96E;">€4.99 per city</strong>. No subscription, no recurring charges.</p>
+  </div>
 
-<h2>8. Availability</h2>
-<p>We aim to keep our tours available at all times but cannot guarantee uninterrupted access. We may need to take the service offline for maintenance. Where possible we will give advance notice of planned downtime.</p>
+  <div class="diamond-divider"><div class="line"></div><div class="gem"></div><div class="line"></div></div>
 
-<h2>9. Limitation of Liability</h2>
-<p>To the fullest extent permitted by UK law, Stepcast's liability to you is limited to the amount you paid for the tour. We are not liable for indirect losses, loss of enjoyment, or consequential damages arising from your use of the service. This limitation does not apply to liability for death or personal injury caused by negligence, fraud, or any other liability that cannot be excluded under applicable law.</p>
+  <div class="section-label">Purchasing</div>
+  <h2>License keys and <em>payment.</em></h2>
 
-<h2>10. Governing Law</h2>
-<p>These terms are governed by the laws of England and Wales. Any disputes will be subject to the exclusive jurisdiction of the courts of England and Wales.</p>
+  <p>Payments are processed by Lemon Squeezy, who act as Merchant of Record. Payment infrastructure is powered by Stripe. Upon successful payment, a unique license key will be emailed to you automatically.</p>
 
-<h2>11. Changes to These Terms</h2>
-<p>We may update these terms from time to time. The current version is always available at stepcasttours.com/terms.html. We will notify you of material changes by email where we hold your email address. Continued use of the service following notice of changes constitutes acceptance of the updated terms.</p>
+  <div class="key-points">
+    <div class="key-point">
+      <span>Devices</span>
+      <p>Each key allows activation on up to 3 devices.</p>
+    </div>
+    <div class="key-point">
+      <span>Personal use</span>
+      <p>Keys are personal to you and should not be shared.</p>
+    </div>
+    <div class="key-point">
+      <span>No expiry</span>
+      <p>Keys do not expire and can be used at any time after purchase.</p>
+    </div>
+    <div class="key-point">
+      <span>Sharing</span>
+      <p>Sharing your key may result in it being deactivated.</p>
+    </div>
+  </div>
 
-<h2>12. Contact</h2>
-<p>For any questions about these terms, contact us at <a href="mailto:stepcasttours@gmail.com">stepcasttours@gmail.com</a>.</p>
+  <div class="diamond-divider"><div class="line"></div><div class="gem"></div><div class="line"></div></div>
 
-<footer>© 2026 Stepcast — Newbury, United Kingdom — <a href="mailto:stepcasttours@gmail.com">stepcasttours@gmail.com</a></footer>
+  <div class="section-label">Refunds</div>
+  <h2>Our refund <em>policy.</em></h2>
+
+  <p>Because our tours are digital products delivered immediately upon purchase, we generally do not offer refunds once a license key has been issued and used to unlock a tour.</p>
+
+  <p>However, we will offer a full refund if you have not yet used your license key to unlock any stops beyond the free three, you contact us within 14 days of purchase at <a href="mailto:info@stepcasttours.com">info@stepcasttours.com</a>, or there is a technical fault preventing access to the tour that we are unable to resolve.</p>
+
+  <div class="highlight-block">
+    <p>This does not affect your statutory rights under UK consumer law.</p>
+  </div>
+
+  <div class="diamond-divider"><div class="line"></div><div class="gem"></div><div class="line"></div></div>
+
+  <div class="section-label">Your responsibilities</div>
+  <h2>Staying safe <em>out there.</em></h2>
+
+  <div class="safety-block">
+    <p>Our tours take place on public streets. You are responsible for your own safety at all times. Follow all local laws and traffic rules, and stay aware of your surroundings while using your phone or wearing earphones.</p>
+  </div>
+
+  <p>You are also responsible for ensuring you have adequate mobile data or offline access for the tour, and for any personal belongings including your device.</p>
+
+  <p>Stepcast is not liable for accidents, injuries, theft, or losses that occur during the use of our tours, except where such liability cannot be excluded by law. Nothing in these terms limits our liability for death or personal injury caused by our negligence, or for fraud or fraudulent misrepresentation.</p>
+
+  <div class="diamond-divider"><div class="line"></div><div class="gem"></div><div class="line"></div></div>
+
+  <div class="section-label">Content accuracy</div>
+  <h2>Information in <em>our tours.</em></h2>
+
+  <p>We take care to ensure the historical and practical information in our tours is accurate. However, opening times, entry prices, and practical details can change. We recommend checking current information directly with attractions before visiting. We cannot be held responsible for inaccuracies in third-party information.</p>
+
+  <div class="diamond-divider"><div class="line"></div><div class="gem"></div><div class="line"></div></div>
+
+  <div class="section-label">Intellectual property</div>
+  <h2>Our <em>content.</em></h2>
+
+  <p>All content in our tours, including scripts, audio, design, and maps, is the intellectual property of Stepcast. You may not reproduce, distribute, or use our content commercially without written permission. Your license key grants you personal, non-commercial access to the tour content only.</p>
+
+  <div class="diamond-divider"><div class="line"></div><div class="gem"></div><div class="line"></div></div>
+
+  <div class="section-label">Availability</div>
+  <h2>Service <em>uptime.</em></h2>
+
+  <p>We aim to keep our tours available at all times but cannot guarantee uninterrupted access. We may need to take the service offline for maintenance. Where possible we will give advance notice of planned downtime.</p>
+
+  <div class="diamond-divider"><div class="line"></div><div class="gem"></div><div class="line"></div></div>
+
+  <div class="section-label">Liability</div>
+  <h2>Limitation of <em>liability.</em></h2>
+
+  <p>To the fullest extent permitted by UK law, Stepcast's liability to you is limited to the amount you paid for the tour. We are not liable for indirect losses, loss of enjoyment, or consequential damages arising from your use of the service.</p>
+
+  <div class="highlight-block">
+    <p>This limitation does not apply to liability for death or personal injury caused by negligence, fraud, or any other liability that cannot be excluded under applicable law.</p>
+  </div>
+
+  <div class="diamond-divider"><div class="line"></div><div class="gem"></div><div class="line"></div></div>
+
+  <div class="section-label">Governing law</div>
+  <h2>England and <em>Wales.</em></h2>
+
+  <p>These terms are governed by the laws of England and Wales. Any disputes will be subject to the exclusive jurisdiction of the courts of England and Wales.</p>
+
+  <div class="diamond-divider"><div class="line"></div><div class="gem"></div><div class="line"></div></div>
+
+  <div class="section-label">Updates</div>
+  <h2>Changes to these <em>terms.</em></h2>
+
+  <p>We may update these terms from time to time. The current version is always available at stepcasttours.com/terms.html. We will notify you of material changes by email where we hold your email address. Continued use of the service following notice of changes constitutes acceptance of the updated terms.</p>
+
+  <p>Questions about these terms? Contact us at <a href="mailto:info@stepcasttours.com">info@stepcasttours.com</a>.</p>
+
+</div>
+
+<footer class="footer">
+  &copy; 2026 Stepcast &nbsp;&middot;&nbsp; Newbury, United Kingdom &nbsp;&middot;&nbsp;
+  <a href="mailto:info@stepcasttours.com">info@stepcasttours.com</a> &nbsp;&middot;&nbsp;
+  <a href="privacy.html">Privacy Policy</a>
+</footer>
+
+<!-- Cookie consent banner -->
+<div id="sc-cookie-bar" style="display:none;position:fixed;bottom:0;left:0;right:0;background:#161b0e;border-top:1px solid #b8972a;padding:14px 20px;z-index:99999;font-family:'DM Sans',sans-serif;">
+  <p style="color:#e8e0cc;margin:0 0 10px;font-size:13px;line-height:1.5;">We use cookies to measure how people find Stepcast via Google Ads. You can accept or decline below. <a href="/privacy.html" style="color:#b8972a;text-decoration:underline;">Privacy Policy</a></p>
+  <div>
+    <button onclick="scConsentAccept()" style="background:#b8972a;color:#0d120a;border:none;padding:7px 18px;border-radius:20px;font-size:13px;font-weight:600;cursor:pointer;margin-right:8px;">Accept</button>
+    <button onclick="scConsentDecline()" style="background:transparent;color:#e8e0cc;border:1px solid #555;padding:7px 18px;border-radius:20px;font-size:13px;cursor:pointer;">Decline</button>
+  </div>
+</div>
+
+<script>
+  var hdr = document.getElementById('hdr');
+  window.addEventListener('scroll', function(){
+    hdr.classList.toggle('scrolled', window.scrollY > 40);
+  });
+  function scConsentAccept() {
+    try { localStorage.setItem('stepcast_consent','granted'); } catch(e) {}
+    document.getElementById('sc-cookie-bar').style.display = 'none';
+    if (typeof loadGtag === 'function') { loadGtag(); }
+  }
+  function scConsentDecline() {
+    try { localStorage.setItem('stepcast_consent','denied'); } catch(e) {}
+    document.getElementById('sc-cookie-bar').style.display = 'none';
+  }
+  try {
+    if (!localStorage.getItem('stepcast_consent')) {
+      document.getElementById('sc-cookie-bar').style.display = 'block';
+    }
+  } catch(e) {}
+</script>
 
 </body>
 </html>

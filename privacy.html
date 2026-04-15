@@ -2,94 +2,291 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<!-- Google Ads (consent-gated, PECR compliant) -->
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  window.gtag = gtag;
+  function loadGtag() {
+    var s = document.createElement('script');
+    s.async = true;
+    s.src = 'https://www.googletagmanager.com/gtag/js?id=AW-18081596926';
+    document.head.appendChild(s);
+    gtag('js', new Date());
+    gtag('config', 'AW-18081596926');
+  }
+  try { if (localStorage.getItem('stepcast_consent') === 'granted') { loadGtag(); } } catch(e) {}
+</script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Privacy Policy — Stepcast</title>
+<meta name="description" content="How Stepcast collects, uses and protects your personal data. UK GDPR compliant privacy policy for stepcasttours.com.">
+<link rel="canonical" href="https://stepcasttours.com/privacy.html">
+<link rel="sitemap" type="application/xml" href="https://stepcasttours.com/sitemap.xml">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
-  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; max-width: 720px; margin: 0 auto; padding: 24px 20px 60px; color: #1a1a1a; line-height: 1.7; }
-  nav { margin-bottom: 32px; }
-  nav a { color: #1a1a1a; text-decoration: none; font-size: 0.95rem; }
-  h1 { font-size: 2rem; margin-bottom: 8px; }
-  h1 em { font-style: italic; }
-  h2 { font-size: 1.1rem; margin-top: 2rem; margin-bottom: 0.4rem; }
-  p, li { font-size: 0.97rem; color: #333; }
-  ul { padding-left: 1.4em; }
-  a { color: #1a1a1a; }
-  footer { margin-top: 48px; font-size: 0.85rem; color: #888; border-top: 1px solid #eee; padding-top: 16px; }
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',sans-serif;background:#1C1C1A;color:#F0EDE4;min-height:100vh}
+
+.hdr{position:fixed;top:0;left:0;right:0;z-index:100;padding:1rem 1.5rem;display:flex;align-items:center;justify-content:space-between;transition:background .3s}
+.hdr.scrolled{background:rgba(28,28,26,.97);border-bottom:1px solid rgba(201,169,110,.15);backdrop-filter:blur(12px)}
+.logo{font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:600;letter-spacing:.04em;color:#F0EDE4;text-decoration:none}
+.logo em{color:#C9A96E;font-style:normal}
+.nav-tag{font-size:.75rem;letter-spacing:.16em;text-transform:uppercase;color:rgba(240,237,228,.3)}
+
+.hero{display:flex;flex-direction:column;align-items:center;text-align:center;padding:7rem 2rem 3.5rem;background:radial-gradient(ellipse 70% 60% at 50% 50%,rgba(45,90,61,.14) 0%,transparent 70%),#1C1C1A}
+.eyebrow{font-size:.6rem;font-weight:500;letter-spacing:.28em;text-transform:uppercase;color:#C9A96E;margin-bottom:1.2rem}
+.hero h1{font-family:'Cormorant Garamond',serif;font-size:clamp(2.6rem,7vw,5rem);font-weight:300;line-height:1.05;margin-bottom:1.2rem}
+.hero h1 em{font-style:italic;color:#C9A96E}
+.hero-sub{font-size:.92rem;font-weight:300;color:rgba(240,237,228,.5);max-width:440px;line-height:1.85;margin:0 auto}
+
+.content{max-width:680px;margin:0 auto;padding:4rem 1.8rem 2rem}
+
+.diamond-divider{display:flex;align-items:center;gap:1rem;margin:3rem 0}
+.diamond-divider .line{flex:1;height:1px;background:rgba(201,169,110,.15)}
+.diamond-divider .gem{width:6px;height:6px;background:#C9A96E;transform:rotate(45deg);flex-shrink:0}
+
+.section-label{font-size:.58rem;font-weight:500;letter-spacing:.24em;text-transform:uppercase;color:#C9A96E;margin-bottom:1.2rem}
+
+h2{font-family:'Cormorant Garamond',serif;font-size:clamp(1.7rem,4vw,2.5rem);font-weight:300;line-height:1.1;margin-bottom:1.2rem}
+h2 em{font-style:italic;color:#C9A96E}
+
+p{font-size:.92rem;font-weight:300;color:rgba(240,237,228,.72);line-height:1.95;margin-bottom:1rem}
+p:last-child{margin-bottom:0}
+
+.info-card{background:rgba(255,255,255,.03);border:1px solid rgba(201,169,110,.12);border-radius:8px;padding:1.4rem 1.5rem;margin-bottom:1rem}
+.info-card h4{font-size:.78rem;font-weight:500;color:#F0EDE4;margin-bottom:.5rem;letter-spacing:.03em}
+.info-card p{font-size:.82rem;color:rgba(240,237,228,.48);line-height:1.7;margin:0}
+.info-card a{color:#C9A96E;text-decoration:none}
+
+.rights-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:1.5rem}
+@media(max-width:520px){.rights-grid{grid-template-columns:1fr}}
+.right-item{background:rgba(255,255,255,.02);border:1px solid rgba(201,169,110,.1);border-radius:6px;padding:1rem 1.2rem}
+.right-item span{font-size:.7rem;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:#C9A96E;display:block;margin-bottom:.35rem}
+.right-item p{font-size:.8rem;color:rgba(240,237,228,.4);line-height:1.6;margin:0}
+
+.highlight-block{border-left:2px solid #C9A96E;padding:.9rem 1.2rem;margin:1.5rem 0;background:rgba(201,169,110,.05);border-radius:0 6px 6px 0}
+.highlight-block p{font-size:.88rem;color:rgba(240,237,228,.65);margin:0}
+
+a{color:#C9A96E;text-decoration:none}
+a:hover{text-decoration:underline}
+
+.footer{padding:1.8rem;text-align:center;font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(240,237,228,.14);border-top:1px solid rgba(201,169,110,.08)}
+
+.last-updated{display:inline-block;font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(240,237,228,.25);margin-bottom:2.5rem}
 </style>
 </head>
 <body>
 
-<nav><a href="https://www.stepcasttours.com/index.html">← Back</a></nav>
+<header class="hdr" id="hdr">
+  <a class="logo" href="index.html">step<em>cast</em></a>
+  <span class="nav-tag">Walk. Listen. Discover.</span>
+</header>
 
-<h1>Privacy <em>Policy</em></h1>
-<p style="color:#888;font-size:0.9rem;">Last updated: April 2026</p>
+<section class="hero">
+  <div class="eyebrow">Legal</div>
+  <h1>Privacy <em>Policy</em></h1>
+  <p class="hero-sub">How we collect, use and protect your personal data when you use Stepcast.</p>
+</section>
 
-<p>Stepcast ("we", "us", "our") is operated by Erika Doyle, trading as Stepcast, based in Newbury, United Kingdom. We are committed to protecting your personal data and your privacy. This policy explains what information we collect, how we use it, and your rights under UK GDPR and the Data Protection Act 2018.</p>
+<div class="content">
 
-<h2>1. Who We Are</h2>
-<p>Stepcast is the data controller for the personal information we collect. We provide self-guided audio walking tours accessible via our website at stepcasttours.com.</p>
-<p>Contact us: <a href="mailto:stepcasttours@gmail.com">stepcasttours@gmail.com</a></p>
+  <span class="last-updated">Last updated: April 2026</span>
 
-<h2>2. What Data We Collect</h2>
-<p>We collect the following information when you use our services:</p>
-<ul>
-  <li><strong>Purchase data</strong> — when you buy a tour through Lemon Squeezy, they collect your email address and payment information on our behalf. Payment processing is powered by Stripe. We receive a record of your purchase but do not store your card details.</li>
-  <li><strong>License key usage</strong> — when you unlock a tour using a license key, we verify it against Lemon Squeezy's API. We do not store your key permanently on our servers.</li>
-  <li><strong>Device data</strong> — our tours use your browser's local storage to remember that you have unlocked a tour on your device. This data stays on your device and is not transmitted to us.</li>
-  <li><strong>Location data</strong> — if you use the GPS feature, your location is used only on your device to show your position on the map. We do not collect, store or transmit your location to our servers.</li>
-  <li><strong>Contact data</strong> — if you contact us via our contact form or by email, we will store your email address and the content of your message to respond to your enquiry.</li>
-</ul>
+  <p>Stepcast is operated by Erika Doyle, trading as Stepcast, based in Newbury, United Kingdom. We are committed to protecting your personal data and your privacy. This policy explains what information we collect, how we use it, and your rights under UK GDPR and the Data Protection Act 2018.</p>
 
-<h2>3. How We Use Your Data</h2>
-<ul>
-  <li>To process your purchase and deliver your unlock code</li>
-  <li>To verify license keys and unlock tour content</li>
-  <li>To respond to customer service enquiries</li>
-  <li>To improve our tours and service</li>
-</ul>
-<p>We do not use your data for marketing without your explicit consent. We do not sell your data to any third party.</p>
+  <p>We are the data controller for the personal information we collect. To contact us about this policy or to exercise your data rights: <a href="mailto:info@stepcasttours.com">info@stepcasttours.com</a></p>
 
-<h2>4. Legal Basis for Processing</h2>
-<p>We process your data on the following legal bases under UK GDPR:</p>
-<ul>
-  <li><strong>Contract</strong> — processing necessary to fulfil your purchase and deliver the service you have paid for</li>
-  <li><strong>Legitimate interests</strong> — responding to enquiries and improving our service</li>
-  <li><strong>Legal obligation</strong> — where we are required to retain records for tax or legal compliance</li>
-</ul>
+  <div class="diamond-divider"><div class="line"></div><div class="gem"></div><div class="line"></div></div>
 
-<h2>5. Third Parties</h2>
-<p>We use the following third-party services:</p>
-<ul>
-  <li><strong>Lemon Squeezy</strong> — payment processing and license key management. They act as our Merchant of Record and handle payment data under their own privacy policy. Payment infrastructure is provided by Stripe.</li>
-  <li><strong>Vercel</strong> — website hosting. Our site is served via Vercel's infrastructure.</li>
-  <li><strong>Formspree</strong> — our contact form is processed by Formspree. Messages submitted via the contact form are handled under Formspree's privacy policy. No personal data is stored by us beyond what we receive in the resulting email notification.</li>
-</ul>
+  <div class="section-label">What we collect</div>
+  <h2>Data we <em>hold.</em></h2>
 
-<h2>6. How Long We Keep Your Data</h2>
-<p>We retain purchase records for 7 years as required by UK tax law. Emails and contact form submissions are retained for as long as necessary to resolve your enquiry, and deleted thereafter. Device-local data (your unlock status) is stored in your browser until you clear your browser data.</p>
+  <div class="info-card">
+    <h4>Purchase data</h4>
+    <p>When you buy a tour through Lemon Squeezy, they collect your email address and payment information on our behalf. Payment processing is powered by Stripe. We receive a record of your purchase but do not store your card details.</p>
+  </div>
 
-<h2>7. Your Rights</h2>
-<p>Under UK GDPR you have the right to:</p>
-<ul>
-  <li>Access the personal data we hold about you</li>
-  <li>Request correction of inaccurate data</li>
-  <li>Request deletion of your data (subject to legal retention requirements)</li>
-  <li>Object to processing of your data</li>
-  <li>Request restriction of processing</li>
-  <li>Data portability</li>
-</ul>
-<p>To exercise any of these rights, email us at <a href="mailto:stepcasttours@gmail.com">stepcasttours@gmail.com</a>. We will respond within 30 days.</p>
+  <div class="info-card">
+    <h4>License key usage</h4>
+    <p>When you unlock a tour using a license key, we verify it against Lemon Squeezy's API. We do not store your key permanently on our servers.</p>
+  </div>
 
-<h2>8. Cookies and Local Storage</h2>
-<p>Our website uses browser local storage (not traditional cookies) to remember your tour unlock status on your device. We do not use tracking cookies, advertising cookies, or analytics cookies. You can clear this data at any time by clearing your browser's site data for stepcasttours.com.</p>
+  <div class="info-card">
+    <h4>Device data</h4>
+    <p>Our tours use your browser's local storage to remember that you have unlocked a tour on your device. This data stays on your device and is not transmitted to us.</p>
+  </div>
 
-<h2>9. Complaints</h2>
-<p>If you are unhappy with how we handle your personal data, you have the right to lodge a complaint with the UK Information Commissioner's Office (ICO) at <a href="https://ico.org.uk">ico.org.uk</a>.</p>
+  <div class="info-card">
+    <h4>Location data</h4>
+    <p>If you use the GPS feature, your location is used only on your device to show your position on the map. We do not collect, store or transmit your location to our servers.</p>
+  </div>
 
-<h2>10. Changes to This Policy</h2>
-<p>We may update this policy from time to time. The latest version will always be available at stepcasttours.com/privacy.html. We will notify customers of significant changes by email where we hold your email address.</p>
+  <div class="info-card">
+    <h4>Contact data</h4>
+    <p>If you contact us via our contact form or by email, we will store your email address and the content of your message to respond to your enquiry.</p>
+  </div>
 
-<footer>© 2026 Stepcast — Newbury, United Kingdom — <a href="mailto:stepcasttours@gmail.com">stepcasttours@gmail.com</a></footer>
+  <div class="diamond-divider"><div class="line"></div><div class="gem"></div><div class="line"></div></div>
+
+  <div class="section-label">How we use it</div>
+  <h2>Purpose of <em>processing.</em></h2>
+
+  <p>We use your data to process your purchase and deliver your unlock code, to verify license keys and unlock tour content, to respond to customer service enquiries, and to improve our tours and service.</p>
+
+  <p>We do not use your data for marketing without your explicit consent. We do not sell your data to any third party.</p>
+
+  <div class="section-label" style="margin-top:2.5rem">Legal basis</div>
+  <h2>Why we're <em>allowed to.</em></h2>
+
+  <div class="info-card">
+    <h4>Contract</h4>
+    <p>Processing necessary to fulfil your purchase and deliver the service you have paid for.</p>
+  </div>
+  <div class="info-card">
+    <h4>Legitimate interests</h4>
+    <p>Responding to enquiries and improving our service.</p>
+  </div>
+  <div class="info-card">
+    <h4>Legal obligation</h4>
+    <p>Where we are required to retain records for tax or legal compliance.</p>
+  </div>
+  <div class="info-card">
+    <h4>Consent</h4>
+    <p>Where you have given explicit consent, specifically for the loading of Google Ads cookies. You may withdraw this consent at any time by clearing your browser's site data for stepcasttours.com.</p>
+  </div>
+
+  <div class="diamond-divider"><div class="line"></div><div class="gem"></div><div class="line"></div></div>
+
+  <div class="section-label">Third parties</div>
+  <h2>Who else is <em>involved.</em></h2>
+
+  <div class="info-card">
+    <h4>Lemon Squeezy</h4>
+    <p>Payment processing and license key management. They act as our Merchant of Record and handle payment data under their own privacy policy. Payment infrastructure is provided by Stripe.</p>
+  </div>
+
+  <div class="info-card">
+    <h4>Vercel</h4>
+    <p>Website hosting. Our site is served via Vercel's infrastructure.</p>
+  </div>
+
+  <div class="info-card">
+    <h4>Formspree</h4>
+    <p>Our contact form is processed by Formspree. Messages submitted via the contact form are handled under Formspree's privacy policy. No personal data is stored by us beyond what we receive in the resulting email notification.</p>
+  </div>
+
+  <div class="info-card">
+    <h4>Google</h4>
+    <p>We use Google Ads conversion tracking on our website. When you accept cookies via our consent banner, a Google Ads tag is loaded which may set cookies on your device and send data (including your IP address and browsing behaviour on stepcasttours.com) to Google LLC. This is used to measure how visitors find Stepcast through our advertising. Google acts as a data processor under their own privacy policy: <a href="https://policies.google.com/privacy" target="_blank">policies.google.com/privacy</a>. Additionally, Google Fonts are loaded from Google's servers on all pages, which transmits your IP address to Google as part of font delivery.</p>
+  </div>
+
+  <div class="diamond-divider"><div class="line"></div><div class="gem"></div><div class="line"></div></div>
+
+  <div class="section-label">Cookies</div>
+  <h2>Local storage and <em>cookies.</em></h2>
+
+  <div class="info-card">
+    <h4>Functional storage (no consent required)</h4>
+    <p>We use your browser's local storage to remember your tour unlock status and your cookie consent preference. This data stays on your device and is not transmitted to us. It is essential to the service.</p>
+  </div>
+
+  <div class="info-card">
+    <h4>Advertising cookies (Google Ads, consent required)</h4>
+    <p>If you accept cookies via our consent banner, we load a Google Ads tracking tag which may set cookies on your device to help us measure the effectiveness of our advertising. This is only activated with your consent. You can withdraw consent at any time by clearing your browser's site data for stepcasttours.com, which will reset your preference and show the consent banner again on your next visit.</p>
+  </div>
+
+  <p>We do not use analytics cookies such as Google Analytics. We do not use cookies for any purpose other than those described above.</p>
+
+  <div class="diamond-divider"><div class="line"></div><div class="gem"></div><div class="line"></div></div>
+
+  <div class="section-label">How long we keep it</div>
+  <h2>Data <em>retention.</em></h2>
+
+  <p>We retain purchase records for 7 years as required by UK tax law. Emails and contact form submissions are retained for as long as necessary to resolve your enquiry, and deleted thereafter. Device-local data (your unlock status and consent preference) is stored in your browser until you clear your browser data.</p>
+
+  <div class="diamond-divider"><div class="line"></div><div class="gem"></div><div class="line"></div></div>
+
+  <div class="section-label">Your rights</div>
+  <h2>What you can <em>ask for.</em></h2>
+
+  <p>Under UK GDPR you have the following rights. To exercise any of them, email <a href="mailto:info@stepcasttours.com">info@stepcasttours.com</a> and we will respond within 30 days.</p>
+
+  <div class="rights-grid">
+    <div class="right-item">
+      <span>Access</span>
+      <p>Request a copy of the personal data we hold about you.</p>
+    </div>
+    <div class="right-item">
+      <span>Correction</span>
+      <p>Request that inaccurate data is corrected.</p>
+    </div>
+    <div class="right-item">
+      <span>Deletion</span>
+      <p>Request deletion of your data, subject to legal retention requirements.</p>
+    </div>
+    <div class="right-item">
+      <span>Objection</span>
+      <p>Object to processing of your data.</p>
+    </div>
+    <div class="right-item">
+      <span>Restriction</span>
+      <p>Request restriction of how we process your data.</p>
+    </div>
+    <div class="right-item">
+      <span>Portability</span>
+      <p>Request your data in a portable format.</p>
+    </div>
+  </div>
+
+  <div class="highlight-block" style="margin-top:2rem">
+    <p>If you are unhappy with how we handle your personal data, you have the right to lodge a complaint with the UK Information Commissioner's Office (ICO) at <a href="https://ico.org.uk" target="_blank">ico.org.uk</a>.</p>
+  </div>
+
+  <div class="diamond-divider"><div class="line"></div><div class="gem"></div><div class="line"></div></div>
+
+  <div class="section-label">Updates</div>
+  <h2>Changes to this <em>policy.</em></h2>
+
+  <p>We may update this policy from time to time. The latest version will always be available at stepcasttours.com/privacy.html. We will notify customers of significant changes by email where we hold your email address.</p>
+
+</div>
+
+<footer class="footer">
+  &copy; 2026 Stepcast &nbsp;&middot;&nbsp; Newbury, United Kingdom &nbsp;&middot;&nbsp;
+  <a href="mailto:info@stepcasttours.com">info@stepcasttours.com</a> &nbsp;&middot;&nbsp;
+  <a href="terms.html">Terms</a>
+</footer>
+
+<!-- Cookie consent banner -->
+<div id="sc-cookie-bar" style="display:none;position:fixed;bottom:0;left:0;right:0;background:#161b0e;border-top:1px solid #b8972a;padding:14px 20px;z-index:99999;font-family:'DM Sans',sans-serif;">
+  <p style="color:#e8e0cc;margin:0 0 10px;font-size:13px;line-height:1.5;">We use cookies to measure how people find Stepcast via Google Ads. You can accept or decline below. <a href="/privacy.html" style="color:#b8972a;text-decoration:underline;">Privacy Policy</a></p>
+  <div>
+    <button onclick="scConsentAccept()" style="background:#b8972a;color:#0d120a;border:none;padding:7px 18px;border-radius:20px;font-size:13px;font-weight:600;cursor:pointer;margin-right:8px;">Accept</button>
+    <button onclick="scConsentDecline()" style="background:transparent;color:#e8e0cc;border:1px solid #555;padding:7px 18px;border-radius:20px;font-size:13px;cursor:pointer;">Decline</button>
+  </div>
+</div>
+
+<script>
+  var hdr = document.getElementById('hdr');
+  window.addEventListener('scroll', function(){
+    hdr.classList.toggle('scrolled', window.scrollY > 40);
+  });
+  function scConsentAccept() {
+    try { localStorage.setItem('stepcast_consent','granted'); } catch(e) {}
+    document.getElementById('sc-cookie-bar').style.display = 'none';
+    if (typeof loadGtag === 'function') { loadGtag(); }
+  }
+  function scConsentDecline() {
+    try { localStorage.setItem('stepcast_consent','denied'); } catch(e) {}
+    document.getElementById('sc-cookie-bar').style.display = 'none';
+  }
+  try {
+    if (!localStorage.getItem('stepcast_consent')) {
+      document.getElementById('sc-cookie-bar').style.display = 'block';
+    }
+  } catch(e) {}
+</script>
 
 </body>
 </html>

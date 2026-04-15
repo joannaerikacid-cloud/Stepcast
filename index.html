@@ -2,13 +2,20 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=AW-18081596926"></script>
+<!-- Google Ads (consent-gated, PECR compliant) -->
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'AW-18081596926');
+  window.gtag = gtag;
+  function loadGtag() {
+    var s = document.createElement('script');
+    s.async = true;
+    s.src = 'https://www.googletagmanager.com/gtag/js?id=AW-18081596926';
+    document.head.appendChild(s);
+    gtag('js', new Date());
+    gtag('config', 'AW-18081596926');
+  }
+  try { if (localStorage.getItem('stepcast_consent') === 'granted') { loadGtag(); } } catch(e) {}
 </script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Stepcast | Self-Guided Audio Walking Tours</title>
@@ -54,7 +61,7 @@
       "logo": "https://stepcasttours.com/val-s1a.jpg",
       "contactPoint": {
         "@type": "ContactPoint",
-        "email": "stepcasttours@gmail.com",
+        "email": "info@stepcasttours.com",
         "contactType": "customer support"
       }
     },
@@ -367,19 +374,6 @@
     </div>
   </div>
 
-  <div class="nav-item">
-    <button class="nav-link nav-toggle" onclick="toggleSection('blogSection')">
-      Blog <span class="nav-arrow" id="blogArrow">&#8250;</span>
-    </button>
-    <div class="nav-sub" id="blogSection">
-      <div class="nav-country-item">
-        <div class="nav-cities open">
-          <a href="visiting-bath-first-time.html">Visiting Bath for the First Time</a>
-          <a href="day-trips-from-bath.html">Best Day Trips from Bath</a>
-        </div>
-      </div>
-    </div>
-  </div>
   <a class="nav-link" href="about.html">About <em>Us</em></a>
   <a class="nav-link" href="reviews.html"><em>Reviews</em></a>
   <a class="nav-link" href="faq.html">FA<em>Qs</em></a>
@@ -674,8 +668,6 @@
   <a href="self-guided-walking-tour-london.html" style="color:rgba(201,169,110,.3);text-decoration:none">London Walking Tours</a> &mdash;
   <a href="self-guided-walking-tours-spain.html" style="color:rgba(201,169,110,.3);text-decoration:none">Spain Walking Tours</a> &mdash;
   <a href="faq.html" style="color:rgba(201,169,110,.3);text-decoration:none">FAQs</a> &mdash;
-  <a href="visiting-bath-first-time.html" style="color:rgba(201,169,110,.3);text-decoration:none">Bath Guide</a> &mdash;
-  <a href="day-trips-from-bath.html" style="color:rgba(201,169,110,.3);text-decoration:none">Day Trips from Bath</a> &mdash;
   <a href="privacy.html" style="color:rgba(201,169,110,.3);text-decoration:none">Privacy Policy</a> &mdash;
   <a href="terms.html" style="color:rgba(201,169,110,.3);text-decoration:none">Terms &amp; Conditions</a>
 </div>
@@ -802,6 +794,31 @@ document.getElementById('navDrawer').querySelectorAll('a').forEach(function(a){
     document.body.style.overflow='';
   });
 });
+</script>
+
+<!-- Cookie consent banner -->
+<div id="sc-cookie-bar" style="display:none;position:fixed;bottom:0;left:0;right:0;background:#161b0e;border-top:1px solid #b8972a;padding:14px 20px;z-index:99999;font-family:'DM Sans',sans-serif;">
+  <p style="color:#e8e0cc;margin:0 0 10px;font-size:13px;line-height:1.5;">We use cookies to measure how people find Stepcast via Google Ads. You can accept or decline below. <a href="/privacy.html" style="color:#b8972a;text-decoration:underline;">Privacy Policy</a></p>
+  <div>
+    <button onclick="scConsentAccept()" style="background:#b8972a;color:#0d120a;border:none;padding:7px 18px;border-radius:20px;font-size:13px;font-weight:600;cursor:pointer;margin-right:8px;">Accept</button>
+    <button onclick="scConsentDecline()" style="background:transparent;color:#e8e0cc;border:1px solid #555;padding:7px 18px;border-radius:20px;font-size:13px;cursor:pointer;">Decline</button>
+  </div>
+</div>
+<script>
+  function scConsentAccept() {
+    try { localStorage.setItem('stepcast_consent','granted'); } catch(e) {}
+    document.getElementById('sc-cookie-bar').style.display = 'none';
+    if (typeof loadGtag === 'function') { loadGtag(); }
+  }
+  function scConsentDecline() {
+    try { localStorage.setItem('stepcast_consent','denied'); } catch(e) {}
+    document.getElementById('sc-cookie-bar').style.display = 'none';
+  }
+  try {
+    if (!localStorage.getItem('stepcast_consent')) {
+      document.getElementById('sc-cookie-bar').style.display = 'block';
+    }
+  } catch(e) {}
 </script>
 </body>
 </html>

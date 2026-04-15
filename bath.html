@@ -2,13 +2,20 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=AW-18081596926"></script>
+<!-- Google Ads (consent-gated, PECR compliant) -->
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'AW-18081596926');
+  window.gtag = gtag;
+  function loadGtag() {
+    var s = document.createElement('script');
+    s.async = true;
+    s.src = 'https://www.googletagmanager.com/gtag/js?id=AW-18081596926';
+    document.head.appendChild(s);
+    gtag('js', new Date());
+    gtag('config', 'AW-18081596926');
+  }
+  try { if (localStorage.getItem('stepcast_consent') === 'granted') { loadGtag(); } } catch(e) {}
 </script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Bath: Stone, Spring &amp; Story Audio Tour | Stepcast</title>
@@ -447,6 +454,31 @@ document.getElementById("ucodeIn").addEventListener("keydown",function(e){if(e.k
 function applyLocks(){if(isUnlocked())return;var allStops=document.querySelectorAll(".stop");for(var i=0;i<allStops.length;i++){if(i<FREE_STOPS)continue;allStops[i].style.position="relative";var o=document.createElement("div");o.className="lock-overlay";o.innerHTML="<div class='lock-icon'>&#128274;</div><h4>Stop "+(i+1)+" is locked</h4><p>The next stops go further into Bath. Unlock the full tour for €4.99 and keep access forever.</p><button class='unlock-btn' onclick='openModal()'>Unlock Full Tour &mdash; &euro;4.99</button>";allStops[i].appendChild(o);var ndots=document.querySelectorAll(".ndot");if(ndots[i]){ndots[i].style.opacity="0.35";ndots[i].title="Locked";}}}
 autoUnlockFromUrl();
 setTimeout(applyLocks,300);
+</script>
+
+<!-- Cookie consent banner -->
+<div id="sc-cookie-bar" style="display:none;position:fixed;bottom:0;left:0;right:0;background:#161b0e;border-top:1px solid #b8972a;padding:14px 20px;z-index:99999;font-family:'DM Sans',sans-serif;">
+  <p style="color:#e8e0cc;margin:0 0 10px;font-size:13px;line-height:1.5;">We use cookies to measure how people find Stepcast via Google Ads. You can accept or decline below. <a href="/privacy.html" style="color:#b8972a;text-decoration:underline;">Privacy Policy</a></p>
+  <div>
+    <button onclick="scConsentAccept()" style="background:#b8972a;color:#0d120a;border:none;padding:7px 18px;border-radius:20px;font-size:13px;font-weight:600;cursor:pointer;margin-right:8px;">Accept</button>
+    <button onclick="scConsentDecline()" style="background:transparent;color:#e8e0cc;border:1px solid #555;padding:7px 18px;border-radius:20px;font-size:13px;cursor:pointer;">Decline</button>
+  </div>
+</div>
+<script>
+  function scConsentAccept() {
+    try { localStorage.setItem('stepcast_consent','granted'); } catch(e) {}
+    document.getElementById('sc-cookie-bar').style.display = 'none';
+    if (typeof loadGtag === 'function') { loadGtag(); }
+  }
+  function scConsentDecline() {
+    try { localStorage.setItem('stepcast_consent','denied'); } catch(e) {}
+    document.getElementById('sc-cookie-bar').style.display = 'none';
+  }
+  try {
+    if (!localStorage.getItem('stepcast_consent')) {
+      document.getElementById('sc-cookie-bar').style.display = 'block';
+    }
+  } catch(e) {}
 </script>
 </body>
 </html>
