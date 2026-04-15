@@ -50,6 +50,13 @@
     <priority>0.8</priority>
   </url>
 
+  <!-- Blog posts -->
+  <url>
+    <loc>https://stepcasttours.com/visiting-bath-first-time.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
   <!-- Tour pages -->
   <url>
     <loc>https://stepcasttours.com/amsterdam.html</loc>
