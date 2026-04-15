@@ -57,6 +57,12 @@
     <priority>0.8</priority>
   </url>
 
+  <url>
+    <loc>https://stepcasttours.com/day-trips-from-bath.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
   <!-- Tour pages -->
   <url>
     <loc>https://stepcasttours.com/amsterdam.html</loc>
