@@ -227,7 +227,32 @@
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}body{font-family:'DM Sans',sans-serif;background:#1C1C1A;color:#F0EDE4;min-height:100vh}
-.hdr{position:fixed;top:0;left:0;right:0;z-index:100;padding:1rem 1.5rem;display:flex;align-items:center;justify-content:space-between;transition:background .3s}.hdr.scrolled{background:rgba(28,28,26,.97);border-bottom:1px solid rgba(201,169,110,.15);backdrop-filter:blur(12px)}.logo{font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:600;letter-spacing:.04em;color:#F0EDE4;text-decoration:none;opacity:0;pointer-events:none;transition:opacity .3s}.logo em{color:#C9A96E;font-style:normal}.logo.vis{opacity:1;pointer-events:all}.nav-tag{font-size:.75rem;letter-spacing:.16em;text-transform:uppercase;color:rgba(240,237,228,.3)}.wordmark{font-family:'Cormorant Garamond',serif;font-size:clamp(2.2rem,6vw,4rem);font-weight:300;letter-spacing:.02em;color:#F0EDE4;line-height:1;text-decoration:none;display:block;position:absolute;top:1.2rem;left:1.5rem}.wordmark em{color:#C9A96E;font-style:normal}
+.hdr{position:fixed;top:0;left:0;right:0;z-index:100;padding:1rem 1.5rem;display:flex;align-items:center;justify-content:space-between;transition:background .3s}.hdr.scrolled{background:rgba(28,28,26,.97);border-bottom:1px solid rgba(201,169,110,.15);backdrop-filter:blur(12px)}
+.hdr-left{display:flex;align-items:center;gap:.75rem}
+.logo{font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:600;letter-spacing:.04em;color:#F0EDE4;text-decoration:none;transition:opacity .3s}.logo em{color:#C9A96E;font-style:normal}
+.nav-tag{font-size:.75rem;letter-spacing:.16em;text-transform:uppercase;color:rgba(240,237,228,.3)}
+.wordmark-wrap{position:absolute;top:1.2rem;left:1.5rem;display:flex;align-items:center;gap:.6rem}.wordmark{font-family:'Cormorant Garamond',serif;font-size:clamp(2.2rem,6vw,4rem);font-weight:300;letter-spacing:.02em;color:#F0EDE4;line-height:1;text-decoration:none;display:block}.wordmark em{color:#C9A96E;font-style:normal}
+.burger{background:none;border:none;cursor:pointer;padding:.3rem;display:flex;flex-direction:column;gap:5px;transition:opacity .3s;margin-top:.4rem}.burger span{display:block;width:20px;height:1.5px;background:#C9A96E;transition:all .3s}.burger.open span:nth-child(1){transform:translateY(6.5px) rotate(45deg)}.burger.open span:nth-child(2){opacity:0}.burger.open span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg)}
+.nav-drawer{position:fixed;top:0;left:0;right:0;bottom:0;z-index:99;background:rgba(28,28,26,.98);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:0;transform:translateY(-100%);transition:transform .4s cubic-bezier(.4,0,.2,1)}
+.nav-drawer.open{transform:translateY(0)}
+.nav-drawer{overflow-y:auto}
+.nav-item{width:100%;text-align:center}
+.nav-link{font-family:'Cormorant Garamond',serif;font-size:clamp(1.8rem,5vw,2.6rem);font-weight:300;color:#F0EDE4;text-decoration:none;padding:.55rem 0;letter-spacing:.02em;transition:color .2s;display:block;width:100%;text-align:center}
+.nav-link em{font-style:italic;color:#C9A96E}
+.nav-link:hover,.nav-toggle:hover{color:#C9A96E}
+.nav-toggle{background:none;border:none;cursor:pointer;font-family:'Cormorant Garamond',serif;font-size:clamp(1.8rem,5vw,2.6rem);font-weight:300;color:#F0EDE4;letter-spacing:.02em;padding:.55rem 0;width:100%;display:flex;align-items:center;justify-content:center;gap:.5rem;transition:color .2s}
+.nav-arrow{display:inline-block;transition:transform .3s;font-style:normal;color:#C9A96E;font-size:1.4rem;line-height:1}
+.nav-arrow.open{transform:rotate(90deg)}
+.nav-sub{display:none;padding:.5rem 0 .8rem;border-top:1px solid rgba(201,169,110,.1);border-bottom:1px solid rgba(201,169,110,.1);margin:.3rem 0 .5rem}
+.nav-sub.open{display:block}
+.nav-country-item{text-align:center}
+.nav-country{background:none;border:none;cursor:pointer;font-family:'DM Sans',sans-serif;font-size:.78rem;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:rgba(201,169,110,.7);padding:.5rem 1.5rem;width:100%;display:flex;align-items:center;justify-content:center;gap:.4rem;transition:color .2s}
+.nav-country:hover{color:#C9A96E}
+.nav-cities{display:none;padding:.3rem 0 .6rem;margin-bottom:.2rem}
+.nav-cities.open{display:block}
+.nav-cities a{display:block;font-family:'DM Sans',sans-serif;font-size:.82rem;font-weight:300;color:rgba(240,237,228,.55);text-decoration:none;padding:.3rem 0;transition:color .2s}
+.nav-cities a:hover{color:#F0EDE4}.soon-tag{font-size:.6rem;letter-spacing:.06em;text-transform:uppercase;color:#C9A96E;font-style:normal;background:rgba(201,169,110,.12);border:1px solid rgba(201,169,110,.3);border-radius:3px;padding:.1rem .35rem;margin-left:.3rem;vertical-align:middle}
+.nav-item + .nav-link{border-top:1px solid rgba(201,169,110,.08)}
 .hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:6rem 2rem 4rem;background:radial-gradient(ellipse 80% 60% at 50% 40%,rgba(45,90,61,.2) 0%,transparent 65%),#1C1C1A;position:relative}.eyebrow{font-size:.6rem;font-weight:500;letter-spacing:.28em;text-transform:uppercase;color:#C9A96E;margin-bottom:1.2rem}.hero h1{font-family:'Cormorant Garamond',serif;font-size:clamp(3rem,8vw,6.5rem);font-weight:300;line-height:.95;margin-bottom:1.5rem}.hero h1 em{font-style:italic;color:#C9A96E}.tagline{font-size:1.05rem;font-weight:300;color:rgba(240,237,228,.65);max-width:480px;line-height:1.8;margin-bottom:.7rem}.tagline-sub{font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(240,237,228,.28);margin-bottom:2.5rem}
 
 /* SEARCH BAR */
@@ -245,11 +270,115 @@
 </head>
 <body>
 <header class="hdr" id="hdr">
-  <a class="logo" href="index.html">step<em>cast</em></a>
   <span class="nav-tag">Walk. Listen. Discover.</span>
 </header>
+
+<nav class="nav-drawer" id="navDrawer">
+
+  <!-- TOURS -->
+  <div class="nav-item">
+    <button class="nav-link nav-toggle" onclick="toggleSection('toursSection')">
+      Tours <span class="nav-arrow" id="toursArrow">&#8250;</span>
+    </button>
+    <div class="nav-sub" id="toursSection">
+
+      <div class="nav-country-item">
+        <button class="nav-country" onclick="toggleSection('ukCities')">
+          United Kingdom <span class="nav-arrow" id="ukArrow">&#8250;</span>
+        </button>
+        <div class="nav-cities" id="ukCities">
+          <a href="london.html">Royal London</a>
+          <a href="london-stpauls.html">London: St Paul&#x27;s to the Tower</a>
+          <a href="bath.html">Bath</a>
+          <a href="oxford.html">Oxford</a>
+        </div>
+      </div>
+
+      <div class="nav-country-item">
+        <button class="nav-country" onclick="toggleSection('spainCities')">
+          Spain <span class="nav-arrow" id="spainArrow">&#8250;</span>
+        </button>
+        <div class="nav-cities" id="spainCities">
+          <a href="valencia.html">Valencia</a>
+          <a href="seville.html">Seville</a>
+          <a href="barcelona.html">Barcelona</a>
+          <a href="barcelona-gaudi.html">Barcelona: Gaudi &amp; Modernisme</a>
+        </div>
+      </div>
+
+      <div class="nav-country-item">
+        <button class="nav-country" onclick="toggleSection('franceCities')">
+          France <span class="nav-arrow" id="franceArrow">&#8250;</span>
+        </button>
+        <div class="nav-cities" id="franceCities">
+          <a href="paris.html">Paris</a>
+          <a href="bordeaux.html">Bordeaux <span class="soon-tag">coming soon</span></a>
+        </div>
+      </div>
+
+      <div class="nav-country-item">
+        <button class="nav-country" onclick="toggleSection('portugalCities')">
+          Portugal <span class="nav-arrow" id="portugalArrow">&#8250;</span>
+        </button>
+        <div class="nav-cities" id="portugalCities">
+          <a href="lisbon.html">Lisbon</a>
+          <a href="porto.html">Porto <span class="soon-tag">coming soon</span></a>
+        </div>
+      </div>
+
+      <div class="nav-country-item">
+        <button class="nav-country" onclick="toggleSection('italyCities')">
+          Italy <span class="nav-arrow" id="italyArrow">&#8250;</span>
+        </button>
+        <div class="nav-cities" id="italyCities">
+          <a href="rome.html">Rome <span class="soon-tag">coming soon</span></a>
+          <a href="palermo.html">Palermo <span class="soon-tag">coming soon</span></a>
+          <a href="#">Venice <span class="soon-tag">coming soon</span></a>
+        </div>
+      </div>
+
+      <div class="nav-country-item">
+        <button class="nav-country" onclick="toggleSection('netherlandsCities')">
+          Netherlands <span class="nav-arrow" id="netherlandsArrow">&#8250;</span>
+        </button>
+        <div class="nav-cities" id="netherlandsCities">
+          <a href="amsterdam.html">Amsterdam</a>
+        </div>
+      </div>
+
+      <div class="nav-country-item">
+        <button class="nav-country" onclick="toggleSection('belgiumCities')">
+          Belgium <span class="nav-arrow" id="belgiumArrow">&#8250;</span>
+        </button>
+        <div class="nav-cities" id="belgiumCities">
+          <a href="brussels.html">Brussels</a>
+        </div>
+      </div>
+
+      <div class="nav-country-item">
+        <button class="nav-country" onclick="toggleSection('czechCities')">
+          Czech Republic <span class="nav-arrow" id="czechArrow">&#8250;</span>
+        </button>
+        <div class="nav-cities" id="czechCities">
+          <a href="prague.html">Prague</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <a class="nav-link" href="about.html">About <em>Us</em></a>
+  <a class="nav-link" href="reviews.html"><em>Reviews</em></a>
+  <a class="nav-link" href="contact.html">Contact <em>Us</em></a>
+
+</nav>
 <section class="hero">
-  <a class="wordmark" href="index.html">step<em>cast</em></a>
+  <div class="wordmark-wrap">
+    <button class="burger" id="burger" aria-label="Menu" onclick="toggleNav()">
+      <span></span><span></span><span></span>
+    </button>
+    <a class="wordmark" href="index.html">step<em>cast</em></a>
+  </div>
   <div class="eyebrow">Self-Guided Audio Walking Tours</div>
   <h1>Your city.<br>Your <em>rules.</em></h1>
   <p class="tagline">Walk at your pace. Stop when you want.<br>Listen when you're ready.</p>
@@ -599,6 +728,52 @@ searchInput.addEventListener('keydown',function(e){
     var first=searchResults.querySelector('.sr-item');
     if(first)window.location.href=first.href;
   }
+});
+
+function toggleNav(){
+  var b=document.getElementById('burger');
+  var d=document.getElementById('navDrawer');
+  b.classList.toggle('open');
+  d.classList.toggle('open');
+  document.body.style.overflow=d.classList.contains('open')?'hidden':'';
+}
+function toggleSection(id){
+  var el=document.getElementById(id);
+  var isOpen=el.classList.contains('open');
+  // find arrow: button that calls this section
+  var allArrows=document.querySelectorAll('.nav-arrow');
+  // close all siblings at same level
+  var siblings=el.parentElement.parentElement.querySelectorAll(':scope > .nav-country-item > .nav-cities, :scope > .nav-cities');
+  siblings.forEach(function(s){ if(s!==el){ s.classList.remove('open'); }});
+  var subSiblings=document.querySelectorAll('.nav-sub');
+  if(el.classList.contains('nav-sub')){
+    subSiblings.forEach(function(s){ if(s!==el){ s.classList.remove('open'); }});
+  }
+  el.classList.toggle('open',!isOpen);
+  // toggle arrow
+  var btn=el.previousElementSibling;
+  if(btn){
+    var arrow=btn.querySelector('.nav-arrow');
+    if(arrow) arrow.classList.toggle('open',!isOpen);
+  }
+}
+
+var hdrEl=document.getElementById('hdr');
+var burgerEl=document.getElementById('burger');
+var logoEl=document.querySelector('.logo');
+window.addEventListener('scroll',function(){
+  var scrolled=window.scrollY>40;
+  hdrEl.classList.toggle('scrolled',scrolled);
+
+});
+
+// Close nav when a link is clicked
+document.getElementById('navDrawer').querySelectorAll('a').forEach(function(a){
+  a.addEventListener('click',function(){
+    document.getElementById('burger').classList.remove('open');
+    document.getElementById('navDrawer').classList.remove('open');
+    document.body.style.overflow='';
+  });
 });
 </script>
 </body>
