@@ -242,6 +242,7 @@
 .burger{background:none;border:none;cursor:pointer;padding:.3rem;display:flex;flex-direction:column;gap:5px;transition:opacity .3s;margin-top:.4rem}.burger span{display:block;width:20px;height:1.5px;background:#C9A96E;transition:all .3s}.burger.open span:nth-child(1){transform:translateY(6.5px) rotate(45deg)}.burger.open span:nth-child(2){opacity:0}.burger.open span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg)}
 .nav-drawer{position:fixed;top:0;left:0;right:0;bottom:0;z-index:99;background:rgba(28,28,26,.98);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:0;transform:translateY(-100%);transition:transform .4s cubic-bezier(.4,0,.2,1)}
 .nav-drawer.open{transform:translateY(0)}
+.nav-close{position:fixed;top:1.2rem;right:1.4rem;background:none;border:none;cursor:pointer;font-size:1.5rem;color:rgba(240,237,228,.6);z-index:100;transition:color .2s;line-height:1;padding:.3rem}.nav-close:hover{color:#C9A96E}
 .nav-drawer{overflow-y:auto}
 .nav-item{width:100%;text-align:center}
 .nav-link{font-family:'Cormorant Garamond',serif;font-size:clamp(1.8rem,5vw,2.6rem);font-weight:300;color:#F0EDE4;text-decoration:none;padding:.55rem 0;letter-spacing:.02em;transition:color .2s;display:block;width:100%;text-align:center}
@@ -281,6 +282,7 @@
 </header>
 
 <nav class="nav-drawer" id="navDrawer">
+  <button class="nav-close" onclick="toggleNav()" aria-label="Close menu">&#10005;</button>
 
   <!-- TOURS -->
   <div class="nav-item">
@@ -504,6 +506,22 @@
         <span class="card-btn">Start Tour &#8594;</span>
       </div>
     </a>
+    <a class="card" href="bordeaux.html">
+      <img class="card-img" id="bxImg" alt="Bordeaux">
+      <div class="card-grad"></div>
+      <div class="free-tag">3 Stops Free</div>
+      <div class="card-body">
+        <div class="card-region">France</div>
+        <div class="card-name"><em>Bordeaux</em></div>
+        <div class="card-pills">
+          <span class="pill">10 Stops</span>
+          <span class="pill">2.8 km</span>
+          <span class="pill">&#x1F6B6; ~40 min</span>
+          <span class="pill">&#x1F3A7; ~30 min</span>
+        </div>
+        <span class="card-btn">Start Tour &#8594;</span>
+      </div>
+    </a>
     <div style="grid-column:1/-1;margin-bottom:.6rem;margin-top:.8rem">
       <a href="self-guided-walking-tours-spain.html" style="font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(201,169,110,.5);text-decoration:none;border-bottom:1px solid rgba(201,169,110,.2);padding-bottom:.1rem">&#8250; Spain tours guide: routes, stops &amp; FAQs</a>
     </div>
@@ -631,22 +649,6 @@
           <span class="pill">3.9 km</span>
           <span class="pill">&#x1F6B6; ~50 min</span>
           <span class="pill">&#x1F3A7; ~17 min</span>
-        </div>
-        <span class="card-btn">Start Tour &#8594;</span>
-      </div>
-    </a>
-    <a class="card" href="bordeaux.html">
-      <img class="card-img" id="bxImg" alt="Bordeaux">
-      <div class="card-grad"></div>
-      <div class="free-tag">3 Stops Free</div>
-      <div class="card-body">
-        <div class="card-region">France</div>
-        <div class="card-name"><em>Bordeaux</em></div>
-        <div class="card-pills">
-          <span class="pill">10 Stops</span>
-          <span class="pill">2.8 km</span>
-          <span class="pill">&#x1F6B6; ~40 min</span>
-          <span class="pill">&#x1F3A7; ~30 min</span>
         </div>
         <span class="card-btn">Start Tour &#8594;</span>
       </div>
