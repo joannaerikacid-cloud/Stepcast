@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  window.gtag = gtag;
+  function loadGtag() {
+    var s = document.createElement('script');
+    s.async = true;
+    s.src = 'https://www.googletagmanager.com/gtag/js?id=AW-18081596926';
+    document.head.appendChild(s);
+    gtag('js', new Date());
+    gtag('config', 'AW-18081596926');
+  }
+  try { if (localStorage.getItem('stepcast_consent') === 'granted') { loadGtag(); } } catch(e) {}
+</script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Glasgow Audio Walking Tour | Stepcast</title>
+<meta name="description" content="Self-guided audio walking tour of Glasgow. 10 stops from Central Station to the Necropolis. No app, no group, no booking. First 3 stops free.">
+<meta property="og:title" content="Glasgow Audio Walking Tour | Stepcast">
+<meta property="og:description" content="Self-guided audio walking tour of Glasgow. 10 stops from Central Station to the Necropolis. No app, no group, no booking. First 3 stops free.">
+<meta property="og:image" content="https://stepcasttours.com/glasgow1.jpg">
+<meta property="og:url" content="https://stepcasttours.com/glasgow.html">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Glasgow Audio Walking Tour | Stepcast">
+<meta name="twitter:description" content="Self-guided audio walking tour of Glasgow. 10 stops from Central Station to the Necropolis. No app, no group, no booking. First 3 stops free.">
+<meta name="twitter:image" content="https://stepcasttours.com/glasgow1.jpg">
+<link rel="canonical" href="https://stepcasttours.com/glasgow.html">
+<link rel="sitemap" type="application/xml" href="https://stepcasttours.com/sitemap.xml">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "TouristAttraction",
+      "@id": "https://stepcasttours.com/glasgow.html#attraction",
+      "name": "Glasgow Audio Walking Tour",
+      "description": "Self-guided audio walking tour of Glasgow. 10 stops from Central Station to the Necropolis. First 3 stops free.",
+      "url": "https://stepcasttours.com/glasgow.html",
+      "image": "https://stepcasttours.com/glasgow1.jpg",
+      "touristType": "Cultural tourism",
+      "address": {"@type":"PostalAddress","addressLocality":"Glasgow","addressCountry":"GB"},
+      "geo": {"@type":"GeoCoordinates","latitude":55.861,"longitude":-4.250},
+      "offers": {
+        "@type": "Offer",
+        "name": "Full Tour Unlock",
+        "price": "4.99",
+        "priceCurrency": "EUR",
+        "availability": "https://schema.org/InStock",
+        "seller": {"@type":"Organization","name":"Stepcast"}
+      }
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://stepcasttours.com/glasgow.html#webpage",
+      "url": "https://stepcasttours.com/glasgow.html",
+      "name": "Glasgow Audio Walking Tour | Stepcast"
+    }
+  ]
+}
+</script>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+
+.leaflet-pane,.leaflet-tile,.leaflet-marker-icon,.leaflet-marker-shadow,.leaflet-tile-container,.leaflet-pane>svg,.leaflet-pane>canvas,.leaflet-zoom-box,.leaflet-image-layer,.leaflet-layer{position:absolute;left:0;top:0}.leaflet-container{overflow:hidden}.leaflet-tile,.leaflet-marker-icon,.leaflet-marker-shadow{user-select:none;-webkit-user-drag:none}.leaflet-tile::selection{background:transparent}.leaflet-layer{width:100%;height:100%}.leaflet-container.leaflet-touch-zoom{touch-action:pan-x pan-y}.leaflet-container.leaflet-touch-drag{touch-action:none}.leaflet-container{-webkit-tap-highlight-color:transparent}.leaflet-tile{filter:inherit;visibility:hidden}.leaflet-tile-loaded{visibility:inherit}.leaflet-pane{z-index:400}.leaflet-tile-pane{z-index:200}.leaflet-overlay-pane{z-index:400}.leaflet-shadow-pane{z-index:500}.leaflet-marker-pane{z-index:600}.leaflet-popup-pane{z-index:700}.leaflet-map-pane canvas{z-index:1}.leaflet-map-pane svg{z-index:2}.leaflet-control{position:relative;z-index:800;pointer-events:auto}.leaflet-top,.leaflet-bottom{position:absolute;z-index:1000;pointer-events:none}.leaflet-top{top:0}.leaflet-right{right:0}.leaflet-bottom{bottom:0}.leaflet-left{left:0}.leaflet-control{float:left;clear:both}.leaflet-right .leaflet-control{float:right}.leaflet-top .leaflet-control{margin-top:10px}.leaflet-bottom .leaflet-control{margin-bottom:10px}.leaflet-left .leaflet-control{margin-left:10px}.leaflet-right .leaflet-control{margin-right:10px}.leaflet-fade-anim .leaflet-popup{opacity:0;transition:opacity .2s linear}.leaflet-fade-anim .leaflet-map-pane .leaflet-popup{opacity:1}.leaflet-zoom-animated{transform-origin:0 0}.leaflet-zoom-anim .leaflet-zoom-animated{transition:transform .25s cubic-bezier(0,0,.25,1)}.leaflet-zoom-anim .leaflet-tile,.leaflet-pan-anim .leaflet-tile{transition:none}.leaflet-interactive{cursor:pointer}.leaflet-grab{cursor:grab}.leaflet-popup-pane,.leaflet-control{cursor:auto}.leaflet-dragging .leaflet-grab{cursor:grabbing}.leaflet-marker-icon,.leaflet-marker-shadow,.leaflet-image-layer,.leaflet-pane>svg path,.leaflet-tile-container{pointer-events:none}.leaflet-marker-icon.leaflet-interactive,.leaflet-image-layer.leaflet-interactive,.leaflet-pane>svg path.leaflet-interactive{pointer-events:auto}.leaflet-container{background:#1C1C1A}.leaflet-bar{box-shadow:0 1px 5px rgba(0,0,0,.65);border-radius:4px}.leaflet-bar a,.leaflet-bar a:hover{background-color:#2D3B2D;border-bottom:1px solid #1C1C1A;width:26px;height:26px;line-height:26px;display:block;text-align:center;text-decoration:none;color:#C9A96E}.leaflet-bar a:first-child{border-top-left-radius:4px;border-top-right-radius:4px}.leaflet-bar a:last-child{border-bottom-left-radius:4px;border-bottom-right-radius:4px;border-bottom:none}.leaflet-touch .leaflet-bar a{width:30px;height:30px;line-height:30px}.leaflet-control-zoom-in,.leaflet-control-zoom-out{font:bold 18px 'Lucida Console',Monaco,monospace;text-indent:1px}.leaflet-container .leaflet-control-attribution{background:rgba(28,28,26,.7);margin:0;font-size:11px;color:rgba(240,237,228,.4)}.leaflet-control-attribution a{color:#C9A96E;text-decoration:none}.leaflet-popup-content-wrapper,.leaflet-popup-tip{background:#2D3B2D;color:#F0EDE4;box-shadow:0 3px 14px rgba(0,0,0,.5)}.leaflet-container a.leaflet-popup-close-button{position:absolute;top:0;right:0;border:none;width:24px;height:24px;font:16px/24px Tahoma,Verdana,sans-serif;color:rgba(240,237,228,.4);text-decoration:none;background:transparent}.leaflet-div-icon{background:transparent;border:none}.leaflet-popup-content{margin:12px 18px;line-height:1.4;font-size:13px;min-height:1px}.leaflet-popup-tip-container{width:40px;height:20px;position:absolute;left:50%;margin-left:-20px;overflow:hidden;pointer-events:none}.leaflet-popup-tip{width:17px;height:17px;padding:1px;margin:-10px auto 0;pointer-events:none;transform:rotate(45deg)}
+*{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}body{font-family:'DM Sans',sans-serif;background:#1C1C1A;color:#F0EDE4;overflow-x:hidden}
+.hdr{position:fixed;top:0;left:0;right:0;z-index:500;padding:.85rem 1.5rem;display:flex;align-items:center;justify-content:space-between;transition:background .3s}.hdr.scrolled{background:rgba(28,28,26,.97);border-bottom:1px solid rgba(201,169,110,.15);backdrop-filter:blur(12px)}.logo{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:600;letter-spacing:.04em;text-decoration:none;color:#F0EDE4}.logo em{color:#C9A96E;font-style:normal}.hbtn{background:transparent;border:1px solid rgba(201,169,110,.3);border-radius:4px;padding:.32rem .75rem;font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(240,237,228,.45);cursor:pointer;font-family:'DM Sans',sans-serif}.back-btn{background:transparent;border:1px solid rgba(201,169,110,.3);border-radius:4px;padding:.32rem .75rem;font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(240,237,228,.45);cursor:pointer;font-family:'DM Sans',sans-serif;text-decoration:none}
+.hero{position:relative;height:100vh;min-height:-webkit-fill-available;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;overflow:hidden;background:#1C2B1E}.hero-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.38}.hero-grad{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(28,28,26,.15),rgba(28,28,26,.75))}.hc{position:relative;z-index:2;padding:2rem;max-width:660px}.eyebrow{font-size:.63rem;font-weight:500;letter-spacing:.28em;text-transform:uppercase;color:#C9A96E;margin-bottom:1rem}.hero h1{font-family:'Cormorant Garamond',serif;font-size:clamp(3rem,8vw,6rem);font-weight:300;line-height:.91;margin-bottom:1.3rem}.hero h1 em{font-style:italic;color:#C9A96E}.hero-sub{font-size:.98rem;font-weight:300;color:rgba(240,237,228,.65);max-width:420px;margin:0 auto 2.3rem;line-height:1.7}.hero-pills{display:flex;gap:.75rem;justify-content:center;flex-wrap:wrap;margin-bottom:2.6rem}.hpill{font-size:.66rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(240,237,228,.38);border:1px solid rgba(240,237,228,.12);border-radius:30px;padding:.3rem .82rem}.hpill strong{color:#F0EDE4;font-weight:500}.btn-row{display:flex;gap:.8rem;justify-content:center;flex-wrap:wrap}
+.btn-begin{display:inline-flex;align-items:center;gap:.55rem;background:transparent;border:1px solid rgba(240,237,228,.3);color:rgba(240,237,228,.7);padding:.9rem 2.2rem;border-radius:4px;font-size:.8rem;font-weight:500;letter-spacing:.09em;text-transform:uppercase;cursor:pointer;font-family:'DM Sans',sans-serif}
+.btn-unlock{display:inline-flex;align-items:center;gap:.55rem;background:#2D5A3D;border:1px solid #C9A96E;color:#C9A96E;padding:.9rem 2.2rem;border-radius:4px;font-size:.8rem;font-weight:500;letter-spacing:.09em;text-transform:uppercase;cursor:pointer;font-family:'DM Sans',sans-serif}.scroll-cue{position:absolute;bottom:1.8rem;left:50%;transform:translateX(-50%);font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(240,237,228,.22);display:flex;flex-direction:column;align-items:center;gap:.42rem;animation:nudge 2.2s ease-in-out infinite}.scroll-cue::after{content:'';width:1px;height:32px;background:linear-gradient(to bottom,rgba(240,237,228,.2),transparent)}@keyframes nudge{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(5px)}}
+.map-sec{background:#161816;border-bottom:1px solid rgba(201,169,110,.1)}.map-hdr{max-width:1100px;margin:0 auto;padding:2rem 1.5rem 1.2rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem}.map-hdr h3{font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:300;color:#F0EDE4}.map-hdr h3 em{font-style:italic;color:#C9A96E}.map-controls{display:flex;gap:.6rem;flex-wrap:wrap}.mbtn{background:rgba(45,90,61,.3);border:1px solid rgba(201,169,110,.25);border-radius:5px;padding:.42rem .95rem;font-size:.7rem;letter-spacing:.08em;text-transform:uppercase;color:#C9A96E;cursor:pointer;font-family:'DM Sans',sans-serif}.mbtn.on{background:#2D5A3D;color:#C9A96E;border-color:#C9A96E}#map{height:420px;width:100%;position:relative;z-index:1}.map-foot{max-width:1100px;margin:0 auto;padding:.75rem 1.5rem;font-size:.7rem;color:rgba(240,237,228,.3);display:flex;align-items:center;gap:.5rem}.gdot{width:8px;height:8px;border-radius:50%;background:rgba(201,169,110,.3);flex-shrink:0}.gdot.live{background:#5a9e6f;animation:gpulse 1.5s ease-in-out infinite}@keyframes gpulse{0%,100%{opacity:1}50%{opacity:.3}}
+.stop-nav{position:sticky;top:0;z-index:100;background:rgba(28,28,26,.97);backdrop-filter:blur(14px);border-bottom:1px solid rgba(201,169,110,.12);padding:.72rem 1.5rem;display:flex;align-items:center;gap:.42rem;overflow-x:auto;scrollbar-width:none}.stop-nav::-webkit-scrollbar{display:none}.ndot{flex-shrink:0;width:30px;height:30px;border-radius:50%;border:1.5px solid rgba(201,169,110,.22);background:transparent;color:rgba(240,237,228,.28);font-size:.67rem;font-weight:500;cursor:pointer;transition:all .2s;display:flex;align-items:center;justify-content:center}.ndot.on{background:#2D5A3D;border-color:#C9A96E;color:#C9A96E}.ndot-bonus{background:rgba(45,90,61,.15);border-color:rgba(201,169,110,.18);color:rgba(201,169,110,.45);font-size:.85rem;}.ndot-bonus.on{background:#2D5A3D;border-color:#C9A96E;color:#C9A96E;}.tcb-inner{max-width:520px;margin:0 auto;}.tcb-deco{color:#C9A96E;font-size:1.2rem;margin-bottom:1.5rem;opacity:.5;}.tcb-bonus-lbl{font-size:.62rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(201,169,110,.4);margin-top:2.5rem;}.tcb-bonus-dist{display:flex;flex-direction:column;gap:.4rem;margin-top:.9rem;font-size:.72rem;color:rgba(240,237,228,.38);line-height:1.6;}.nlbl{font-size:.67rem;color:rgba(240,237,228,.28);letter-spacing:.06em;white-space:nowrap;margin-left:.35rem}
+.stop{max-width:1100px;margin:0 auto;padding:5rem 1.5rem;display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start;border-bottom:1px solid rgba(255,255,255,.04)}.stop:nth-child(even) .s-media{order:2}.stop:nth-child(even) .s-body{order:1}@media(max-width:768px){.stop{grid-template-columns:1fr;gap:2.5rem;padding:3.5rem 1.2rem}.stop:nth-child(even) .s-media,.stop:nth-child(even) .s-body{order:unset}#map{height:300px}}@media(max-width:420px){.ico-btn{width:25px;height:25px}.spd{font-size:.58rem;padding:.18rem .25rem}.play-btn{width:40px;height:40px}.seek-btn{font-size:.55rem;padding:.18rem .3rem}}
+.img-wrap{position:relative;border-radius:5px;overflow:hidden;background:#1C2B1E}.img-wrap.is-landscape{aspect-ratio:4/3}.img-wrap.is-portrait{aspect-ratio:3/4}.img-wrap img.slide{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;opacity:0;transition:opacity .5s}.img-wrap img.slide.vis{opacity:1}.num-badge{position:absolute;top:-1rem;left:-1rem;width:3.3rem;height:3.3rem;background:#2D5A3D;border:1.5px solid #C9A96E;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:1.35rem;font-weight:600;color:#C9A96E;z-index:2;box-shadow:0 4px 20px rgba(0,0,0,.4)}.next-badge{position:absolute;top:.75rem;right:.75rem;background:rgba(28,28,26,.88);border:1px solid rgba(201,169,110,.2);border-radius:3px;padding:.3rem .65rem;font-size:.6rem;letter-spacing:.06em;color:#C9A96E;white-space:nowrap;z-index:2}
+.arr-btn{position:absolute;top:50%;transform:translateY(-50%);z-index:3;background:rgba(28,28,26,.75);border:1px solid rgba(201,169,110,.25);border-radius:50%;width:34px;height:34px;display:flex;align-items:center;justify-content:center;cursor:pointer;color:#C9A96E;font-size:1.1rem}.arr-btn:hover{background:rgba(45,90,61,.85)}.arr-prev{left:.6rem}.arr-next{right:.6rem}.slide-dots{position:absolute;bottom:.6rem;left:50%;transform:translateX(-50%);display:flex;gap:.35rem;z-index:3}.sdot{width:5px;height:5px;border-radius:50%;background:rgba(240,237,228,.25);transition:background .2s}.sdot.on{background:#C9A96E}
+.photo-credit{font-size:.57rem;color:rgba(240,237,228,.22);text-align:right;padding:.28rem .5rem;letter-spacing:.02em;font-style:italic}.photo-credit a{color:rgba(201,169,110,.4);text-decoration:none}
+.player{background:rgba(45,90,61,.12);border:1px solid rgba(201,169,110,.14);border-radius:8px;padding:1rem 1.2rem;margin-top:.8rem;min-width:0;overflow:hidden}.player-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:.7rem}.player-lbl{font-size:.54rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(240,237,228,.3)}.vtag{font-size:.54rem;color:#C9A96E;background:rgba(201,169,110,.08);border:1px solid rgba(201,169,110,.18);padding:.13rem .48rem;border-radius:20px}.player-row{display:flex;align-items:center;gap:.5rem;min-width:0}.play-btn{width:44px;height:44px;border-radius:50%;background:#2D5A3D;border:1.5px solid #C9A96E;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0}.play-btn svg{width:16px;height:16px;fill:#C9A96E}.p-mid{flex:1;min-width:0}.prog-track{height:3px;background:rgba(255,255,255,.06);border-radius:2px;overflow:hidden;margin-bottom:.35rem}.prog-fill{height:100%;background:#C9A96E;border-radius:2px;width:0%;transition:width .3s linear}.p-time{font-size:.6rem;color:rgba(240,237,228,.3);margin-bottom:.2rem}.p-stat{font-size:.65rem;color:rgba(240,237,228,.3);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.p-stat.on{color:#C9A96E}.p-stat.ok{color:rgba(100,200,130,.75)}.p-stat.er{color:rgba(220,100,80,.75)}.spd{background:transparent;border:1px solid rgba(255,255,255,.08);border-radius:4px;color:rgba(240,237,228,.35);font-size:.65rem;padding:.25rem .4rem;cursor:pointer;font-family:'DM Sans',sans-serif}.spd option{background:#1C1C1A}.ico-btn{width:30px;height:30px;border-radius:50%;background:transparent;border:1px solid rgba(255,255,255,.08);cursor:pointer;display:flex;align-items:center;justify-content:center;color:rgba(240,237,228,.3);flex-shrink:0}.ico-btn svg{width:11px;height:11px;fill:currentColor}.seek-btn{background:transparent;border:1px solid rgba(255,255,255,.08);border-radius:4px;color:rgba(240,237,228,.35);font-size:.6rem;padding:.2rem .3rem;cursor:pointer;font-family:'DM Sans',sans-serif;line-height:1;min-width:0}
+.s-body{padding-top:.5rem}.s-tag{font-size:.56rem;font-weight:500;letter-spacing:.22em;text-transform:uppercase;color:#C9A96E;margin-bottom:.48rem}.s-title{font-family:'Cormorant Garamond',serif;font-size:clamp(1.8rem,3.5vw,2.5rem);font-weight:300;line-height:1.07;margin-bottom:1.15rem;color:#F0EDE4}.s-title em{font-style:italic;color:#C9A96E}.s-text{font-size:.89rem;line-height:1.92;color:rgba(240,237,228,.68);font-weight:300}.s-text p{margin-bottom:.92rem}.s-text p:last-child{margin-bottom:0}.tip{margin-top:1.4rem;border-left:2px solid #2D5A3D;padding:.82rem 1.05rem;background:rgba(45,90,61,.1);border-radius:0 5px 5px 0}.tip-lbl{font-size:.55rem;font-weight:500;letter-spacing:.22em;text-transform:uppercase;color:#C9A96E;margin-bottom:.3rem}.tip p{font-size:.8rem;color:rgba(240,237,228,.5);line-height:1.65}
+.map-back-btn{display:inline-flex;align-items:center;gap:.45rem;margin-top:1.6rem;background:transparent;border:1px solid rgba(201,169,110,.22);border-radius:4px;padding:.5rem 1rem;font-size:.68rem;letter-spacing:.08em;text-transform:uppercase;color:rgba(240,237,228,.38);cursor:pointer;font-family:'DM Sans',sans-serif}.map-back-btn:hover{border-color:#C9A96E;color:#C9A96E}
+.lock-overlay{position:absolute;inset:0;z-index:10;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1rem;background:rgba(20,24,20,.94);backdrop-filter:blur(8px);border-radius:5px;border:1px solid rgba(201,169,110,.18);padding:2rem;text-align:center}.lock-overlay .lock-icon{font-size:2rem}.lock-overlay h4{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:300;color:#F0EDE4}.lock-overlay p{font-size:.72rem;color:rgba(240,237,228,.42);line-height:1.6;max-width:260px}.unlock-btn{background:#2D5A3D;border:1px solid #C9A96E;color:#C9A96E;border-radius:4px;padding:.75rem 1.8rem;font-size:.78rem;font-weight:500;letter-spacing:.08em;text-transform:uppercase;cursor:pointer;font-family:'DM Sans',sans-serif}
+.umodal{position:fixed;inset:0;z-index:9999;background:rgba(10,12,10,.96);display:flex;align-items:center;justify-content:center;padding:1.5rem;opacity:0;pointer-events:none;transition:opacity .3s}.umodal.show{opacity:1;pointer-events:all}.umbox{background:#1C2B1E;border:1px solid rgba(201,169,110,.28);border-radius:10px;padding:2.2rem;max-width:420px;width:100%;text-align:center}.umbox h2{font-family:'Cormorant Garamond',serif;font-size:1.7rem;font-weight:300;margin-bottom:.4rem;color:#F0EDE4}.city-name{color:#C9A96E;font-style:italic}.umbox>p{font-size:.8rem;color:rgba(240,237,228,.42);line-height:1.7;margin-bottom:1.4rem}.buy-btn{width:100%;padding:.92rem;background:#2D5A3D;border:1.5px solid #C9A96E;border-radius:5px;color:#C9A96E;font-family:'DM Sans',sans-serif;font-size:.9rem;font-weight:500;letter-spacing:.06em;text-transform:uppercase;cursor:pointer;text-decoration:none;display:block;margin-bottom:1.2rem}.udivider{display:flex;align-items:center;gap:.8rem;margin:1rem 0}.udivider::before,.udivider::after{content:'';flex:1;height:1px;background:rgba(240,237,228,.07)}.udivider span{font-size:.62rem;color:rgba(240,237,228,.2);letter-spacing:.1em;text-transform:uppercase}.ucode-in{width:100%;padding:.82rem 1rem;background:rgba(255,255,255,.04);border:1px solid rgba(201,169,110,.22);border-radius:5px;color:#F0EDE4;font-family:'DM Sans',sans-serif;font-size:.9rem;margin-bottom:.7rem;outline:none;text-align:center;letter-spacing:.08em}.ucode-in::placeholder{color:rgba(240,237,228,.18)}.ubtn-go{width:100%;padding:.88rem;background:transparent;border:1px solid rgba(201,169,110,.3);border-radius:5px;color:#C9A96E;font-family:'DM Sans',sans-serif;font-size:.84rem;font-weight:500;letter-spacing:.08em;text-transform:uppercase;cursor:pointer}.umsg{font-size:.75rem;margin-top:.6rem;min-height:1.2rem}.umsg.ok{color:rgba(100,200,130,.85)}.umsg.er{color:rgba(220,100,80,.85)}.ucancel{background:none;border:none;color:rgba(240,237,228,.2);font-size:.7rem;cursor:pointer;margin-top:.7rem;font-family:'DM Sans',sans-serif;text-decoration:underline;display:block;width:100%}
+.gbar{position:fixed;bottom:0;left:0;right:0;z-index:600;background:rgba(20,24,20,.97);backdrop-filter:blur(18px);border-top:1px solid rgba(201,169,110,.15);padding:.78rem 1.5rem;display:flex;align-items:center;gap:.9rem;transform:translateY(100%);transition:transform .3s ease}.gbar.up{transform:translateY(0)}.wave{display:flex;align-items:center;gap:2px;height:18px;flex-shrink:0}.wb{width:3px;border-radius:2px;background:#C9A96E;animation:wv .7s ease-in-out infinite}.wb:nth-child(1){height:5px}.wb:nth-child(2){height:10px;animation-delay:.1s}.wb:nth-child(3){height:18px;animation-delay:.2s}.wb:nth-child(4){height:10px;animation-delay:.3s}.wb:nth-child(5){height:5px;animation-delay:.4s}@keyframes wv{0%,100%{transform:scaleY(.28)}50%{transform:scaleY(1)}}.g-info{flex:1;min-width:0}.g-lbl{font-size:.53rem;letter-spacing:.15em;text-transform:uppercase;color:#C9A96E}.g-title{font-family:'Cormorant Garamond',serif;font-size:.95rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:#F0EDE4}.g-stop{background:transparent;border:1px solid rgba(201,169,110,.2);border-radius:4px;color:rgba(240,237,228,.38);padding:.35rem .8rem;font-size:.66rem;cursor:pointer;font-family:'DM Sans',sans-serif}
+.tour-end{text-align:center;padding:7rem 2rem;background:linear-gradient(to bottom,#1C1C1A,#141614)}.tour-end h2{font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,5vw,3.5rem);font-weight:300;margin-bottom:.85rem;color:#F0EDE4}.tour-end p{color:rgba(240,237,228,.42);max-width:380px;margin:0 auto 2rem;line-height:1.7;font-size:.87rem}.drink{display:inline-block;background:rgba(45,90,61,.15);border:1px solid rgba(201,169,110,.24);border-radius:6px;padding:1.1rem 2.2rem;font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-style:italic;color:#C9A96E}.footer{padding:1.8rem;text-align:center;font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(240,237,228,.13)}.footer a{color:rgba(201,169,110,.35);text-decoration:none}
+
+</style>
+</head>
+<body>
+<header class="hdr" id="hdr">
+  <a class="logo" href="index.html">step<em>cast</em></a>
+  <div style="display:flex;gap:.6rem">
+    <a class="back-btn" href="index.html">&#8592; Tours</a>
+    <button class="hbtn" id="gpsHdrBtn" onclick="toggleGPS()">GPS</button>
+  </div>
+</header>
+<section class="hero">
+  <img class="hero-img" src="glasgow1.jpg" alt="Glasgow">
+  <div class="hero-grad"></div>
+  <div class="hc">
+    <div class="eyebrow">Stepcast - Self-Guided Audio Walking Tour</div>
+    <h1><em>Glasgow</em><br>Scotland</h1>
+    <p class="hero-sub">From the Hielanman's Umbrella to the Necropolis. Victorian gateway to medieval hilltop. The city that built the ships that built the empire, and the workers who changed the world. No app. No group. No booking. First 3 stops free.</p>
+    <div class="hero-pills">
+      <span class="hpill"><strong>10</strong> Stops</span>
+      <span class="hpill"><strong>~2.8 km</strong> Walking</span>
+      <span class="hpill" id="audioPill"><strong>Loading</strong> Audio</span>
+      <span class="hpill"><strong>Central Station</strong> to Necropolis</span>
+    </div>
+    <div class="btn-row">
+      <button class="btn-begin" onclick="document.getElementById('map-sec').scrollIntoView({behavior:'smooth'})">Try Free &mdash; 3 Stops</button>
+      <button class="btn-unlock" onclick="openModal()">Unlock Full Tour &mdash; &euro;4.99</button>
+    </div>
+  </div>
+  <div class="scroll-cue">Scroll</div>
+</section>
+<div class="map-sec" id="map-sec">
+  <div class="map-hdr"><h3>Your <em>Route</em></h3>
+    <div class="map-controls">
+      <button class="mbtn on" onclick="mapFitAll()">Full Route</button>
+      <button class="mbtn" id="gpsMapBtn" onclick="toggleGPS()">Track My Location</button>
+    </div>
+  </div>
+  <div id="map"></div>
+  <div class="map-foot"><div class="gdot" id="gdot"></div><span id="gstat">Tap Track My Location to follow your position</span></div>
+</div>
+<nav class="stop-nav" id="stopNav"><span class="nlbl">Stops</span></nav>
+<div id="stopsWrap"></div>
+<section class="tour-end">
+  <h2>You have walked<br><em>Glasgow.</em></h2>
+  <p>From Central Station to the Necropolis. From the Hielanman's Umbrella to John Knox on the hill. From the ghost of a demolished university to the Cathedral the city refused to lose. Ten stops. Six hundred years.</p>
+  <div class="drink">Find a pub. Order a pint of Tennent's. You have earned it.</div>
+</section>
+<section style="text-align:center;padding:5rem 2rem 6rem;background:#141e14;border-top:1px solid rgba(201,169,110,.08)">
+  <div style="font-size:.58rem;font-weight:500;letter-spacing:.24em;text-transform:uppercase;color:#C9A96E;margin-bottom:1.2rem">More from Stepcast</div>
+  <p style="font-family:'Cormorant Garamond',serif;font-size:clamp(1.8rem,4.5vw,2.8rem);font-weight:300;color:#F0EDE4;margin-bottom:1.2rem;line-height:1.2">Explore more<br><em>cities with Stepcast</em></p>
+  <a href="index.html" style="display:inline-flex;align-items:center;gap:.6rem;background:#2D5A3D;border:1.5px solid #C9A96E;color:#C9A96E;padding:1rem 2.2rem;border-radius:4px;font-size:.75rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;text-decoration:none">
+    <svg width="12" height="12" viewBox="0 0 24 24" fill="#C9A96E"><polygon points="5,3 19,12 5,21"/></svg>
+    Browse All Tours
+  </a>
+</section>
+<div class="footer">2026 <a href="index.html">Stepcast</a> - Walk. Listen. Discover.</div>
+<div class="gbar" id="gbar">
+  <div class="wave"><div class="wb"></div><div class="wb"></div><div class="wb"></div><div class="wb"></div><div class="wb"></div></div>
+  <div class="g-info"><div class="g-lbl">Now Playing</div><div class="g-title" id="gTitle">-</div></div>
+  <button class="g-stop" onclick="stopAll()">Stop</button>
+</div>
+<div class="umodal" id="umodal">
+  <div class="umbox">
+    <div style="font-size:1.8rem;margin-bottom:.6rem">&#127981;</div>
+    <h2>Unlock <span class="city-name">Glasgow</span></h2>
+    <p>You have seen what this tour is like. The next 7 stops go further. &#8364;4.99, yours to keep forever.</p>
+    <a class="buy-btn" href="https://stepcasttours.lemonsqueezy.com/checkout/buy/GLASGOW-LS-ID-PLACEHOLDER" target="_blank">Unlock Full Tour - &#8364;4.99</a>
+    <div class="udivider"><span>already have a code?</span></div>
+    <input class="ucode-in" id="ucodeIn" type="text" placeholder="Enter your unlock code" autocomplete="off" maxlength="40">
+    <button class="ubtn-go" onclick="tryCode()">Apply Code</button>
+    <div class="umsg" id="umsg"></div>
+    <button class="ucancel" onclick="closeModal()">Maybe later</button>
+    <p style="font-size:.68rem;color:rgba(240,237,228,.28);margin-top:.9rem;letter-spacing:.03em">Payments powered by Lemon Squeezy &amp; Stripe</p>
+  </div>
+</div>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+var P="|||";
+var FREE_STOPS=3;
+var MAIN_STOPS=10;
+var STORAGE_KEY="stepcast_glasgow_v1";
+var BYPASS_CODES=["GLASGOW2026"];
+var stops=[
+{id:1,tag:"Opened 1879",titleHtml:"Glasgow <em>Central Station</em>",plain:"Glasgow Central Station",walkNext:"220m, about 3 min to next stop",photos:[{f:"glasgow1.jpg",p:false}],photoCredit:"",tipLabel:"The Hielanman's Umbrella",tipText:"Head down to Argyle Street and look up at the bridge carrying the station overhead. This is the Hielanman's Umbrella, where Glasgow's Highland community gathered. The station hotel attached to the east side is where Britain's first television signal was received in May 1927.",lat:55.8591118,lng:-4.2581088,mp3:"glasgowstop1.mp3",script:"Stop and look up before you go anywhere.|||The glass and iron canopy above you is one of the great Victorian train sheds in Britain. Glasgow Central Station opened in 1879 with eight platforms. It was built on the site of a village called Grahamston, whose entire main street was demolished to make room for the original platforms. A whole community was cleared away so that Glasgow could have a railway terminus. By 1901 the station was already too small. A massive expansion completed between 1901 and 1905 gave it fifteen high-level platforms and the enormous glazed canopy you are standing under now, with two more platforms added below ground. The hotel attached to the station, now the Voco Grand Central, opened in 1883. In May 1927, John Logie Baird transmitted Britain\'s first long-distance television pictures here, from London to the hotel over 438 miles of telephone line. Glasgow Central Station was the destination of Britain\'s first television signal.|||Now go down to Argyle Street and look up at the bridge overhead. The bridge that carries the station over Argyle Street is known as the Hielanman\'s Umbrella. When Highlanders began arriving in Glasgow in large numbers during the 19th and early 20th centuries, displaced from their land by the Clearances and drawn by the promise of industrial work, they gathered here. The bridge kept the rain off, which in Glasgow is not a trivial consideration. It became an unofficial meeting point, a place to hear news from home, to find work, to speak Gaelic in a city that mostly spoke English. An entire community built its social life under a railway bridge.|||The station exists because of the River Clyde. The river that runs two kilometres south of here made Glasgow one of the wealthiest cities in the British Empire. Tobacco from Virginia. Sugar from the Caribbean. Cotton from the American South. Ships built in the yards that lined the riverbanks for thirty kilometres. The Clyde was deepened, widened, and engineered into one of the great industrial waterways of the world. Everything you are about to see was paid for by the Clyde.|||When you are ready, exit the station onto Gordon Street. Turn left and walk east, then turn left again onto Buchanan Street heading north. After about 150 metres, look for Mitchell Lane on your left. It is a narrow pedestrian alleyway. Once inside the lane, The Lighthouse is about 25 metres along on your right."},
+{id:2,tag:"Mackintosh, 1895",titleHtml:"The <em>Lighthouse</em>",plain:"The Lighthouse",walkNext:"220m, about 3 min to next stop",photos:[{f:"glasgow2.jpg",p:false}],photoCredit:"",tipLabel:"The Tower",tipText:"Entry to the tower is free. There are 220 steps to the viewing platform. The view over Glasgow from the top is one of the best in the city and almost entirely unknown to visitors.",lat:55.8597886,lng:-4.2553837,mp3:"glasgowstop2.mp3",script:"You had to look for that entrance. Most people walk straight past Mitchell Lane without noticing it, which means most people never find this building.|||The Lighthouse was designed by Charles Rennie Mackintosh in 1895 as the offices of the Glasgow Herald newspaper. It was his first public commission. He was 27 years old. The building is a masterclass in what would become his signature approach: taking a plain functional brief and transforming it through proportion, detail, and the relationship between interior and exterior space. There are 220 steps to the viewing platform at the top. The view over Glasgow is panoramic and free.|||Charles Rennie Mackintosh is Glasgow\'s most celebrated architect and designer. He died in 1928, largely ignored by the city that would later brand itself with his work. His masterpiece was the Glasgow School of Art on Renfrew Street, 800 metres north-west of here. He designed it in two phases: the western half in 1897 and the eastern half in 1907, creating one of the most extraordinary buildings in Europe. In June 2014, a fire broke out and gutted the interior. The building was being restored when a second fire in June 2018 destroyed it completely. What remains is a shell. Glasgow lost the greatest work of its greatest architect twice, four years apart. The full extent of what was lost in those fires is still being understood.|||The Lighthouse is now Scotland\'s Centre for Design and Architecture. The Mackintosh Interpretation Centre inside tells the story properly. Entry to the tower is free.|||Leave via Mitchell Lane, turn right onto Buchanan Street, and continue north. Royal Exchange Square opens on your right. The Gallery of Modern Art is directly ahead."},
+{id:3,tag:"The Cone",titleHtml:"Gallery of <em>Modern Art</em>",plain:"Gallery of Modern Art",walkNext:"300m, about 4 min to next stop",photos:[{f:"glasgow3.jpg",p:false}],photoCredit:"",tipLabel:"Free Entry",tipText:"The Gallery of Modern Art is free to enter. The collection inside focuses on contemporary Scottish and international art. The building itself is worth seeing on all four sides: the portico, the dome, and the details of an 18th-century merchant mansion adapted into a Victorian exchange and then a public gallery.",lat:55.860169,lng:-4.2525478,mp3:"glasgowstop3.mp3",script:"Look at the statue in front of the building.|||The Duke of Wellington sits on his horse in full military regalia, cast in bronze in 1844, placed here to honour the man who defeated Napoleon at Waterloo. On his head is a traffic cone. It has been there, in one form or another, since the 1980s. Nobody knows exactly who put the first one up. It became a tradition. The city tried to stop it. They installed CCTV. They raised the plinth. The cone kept appearing. In 2013, Glasgow City Council debated a formal motion to remove it permanently. The motion was voted down. The council now effectively accepts that the cone is part of the statue. Wellington himself has no say in the matter.|||The Gallery of Modern Art is the building behind Wellington. It was originally built in 1778 as the town house of William Cunninghame, one of Glasgow\'s wealthiest Tobacco Lords. After Cunninghame\'s death it became the Royal Exchange, the commercial heart of Victorian Glasgow, where merchants gathered daily to trade, strike deals, and conduct the business of a city that was becoming one of the most powerful in the world. The tobacco lords\' money built it; the Victorian merchant class ran their entire commercial life through it. Within living memory it became a bank. It is now a free public art gallery. The building\'s history in four sentences is the history of Glasgow\'s economy across three centuries.|||The statue and the cone together tell you something about this city. Glasgow has never been particularly impressed by authority, military glory, or received opinion. A traffic cone on the Duke of Wellington\'s head is a small act of irreverence that the city performs daily, for no reason beyond the fact that it is funny. That quality has served Glasgow well.|||Walk north and east toward George Square. It is about four minutes. The City Chambers are the ornate building on the east side of the square."},
+{id:4,tag:"Completed 1888",titleHtml:"George Square & <em>City Chambers</em>",plain:"George Square & City Chambers",walkNext:"263m, about 3 min to next stop",photos:[{f:"glasgow4.jpg",p:false}],photoCredit:"",tipLabel:"City Chambers Tours",tipText:"Free guided tours of the City Chambers run on weekdays. Check at the entrance for current times. The interior is extraordinary: the Grand Staircase, the Banqueting Hall, the councillors' rooms. All free. All almost entirely unvisited.",lat:55.8609762,lng:-4.2488112,mp3:"glasgowstop4.mp3",script:"Look at the column in the centre of the square. At the top, 24 metres above the ground, stands Walter Scott. The column was erected in 1837, five years after his death. Scott was from Edinburgh. He had almost no connection to Glasgow. He is the tallest monument in the civic square of Scotland\'s largest city, and he is an outsider.|||He is not alone. There are twelve statues in this square and almost none of them are of people born in Glasgow. Robert Burns from Ayrshire. James Watt from Greenock. Prince Albert from Saxe-Coburg and Gotha. Field Marshal Lord Roberts from Cawnpore. The one exception is General Sir John Moore, who was born in Glasgow in 1761 on the High Street, the very road you will walk later today. He died at the Battle of Corunna in 1809, leading the British rearguard against Napoleon\'s army, and was buried on the battlefield by the Spanish. Glasgow put him in its civic square anyway. Glasgow, the Second City of the Empire, expressed its civic pride almost entirely through outsiders. There is something very Glasgow about this.|||The statues tell the story of Scotland and the British Empire in stone. Poets and engineers and soldiers and royalty, gathered in a Victorian square that was laid out as the city was transforming itself from a merchant town into an industrial capital.|||The building on the east side of the square is the City Chambers, Glasgow\'s town hall, completed in 1888. Built in Venetian Renaissance style, faced with pale Giffnock sandstone and pink granite from Peterhead. The interior contains more marble than the Vatican. This is not a boast that Glasgow invented. It is simply a fact that survives measurement. The building was designed to announce to the world that Glasgow had arrived. It announced it very effectively.|||Free guided tours of the interior run on weekdays. Check at the entrance for times. If you can get inside, go. The Grand Staircase alone is worth it.|||Head east and slightly south through the Merchant City. Ingram Street is about three minutes away."},
+{id:5,tag:"18th Century",titleHtml:"Merchant <em>City</em>",plain:"Merchant City",walkNext:"423m, about 5 min to next stop",photos:[{f:"glasgow5.jpg",p:false}],photoCredit:"",tipLabel:"The Street Names",tipText:"Walk along Virginia Street, Jamaica Street, and Tobago Street when you have time. The names are a direct record of the trade routes that made Glasgow wealthy. Ingram Street, where you are standing, was the address of several Tobacco Lord merchants.",lat:55.8596004,lng:-4.2462971,mp3:"glasgowstop5.mp3",script:"The streets around you have names that tell a history Glasgow spent a long time not talking about. Virginia Street. Jamaica Street. Tobago Street. Plantation Quay. These are not coincidences. They are a map.|||In the 18th century, Glasgow\'s merchant class built one of the most profitable trading networks in the world. Ships left the Clyde carrying manufactured goods. They returned from the American colonies loaded with tobacco, sugar, and cotton. The men who ran this trade became known as the Tobacco Lords. They were the wealthiest people in Scotland. They built the grand Georgian townhouses and warehouses of this neighbourhood. They laid out these streets and gave them the names you are walking past now.|||This wealth was built on enslaved labour. The tobacco plantations of Virginia and Maryland, the sugar plantations of Jamaica and Tobago, ran on the forced labour of people who had been kidnapped from West Africa and transported across the Atlantic in conditions of extreme brutality. The Tobacco Lords of Glasgow did not pick the tobacco themselves. Glasgow\'s prosperity was inseparable from that system, and the city\'s architecture is a monument to it.|||Glasgow has in recent years been more honest about this history than most British cities. The street names remain, now carrying a different weight. The Merchant City is today Glasgow\'s most fashionable quarter: restaurants, bars, converted warehouses, the kind of neighbourhood that cities spend decades trying to create. The buildings are beautiful. The story of how they were paid for is complicated. Both things are true at the same time.|||Head southeast toward Glasgow Cross. The steeple is visible ahead of you. About five minutes on foot."},
+{id:6,tag:"Steeple from 1626",titleHtml:"Glasgow Cross & <em>Tolbooth</em>",plain:"Glasgow Cross & Tolbooth",walkNext:"374m, about 5 min to next stop",photos:[{f:"glasgow6.jpg",p:false}],photoCredit:"",tipLabel:"The Steeple",tipText:"The Tolbooth Steeple is seven storeys and was the tallest structure in Glasgow when it was built. It is the only part of the original building that survived the 1921 demolition. The clock on the tower still keeps time.",lat:55.8568102,lng:-4.2436268,mp3:"glasgowstop6.mp3",script:"The steeple in front of you is all that remains of the Tolbooth, the building that served as Glasgow\'s courthouse, jail, and council chamber from 1626. Seven storeys of pale stone, topped with an ogee roof. It is the oldest surviving secular building in the city centre.|||For two centuries, the Tolbooth was the centre of civic life in Glasgow. Criminals were tried here, imprisoned here, and publicly executed here. Then the city grew, moved its institutions elsewhere, and the Tolbooth became inconvenient. The building was demolished in 1921, leaving only the steeple because it was too expensive to take down. Glasgow has a long tradition of demolishing things it will later regret.|||In April 1820, weavers and workers across Glasgow rose up demanding parliamentary reform and Scottish independence in what became known as the Radical War. The uprising was quickly crushed by government troops. Its leaders, James Wilson, Andrew Hardie, and John Baird, were tried for treason and executed. Wilson was hanged and beheaded here, at the entrance to the old Tolbooth jail. The men who died for the right to organise workers are now considered martyrs of the Scottish labour movement. The 1820 uprising is sometimes called Scotland\'s forgotten revolution.|||Seventeen years later, five leaders of the Glasgow Cotton Spinners\' Union were arrested and tried at the High Court of Justiciary in Edinburgh. They had organised workers to strike for better wages and conditions. They were sentenced to seven years\' transportation, held on prison hulks at Woolwich, and eventually pardoned after three years. The radicalism of 1820 had not gone away. It had simply learned to organise differently.|||The Mercat Cross beside the steeple is a 1929 replica. The original medieval cross that stood here as the symbol of Glasgow\'s market rights has not survived. This junction was the heart of medieval Glasgow. The High Street runs north from here directly to the Cathedral. That road is over a thousand years old. You are about to walk it.|||Head north up the High Street. The walk takes about seven minutes. You are looking for a plaque on the east side of the street near the junction with Blackfriars Street."},
+{id:7,tag:"Founded 1451",titleHtml:"Old Glasgow University, <em>High Street</em>",plain:"Old Glasgow University",walkNext:"528m, about 7 min to next stop",photos:[{f:"glasgow7.jpg",p:false}],photoCredit:"",tipLabel:"What to Look For",tipText:"Look for the blue heritage plaque on the east side of High Street near Blackfriars Street marking the site of the old university. The Lion and Unicorn Staircase that was relocated to Gilmorehill can still be seen in the grounds of the current University of Glasgow campus.",lat:55.858889,lng:-4.240278,mp3:"glasgowstop7.mp3",script:"Stop here. Look around you.|||There is nothing to see. That is the point.|||From 1451 to 1870, the University of Glasgow stood on this street. Founded by papal bull of Pope Nicholas V, it was one of the oldest universities in the English-speaking world. The buildings occupied the east side of High Street from roughly where you are standing up toward the Cathedral. They included a library, a chapel, teaching halls, student accommodation, and a courtyard garden. In 1870 the university packed up and moved to its current campus at Gilmorehill in the west of the city. The buildings here were sold, demolished, and replaced by a railway goods yard. The only piece that survived was the Lion and Unicorn Staircase, dismantled stone by stone and rebuilt at Gilmorehill, where it still stands.|||Adam Smith was a professor here. He developed the ideas that became The Wealth of Nations, the founding text of modern economics, while teaching at this university on this street. James Watt worked here as an instrument maker for the university\'s scientific collections. One Sunday afternoon in 1765, he went for a walk on Glasgow Green to the south and thought about the problem of steam engine efficiency. By the time he reached the far end of the Green, he had conceived the idea of the separate condenser: the improvement that transformed the steam engine from a slow, inefficient pump into a machine that could drive factories, locomotives, and ships. The Industrial Revolution began because a man who worked on this street went for a walk.|||The railway goods yard that replaced this university is now itself gone, replaced by student flats. The street looks ordinary. Underneath it, and around it, is the ghost of one of the most consequential institutions in Scottish history.|||Continue north up the High Street. Provand\'s Lordship is about four minutes ahead on Castle Street."},
+{id:8,tag:"Built 1471",titleHtml:"Provand's <em>Lordship</em>",plain:"Provand's Lordship",walkNext:"194m, about 2 min to next stop",photos:[{f:"glasgow8.jpg",p:false}],photoCredit:"",tipLabel:"The Dali Painting",tipText:"The St Mungo Museum of Religious Life and Art directly opposite is free. The Dali painting is on the ground floor. Salvador Dali's Christ of Saint John of the Cross has been in Glasgow since 1952 and is one of the most visited paintings in Scotland.",lat:55.862362,lng:-4.2369067,mp3:"glasgowstop8.mp3",script:"The building in front of you was completed in 1471. It is the oldest house in Glasgow.|||It was built by Bishop Andrew Muirhead as part of St Nicholas\' Hospital, a charitable institution for the elderly and the poor of the medieval city. The house was the residence of the church official responsible for managing the hospital\'s lands and income.|||According to tradition, Mary Queen of Scots stayed at Provand\'s Lordship in early 1567, when she came to Glasgow to visit her husband Lord Darnley, who was ill and recovering in the city. She was 24 years old. She had already been Queen of Scotland for 25 years, having inherited the throne at six days old. She had less than six months of freedom left before her imprisonment by rebel lords, her forced abdication, and her eventual flight to England and 19 years of captivity under her cousin Elizabeth I of England.|||The building directly opposite is the St Mungo Museum of Religious Life and Art, opened in 1993 and free to enter. On the ground floor hangs Salvador Dali\'s Christ of Saint John of the Cross, painted in 1951. The painting shows Christ on the cross from above, with no nails, no wounds, and no blood. Dali based it on a drawing by the 16th-century mystic Saint John of the Cross, who claimed to have seen Christ in this position in a vision. Dali himself said he was instructed in a dream to paint the crucifixion this way: not in suffering, but in beauty. It is one of the most famous paintings in Scotland and it is hanging on a wall twenty metres from where you are standing, free to see.|||Provand\'s Lordship itself is free to enter and open most days. The interior has been restored to approximate its medieval appearance.|||Leave Provand\'s Lordship and turn right along Castle Street heading east. The Cathedral entrance is about two minutes on foot."},
+{id:9,tag:"Founded 6th Century",titleHtml:"Glasgow <em>Cathedral</em>",plain:"Glasgow Cathedral",walkNext:"263m, about 3 min to final stop",photos:[{f:"glasgow9.jpg",p:false}],photoCredit:"",tipLabel:"The Lower Church",tipText:"Go inside and take the stairs down to the lower church. The vaulted space beneath the main floor contains the tomb of St Mungo, the founder of Glasgow. It is one of the finest medieval interiors in Britain and entry is free.",lat:55.8630024,lng:-4.2345823,mp3:"glasgowstop9.mp3",script:"This church has been standing in some form on this site since the 6th century, when a monk named Mungo established his community here beside the Molendinar Burn.|||Mungo is the patron saint of Glasgow. His founding legend is encoded in the city\'s coat of arms and in its oldest motto. He is said to have performed four miracles that Glaswegians still know by heart. There\'s the bird that never flew: a robin he restored to life. There\'s the tree that never grew: a branch he used to rekindle a sacred fire. There\'s the fish that never swam: a salmon caught in the Clyde with a queen\'s ring in its mouth, which Mungo retrieved and returned. There\'s the bell that never rang: a bell brought from Rome to call the faithful to prayer. Bird, tree, fish, bell. Look at any Glasgow coat of arms and you will find all four. The words Mungo is said to have spoken over his community became the city\'s oldest motto: Lord, let Glasgow Flourish through the Preaching of Thy Word and the Praising of Thy Name. The city shortened it to Let Glasgow Flourish. Those three words are still the city\'s motto. They have been for six hundred years.|||The current structure dates from the 12th century, with most of what you see completed between 1233 and 1480. It is the finest example of Gothic architecture in Scotland. It is also the only medieval cathedral on the Scottish mainland to survive the Reformation intact.|||The Scottish Reformation of 1560 was savage in its treatment of Catholic buildings. Churches across Scotland were stripped and demolished. In Glasgow, the reformers came to do the same. They were stopped by the city\'s trade guilds: the craftsmen, merchants, and tradespeople who stood in front of the building and refused to let it be destroyed. They argued that the Cathedral was their place of worship too, and that destroying it served no one. The reformers left. The Cathedral survived. That collective act of preservation by ordinary Glaswegians is why you are standing in front of a complete medieval cathedral today.|||The lower church contains the tomb of St Mungo himself beneath the central vault. Free entry.|||Cross the Bridge of Sighs, the arched bridge over the Molendinar Burn, and climb the hill."},
+{id:10,tag:"Opened 1832",titleHtml:"The <em>Necropolis</em>",plain:"The Necropolis",walkNext:"360m south, about 4 min to final stop",photos:[{f:"glasgow10.jpg",p:false}],photoCredit:"",tipLabel:"The View",tipText:"Walk to the John Knox monument at the very top of the hill. The view from there over Glasgow Cathedral, the city, and on a clear day the Clyde estuary and the mountains beyond, is one of the finest urban views in Scotland.",lat:55.8626867,lng:-4.2311217,mp3:"glasgowstop10.mp3",script:"Turn around. Look down at the Cathedral. Look further west across the rooftops to the city beyond.|||That is Glasgow. From here you can see roughly the shape of what you have just walked through: the Victorian city, the medieval street, the industrial distance, the river somewhere beyond it all.|||The Necropolis was opened in 1832, modelled on the Pere Lachaise cemetery in Paris. The Victorians understood that a great city needed a great cemetery. Over 50,000 people are buried here. There are 3,500 monuments: obelisks, mausoleums, columns, angels, broken columns to mark lives cut short, stone draped with carved cloth to suggest mortality. The city\'s merchants, engineers, shipbuilders, and civic leaders are all up here. The people whose decisions created the Glasgow you have just walked through.|||The figure at the very top of the hill is John Knox, the father of the Scottish Reformation. His monument was erected in 1825, seven years before the cemetery around him existed. He stood on this hill alone for those seven years, looking down at the city. Knox is the reason the Cathedral below survived the Reformation: the people of Glasgow defended it against the movement he founded. He now stands guard over the city, and over the church that refused to obey him, for eternity. Glasgow has always had a complicated relationship with authority.|||Look west and on a clear day you may make out the shell of the Glasgow School of Art on the hill above the city centre: Mackintosh\'s masterpiece, gutted twice, still standing. Look south and on a clear day you can see the mountains beyond the Clyde estuary. Look east and the city becomes post-industrial, then green.|||Stand here as long as you like. You have walked Glasgow from its Victorian gateway to its medieval hilltop. From the Hielanman\'s Umbrella to the Necropolis. From the Clyde trade to the Cathedral the city refused to lose.|||One more stop. Descend the hill heading south. The final stop is at the bottom, five minutes on foot."},
+{id:11,bonus:true,tag:"Brewing since 1556",titleHtml:"Tennent\'s <em>Wellpark Brewery</em>",plain:"Tennent\'s Wellpark Brewery",walkNext:"Final stop",photos:[{f:"glasgow11.jpg",p:false}],photoCredit:"",tipLabel:"Brewery Tours",tipText:"Tours of the Wellpark Brewery run most days and include a behind-the-scenes walk through a working brewery. Check the official website for current times and prices. Tours end with a fresh pint of Tennent\'s on site. The Heritage Centre inside is open without booking.",lat:55.8592967,lng:-4.2308696,mp3:"glasgowstop11.mp3",script:"The brewery in front of you has been here since 1556. The Molendinar Burn, the same stream that flowed past St Mungo\'s original settlement when Glasgow was founded, and that still runs beneath Glasgow Cathedral a few hundred metres north of here, also ran past this site. Robert Tennent, a farmer and member of the Glasgow Maltmen\'s Guild, established his brewery on its banks. That connection between the water that founded the cathedral and the water that founded Scotland\'s most famous brewery is entirely unplanned and entirely Glasgow.|||Brewing has taken place on this site continuously since 1556, making Wellpark the oldest continuous commercial concern in Glasgow. The Tennent family formally established the brewery as a public company in 1740. By the mid-19th century, J and R Tennent was the world\'s largest exporter of bottled beer, shipping to Scottish communities across the Americas, the Caribbean, and the British Empire.|||In 1745, Bonnie Prince Charlie and his army stopped at the brewery during their retreat from England. According to the Glasgow city records, every man was refreshed and heartened by the beer before they continued their march north. They lost the war. The beer survived.|||In 1881, a young Hugh Tennent visited Bavaria and tasted lager for the first time. He came home and built a lager brewery at Wellpark, completing it in 1891. Tennent\'s lager was first brewed in 1885. It became the first lager commercially produced in the United Kingdom. Today it is Scotland\'s best-selling beer by a considerable distance, with annual retail sales that exceed those of all Coca-Cola variants in Scotland combined.|||From 1969 to 1991, Tennent\'s cans featured photographs of models on their sides. They were known as the Lager Lovelies. The original cans are now collectors\' items. From 1994 to 2016, Tennent\'s sponsored T in the Park, Scotland\'s largest outdoor music festival. The brewery has spent four hundred years sponsoring whatever it is that Scotland finds most enjoyable.|||Tours of the brewery run most days and end with a freshly poured pint at the bar. The address is 161 Duke Street, five minutes from the Necropolis. You have walked from the Hielanman\'s Umbrella to the oldest business in Glasgow. That is the tour."}
+];
+var slideIdx={};
+var audios=[];
+var currentAudio=null;
+var currentIdx=null;
+var leafMap=null,userMarker=null,watchId=null,gpsActive=false,stopMarkers=[];
+
+function fmtTime(secs){var m=Math.floor(secs/60);var s=Math.floor(secs%60);return m+"m "+(s<10?"0"+s:s)+"s";}
+
+function loadAudioDurations(){
+  var totalSecs=0;var settled=0;
+  function checkDone(){
+    if(settled===stops.length){
+      var pill=document.getElementById("audioPill");
+      if(pill){var mins=Math.ceil(totalSecs/60);pill.innerHTML="<strong>~"+mins+" min</strong> Audio";}
+    }
+  }
+  for(var i=0;i<stops.length;i++){
+    (function(s,idx){
+      var a=new Audio();audios[idx]=a;
+      a.src=s.mp3;a.preload="metadata";
+      a.addEventListener("loadedmetadata",function(){totalSecs+=a.duration;settled++;var el=document.getElementById("adur-"+idx);if(el)el.textContent=fmtTime(a.duration);checkDone();});
+      a.addEventListener("error",function(){settled++;checkDone();});
+    })(stops[i],i);
+  }
+}
+loadAudioDurations();
+
+function updateWrapOrientation(i,photoIdx){
+  var wrap=document.getElementById("wrap"+i);
+  if(!wrap)return;
+  var isP=stops[i].photos[photoIdx].p;
+  wrap.className="img-wrap "+(isP?"is-portrait":"is-landscape");
+}
+
+function seekAudio(idx,delta){
+  var a=audios[idx];if(!a)return;
+  var t=a.currentTime+delta;if(t<0)t=0;if(a.duration&&t>a.duration)t=a.duration;
+  a.currentTime=t;
+}
+
+function buildStops(){
+  var wrap=document.getElementById("stopsWrap");
+  var nav=document.getElementById("stopNav");
+  var html="";
+  for(var i=0;i<stops.length;i++){
+    var s=stops[i];
+    var paras=s.script.split(P);
+    var pHtml="";for(var j=0;j<paras.length;j++){pHtml+="<p>"+paras[j]+"</p>";}
+    var photoSlides="";
+    for(var k=0;k<s.photos.length;k++){photoSlides+="<img class='slide"+(k===0?" vis":"")+"' src='"+s.photos[k].f+"' alt='"+s.plain+"' onerror='this.style.display=\"none\"'>";}
+    var dots="";if(s.photos.length>1){dots="<div class='slide-dots'>";for(var k=0;k<s.photos.length;k++){dots+="<div class='sdot"+(k===0?" on":"")+"'></div>";}dots+="</div>";}
+    var arrows="";if(s.photos.length>1){arrows="<button class='arr-btn arr-prev' onclick='slidePhoto("+i+",-1)'>&#8249;</button><button class='arr-btn arr-next' onclick='slidePhoto("+i+",1)'>&#8250;</button>";}
+    var creditHtml="";if(s.photoCredit){creditHtml="<div class='photo-credit'>Photo: "+s.photoCredit+"</div>";}
+    var nextBadge=s.walkNext!=="Final stop"?"<div class='next-badge'>"+s.walkNext+"</div>":"";
+    var tipHtml="";if(s.tipLabel){tipHtml="<div class='tip'><div class='tip-lbl'>"+s.tipLabel+"</div><p>"+s.tipText+"</p></div>";}
+    var isP=s.photos[0].p;
+    html+="<div class='stop' id='stop"+i+"'>";
+    html+="<div class='s-media'>";
+    html+="<div class='img-wrap "+(isP?"is-portrait":"is-landscape")+"' id='wrap"+i+"'>";
+    html+="<div class='num-badge'>"+s.id+"</div>";
+    html+=nextBadge;
+    html+=photoSlides+arrows+dots;
+    html+="</div>";
+    html+=creditHtml;
+    html+="<div class='player' id='player"+i+"'>";
+    html+="<div class='player-top'><span class='player-lbl'>Audio Guide</span><span class='vtag' id='adur-"+i+"'>--</span></div>";
+    html+="<div class='player-row'>";
+    html+="<button class='seek-btn' onclick='seekAudio("+i+",-10)'>-10s</button>";
+    html+="<button class='play-btn' id='play"+i+"' onclick='playStop("+i+")'><svg viewBox='0 0 24 24'><polygon points='5,3 19,12 5,21'/></svg></button>";
+    html+="<button class='seek-btn' onclick='seekAudio("+i+",10)'>+10s</button>";
+    html+="<div class='p-mid'><div class='prog-track'><div class='prog-fill' id='prog"+i+"'></div></div><div class='p-time' id='ptime"+i+"'>0m 00s</div><div class='p-stat' id='stat"+i+"'>Tap play to start</div></div>";
+    html+="<select class='spd' id='spd"+i+"' onchange='changeSpeed("+i+")'><option value='0.8'>Slow</option><option value='1' selected>Normal</option><option value='1.2'>Fast</option></select>";
+    html+="</div></div>";
+    html+="<button class='map-back-btn' onclick='scrollToMap()'>&#8593; Back to map</button>";
+    html+="</div>";
+    html+="<div class='s-body'><div class='s-tag'>"+s.tag+"</div><h2 class='s-title'>"+s.titleHtml+"</h2><div class='s-text'>"+pHtml+"</div>"+tipHtml+"</div>";
+    html+="</div>";
+    if(!s.bonus&&i===MAIN_STOPS-1){html+="<div class='tour-end' style='padding:5rem 2rem'><div class='tcb-inner'><div class='tcb-deco'>&#9670;</div><h2>You have walked<br><em>Glasgow.</em></h2><p>From the Hielanman's Umbrella to the Necropolis. From the oldest university to the oldest business. Ten stops. Six centuries.</p><div class='drink'>Find a pub. Order a pint. But first &mdash; one more stop.</div><div class='tcb-bonus-lbl'>Bonus stop &darr;</div><div class='tcb-bonus-dist'><span>&#9733; Tennent's Wellpark Brewery &mdash; 360m from the Necropolis</span></div></div></div>";}
+    var ndot=document.createElement("button");
+    if(s.bonus){ndot.className="ndot ndot-bonus";ndot.textContent="★";}else{ndot.className="ndot";ndot.textContent=s.id;}
+    ndot.id="ndot"+i;
+    ndot.setAttribute("onclick","scrollToStop("+i+")");
+    nav.appendChild(ndot);
+  }
+  wrap.innerHTML=html;
+  slideIdx={};for(var i=0;i<stops.length;i++){slideIdx[i]=0;}
+}
+buildStops();
+
+function slidePhoto(stopIdx,dir){
+  var s=stops[stopIdx];if(s.photos.length<2)return;
+  var cur=slideIdx[stopIdx]||0;var next=(cur+dir+s.photos.length)%s.photos.length;
+  slideIdx[stopIdx]=next;
+  var wrap=document.getElementById("wrap"+stopIdx);if(!wrap)return;
+  var imgs=wrap.querySelectorAll(".slide");var sdots=wrap.querySelectorAll(".sdot");
+  for(var i=0;i<imgs.length;i++){imgs[i].classList.remove("vis");}
+  for(var i=0;i<sdots.length;i++){sdots[i].classList.remove("on");}
+  if(imgs[next])imgs[next].classList.add("vis");
+  if(sdots[next])sdots[next].classList.add("on");
+  updateWrapOrientation(stopIdx,next);
+}
+
+function scrollToMap(){document.getElementById("map-sec").scrollIntoView({behavior:"smooth"});}
+function scrollToStop(i){document.getElementById("stop"+i).scrollIntoView({behavior:"smooth"});}
+
+function setIcon(i,playing){
+  var btn=document.getElementById("play"+i);if(!btn)return;
+  if(playing){btn.innerHTML="<svg viewBox='0 0 24 24'><rect x='6' y='4' width='4' height='16'/><rect x='14' y='4' width='4' height='16'/></svg>";}
+  else{btn.innerHTML="<svg viewBox='0 0 24 24'><polygon points='5,3 19,12 5,21'/></svg>";}
+}
+function setStat(i,msg,cls){var el=document.getElementById("stat"+i);if(el){el.textContent=msg;el.className="p-stat"+(cls?" "+cls:"");}}
+
+function stopAll(){
+  if(currentAudio){currentAudio.pause();currentAudio.currentTime=0;}
+  if(currentIdx!==null){setIcon(currentIdx,false);setStat(currentIdx,"Tap play to start","");}
+  currentAudio=null;currentIdx=null;
+  document.getElementById("gbar").classList.remove("up");
+}
+
+function changeSpeed(i){var sel=document.getElementById("spd"+i);if(audios[i]&&sel)audios[i].playbackRate=parseFloat(sel.value);}
+
+function playStop(i){
+  var a=audios[i];if(!a)return;
+  if(currentAudio&&currentIdx!==null&&currentIdx!==i){currentAudio.pause();setIcon(currentIdx,false);setStat(currentIdx,"Tap play to start","");}
+  if(!a.paused){a.pause();setIcon(i,false);setStat(i,"Paused","");document.getElementById("gbar").classList.remove("up");currentAudio=null;currentIdx=null;return;}
+  if(isUnlocked()||i<FREE_STOPS){
+    currentAudio=a;currentIdx=i;
+    var spd=document.getElementById("spd"+i);if(spd)a.playbackRate=parseFloat(spd.value);
+    setStat(i,"Loading...","");setIcon(i,true);
+    document.getElementById("gTitle").textContent=stops[i].plain;
+    document.getElementById("gbar").classList.add("up");
+    a.ontimeupdate=function(){
+      var pf=document.getElementById("prog"+i);var pt=document.getElementById("ptime"+i);
+      if(pf&&a.duration){pf.style.width=((a.currentTime/a.duration)*100)+"%";}
+      if(pt){pt.textContent=fmtTime(a.currentTime)+(a.duration?" / "+fmtTime(a.duration):"");}
+      setStat(i,"Playing","on");
+    };
+    a.onended=function(){setIcon(i,false);setStat(i,"Finished","ok");document.getElementById("gbar").classList.remove("up");currentAudio=null;currentIdx=null;};
+    a.onerror=function(){setIcon(i,false);setStat(i,"Audio error, please try again","er");document.getElementById("gbar").classList.remove("up");currentIdx=null;currentAudio=null;};
+    a.play().catch(function(){setStat(i,"Tap play to start audio","");setIcon(i,false);});
+  } else {openModal();}
+}
+
+function panMapTo(idx){if(!leafMap||!stops[idx])return;leafMap.panTo([stops[idx].lat,stops[idx].lng],{animate:true,duration:0.5});}
+
+function initMap(){
+  if(typeof L==="undefined"){document.getElementById("map").innerHTML="<div style='display:flex;align-items:center;justify-content:center;height:100%;color:rgba(240,237,228,.3);font-size:.85rem'>Map needs internet connection</div>";return;}
+  leafMap=L.map("map").setView([55.861,-4.250],15);
+  L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",{attribution:"&copy; OpenStreetMap contributors",maxZoom:19}).addTo(leafMap);
+  L.polyline(stops.map(function(s){return[s.lat,s.lng];}),{color:"#C9A96E",weight:2.5,opacity:.6,dashArray:"7,5"}).addTo(leafMap);
+  for(var mi=0;mi<stops.length;mi++){
+    (function(s,i){
+      var markerHtml=s.bonus?"<div style='width:32px;height:32px;background:#2D5A3D;border:2px solid #C9A96E;border-radius:4px;display:flex;align-items:center;justify-content:center;color:#C9A96E;font-size:16px;cursor:pointer;box-shadow:0 2px 8px rgba(0,0,0,.5)'>&#9733;</div>":"<div style='width:30px;height:30px;background:#2D5A3D;border:2px solid #C9A96E;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#C9A96E;font-weight:700;font-size:12px;cursor:pointer;box-shadow:0 2px 8px rgba(0,0,0,.5)'>"+s.id+"</div>";var sz=s.bonus?[32,32]:[30,30];var m=L.marker([s.lat,s.lng],{icon:L.divIcon({html:markerHtml,className:"",iconSize:sz,iconAnchor:[sz[0]/2,sz[1]/2],popupAnchor:[0,-18]})}).addTo(leafMap);
+      m.bindPopup("<div style='font-family:serif;font-size:.95rem;color:#C9A96E;margin-bottom:3px'>"+s.plain+"</div><div style='font-size:.72rem;color:rgba(240,237,228,.45)'>"+s.tag+"</div>",{maxWidth:200});
+      m.on("click",function(){var el=document.getElementById("stop"+i);if(el)el.scrollIntoView({behavior:"smooth"});});
+      stopMarkers.push(m);
+    })(stops[mi],mi);
+  }
+  setTimeout(mapFitAll,200);
+}
+
+function mapFitAll(){
+  if(!leafMap)return;
+  var bounds=[];for(var i=0;i<stops.length;i++){bounds.push([stops[i].lat,stops[i].lng]);}
+  leafMap.fitBounds(bounds,{padding:[30,30]});
+}
+
+function toggleGPS(){if(gpsActive){stopGPS();}else{startGPS();}}
+
+function startGPS(){
+  if(!navigator.geolocation){document.getElementById("gstat").textContent="GPS not supported on this device";return;}
+  gpsActive=true;
+  document.getElementById("gpsHdrBtn").textContent="GPS On";
+  document.getElementById("gpsMapBtn").textContent="Stop Tracking";
+  document.getElementById("gdot").classList.add("live");
+  document.getElementById("gstat").textContent="Locating...";
+  watchId=navigator.geolocation.watchPosition(function(pos){
+    var lat=pos.coords.latitude;var lng=pos.coords.longitude;
+    document.getElementById("gstat").textContent="GPS active";
+    if(!userMarker){
+      var dot=document.createElement("div");
+      dot.style.cssText="width:14px;height:14px;border-radius:50%;background:#5a9e6f;border:2px solid #F0EDE4;box-shadow:0 0 8px rgba(90,158,111,.6)";
+      userMarker=L.marker([lat,lng],{icon:L.divIcon({className:"",html:dot.outerHTML,iconSize:[14,14],iconAnchor:[7,7]})}).addTo(leafMap);
+    } else {userMarker.setLatLng([lat,lng]);}
+    leafMap.setView([lat,lng],16);
+  },function(){document.getElementById("gstat").textContent="Unable to get location";},{enableHighAccuracy:true,maximumAge:5000});
+}
+
+function stopGPS(){
+  gpsActive=false;if(watchId)navigator.geolocation.clearWatch(watchId);
+  document.getElementById("gpsHdrBtn").textContent="GPS";
+  document.getElementById("gpsMapBtn").textContent="Track My Location";
+  document.getElementById("gdot").classList.remove("live");
+  document.getElementById("gstat").textContent="Tap Track My Location to follow your position";
+}
+
+window.addEventListener("scroll",function(){
+  document.getElementById("hdr").classList.toggle("scrolled",window.scrollY>60);
+});
+
+var allSections=document.querySelectorAll(".stop");var allDots=document.querySelectorAll(".ndot");
+for(var oi=0;oi<allSections.length;oi++){
+  (function(sec,idx){
+    new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(e.isIntersecting){
+          allDots.forEach(function(d,j){d.classList.toggle("on",j===idx);});
+          panMapTo(idx);
+        }
+      });
+    },{threshold:0.35}).observe(sec);
+  })(allSections[oi],oi);
+}
+
+if(typeof L!=="undefined"){initMap();}else{setTimeout(function(){if(typeof L!=="undefined")initMap();else document.getElementById("map").innerHTML="<div style='display:flex;align-items:center;justify-content:center;height:100%;color:rgba(240,237,228,.3);font-size:.85rem'>Map needs internet connection</div>";},2000);}
+
+function isUnlocked(){try{return localStorage.getItem(STORAGE_KEY)==="1";}catch(e){return false;}}
+function unlockTour(){try{localStorage.setItem(STORAGE_KEY,"1");}catch(e){}var locks=document.querySelectorAll(".lock-overlay");for(var i=0;i<locks.length;i++)locks[i].remove();var ndots=document.querySelectorAll(".ndot");for(var i=0;i<ndots.length;i++){ndots[i].style.opacity="1";ndots[i].title="";}closeModal();}
+function verifyKey(key,callback){var xhr=new XMLHttpRequest();xhr.open("POST","/api/verify",true);xhr.setRequestHeader("Content-Type","application/json");xhr.onreadystatechange=function(){if(xhr.readyState!==4)return;try{var data=JSON.parse(xhr.responseText);if(data.valid===true){callback(true,null);}else{callback(false,data.error||"Invalid code.");}}catch(e){callback(false,"Verification failed. Please try again.");}};xhr.onerror=function(){callback(false,"Network error. Please try again.");};xhr.send(JSON.stringify({key:key}));}
+function tryCode(){var val=document.getElementById("ucodeIn").value.trim().toUpperCase();var msg=document.getElementById("umsg");if(!val){msg.textContent="Please enter a code.";msg.className="umsg er";return;}for(var b=0;b<BYPASS_CODES.length;b++){if(val===BYPASS_CODES[b]){msg.textContent="Code accepted. Unlocking your tour...";msg.className="umsg ok";setTimeout(unlockTour,800);return;}}msg.textContent="Checking...";msg.className="umsg";verifyKey(val,function(ok,errMsg){if(ok){msg.textContent="Code accepted. Unlocking your tour...";msg.className="umsg ok";setTimeout(unlockTour,800);}else{msg.textContent=errMsg||"Invalid code. Check your email and try again.";msg.className="umsg er";}});}
+function autoUnlockFromUrl(){if(isUnlocked())return;var search=window.location.search;if(!search)return;var match=search.match(/[?&]key=([^&]+)/);if(!match)return;var key=decodeURIComponent(match[1]);if(!key)return;verifyKey(key,function(ok){if(ok){unlockTour();try{window.history.replaceState({},"",window.location.pathname);}catch(e){}}});}
+function openModal(){document.getElementById("umodal").classList.add("show");}
+function closeModal(){document.getElementById("umodal").classList.remove("show");}
+document.getElementById("ucodeIn").addEventListener("keydown",function(e){if(e.key==="Enter")tryCode();});
+function applyLocks(){if(isUnlocked())return;var allStops=document.querySelectorAll(".stop");for(var i=0;i<allStops.length;i++){if(i<FREE_STOPS)continue;allStops[i].style.position="relative";var o=document.createElement("div");o.className="lock-overlay";var isBonus=(stops[i]&&stops[i].bonus);o.innerHTML="<div class='lock-icon'>&#128274;</div><h4>"+(isBonus?"Bonus stop locked":"Stop "+(i+1)+" is locked")+"</h4><p>"+(isBonus?"Unlock the full tour to access this bonus stop.":"The next stops go further into Glasgow. Unlock the full tour for €4.99 and keep access forever.")+"</p><button class='unlock-btn' onclick='openModal()'>Unlock Full Tour &mdash; &euro;4.99</button>";allStops[i].appendChild(o);var ndots=document.querySelectorAll(".ndot");if(ndots[i]){ndots[i].style.opacity="0.35";ndots[i].title="Locked";}}}
+autoUnlockFromUrl();
+setTimeout(applyLocks,300);
+</script>
+</script>
+<div id="sc-cookie-bar" style="display:none;position:fixed;bottom:0;left:0;right:0;background:#161b0e;border-top:1px solid #b8972a;padding:14px 20px;z-index:99999;font-family:'DM Sans',sans-serif;">
+  <p style="color:#e8e0cc;margin:0 0 10px;font-size:13px;line-height:1.5;">We use cookies to measure how people find Stepcast via Google Ads. You can accept or decline below. <a href="/privacy.html" style="color:#b8972a;text-decoration:underline;">Privacy Policy</a></p>
+  <div>
+    <button onclick="scConsentAccept()" style="background:#b8972a;color:#0d120a;border:none;padding:7px 18px;border-radius:20px;font-size:13px;font-weight:600;cursor:pointer;margin-right:8px;">Accept</button>
+    <button onclick="scConsentDecline()" style="background:transparent;color:#e8e0cc;border:1px solid #555;padding:7px 18px;border-radius:20px;font-size:13px;cursor:pointer;">Decline</button>
+  </div>
+</div>
+<script>
+  function scConsentAccept(){try{localStorage.setItem('stepcast_consent','granted');}catch(e){}document.getElementById('sc-cookie-bar').style.display='none';if(typeof loadGtag==='function'){loadGtag();}}
+  function scConsentDecline(){try{localStorage.setItem('stepcast_consent','denied');}catch(e){}document.getElementById('sc-cookie-bar').style.display='none';}
+  try{if(!localStorage.getItem('stepcast_consent')){document.getElementById('sc-cookie-bar').style.display='block';}}catch(e){}
+</script>
+</body>
+</html>
