@@ -225,6 +225,18 @@
             "touristType": "Cultural tourism",
             "address": {"@type": "PostalAddress", "addressLocality": "Oxford", "addressCountry": "GB"}
           }
+        },
+        {
+          "@type": "ListItem",
+          "position": 14,
+          "item": {
+            "@type": "TouristAttraction",
+            "name": "Bruges Audio Walking Tour",
+            "url": "https://stepcasttours.com/bruges.html",
+            "description": "Self-guided audio walking tour of Bruges, Belgium. 11 stops, 1.8km. First 3 stops free.",
+            "touristType": "Cultural tourism",
+            "address": {"@type": "PostalAddress", "addressLocality": "Bruges", "addressCountry": "BE"}
+          }
         }
       ]
     }
@@ -374,7 +386,7 @@
         </button>
         <div class="nav-cities" id="belgiumCities">
           <a href="brussels.html">Brussels</a>
-          <a href="bruges.html">Bruges <span class="soon-tag">coming soon</span></a>
+          <a href="bruges.html">Bruges</a>
         </div>
       </div>
 
@@ -621,6 +633,22 @@
         <span class="card-btn">Try Free &#8594;</span>
       </div>
     </a>
+    <a class="card" href="bruges.html">
+      <img class="card-img" id="brugesImg" alt="Bruges">
+      <div class="card-grad"></div>
+      <div class="free-tag">3 Stops Free</div>
+      <div class="card-body">
+        <div class="card-region">Belgium</div>
+        <div class="card-name"><em>Bruges</em></div>
+        <div class="card-pills">
+          <span class="pill">11 Stops</span>
+          <span class="pill">1.8 km</span>
+          <span class="pill">&#x1F6B6; ~30 min</span>
+          <span class="pill">&#x1F3A7; ~40 min</span>
+        </div>
+        <span class="card-btn">Try Free &#8594;</span>
+      </div>
+    </a>
     <a class="card" href="lisbon.html">
       <img class="card-img" id="lisImg" alt="Lisbon">
       <div class="card-grad"></div>
@@ -726,7 +754,6 @@
   </div>
   <div class="grid">
     <div class="soon"><div class="soon-emoji">&#127963;</div><div class="soon-city">Porto</div><div class="soon-tag">Coming Soon</div></div>
-    <div class="soon"><div class="soon-emoji">&#127963;</div><div class="soon-city">Bruges</div><div class="soon-tag">Coming Soon</div></div>
     <div class="soon"><div class="soon-emoji">&#127963;</div><div class="soon-city">Palermo</div><div class="soon-tag">Coming Soon</div></div>
     <div class="soon"><div class="soon-emoji">&#127963;</div><div class="soon-city">Cologne</div><div class="soon-tag">Coming Soon</div></div>
     <div class="soon"><div class="soon-emoji">&#127963;</div><div class="soon-city">Heidelberg</div><div class="soon-tag">Coming Soon</div></div>
@@ -801,12 +828,14 @@ document.getElementById('bxImg').src='bordeaux1b.jpg';
 document.getElementById('venImg').src='venice5.jpg';
 document.getElementById('glasgowImg').src='glasgow3.jpg';
 document.getElementById('milanImg').src='milan1.jpg';
+document.getElementById('brugesImg').src='bruges1a.jpg';
 
 /* Search */
 var CITIES=[
   {name:'Valencia',region:'Spain — Mediterranean',emoji:'&#127466;&#127480;',url:'valencia.html'},
   {name:'Seville',region:'Spain — Andalusia',emoji:'&#127466;&#127480;',url:'seville.html'},
   {name:'Brussels',region:'Belgium — Capital of Europe',emoji:'&#127463;&#127466;',url:'brussels.html'},
+  {name:'Bruges',region:'Belgium — Medieval Gem',emoji:'&#127463;&#127466;',url:'bruges.html'},
   {name:'Lisbon',region:'Portugal — City of Seven Hills',emoji:'&#127477;&#127481;',url:'lisbon.html'},
   {name:'London: Royal London',region:'United Kingdom — Capital',emoji:'&#127468;&#127463;',url:'london.html'},
   {name:'Paris',region:'France — Capital',emoji:'&#127467;&#127479;',url:'paris.html'},
