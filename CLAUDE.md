@@ -256,11 +256,13 @@ Use **Python string construction** — never bash heredocs (heredoc escaping fai
 7. **Independent reviewer** — read as someone who has done a popular live guided tour there
 8. **Apply reviewer fixes**
 9. **Final scripts confirmed**
-10. **Fact check** — every date, name, number, direction, orientation verified
+10. **Fact check** — every date, name, number, direction, orientation verified against external sources. **This must be genuinely independent: Claude may not fact-check scripts it wrote itself in the same session. Start a fresh context, treat the scripts as untrusted input, and verify every specific claim — dates, building names, heights, rulers, founding facts — as if encountering them for the first time. Self-reviewing previously written scripts is not fact-checking.**
 11. **Apply fact-check fixes**
 12. **HTML build** — build file from canonical template
 
 **Directions must be verified against actual coordinates** — wrong directions are the most frequent error.
+
+**Audio is recorded after step 9 and cannot be cheaply redone. Errors that survive to step 12 cost real time and money. The fact-check at step 10 is the last line of defence.**
 
 ---
 
