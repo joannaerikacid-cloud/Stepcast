@@ -391,7 +391,24 @@ for(var si=0;si<stops.length;si++){(function(s,i){
 })(stops[si],si);}
 
 var allSections=document.querySelectorAll(".stop");var allDots=document.querySelectorAll(".ndot");
-for(var oi=0;oi<allSections.length;oi++){(function(sec,idx){new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting){allDots.forEach(function(d,j){d.classList.toggle("on",j===idx);});panMapTo(idx);}});},{threshold:0.35}).observe(sec);})(allSections[oi],oi);}
+var activeStopIdx=-1;
+function updateActiveStop(){
+  var vh=window.innerHeight/2;
+  var bestIdx=0;var bestDist=999999;
+  for(var ai=0;ai<allSections.length;ai++){
+    var rect=allSections[ai].getBoundingClientRect();
+    var mid=rect.top+rect.height/2;
+    var dist=Math.abs(vh-mid);
+    if(dist<bestDist){bestDist=dist;bestIdx=ai;}
+  }
+  if(bestIdx===activeStopIdx)return;
+  activeStopIdx=bestIdx;
+  for(var di=0;di<allDots.length;di++){allDots[di].classList.toggle("on",di===bestIdx);}
+  panMapTo(bestIdx);
+}
+var scrollTmr=null;
+window.addEventListener("scroll",function(){if(scrollTmr)clearTimeout(scrollTmr);scrollTmr=setTimeout(updateActiveStop,80);});
+updateActiveStop();
 
 function initMap(){if(typeof L==="undefined"){document.getElementById("map").innerHTML="<div style='display:flex;align-items:center;justify-content:center;height:100%;color:rgba(240,237,228,.3);font-size:.85rem'>Map needs internet connection</div>";return;}leafMap=L.map("map").setView([38.711,-9.137],14);L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",{attribution:"&copy; OpenStreetMap contributors",maxZoom:19}).addTo(leafMap);L.polyline(stops.map(function(s){return[s.lat,s.lng];}),{color:"#C9A96E",weight:2.5,opacity:.6,dashArray:"7,5"}).addTo(leafMap);for(var mi=0;mi<stops.length;mi++){(function(s,i){var m=L.marker([s.lat,s.lng],{icon:L.divIcon({html:"<div style='width:30px;height:30px;background:#2D5A3D;border:2px solid #C9A96E;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#C9A96E;font-weight:700;font-size:12px;cursor:pointer;box-shadow:0 2px 8px rgba(0,0,0,.5)'>"+s.id+"</div>",className:"",iconSize:[30,30],iconAnchor:[15,15],popupAnchor:[0,-18]})}).addTo(leafMap);m.bindPopup("<div style='font-family:serif;font-size:.95rem;color:#C9A96E;margin-bottom:3px'>"+s.plain+"</div><div style='font-size:.72rem;color:rgba(240,237,228,.45)'>"+s.walkNext+"</div>",{maxWidth:200});m.on("click",function(){var el=document.getElementById("stop-"+s.id);if(el)el.scrollIntoView({behavior:"smooth"});});stopMarkers.push(m);})(stops[mi],mi);}setTimeout(mapFitAll,200);}
 function mapFitAll(){if(!leafMap)return;leafMap.fitBounds(L.latLngBounds(stops.map(function(s){return[s.lat,s.lng];})),{padding:[50,50]});}

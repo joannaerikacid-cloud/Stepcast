@@ -504,18 +504,37 @@ window.addEventListener("scroll",function(){
 });
 
 var allSections=document.querySelectorAll(".stop");var allDots=document.querySelectorAll(".ndot");
-for(var oi=0;oi<allSections.length;oi++){
-  (function(sec,idx){
-    new IntersectionObserver(function(entries){
-      entries.forEach(function(e){
-        if(e.isIntersecting){
-          allDots.forEach(function(d,j){d.classList.toggle("on",j===idx);});
-          panMapTo(idx);
-        }
-      });
-    },{threshold:0.35}).observe(sec);
-  })(allSections[oi],oi);
+var activeStopIdx=-1;
+function updateMapMarker(oldIdx,newIdx){
+  if(!stopMarkers.length||typeof L==="undefined")return;
+  if(oldIdx>=0&&oldIdx<stopMarkers.length){
+    var so=stops[oldIdx];
+    stopMarkers[oldIdx].setIcon(L.divIcon({html:"<div style='width:30px;height:30px;background:#2D5A3D;border:2px solid #C9A96E;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#C9A96E;font-weight:700;font-size:12px;cursor:pointer;box-shadow:0 2px 8px rgba(0,0,0,.5)'>"+so.id+"</div>",className:"",iconSize:[30,30],iconAnchor:[15,15],popupAnchor:[0,-18]}));
+  }
+  if(newIdx>=0&&newIdx<stopMarkers.length){
+    var sn=stops[newIdx];
+    stopMarkers[newIdx].setIcon(L.divIcon({html:"<div style='width:36px;height:36px;background:#C9A96E;border:2px solid #C9A96E;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#1C1C1A;font-weight:700;font-size:12px;cursor:pointer;box-shadow:0 2px 12px rgba(201,169,110,.5)'>"+sn.id+"</div>",className:"",iconSize:[36,36],iconAnchor:[18,18],popupAnchor:[0,-18]}));
+  }
 }
+function updateActiveStop(){
+  var vh=window.innerHeight/2;
+  var bestIdx=0;var bestDist=999999;
+  for(var ai=0;ai<allSections.length;ai++){
+    var rect=allSections[ai].getBoundingClientRect();
+    var mid=rect.top+rect.height/2;
+    var dist=Math.abs(vh-mid);
+    if(dist<bestDist){bestDist=dist;bestIdx=ai;}
+  }
+  if(bestIdx===activeStopIdx)return;
+  var prevIdx=activeStopIdx;
+  activeStopIdx=bestIdx;
+  for(var di=0;di<allDots.length;di++){allDots[di].classList.toggle("on",di===bestIdx);}
+  panMapTo(bestIdx);
+  updateMapMarker(prevIdx,bestIdx);
+}
+var scrollTmr=null;
+window.addEventListener("scroll",function(){if(scrollTmr)clearTimeout(scrollTmr);scrollTmr=setTimeout(updateActiveStop,80);});
+updateActiveStop();
 
 if(typeof L!=="undefined"){initMap();}else{setTimeout(function(){if(typeof L!=="undefined")initMap();else document.getElementById("map").innerHTML="<div style='display:flex;align-items:center;justify-content:center;height:100%;color:rgba(240,237,228,.3);font-size:.85rem'>Map needs internet connection</div>";},2000);}
 
