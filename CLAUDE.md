@@ -152,6 +152,7 @@ Examples: `glasgowstop1.mp3`, `venicestop9.mp3`, `brugesstop11.mp3`, `parisstop6
 - **No specific city counts** in copy (say "cities" not "16 cities")
 - **Always euros** for pricing — never pounds
 - **No `user-scalable=no`** in any viewport tag
+- **No "hidden gem" / "tourists never" formula** — never write phrases like "most tourists never find this", "almost nobody comes here", "visitors always miss this", "hidden gem", or any variation. Stepcast tours cover the classic stops everyone expects. If a place is genuinely off the beaten track, describe it factually. Do not frame stops by contrast with other tourists.
 
 ---
 
@@ -255,14 +256,15 @@ Use **Python string construction** — never bash heredocs (heredoc escaping fai
 6. **Apply self-critique fixes**
 7. **Independent reviewer** — read as someone who has done a popular live guided tour there
 8. **Apply reviewer fixes**
-9. **Final scripts confirmed**
-10. **Fact check** — every date, name, number, direction, orientation verified against external sources. **This must be genuinely independent: Claude may not fact-check scripts it wrote itself in the same session. Start a fresh context, treat the scripts as untrusted input, and verify every specific claim — dates, building names, heights, rulers, founding facts — as if encountering them for the first time. Self-reviewing previously written scripts is not fact-checking.**
-11. **Apply fact-check fixes**
-12. **HTML build** — build file from canonical template
+9. **Direction check** — run bearing calculations for every consecutive stop pair using actual lat/lng coordinates. Fix any wrong compass headings in scripts before proceeding. Use Python: `math.degrees(math.atan2(dlng_m, dlat_m))` where dlat_m = Δlat × 111000, dlng_m = Δlng × 78500.
+10. **Save scripts to file** — write all scripts to `{city}-scripts-draft.txt` in the repo root, with a FACT-CHECK FLAGS section under each stop listing every specific claim to verify (dates, names, heights, capacities, rulers, founding facts). This file is the input for the next step.
+11. **Fact check** — every date, name, number, direction, orientation verified against external sources. **This must be genuinely independent: Claude may not fact-check scripts it wrote itself in the same session. Open a fresh context, load `{city}-scripts-draft.txt`, treat every claim as untrusted, and verify against external sources as if encountering them for the first time. Self-reviewing previously written scripts is not fact-checking.**
+12. **Apply fact-check fixes**
+13. **HTML build** — build file from canonical template
 
 **Directions must be verified against actual coordinates** — wrong directions are the most frequent error.
 
-**Audio is recorded after step 9 and cannot be cheaply redone. Errors that survive to step 12 cost real time and money. The fact-check at step 10 is the last line of defence.**
+**Audio is recorded after step 10 and cannot be cheaply redone. Errors that survive to step 13 cost real time and money. The fact-check at step 11 is the last line of defence.**
 
 ---
 
@@ -282,6 +284,7 @@ Use **Python string construction** — never bash heredocs (heredoc escaping fai
 - `|||` separates paragraphs — never newlines in JS string
 - walkNext format: `"Xm, about Y min to next stop"` / `"Final stop"` / `"Xm south, about Y min to final stop"`
 - Tip boxes: practical, specific, no em dashes, "check official website" for any price/time
+- **Direction paragraphs must be brief and non-specific** — the GPS map handles navigation. Give only: a rough compass heading, an approximate walking time, and a landmark to look for on arrival. Never give turn-by-turn instructions, specific street names to turn onto, or "turn left/right at X". More specific = more chances to be wrong. Example good: "Head northwest about five minutes to Piazza San Simpliciano." Example bad: "Turn left onto Via Cusani, then right at the junction onto Foro Buonaparte."
 
 ---
 

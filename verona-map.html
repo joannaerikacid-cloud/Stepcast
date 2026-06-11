@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Verona Tour Route</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family: 'DM Sans', sans-serif; background:#1a1a1a; color:#f0ede8; display:flex; height:100vh; }
+#map { flex:1; }
+#panel {
+  width:280px; background:#1C1C1A; padding:20px; overflow-y:auto;
+  border-left:1px solid #2a2a2a;
+}
+h2 { font-size:16px; color:#C9A96E; margin-bottom:4px; letter-spacing:.05em; text-transform:uppercase; }
+.subtitle { font-size:12px; color:#888; margin-bottom:18px; }
+.stop-item {
+  display:flex; align-items:flex-start; gap:10px;
+  padding:8px 0; border-bottom:1px solid #2a2a2a;
+}
+.stop-item:last-child { border-bottom:none; }
+.num {
+  width:24px; height:24px; border-radius:50%;
+  background:#C9A96E; color:#1C1C1A; font-weight:700;
+  font-size:11px; display:flex; align-items:center; justify-content:center;
+  flex-shrink:0; margin-top:1px;
+}
+.stop-name { font-size:13px; color:#f0ede8; line-height:1.3; }
+.stop-dist { font-size:11px; color:#888; margin-top:2px; }
+.total {
+  margin-top:16px; padding:12px; background:#252520;
+  border-radius:6px; border:1px solid #C9A96E33;
+}
+.total-label { font-size:11px; color:#888; text-transform:uppercase; letter-spacing:.05em; }
+.total-val { font-size:20px; color:#C9A96E; font-weight:700; margin-top:2px; }
+.total-sub { font-size:12px; color:#888; margin-top:2px; }
+</style>
+</head>
+<body>
+<div id="map"></div>
+<div id="panel">
+  <h2>Verona</h2>
+  <div class="subtitle">11 stops &nbsp;·&nbsp; walking route</div>
+
+  <div class="stop-item">
+    <div class="num">1</div>
+    <div>
+      <div class="stop-name">Castelvecchio</div>
+      <div class="stop-dist">↓ 500m &nbsp;·&nbsp; 6 min</div>
+    </div>
+  </div>
+  <div class="stop-item">
+    <div class="num">2</div>
+    <div>
+      <div class="stop-name">Arena di Verona</div>
+      <div class="stop-dist">↓ 300m &nbsp;·&nbsp; 4 min</div>
+    </div>
+  </div>
+  <div class="stop-item">
+    <div class="num">3</div>
+    <div>
+      <div class="stop-name">Porta Borsari</div>
+      <div class="stop-dist">↓ 540m &nbsp;·&nbsp; 7 min</div>
+    </div>
+  </div>
+  <div class="stop-item">
+    <div class="num">4</div>
+    <div>
+      <div class="stop-name">Casa di Giulietta</div>
+      <div class="stop-dist">↓ 110m &nbsp;·&nbsp; 1 min</div>
+    </div>
+  </div>
+  <div class="stop-item">
+    <div class="num">5</div>
+    <div>
+      <div class="stop-name">Piazza delle Erbe</div>
+      <div class="stop-dist">↓ 80m &nbsp;·&nbsp; 1 min</div>
+    </div>
+  </div>
+  <div class="stop-item">
+    <div class="num">6</div>
+    <div>
+      <div class="stop-name">Piazza dei Signori</div>
+      <div class="stop-dist">↓ 60m &nbsp;·&nbsp; 1 min</div>
+    </div>
+  </div>
+  <div class="stop-item">
+    <div class="num">7</div>
+    <div>
+      <div class="stop-name">Arche Scaligere</div>
+      <div class="stop-dist">↓ 75m &nbsp;·&nbsp; 1 min</div>
+    </div>
+  </div>
+  <div class="stop-item">
+    <div class="num">8</div>
+    <div>
+      <div class="stop-name">Basilica di Sant'Anastasia</div>
+      <div class="stop-dist">↓ 300m &nbsp;·&nbsp; 4 min</div>
+    </div>
+  </div>
+  <div class="stop-item">
+    <div class="num">9</div>
+    <div>
+      <div class="stop-name">Ponte Pietra</div>
+      <div class="stop-dist">↓ 250m &nbsp;·&nbsp; 3 min</div>
+    </div>
+  </div>
+  <div class="stop-item">
+    <div class="num">10</div>
+    <div>
+      <div class="stop-name">Teatro Romano</div>
+      <div class="stop-dist">↓ 400m &nbsp;·&nbsp; 8 min (climb)</div>
+    </div>
+  </div>
+  <div class="stop-item">
+    <div class="num">11</div>
+    <div>
+      <div class="stop-name">Castel San Pietro</div>
+      <div class="stop-dist">Final stop</div>
+    </div>
+  </div>
+
+  <div class="total">
+    <div class="total-label">Total route</div>
+    <div class="total-val">~2.6 km</div>
+    <div class="total-sub">~36 min walking</div>
+  </div>
+</div>
+
+<script>
+var stops = [
+  { n:1,  name:"Castelvecchio",            lat:45.4395, lng:10.9874 },
+  { n:2,  name:"Arena di Verona",          lat:45.4387, lng:10.9936 },
+  { n:3,  name:"Porta Borsari",            lat:45.4404, lng:10.9926 },
+  { n:4,  name:"Casa di Giulietta",        lat:45.4415, lng:11.0003 },
+  { n:5,  name:"Piazza delle Erbe",        lat:45.4424, lng:11.0000 },
+  { n:6,  name:"Piazza dei Signori",       lat:45.4428, lng:11.0010 },
+  { n:7,  name:"Arche Scaligere",          lat:45.4432, lng:11.0018 },
+  { n:8,  name:"Basilica di Sant'Anastasia", lat:45.4437, lng:11.0024 },
+  { n:9,  name:"Ponte Pietra",             lat:45.4462, lng:11.0038 },
+  { n:10, name:"Teatro Romano",            lat:45.4484, lng:11.0052 },
+  { n:11, name:"Castel San Pietro",        lat:45.4497, lng:11.0060 }
+];
+
+var map = L.map('map').setView([45.443, 11.000], 15);
+
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+  attribution: '© OpenStreetMap contributors',
+  maxZoom: 19
+}).addTo(map);
+
+var latlngs = [];
+
+for (var i = 0; i < stops.length; i++) {
+  var s = stops[i];
+  latlngs.push([s.lat, s.lng]);
+
+  var isLast = (i === stops.length - 1);
+  var bg = isLast ? '#C9A96E' : '#2D5A3D';
+  var border = '#C9A96E';
+  var textColor = isLast ? '#1C1C1A' : '#C9A96E';
+  var size = 32;
+
+  var icon = L.divIcon({
+    html: "<div style='width:" + size + "px;height:" + size + "px;background:" + bg + ";border:2px solid " + border + ";border-radius:50%;display:flex;align-items:center;justify-content:center;color:" + textColor + ";font-weight:700;font-size:12px;box-shadow:0 2px 8px rgba(0,0,0,.5);font-family:sans-serif'>" + s.n + "</div>",
+    className: '',
+    iconSize: [size, size],
+    iconAnchor: [size/2, size/2],
+    popupAnchor: [0, -size/2]
+  });
+
+  L.marker([s.lat, s.lng], { icon: icon })
+    .addTo(map)
+    .bindPopup("<b>" + s.n + ". " + s.name + "</b>");
+}
+
+L.polyline(latlngs, {
+  color: '#C9A96E',
+  weight: 3,
+  opacity: 0.8,
+  dashArray: '6, 6'
+}).addTo(map);
+</script>
+</body>
+</html>
