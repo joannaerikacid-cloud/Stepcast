@@ -123,6 +123,39 @@ For bonus stops: add `bonus:true` to the stop object and set `var MAIN_STOPS=N;`
 - [ ] No em dashes (—) anywhere — use commas, colons, or full stops instead
 - [ ] No entry prices in stop scripts (tip boxes only, always add "check official website")
 - [ ] No `user-scalable=no` in viewport
+- [ ] Gold played-marker system present (see below)
+
+---
+
+## Gold Played-Marker System — Required in Every Tour
+
+Map markers turn gold (solid `#C9A96E` fill) when the walker completes a stop's audio. State persists in localStorage across sessions. Three visual states:
+
+- **Unvisited:** dark green fill (`#2D5A3D`), gold border/number, 30px
+- **Played:** solid gold fill (`#C9A96E`), dark number (`#1C1C1A`), 30px
+- **Active (current scroll position):** solid gold fill, dark number, 36px (larger)
+
+Required JS (add to every new build after `var leafMap=...stopMarkers=[];`):
+
+```javascript
+var playedStops={};
+function loadPlayedStops(){try{var raw=localStorage.getItem(STORAGE_KEY+"_p");if(raw)playedStops=JSON.parse(raw);}catch(e){}}
+function savePlayedStops(){try{localStorage.setItem(STORAGE_KEY+"_p",JSON.stringify(playedStops));}catch(e){}}
+function markStopPlayed(i){playedStops[i]=true;savePlayedStops();if(stopMarkers[i]&&activeStopIdx!==i){var s=stops[i];stopMarkers[i].setIcon(L.divIcon({html:"<div style='width:30px;height:30px;background:#C9A96E;border:2px solid #C9A96E;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#1C1C1A;font-weight:700;font-size:12px;cursor:pointer;box-shadow:0 2px 8px rgba(201,169,110,.4)'>"+s.id+"</div>",className:"",iconSize:[30,30],iconAnchor:[15,15],popupAnchor:[0,-18]}));}}
+function restorePlayedMarkers(){for(var pi in playedStops){if(playedStops[pi]&&stopMarkers[pi]){var sp=stops[pi];stopMarkers[pi].setIcon(L.divIcon({html:"<div style='width:30px;height:30px;background:#C9A96E;border:2px solid #C9A96E;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#1C1C1A;font-weight:700;font-size:12px;cursor:pointer;box-shadow:0 2px 8px rgba(201,169,110,.4)'>"+sp.id+"</div>",className:"",iconSize:[30,30],iconAnchor:[15,15],popupAnchor:[0,-18]}));}}}
+```
+
+In `a.onended`: add `markStopPlayed(i);` before the closing `};`
+
+In `updateMapMarker` when restoring old marker: check `playedStops[oldIdx]` and use gold style if true, dark-green style if false.
+
+Init call (replaces bare `initMap()` call):
+```javascript
+loadPlayedStops();
+if(typeof L!=="undefined"){initMap();restorePlayedMarkers();}else{setTimeout(function(){if(typeof L!=="undefined"){initMap();restorePlayedMarkers();}else document.getElementById("map").innerHTML="...";},2000);}
+```
+
+localStorage key: `STORAGE_KEY + "_p"` (automatically namespaced per tour).
 
 ---
 

@@ -242,6 +242,10 @@ var audios=[];
 var currentAudio=null;
 var currentIdx=null;
 var leafMap=null,userMarker=null,watchId=null,gpsActive=false,stopMarkers=[];
+var playedStops={};
+function loadPlayedStops(){try{var raw=localStorage.getItem(STORAGE_KEY+"_p");if(raw)playedStops=JSON.parse(raw);}catch(e){}}
+function savePlayedStops(){try{localStorage.setItem(STORAGE_KEY+"_p",JSON.stringify(playedStops));}catch(e){}}
+function markStopPlayed(i){playedStops[i]=true;savePlayedStops();if(stopMarkers[i]&&activeStopIdx!==i){var s=stops[i];stopMarkers[i].setIcon(L.divIcon({html:"<div style='width:30px;height:30px;background:#C9A96E;border:2px solid #C9A96E;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#1C1C1A;font-weight:700;font-size:12px;cursor:pointer;box-shadow:0 2px 8px rgba(201,169,110,.4)'>"+s.id+"</div>",className:"",iconSize:[30,30],iconAnchor:[15,15],popupAnchor:[0,-18]}));}}
 
 function fmtTime(secs){var m=Math.floor(secs/60);var s=Math.floor(secs%60);return m+"m "+(s<10?"0"+s:s)+"s";}
 
@@ -372,7 +376,7 @@ function playStop(i){
       if(pt){pt.textContent=fmtTime(a.currentTime)+(a.duration?" / "+fmtTime(a.duration):"");}
       setStat(i,"Playing","on");
     };
-    a.onended=function(){setIcon(i,false);setStat(i,"Finished","ok");document.getElementById("gbar").classList.remove("up");currentAudio=null;currentIdx=null;};
+    a.onended=function(){setIcon(i,false);setStat(i,"Finished","ok");document.getElementById("gbar").classList.remove("up");currentAudio=null;currentIdx=null;markStopPlayed(i);};
     a.onerror=function(){setIcon(i,false);setStat(i,"Audio error, please try again","er");document.getElementById("gbar").classList.remove("up");currentIdx=null;currentAudio=null;};
     a.play().catch(function(){setStat(i,"Tap play to start audio","");setIcon(i,false);});
   } else {openModal();}
@@ -441,7 +445,8 @@ function updateMapMarker(oldIdx,newIdx){
   if(!stopMarkers.length||typeof L==="undefined")return;
   if(oldIdx>=0&&oldIdx<stopMarkers.length){
     var so=stops[oldIdx];
-    stopMarkers[oldIdx].setIcon(L.divIcon({html:"<div style='width:30px;height:30px;background:#2D5A3D;border:2px solid #C9A96E;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#C9A96E;font-weight:700;font-size:12px;cursor:pointer;box-shadow:0 2px 8px rgba(0,0,0,.5)'>"+so.id+"</div>",className:"",iconSize:[30,30],iconAnchor:[15,15],popupAnchor:[0,-18]}));
+    if(playedStops[oldIdx]){stopMarkers[oldIdx].setIcon(L.divIcon({html:"<div style='width:30px;height:30px;background:#C9A96E;border:2px solid #C9A96E;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#1C1C1A;font-weight:700;font-size:12px;cursor:pointer;box-shadow:0 2px 8px rgba(201,169,110,.4)'>"+so.id+"</div>",className:"",iconSize:[30,30],iconAnchor:[15,15],popupAnchor:[0,-18]}));}
+    else{stopMarkers[oldIdx].setIcon(L.divIcon({html:"<div style='width:30px;height:30px;background:#2D5A3D;border:2px solid #C9A96E;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#C9A96E;font-weight:700;font-size:12px;cursor:pointer;box-shadow:0 2px 8px rgba(0,0,0,.5)'>"+so.id+"</div>",className:"",iconSize:[30,30],iconAnchor:[15,15],popupAnchor:[0,-18]}));}
   }
   if(newIdx>=0&&newIdx<stopMarkers.length){
     var sn=stops[newIdx];
@@ -468,7 +473,9 @@ var scrollTmr=null;
 window.addEventListener("scroll",function(){if(scrollTmr)clearTimeout(scrollTmr);scrollTmr=setTimeout(updateActiveStop,80);});
 updateActiveStop();
 
-if(typeof L!=="undefined"){initMap();}else{setTimeout(function(){if(typeof L!=="undefined")initMap();else document.getElementById("map").innerHTML="<div style='display:flex;align-items:center;justify-content:center;height:100%;color:rgba(240,237,228,.3);font-size:.85rem'>Map needs internet connection</div>";},2000);}
+function restorePlayedMarkers(){for(var pi in playedStops){if(playedStops[pi]&&stopMarkers[pi]){var sp=stops[pi];stopMarkers[pi].setIcon(L.divIcon({html:"<div style='width:30px;height:30px;background:#C9A96E;border:2px solid #C9A96E;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#1C1C1A;font-weight:700;font-size:12px;cursor:pointer;box-shadow:0 2px 8px rgba(201,169,110,.4)'>"+sp.id+"</div>",className:"",iconSize:[30,30],iconAnchor:[15,15],popupAnchor:[0,-18]}));}}}
+loadPlayedStops();
+if(typeof L!=="undefined"){initMap();restorePlayedMarkers();}else{setTimeout(function(){if(typeof L!=="undefined"){initMap();restorePlayedMarkers();}else document.getElementById("map").innerHTML="<div style='display:flex;align-items:center;justify-content:center;height:100%;color:rgba(240,237,228,.3);font-size:.85rem'>Map needs internet connection</div>";},2000);}
 
 function isUnlocked(){try{return localStorage.getItem(STORAGE_KEY)==="1";}catch(e){return false;}}
 function unlockTour(){try{localStorage.setItem(STORAGE_KEY,"1");}catch(e){}var locks=document.querySelectorAll(".lock-overlay");for(var i=0;i<locks.length;i++)locks[i].remove();var ndots=document.querySelectorAll(".ndot");for(var i=0;i<ndots.length;i++){ndots[i].style.opacity="1";ndots[i].title="";}closeModal();}
