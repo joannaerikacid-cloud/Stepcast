@@ -2,22 +2,21 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<!-- Google Ads (consent-gated, PECR compliant) -->
+<!-- Google Analytics & Ads (consent mode v2, PECR compliant) -->
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   window.gtag = gtag;
+  gtag('consent', 'default', {analytics_storage: 'denied', ad_storage: 'denied'});
   function loadGtag() {
-    var s = document.createElement('script');
-    s.async = true;
-    s.src = 'https://www.googletagmanager.com/gtag/js?id=AW-18081596926';
-    document.head.appendChild(s);
+    gtag('consent', 'update', {analytics_storage: 'granted', ad_storage: 'granted'});
     gtag('js', new Date());
     gtag('config', 'AW-18081596926');
     gtag('config', 'G-KRFGMJ6DL0');
   }
   try { if (localStorage.getItem('stepcast_consent') === 'granted') { loadGtag(); } } catch(e) {}
 </script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-KRFGMJ6DL0"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Terms &amp; Conditions — Stepcast</title>
 <meta name="description" content="Terms and conditions for using Stepcast self-guided audio walking tours. Governed by the laws of England and Wales.">

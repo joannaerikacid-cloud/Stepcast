@@ -6,17 +6,16 @@
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   window.gtag = gtag;
+  gtag('consent', 'default', {analytics_storage: 'denied', ad_storage: 'denied'});
   function loadGtag() {
-    var s = document.createElement('script');
-    s.async = true;
-    s.src = 'https://www.googletagmanager.com/gtag/js?id=AW-18081596926';
-    document.head.appendChild(s);
+    gtag('consent', 'update', {analytics_storage: 'granted', ad_storage: 'granted'});
     gtag('js', new Date());
     gtag('config', 'AW-18081596926');
     gtag('config', 'G-KRFGMJ6DL0');
   }
   try { if (localStorage.getItem('stepcast_consent') === 'granted') { loadGtag(); } } catch(e) {}
 </script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-KRFGMJ6DL0"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Glasgow Audio Walking Tour | Stepcast</title>
 <meta name="description" content="Self-guided audio walking tour of Glasgow. 11 stops from Central Station to the Necropolis. No app, no group, no booking. First 3 stops free.">
