@@ -40,7 +40,7 @@ Stepcast (stepcasttours.com) is a self-guided audio walking tour business. Tours
 | Bruges | bruges.html | stepcast_bruges_v1 | BRUGES2026 | 461f67a6-8bfb-460e-acf0-ae2efe1a0b17 | Live |
 | Milan | milan.html | stepcast_milan_v1 | MILAN2026 | 9eaa17bb-526c-42f9-b15e-7d138dfc8626 | Live |
 | Berlin | berlin.html | stepcast_berlin_v1 | BERLIN2026 | — (needs LS ID) | Pipeline |
-| Verona | verona.html | stepcast_verona_v1 | VERONA2026 | — (needs LS ID) | Pipeline |
+| Verona | verona.html | stepcast_verona_v1 | VERONA2026 | 80a78438-8878-47db-8548-e736e600dfa5 | Pipeline |
 
 **Special variant:** london-viator.html — Viator-specific, no pricing, bypass RLTOUR-8427-VTR, storage key `stepcast_lonvtr_v1`
 
