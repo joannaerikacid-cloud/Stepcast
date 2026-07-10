@@ -8,11 +8,11 @@
   function gtag(){dataLayer.push(arguments);}
   window.gtag = gtag;
   gtag("consent", "default", {analytics_storage: "denied", ad_storage: "denied"});
+  gtag("js", new Date());
+  gtag("config", "G-KRFGMJ6DL0");
   function loadGtag() {
     gtag("consent", "update", {analytics_storage: "granted", ad_storage: "granted"});
-    gtag("js", new Date());
     gtag("config", "AW-18081596926");
-    gtag("config", "G-KRFGMJ6DL0");
   }
   try { if (localStorage.getItem("stepcast_consent") === "granted") { loadGtag(); } } catch(e) {}
 </script>
