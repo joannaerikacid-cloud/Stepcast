@@ -7,11 +7,11 @@
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   window.gtag = gtag;
-  gtag('consent', 'default', {analytics_storage: 'denied', ad_storage: 'denied'});
+  gtag('consent', 'default', {analytics_storage: 'denied', ad_storage: 'denied', ad_user_data: 'denied', ad_personalization: 'denied'});
   gtag('js', new Date());
   gtag('config', 'G-KRFGMJ6DL0');
   function loadGtag() {
-    gtag('consent', 'update', {analytics_storage: 'granted', ad_storage: 'granted'});
+    gtag('consent', 'update', {analytics_storage: 'granted', ad_storage: 'granted', ad_user_data: 'granted', ad_personalization: 'granted'});
     gtag('config', 'AW-18081596926');
   }
   try { if (localStorage.getItem('stepcast_consent') === 'granted') { loadGtag(); } } catch(e) {}
