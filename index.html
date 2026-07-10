@@ -354,10 +354,10 @@
         </button>
         <div class="nav-cities" id="italyCities">
           <a href="rome.html">Rome <span class="soon-tag">coming soon</span></a>
-          <a href="palermo.html">Palermo <span class="soon-tag">coming soon</span></a>
+          <a href="palermo.html">Palermo</a>
           <a href="milan.html">Milan</a>
           <a href="venice.html">Venice</a>
-          <a href="verona.html">Verona <span class="soon-tag">coming soon</span></a>
+          <a href="verona.html">Verona</a>
         </div>
       </div>
 
@@ -753,6 +753,36 @@
         <span class="card-btn">Try Free &#8594;</span>
       </div>
     </a>
+    <a class="card" href="palermo.html">
+      <img class="card-img" id="palermoImg" alt="Palermo">
+      <div class="card-grad"></div>
+      <div class="free-tag">3 Stops Free</div>
+      <div class="card-body">
+        <div class="card-region">Italy</div>
+        <div class="card-name"><em>Palermo</em></div>
+        <div class="card-pills">
+          <span class="pill">11 Stops</span>
+          <span class="pill">3.2 km</span>
+          <span class="pill">&#x1F6B6; ~40 min</span>
+        </div>
+        <span class="card-btn">Try Free &#8594;</span>
+      </div>
+    </a>
+    <a class="card" href="verona.html">
+      <img class="card-img" id="veronaImg" alt="Verona">
+      <div class="card-grad"></div>
+      <div class="free-tag">3 Stops Free</div>
+      <div class="card-body">
+        <div class="card-region">Italy</div>
+        <div class="card-name"><em>Verona</em></div>
+        <div class="card-pills">
+          <span class="pill">11 Stops</span>
+          <span class="pill">2.6 km</span>
+          <span class="pill">&#x1F6B6; ~35 min</span>
+        </div>
+        <span class="card-btn">Try Free &#8594;</span>
+      </div>
+    </a>
   </div>
   <br><br>
   <div class="divider">
@@ -762,12 +792,10 @@
   </div>
   <div class="grid">
     <div class="soon"><div class="soon-emoji">&#127963;</div><div class="soon-city">Porto</div><div class="soon-tag">Coming Soon</div></div>
-    <div class="soon"><div class="soon-emoji">&#127963;</div><div class="soon-city">Palermo</div><div class="soon-tag">Coming Soon</div></div>
     <div class="soon"><div class="soon-emoji">&#127963;</div><div class="soon-city">Cologne</div><div class="soon-tag">Coming Soon</div></div>
     <div class="soon"><div class="soon-emoji">&#127963;</div><div class="soon-city">Heidelberg</div><div class="soon-tag">Coming Soon</div></div>
     <div class="soon"><div class="soon-emoji">&#127963;</div><div class="soon-city">Berlin</div><div class="soon-tag">Coming Soon</div></div>
     <div class="soon"><div class="soon-emoji">&#127963;</div><div class="soon-city">Rome</div><div class="soon-tag">Coming Soon</div></div>
-    <div class="soon"><div class="soon-emoji">&#127963;</div><div class="soon-city">Verona</div><div class="soon-tag">Coming Soon</div></div>
   </div>
 </section>
 
@@ -845,6 +873,8 @@ document.getElementById('venImg').src='venice5.jpg';
 document.getElementById('glasgowImg').src='glasgow3.jpg';
 document.getElementById('milanImg').src='milan1.jpg';
 document.getElementById('brugesImg').src='bruges1a.jpg';
+document.getElementById('palermoImg').src='palermo1.jpg';
+document.getElementById('veronaImg').src='verona1a.jpg';
 
 /* Search */
 var CITIES=[
@@ -865,7 +895,9 @@ var CITIES=[
   {name:'Bordeaux',region:'France — Port of the Moon',emoji:'&#127467;&#127479;',url:'bordeaux.html'},
   {name:'Venice',region:'Italy — The Floating City',emoji:'&#127470;&#127481;',url:'venice.html'},
   {name:'Glasgow',region:'United Kingdom — The Dear Green Place',emoji:'&#127468;&#127463;',url:'glasgow.html'},
-  {name:'Milan',region:'Italy — Fashion and Art Capital',emoji:'&#127470;&#127481;',url:'milan.html'}
+  {name:'Milan',region:'Italy — Fashion and Art Capital',emoji:'&#127470;&#127481;',url:'milan.html'},
+  {name:'Palermo',region:'Italy — Sicily',emoji:'&#127470;&#127481;',url:'palermo.html'},
+  {name:'Verona',region:'Italy — City of Romeo and Juliet',emoji:'&#127470;&#127481;',url:'verona.html'}
 ];
 
 var searchInput=document.getElementById('citySearch');
