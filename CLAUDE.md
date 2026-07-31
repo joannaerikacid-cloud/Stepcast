@@ -173,7 +173,7 @@ Examples: `glasgowstop1.mp3`, `venicestop9.mp3`, `brugesstop11.mp3`, `parisstop6
 - Compression target: **under 300KB per image**
 - Portrait flag in JS: `{f:"city1.jpg", p:true}` for portrait, `p:false` for landscape
 - Wikimedia Commons photos must be verified by searching Commons — never guess filenames
-- Photo credits use `&quot;` escaping inside JS strings
+- Photo credits use single quotes for href attributes inside JS strings: `href='https://...'`
 - Compression settings (Python/Pillow): saturation 1.55, contrast 1.25, brightness 1.05, sharpness 1.4, warm tone, max 1200px on longest side, quality 82
 
 ---
