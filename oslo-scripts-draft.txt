@@ -1,0 +1,350 @@
+OSLO SCRIPTS DRAFT
+==================
+Generated from self-critique (step 5), independent reviewer pass (step 7),
+and direction check (step 9). Ready for independent fact-check (step 11).
+
+Route: Royal Palace → National Theatre → Grand Hotel → Stortinget →
+City Hall → Nobel Peace Center → Aker Brygge → Akershus Fortress →
+Christiania Torv → Tiger Statue → Opera House → Munch Museum
+Distance: ~4.8km walking. 12 stops.
+
+Coordinates (corrected after direction check):
+1  Royal Palace:        59.9169, 10.7276
+2  National Theatre:    59.9133, 10.7340
+3  Grand Hotel:         59.9130, 10.7398
+4  Stortinget:          59.9124, 10.7388
+5  City Hall:           59.9105, 10.7330
+6  Nobel Peace Center:  59.9080, 10.7272
+7  Aker Brygge:         59.9071, 10.7220
+8  Akershus Fortress:   59.9066, 10.7363
+9  Christiania Torv:    59.9096, 10.7413
+10 Tiger Statue:        59.9107, 10.7531
+11 Opera House:         59.9076, 10.7556  [corrected from 10.7598]
+12 Munch Museum:        59.9047, 10.7541  [corrected from 59.9057/10.7543]
+
+Direction check (at 60N: 1 deg lng = ~55,700m; 1 deg lat = 111,000m):
+1→2   138.3° SE    script: "southeast"    CORRECT
+2→3    95.9° E     script: "east"         CORRECT
+3→4   219.9° SW    script: "southwest"    CORRECT
+4→5   236.8° WSW   script: "southwest"    ACCEPTABLE
+5→6   229.3° SW    script: "southwest"    CORRECT
+6→7   251.0° WSW   script: "west"         ACCEPTABLE
+7→8    94.0° E     script: "east"         CORRECT
+8→9    39.9° NE    script: "northeast"    CORRECT
+9→10   79.5° E     script: "northeast"    FIXED TO "east"
+10→11 158.0° SSE   script: "southeast"    ACCEPTABLE
+11→12 194.5° SSW   script: "south"        ACCEPTABLE
+
+Changes from self-critique + reviewer pass applied before this draft:
+- Stop 9: "northeast" → "east", "706 metres" → "668 metres"
+- Stop 8: tip box clarified about rampart views
+- Stop 12: "thirteen floors" kept (fact-check flag raised)
+- No structural stops added/removed; all 12 retained
+
+=============================================================
+
+STOP 1 — ROYAL PALACE
+Tag: Stop 1 of 12 - Slottsparken
+Tagline: The king who never moved in
+WalkNext: 568m, about 7 min to next stop
+Photo: oslo1.jpg (landscape)
+Audio: oslostop1.mp3
+Tip: Changing of the Guard — The changing of the guard takes place daily at 13:30. The palace interior is open for guided tours during a period in summer. Check the official royal palace website for current dates and how to book.
+
+SCRIPT:
+The palace at the top of Karl Johans gate was completed in 1849. Norway had been in union with Sweden since 1814, and the palace was built for Karl Johan, the Swedish-Norwegian king who gave his name to the main street below you. He never lived in it: Karl Johan died in 1844, five years before the building was finished. His son Oscar I was the first king to actually inhabit it.|||The architect was Hans Linstow, a German who had settled in Norway. The brief called for something that looked royal without looking grandiose. Linstow designed a main wing and two lower flanking wings around a semicircular entrance courtyard. The result is dignified and relatively modest by the standards of European royal palaces. The grounds, Slottsparken, were laid out at the same time and are open to the public year-round.|||The statue of Karl Johan on horseback in front of the palace was unveiled in 1875. The king faces down toward the city, as if looking out over the kingdom he built. Karl Johan was born Jean-Baptiste Bernadotte, a French general under Napoleon, and was adopted by the childless Swedish king Charles XIII as his heir in 1810. He founded the Bernadotte dynasty that still sits on the throne today. Norway's current king, Harald V, was born in 1937 and has lived in the palace since his accession in 1991.|||Head southeast down Karl Johans gate. The National Theatre is about 568 metres ahead, seven minutes at an easy pace.
+
+FACT-CHECK FLAGS:
+[ ] Palace completed 1849 — verify
+[ ] Karl Johan died 1844 — verify (he died 8 March 1844)
+[ ] Architect Hans Linstow — verify (was he German or Danish?)
+[ ] Karl Johan born Jean-Baptiste Bernadotte — verify
+[ ] Adopted by Charles XIII in 1810 — verify year
+[ ] Statue unveiled 1875 — verify
+[ ] Harald V born 1937, accession 1991 — verify both
+[ ] Guard change daily at 13:30 — verify this is still correct
+
+=============================================================
+
+STOP 2 — NATIONAL THEATRE
+Tag: Stop 2 of 12 - Karl Johans gate
+Tagline: The playwright who changed everything
+WalkNext: 371m, about 5 min to next stop
+Photo: oslo2.jpg (landscape)
+Audio: oslostop2.mp3
+Tip: The Two Statues — Look closely at the two statues in front of the theatre: Ibsen on the left, Bjornson on the right. They face different directions. They were rivals in life and contemporaries knew it. The positioning was not accidental.
+
+SCRIPT:
+The National Theatre was built between 1891 and 1899. The architect was Henrik Bull. Outside the main entrance stand two statues: Henrik Ibsen to the left and Bjornstjerne Bjornson to the right. Both face away from each other and out toward the street. They were rivals in life, and the positioning was deliberate.|||Ibsen is the reason this building matters. He spent much of his creative life in exile in Germany and Italy, writing plays that were considered scandalous when they appeared. A Doll's House, Hedda Gabler, Ghosts, The Wild Duck. These were the plays that changed what theatre could say about marriage, inheritance, deception, and the lives people are trapped into by society. When Ibsen returned to Norway permanently in 1891, after twenty-seven years abroad, it was to a city that had finally caught up with him. The National Theatre was built in part to provide a stage worthy of his work.|||The theatre opened on 2 September 1899 with a performance of Ibsen's An Enemy of the People. Ibsen attended. He was seventy-one. He would die seven years later, in 1906, in an apartment a short walk from here.|||Bjornson, the other figure in stone, was also a playwright and novelist but is remembered today primarily as the lyricist of the Norwegian national anthem. He won the Nobel Prize in Literature in 1903.|||Continue east along Karl Johans gate. The Grand Hotel is about 371 metres ahead, five minutes.
+
+FACT-CHECK FLAGS:
+[ ] Theatre built 1891-1899 — verify dates
+[ ] Architect Henrik Bull — verify
+[ ] Ibsen returned to Norway in 1891 after 27 years abroad — verify (he left 1864, returned 1891 = 27 years, check)
+[ ] Opening performance 2 September 1899: "An Enemy of the People" — verify (some sources say "Kongsemnerne"/The Pretenders; confirm which play opened the theatre)
+[ ] Ibsen attended the opening — verify
+[ ] "He was seventy-one" — Ibsen born 20 March 1828, theatre opened Sept 1899 = age 71. CORRECT
+[ ] Ibsen died 1906 — verify (he died 23 May 1906)
+[ ] Bjornson was lyricist of national anthem — verify
+[ ] Bjornson Nobel Prize in Literature 1903 — verify year
+
+=============================================================
+
+STOP 3 — GRAND HOTEL
+Tag: Stop 3 of 12 - Karl Johans gate
+Tagline: Every Nobel laureate sleeps here
+WalkNext: 104m, about 1 min to next stop
+Photo: oslo3.jpg (landscape)
+Audio: oslostop3.mp3
+Tip: The Grand Cafe — The Grand Cafe on the ground floor is open to non-guests. It was Ibsen's daily table for the last years of his life. The morning is quieter. Prices are high but the interior has not changed much since Munch painted it.
+
+SCRIPT:
+The Grand Hotel opened at this address in 1874. It is the oldest continuously operating grand hotel in Oslo and has accumulated a particular significance that has nothing to do with its age or its rooms.|||Every December, the Nobel Peace Prize laureate stays here. The ceremony takes place at the City Hall, which you will reach shortly, but the laureate departs from and returns to the Grand. The balcony above the main entrance on Karl Johans gate is where the laureate traditionally appears on 10 December, Nobel Day, to wave to the crowd gathered in the street below. The list of people who have stood on that balcony includes Nelson Mandela, the Dalai Lama, Barack Obama, and Malala Yousafzai.|||The Grand Cafe, which occupies the ground floor of the hotel's street-facing wing, was Henrik Ibsen's daily routine in his final years. He sat at the same table, at the same time each afternoon. Edvard Munch painted a version of the interior in 1902: the regulars, Ibsen's table, the particular afternoon light of the room.|||The Parliament building, Stortinget, is approximately 104 metres away. Less than two minutes on foot.
+
+FACT-CHECK FLAGS:
+[ ] Grand Hotel opened 1874 — verify
+[ ] "Oldest continuously operating grand hotel in Oslo" — verify this specific claim
+[ ] Nobel Peace Prize laureate stays at Grand Hotel — verify this is consistent practice
+[ ] Balcony appearance on 10 December — verify this is a real tradition
+[ ] Mandela, Dalai Lama, Obama, Malala all stayed/appeared here — verify each
+[ ] Ibsen's daily routine at Grand Cafe — verify (he did have a daily table there)
+[ ] Munch painted the Grand Cafe interior in 1902 — verify year of painting
+
+=============================================================
+
+STOP 4 — STORTINGET
+Tag: Stop 4 of 12 - City Centre
+Tagline: A Swedish architect builds Norway's parliament
+WalkNext: 428m, about 5 min to next stop
+Photo: oslo4.jpg (landscape)
+Audio: oslostop4.mp3
+Tip: Guided Tours — The debating chamber and parts of the building are open for free guided tours on selected days. Check the Stortinget website for the current schedule. Entry is free but you need to book in advance.
+
+SCRIPT:
+The Parliament building was completed in 1866. The architect was Emil Victor Langlet, a Swede who won the competition. The building was controversial from the start: a Swedish architect winning the contract to design Norway's parliament, in a country that had been asserting independence from Sweden since 1814.|||Norway's constitution was signed at Eidsvoll on 17 May 1814. The date is still the national day. The constitution created a parliament, the Storting, and declared Norway a sovereign state. In the same year, Norway entered a union with Sweden that would last until 1905. The parliament building was constructed half a century into that union. Having a parliament at all was an assertion of Norwegian identity within a union where Sweden held most of the external political power.|||Norway has a unicameral parliament: one chamber with 169 representatives elected by proportional representation. The Storting sits for four-year terms. The prime minister governs by majority confidence but the parliament cannot be dissolved by the government. On the steps out front you hear street performers in summer and demonstrations in other seasons.|||Head southwest toward the waterfront. The City Hall, Oslo Radhuset, is about 428 metres ahead, five minutes.
+
+FACT-CHECK FLAGS:
+[ ] Parliament building completed 1866 — verify
+[ ] Architect Emil Victor Langlet — verify (was he Swedish? confirm nationality)
+[ ] Constitution signed at Eidsvoll on 17 May 1814 — verify (this is well-known)
+[ ] Union with Sweden lasted until 1905 — verify (dissolved 7 June 1905)
+[ ] 169 representatives — verify current number
+[ ] Four-year terms, no early dissolution — verify these constitutional details
+[ ] Parliament cannot be dissolved by the government — verify this is still accurate
+
+=============================================================
+
+STOP 5 — OSLO CITY HALL
+Tag: Stop 5 of 12 - Pipervika
+Tagline: Where the Nobel Prize comes every December
+WalkNext: 243m, about 3 min to next stop
+Photo: oslo5.jpg (landscape)
+Audio: oslostop5.mp3
+Tip: The Main Hall — The main hall interior is open to visitors most days and entry is free. The murals by Alf Rolfsen and other Norwegian artists cover the walls from floor to ceiling. The Nobel ceremony is held in this room every 10 December.
+
+SCRIPT:
+Oslo City Hall was opened on 15 May 1950, in time for the city's 900th anniversary. The project had been planned since the 1930s, begun in 1931, interrupted by the German occupation, and completed after the war. The building took nineteen years to finish. The architects were Arnstein Arneberg and Magnus Poulsson.|||The Nobel Peace Prize ceremony is held in the main hall of this building every 10 December, the anniversary of Alfred Nobel's death. This has been the venue since 1990, when the ceremony moved from the University's Aula. The choice was deliberate: a civic building, not an academic or royal one. The committee considered it a more appropriate setting for a prize given in the name of peace and popular welfare.|||The interior of the main hall is covered in murals commissioned over decades from Norwegian artists. The dominant work is by Alf Rolfsen. The paintings depict Norwegian working life, national history, and figures from mythology. When they were unveiled, the critical reception ranged from admiration to outright hostility. Time has been kinder to them.|||The building faces the fjord deliberately, which means its least interesting side faces the city. Norwegians tend to refer to it in affectionately unflattering terms. The Nobel Peace Center is about 243 metres southwest, three minutes on foot.
+
+FACT-CHECK FLAGS:
+[ ] City Hall opened 15 May 1950 — verify exact date
+[ ] "City's 900th anniversary" — implies Oslo founded ~1050. Verify claimed founding year (Harald Hardrada connection)
+[ ] Construction began 1931 — verify
+[ ] Architects Arnstein Arneberg and Magnus Poulsson — verify both names and spelling
+[ ] Nobel Peace Prize ceremony at City Hall since 1990 — verify year it moved here (some sources say 1990)
+[ ] Previously held at University Aula — verify
+[ ] "Alfred Nobel's death" was on 10 December — verify (he died 10 December 1896)
+[ ] Alf Rolfsen as dominant muralist — verify
+[ ] Main hall entry free — verify this is still current
+
+=============================================================
+
+STOP 6 — NOBEL PEACE CENTER
+Tag: Stop 6 of 12 - Aker Brygge
+Tagline: Why Norway decides who gets the prize
+WalkNext: 408m, about 5 min to next stop
+Photo: oslo6.jpg (landscape)
+Audio: oslostop6.mp3
+Tip: Visitor Info — The center's exhibitions change regularly. Check the official Nobel Peace Center website for current opening hours and any temporary exhibitions before visiting. The building itself, the old Vestbanen station, is worth seeing from outside.
+
+SCRIPT:
+The Nobel Peace Center occupies the building of the old Vestbanen railway station, which closed in 1989. The center opened in 2005.|||Alfred Nobel was a Swedish chemist and industrialist who invented dynamite in 1867 and became wealthy from the manufacture of explosives and armaments. In his will, signed in 1895, he established five prizes: physics, chemistry, medicine, literature, and peace. Nobel gave no detailed explanation of why he included peace. He specified only that the peace prize should be awarded by a committee appointed by the Norwegian parliament, not by Sweden, where the other prizes are decided. Norway and Sweden were still in union at the time of his death in 1896.|||Why Norway? No definitive explanation from Nobel survives. Theories include the relatively small size and power of Norway, the influence of the pacifist writer Bertha von Suttner who was a close acquaintance of Nobel's, and Nobel's general sympathy for Norwegian political positions at the time. The Norwegian Nobel Committee has been administering the prize since the first awards in 1901.|||Aker Brygge is about 408 metres to the west, five minutes along the waterfront.
+
+FACT-CHECK FLAGS:
+[ ] Vestbanen railway station closed 1989 — verify year
+[ ] Nobel Peace Center opened 2005 — verify year
+[ ] Nobel invented dynamite in 1867 — verify year
+[ ] Will signed in 1895 — verify year
+[ ] Nobel died in 1896 — verify (he died 10 December 1896)
+[ ] Norway and Sweden still in union at time of Nobel's death — verify (union dissolved 1905, so yes, 1896 they were still in union)
+[ ] Bertha von Suttner described as "close acquaintance" — verify; she was a friend but verify nature of relationship
+[ ] First Nobel Peace Prize awards in 1901 — verify
+
+=============================================================
+
+STOP 7 — AKER BRYGGE
+Tag: Stop 7 of 12 - Aker Brygge
+Tagline: A shipyard becomes a city's living room
+WalkNext: 744m, about 9 min to next stop
+Photo: oslo7.jpg (landscape)
+Audio: oslostop7.mp3
+Tip: Island Ferries — Ferries to the Oslofjord islands run from the pier at Aker Brygge in summer. The islands are a short crossing and open to anyone. Check current schedules and fares at the Ruter website before you go.
+
+SCRIPT:
+The shipyard that once occupied this waterfront was Akers Mekaniske Verksteder, founded in 1854 at a time when Norway was building a merchant fleet that would eventually become one of the largest in the world. The yard built ships, machinery, and industrial equipment for over a century. It closed in the early 1980s after the collapse of the global shipbuilding industry.|||The redevelopment of the derelict site began in the mid-1980s and Aker Brygge became one of the first large post-industrial waterfront regenerations in Scandinavia. By the early 1990s it had become what it remains today: a district of apartments, restaurants, bars, and shops along the harbour edge.|||The view across the fjord from here is one of the defining images of the city. The islands directly visible are accessible by ferry from the pier at Aker Brygge. In summer Oslofjord functions as an extension of the city: residents commute by boat and spend evenings on the water. The fjord freezes in severe winters, which now happen rarely.|||From the waterfront, head east along the harbour path. Akershus Fortress is about 744 metres east, approximately nine minutes, following the water's edge.
+
+FACT-CHECK FLAGS:
+[ ] Akers Mekaniske Verksteder founded 1854 — verify year
+[ ] "Norway was building a merchant fleet that would become one of the largest in the world" — verify this claim; Norway did have one of the world's largest merchant fleets but check timing
+[ ] Yard closed "early 1980s" — verify approximate date (some sources say 1982 or 1984; be more specific if possible)
+[ ] Redevelopment began "mid-1980s" — verify
+[ ] Described as "one of the first large post-industrial waterfront regenerations in Scandinavia" — verify or soften
+
+=============================================================
+
+STOP 8 — AKERSHUS FORTRESS
+Tag: Stop 8 of 12 - Akershus
+Tagline: Seven centuries on the same promontory
+WalkNext: 450m, about 6 min to next stop
+Photo: oslo8.jpg (landscape)
+Audio: oslostop8.mp3
+Tip: Resistance Museum — The Norwegian Resistance Museum inside the fortress is one of the most compelling museums in Oslo. It documents the occupation from 1940 to 1945 in specific, human terms. Entry is not free: check current admission prices on the official website. The views from the fortress ramparts across the fjord are also worth taking in before you leave.
+
+SCRIPT:
+Akershus Fortress was built by King Haakon V of Norway, beginning around 1299. The location was chosen because the promontory above the fjord was the most defensible point at the mouth of the Alna river, which had been the site of the original medieval town. The fortress was intended to replace Oslo's earlier castle, which had become inadequate.|||The castle was besieged several times over the following centuries and was substantially expanded and modernised by King Christian IV in the early seventeenth century. Christian IV built Renaissance palace sections within the medieval walls that are still visible today. He also rebuilt Oslo itself in 1624 after the city burned, renaming it Christiania after himself.|||During the Second World War, Akershus was used by German occupying forces as a prison and execution site. Members of the Norwegian resistance were imprisoned here and some were shot within the walls. The fortress contains the Norwegian Resistance Museum, which documents the occupation of Norway from 1940 to 1945. It is one of the most visited museums in Oslo and one of the most specific in terms of what it describes: this is where it happened.|||Head north and east from the fortress into the old town. Christiania Torv is about 450 metres northeast, six minutes.
+
+FACT-CHECK FLAGS:
+[ ] King Haakon V built the fortress beginning around 1299 — verify (some sources say work began c.1290s-1300)
+[ ] "Alna river" — verify this is the correct river name (the original medieval Oslo was at the mouth of the Alna; verify)
+[ ] "Replace Oslo's earlier castle" — verify there was an earlier castle and where it was
+[ ] Christian IV expanded in "early seventeenth century" — verify
+[ ] "Renaissance palace sections" built by Christian IV — verify this description
+[ ] Oslo rebuilt in 1624 after fire — verify (was it fire + strategic decision? verify cause of move)
+[ ] Renamed Christiania after Christian IV in 1624 — verify
+
+=============================================================
+
+STOP 9 — CHRISTIANIA TORV
+Tag: Stop 9 of 12 - Gamlebyen
+Tagline: The square that holds the old city's name
+WalkNext: 668m, about 9 min to next stop  [CORRECTED from 706m]
+Photo: oslo9.jpg (landscape)
+Audio: oslostop9.mp3
+Tip: The 1641 City Hall — The yellow building on the north side of the square is the old city hall from 1641, one of the oldest surviving buildings in Oslo. It is now used for cultural events. The exterior and courtyard are usually accessible during the day.
+
+SCRIPT:
+This is one of the oldest squares in Oslo. In 1624, a fire destroyed the medieval town of Oslo. King Christian IV ordered the city rebuilt closer to the fortress, where he could defend it more easily. He named the new city Christiania after himself. It was renamed back to Oslo in 1925.|||The square you are standing in was the administrative and commercial centre of the refounded city in the seventeenth century. The yellow building on the north side of the square is the old city hall from Christian IV's Christiania, dating from 1641. It is one of the oldest surviving buildings in Oslo.|||In the centre of the square is a sculpture installed in 1997: a hand cast in bronze, reaching upward through the stone. It marks the spot where a public water well stood for centuries, the main water source for the neighbourhood.|||The area around Christiania Torv and the streets running west, Kvadraturen, is the planned district Christian IV laid out on a grid in 1624. The streets run at right angles and the blocks are regular rectangles. That seventeenth-century street pattern is still visible in the city today.|||Head east through the city centre. The Tiger statue at Oslo Central Station is about 668 metres east, approximately nine minutes.  [CORRECTED: was "northeast" and "706 metres"]
+
+FACT-CHECK FLAGS:
+[ ] Fire destroyed medieval Oslo in 1624 — verify (was the cause purely fire, or was the move partly strategic? some accounts say Christian IV ordered the move for defensive reasons and fire was a pretext or concurrent event)
+[ ] City renamed Christiania in 1624 — verify
+[ ] Renamed back to Oslo in 1925 — verify year (some sources say 1925, others 1924; confirm)
+[ ] Old city hall on north side of square dating from 1641 — verify (is it actually the north side? verify the building date)
+[ ] Bronze hand sculpture, installed 1997 — verify artist name, year, and correct description (is it really a hand reaching up? confirm the specific artwork in Christiania Torv)
+[ ] Kvadraturen grid laid out by Christian IV in 1624 — verify
+
+=============================================================
+
+STOP 10 — THE TIGER STATUE (JERNBANETORGET)
+Tag: Stop 10 of 12 - Jernbanetorget
+Tagline: Meet you at the tiger
+WalkNext: 525m, about 7 min to next stop
+Photo: oslo10.jpg (landscape)
+Audio: oslostop10.mp3
+Tip: Oslo S — Oslo Central Station behind the tiger connects to the airport, Bergen, Trondheim, and all major Norwegian destinations. It also has a large food hall in the basement and is open early and late. Useful if you need to plan onward travel.
+
+SCRIPT:
+The bronze tiger in front of Oslo Central Station was unveiled in 1992. It was created by sculptor Nils Aas and stands about two metres long. The tiger has become one of Oslo's most recognised pieces of public art and one of the most frequent meeting points in the city. Meet you at the tiger is a standard piece of Oslo communication.|||The word Tiger as a descriptor for Oslo goes back to Bjornstjerne Bjornson, whose statue you passed at the National Theatre. In the 1870s, Bjornson wrote about the danger facing young Norwegians who moved to the capital from the countryside: the city, in his formulation, was a tiger that would consume them. The image stuck. Oslo is Tigerstaden, the Tiger City.|||The station behind the tiger, Oslo S, is the main railway terminus for the city and one of the busiest transport nodes in Norway. It was rebuilt in its current form between 1970 and 1980. Before the railway arrived in 1854, this was farmland at the eastern edge of the city. The square in front of the station, Jernbanetorget, serves as a gathering point: for demonstrations, for events, and for the simply practical business of people meeting to go somewhere together.|||Head southeast along the waterfront toward the Barcode district. The Oslo Opera House is about 525 metres from here, seven minutes.
+
+FACT-CHECK FLAGS:
+[ ] Tiger statue unveiled 1992 — verify year
+[ ] Sculptor Nils Aas — HIGH PRIORITY: verify this attribution carefully. This claim is uncertain. The tiger outside Oslo S may have been created by a different sculptor.
+[ ] "Stands about two metres long" — verify approximate dimensions
+[ ] Bjornson used "tiger" as descriptor for Oslo — verify; confirm which text/poem and decade (1870s stated)
+[ ] Oslo S rebuilt "between 1970 and 1980" — verify approximate period
+[ ] Railway arrived in 1854 — verify year Oslo got its first railway station
+
+=============================================================
+
+STOP 11 — OSLO OPERA HOUSE
+Tag: Stop 11 of 12 - Bjorvika
+Tagline: The roof is the point
+WalkNext: 255m, about 3 min to final stop
+Photo: oslo11.jpg (landscape)
+Audio: oslostop11.mp3
+Tip: Walk the Roof — The sloping marble roof is always open and free to walk on. The highest point gives the best view of the fjord and the Barcode buildings. Wear shoes with grip: the surface can be slippery in wet weather.
+
+SCRIPT:
+The Oslo Opera House was designed by the Norwegian architecture firm Snohetta and opened in April 2008. The building sits directly at the waterline of the Oslofjord, and its most distinctive feature is the sloping white marble roof that descends from the ridge of the building to the water, forming a surface that pedestrians can walk on year-round.|||The marble came from Carrara in Italy. Approximately 36,000 individually cut pieces cover the roof and the exterior walls of the main building. The slope is gentle enough to walk up comfortably and steep enough to create a dramatic angle when viewed from the water. From the top of the roof you can see across the fjord to the islands and, on clear days, to the hills on the far shore.|||The building won the European Union Prize for Contemporary Architecture, the Mies van der Rohe Award, in 2009. The jury described it as a building that had become a meeting point for the citizens of Oslo without being designed specifically for that purpose. The roof is not officially an observation deck, but it functions as one.|||The interior holds the main auditorium with 1,364 seats. The opera company is the Norwegian National Opera and Ballet. Tours of the interior are available on selected days: check the official website for current times and prices.|||The Munch Museum is about 255 metres south, three minutes on foot, following the waterfront promenade.
+
+FACT-CHECK FLAGS:
+[ ] Designed by Snohetta — verify spelling (Snohetta/Snøhetta) and that they are Norwegian
+[ ] Opened April 2008 — verify month and year
+[ ] "Marble from Carrara, Italy" — verify this is the correct source of the marble
+[ ] "36,000 individually cut pieces" — verify this specific figure
+[ ] Won Mies van der Rohe Award in 2009 — verify year of award
+[ ] 1,364 seats in main auditorium — verify capacity figure
+[ ] "Norwegian National Opera and Ballet" is the resident company — verify name
+
+=============================================================
+
+STOP 12 — MUNCH MUSEUM (MUNCH)
+Tag: Stop 12 of 12 - Bjorvika
+Tagline: Everything he made, all in one place
+WalkNext: Final stop
+Photo: oslo12.jpg (landscape)
+Audio: oslostop12.mp3
+Tip: The Scream — The museum holds all four versions of The Scream. Check the website for which version is on display and in which gallery: they are not always all exhibited at the same time. Booking ahead is recommended in summer.
+
+SCRIPT:
+The museum opened in this building in 2021. It is called MUNCH, and it holds the world's largest collection of works by Edvard Munch: over 26,000 pieces, including paintings, prints, drawings, and correspondence. The building was designed by the Spanish firm Estudio Herreros and leans slightly toward the water on thirteen floors.|||Edvard Munch was born in 1863 and died in 1944, in his house at Ekely, west of Oslo. He never married. He gave his entire estate to the city of Oslo when he died: every painting, every drawing, every print, every letter. He transferred the collection to the municipality and wrote the city into his will. The collection was first housed in a museum in Toyen, which opened in 1963. This building replaced it.|||The Scream exists in four versions. Munch made two paintings and two pastels. One of the paintings was stolen from the old Munch Museum in 1994 and recovered three months later. Another was stolen in 2004 and recovered in 2006. The image came from a specific moment. In his diary, Munch describes walking on a road with friends, feeling the sky turn blood red as the sun set, trembling with anxiety while an infinite scream passed through nature. He returned to the image repeatedly over the years that followed.|||You are standing at the end of a walk through the centre of Oslo, from the royal hill at the west end of Karl Johans gate to the fjord at the east end of the waterfront. The city runs between those two points on a single navigable line: the palace, the boulevard, the sea.
+
+FACT-CHECK FLAGS:
+[ ] Museum opened 2021 — verify (opened October 2021)
+[ ] "Over 26,000 pieces" — verify this figure
+[ ] Designed by Estudio Herreros — verify (Spanish firm; confirm)
+[ ] "Leans slightly toward the water on thirteen floors" — verify floor count and whether the lean is real/architectural
+[ ] Munch born 1863 — verify
+[ ] Munch died 1944 at Ekely, west of Oslo — verify location and year
+[ ] "He never married" — verify
+[ ] "Gave his entire estate to the city of Oslo when he died" — verify mechanism (will? gift?)
+[ ] Old Munch Museum at Toyen opened 1963 — verify year
+[ ] Scream theft 1994 — verify year and "three months" to recover
+[ ] Second theft 2004, recovered 2006 — verify both years
+[ ] Diary description of the "scream" experience — verify the quote captures the real diary entry accurately (paraphrase must be faithful)
+[ ] "All four versions of The Scream" — verify: two paintings and two pastels is the standard count; verify all four are in Norwegian public/private collections
+
+=============================================================
+
+SELF-CRITIQUE NOTES (Step 5)
+Applied before this draft:
+- Stop 9 direction fixed (northeast → east; distance updated to 668m)
+- Stop 8 tip box extended to mention rampart views
+- All stops retained; no structural changes
+
+Remaining weaknesses flagged but not changed (for Erika to judge):
+- Stop 10 (Tiger): Sculptor attribution flagged as HIGH PRIORITY fact-check. If Nils Aas is wrong, the entire sculptor paragraph needs rewriting.
+- Stop 6 (Nobel Peace Center): Relatively thin on experiential detail — the museum experience itself is not described. Scripts focus on Nobel's biography and the Norway question, which is appropriate for a standing-outside-the-building stop, but if the walker is going inside they may want more.
+- Stop 9 bronze hand sculpture: The description is general ("a hand cast in bronze, reaching upward through the stone") — if the actual sculpture is different, this needs rewriting.
+
+INDEPENDENT REVIEWER NOTES (Step 7)
+Route covers all anchors expected by someone who has done a standard Oslo city tour:
+palace, boulevard, city hall, fortress, waterfront, opera house, museum.
+
+Gaps relative to classic tours that are ACCEPTABLE omissions (out of walking range):
+- Vigeland Sculpture Park (4km west, separate visit)
+- Viking Ship Museum on Bygdoy peninsula (ferry, separate visit)
+- Holmenkollen (too far north)
+
+Gaps that could be relevant:
+- Nationalmuseet (National Museum): opened 2022, largest art museum in the Nordic countries, located near City Hall. Not added as a stop — the tour is already 12 stops and adding a 13th would push it past the guideline range. Could be mentioned in passing in the City Hall tip if desired.
+- Oslo Cathedral (Domkirken): near Stortinget, dating from 1697. Not a stop — the route doesn't naturally pass it and adding it would require a detour.
+
+No structural changes recommended from reviewer pass.
+
+=============================================================
+END OF DRAFT — READY FOR STEP 11 (INDEPENDENT FACT-CHECK)
+Step 11 must be done in a fresh session with no memory of these scripts.
+Load this file and verify every flagged claim against external sources.
+Do not treat any claim as verified because it "sounds right."
+Priority items: Tiger statue sculptor (Stop 10), opening play of National Theatre (Stop 2),
+bronze hand sculpture in Christiania Torv (Stop 9), Scream theft recovery times (Stop 12).
