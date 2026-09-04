@@ -237,6 +237,18 @@
             "touristType": "Cultural tourism",
             "address": {"@type": "PostalAddress", "addressLocality": "Bruges", "addressCountry": "BE"}
           }
+        },
+        {
+          "@type": "ListItem",
+          "position": 15,
+          "item": {
+            "@type": "TouristAttraction",
+            "name": "Oslo Audio Walking Tour",
+            "url": "https://stepcasttours.com/oslo.html",
+            "description": "Self-guided audio walking tour of Oslo, Norway. 12 stops, 4.8km. First 3 stops free.",
+            "touristType": "Cultural tourism",
+            "address": {"@type": "PostalAddress", "addressLocality": "Oslo", "addressCountry": "NO"}
+          }
         }
       ]
     }
@@ -397,6 +409,15 @@
         </button>
         <div class="nav-cities" id="czechCities">
           <a href="prague.html">Prague</a>
+        </div>
+      </div>
+
+      <div class="nav-country-item">
+        <button class="nav-country" onclick="toggleSection('norwayCities')">
+          Norway <span class="nav-arrow" id="norwayArrow">&#8250;</span>
+        </button>
+        <div class="nav-cities" id="norwayCities">
+          <a href="oslo.html">Oslo</a>
         </div>
       </div>
 
@@ -783,6 +804,21 @@
         <span class="card-btn">Try Free &#8594;</span>
       </div>
     </a>
+    <a class="card" href="oslo.html">
+      <img class="card-img" id="osloImg" alt="Oslo">
+      <div class="card-grad"></div>
+      <div class="free-tag">3 Stops Free</div>
+      <div class="card-body">
+        <div class="card-region">Norway</div>
+        <div class="card-name"><em>Oslo</em></div>
+        <div class="card-pills">
+          <span class="pill">12 Stops</span>
+          <span class="pill">4.8 km</span>
+          <span class="pill">&#x1F6B6; ~60 min</span>
+        </div>
+        <span class="card-btn">Try Free &#8594;</span>
+      </div>
+    </a>
   </div>
   <br><br>
   <div class="divider">
@@ -875,6 +911,7 @@ document.getElementById('milanImg').src='milan1.jpg';
 document.getElementById('brugesImg').src='bruges1a.jpg';
 document.getElementById('palermoImg').src='palermo1.jpg';
 document.getElementById('veronaImg').src='verona1a.jpg';
+document.getElementById('osloImg').src='oslo1.jpg';
 
 /* Search */
 var CITIES=[
@@ -897,7 +934,8 @@ var CITIES=[
   {name:'Glasgow',region:'United Kingdom — The Dear Green Place',emoji:'&#127468;&#127463;',url:'glasgow.html'},
   {name:'Milan',region:'Italy — Fashion and Art Capital',emoji:'&#127470;&#127481;',url:'milan.html'},
   {name:'Palermo',region:'Italy — Sicily',emoji:'&#127470;&#127481;',url:'palermo.html'},
-  {name:'Verona',region:'Italy — City of Romeo and Juliet',emoji:'&#127470;&#127481;',url:'verona.html'}
+  {name:'Verona',region:'Italy — City of Romeo and Juliet',emoji:'&#127470;&#127481;',url:'verona.html'},
+  {name:'Oslo',region:'Norway',emoji:'&#127475;&#127476;',url:'oslo.html'}
 ];
 
 var searchInput=document.getElementById('citySearch');
