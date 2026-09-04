@@ -288,7 +288,7 @@ function buildStops(){
     var morePara="";if(paras.length>1){for(var j=1;j<paras.length;j++){morePara+="<p>"+paras[j]+"</p>";}}
     var toggleHtml=paras.length>1?"<button class='text-toggle' id='ttog"+i+"' onclick='toggleText("+i+")'>Read more</button>":"";
     var photoSlides="";
-    for(var k=0;k<s.photos.length;k++){photoSlides+="<img class='slide"+(k===0?" vis":"")+"' src='"+s.photos[k].f+"' alt='"+s.plain+"' onerror='this.style.display="none"'>";}
+    for(var k=0;k<s.photos.length;k++){photoSlides+="<img class='slide"+(k===0?" vis":"")+"' src='"+s.photos[k].f+"' alt='"+s.plain+"' onerror='this.style.display=\"none\"'>";}
     var dots="";if(s.photos.length>1){dots="<div class='slide-dots'>";for(var k=0;k<s.photos.length;k++){dots+="<div class='sdot"+(k===0?" on":"")+"'></div>";}dots+="</div>";}
     var arrows="";if(s.photos.length>1){arrows="<button class='arr-btn arr-prev' onclick='slidePhoto("+i+",-1)'>&#8249;</button><button class='arr-btn arr-next' onclick='slidePhoto("+i+",1)'>&#8250;</button>";}
     var creditHtml="";if(s.photoCredit){creditHtml="<div class='photo-credit'>Photo: "+s.photoCredit+"</div>";}
