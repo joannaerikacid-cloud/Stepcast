@@ -418,6 +418,7 @@ function mapFitAll(){
   if(!leafMap)return;
   var bounds=[];for(var i=0;i<stops.length;i++){bounds.push([stops[i].lat,stops[i].lng]);}
   leafMap.fitBounds(bounds,{padding:[30,30]});
+  mapUserMoved=false;setTimeout(function(){mapUserMoved=false;},600);
 }
 
 function toggleGPS(){if(gpsActive){stopGPS();}else{startGPS();}}
