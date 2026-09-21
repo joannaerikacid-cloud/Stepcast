@@ -287,11 +287,11 @@ Use **Python string construction** — never bash heredocs (heredoc escaping fai
 2. **Free tour research** — what do existing live guided tours cover? Flag overlap, confirm classic anchors
 3. **Erika review** — approval on route before scripting
 4. **Scripts draft** — write all stop scripts
-5. **Self-critique** — review for weak stops, missing stories, tone
+5. **Self-critique** — review for weak stops, missing information, and tone (see Stop Script Style: neutral, factual, no wry or AI-sounding lines)
 6. **Apply self-critique fixes**
 7. **Independent reviewer** — read as someone who has done a popular live guided tour there
 8. **Apply reviewer fixes**
-9. **Direction check** — run bearing calculations for every consecutive stop pair using actual lat/lng coordinates. Fix any wrong compass headings in scripts before proceeding. Use Python: `math.degrees(math.atan2(dlng_m, dlat_m))` where dlat_m = Δlat × 111000, dlng_m = Δlng × 78500.
+9. **Direction check** — verify each stop's lat/lng against OpenStreetMap (should be within about 50m). Then run bearing calculations for every consecutive stop pair and check any direction words that remain in scripts or tips ("look east", "on your left", "to the south") against the coordinates. Scripts must not contain walk-to-next-stop direction paragraphs (see Stop Script Style). Use Python: `math.degrees(math.atan2(dlng_m, dlat_m))` where dlat_m = Δlat × 111000, dlng_m = Δlng × 78500.
 10. **Save scripts to file** — write all scripts to `{city}-scripts-draft.txt` in the repo root, with a FACT-CHECK FLAGS section under each stop listing every specific claim to verify (dates, names, heights, capacities, rulers, founding facts). This file is the input for the next step.
 11. **Fact check** — every date, name, number, direction, orientation verified against external sources. **This must be genuinely independent: Claude may not fact-check scripts it wrote itself in the same session. Open a fresh context, load `{city}-scripts-draft.txt`, treat every claim as untrusted, and verify against external sources as if encountering them for the first time. Self-reviewing previously written scripts is not fact-checking.**
 12. **Apply fact-check fixes**
@@ -307,7 +307,8 @@ Use **Python string construction** — never bash heredocs (heredoc escaping fai
 
 - Use the **same classic stops** people expect from live guided tours. Stepcast's value is telling those stops *better* — more depth, own pace, no group.
 - Walkers get the classic experience PLUS more — not a niche alternative route.
-- Mix of history and contemporary information. Never describe as story-only.
+- Cover history, culture and architecture, plus a little contemporary information where possible.
+- The aim is to inform, not to tell a story or set a mood.
 - Tour stop count: 8-11 stops depending on the city.
 
 ---
@@ -315,11 +316,14 @@ Use **Python string construction** — never bash heredocs (heredoc escaping fai
 ## Stop Script Style
 
 - Opening: place the walker physically and give them something to look at immediately
-- Directions always at the END of the script, final paragraph
 - `|||` separates paragraphs — never newlines in JS string
 - walkNext format: `"Xm, about Y min to next stop"` / `"Final stop"` / `"Xm south, about Y min to final stop"`
 - Tip boxes: practical, specific, no em dashes, "check official website" for any price/time
-- **Direction paragraphs must be brief and non-specific** — the GPS map handles navigation. Give only: a rough compass heading, an approximate walking time, and a landmark to look for on arrival. Never give turn-by-turn instructions, specific street names to turn onto, or "turn left/right at X". More specific = more chances to be wrong. Example good: "Head northwest about five minutes to Piazza San Simpliciano." Example bad: "Turn left onto Via Cusani, then right at the junction onto Foro Buonaparte."
+- **No direction paragraphs.** Never end a script with walk-to-next-stop directions (compass heading, distance, "turn left", "head east toward X"). The map and the walkNext badge handle navigation. End on the last content paragraph. Avoid left/right and compass directions elsewhere in scripts and tips too, unless they describe something fixed and verified (for example which side of a building a feature is on).
+- **Tone: neutral and factual.** No wry or aphoristic lines ("It is the kind of thing that gets carved above opera houses and then quietly ignored", "The church does not seem to mind"), no punchy one-line verdicts, no "X is not just Y" constructions. Scripts must sound human, not AI-written.
+- **Avoid unverified superlatives and flourishes** ("one of the finest", "one of the most extravagant", "layered with", "quietly", "grand"). Superlatives are fine only when they are checked facts (for example "largest opera house in Italy").
+- **Reread for tone after drafting**, not just for vocabulary. Cut any sentence that comments on or dramatises a fact rather than stating it.
+- Any edit to a recorded script means that stop's audio needs re-recording. List the affected stops for Erika.
 
 ---
 
